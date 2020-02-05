@@ -150,7 +150,5 @@ share.data$sector
 Now, as we have mastered the basics let us learn how to access existing data from R.
 
 
-
-
 -----------------------------
-© 201920atjana Kecojevic
+© 2020 Tatjana Kecojevic

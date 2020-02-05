@@ -1,8 +1,9 @@
 ---
 date: "2016-04-09T16:50:16+02:00"
-title: Introduction to Visualisation Principles
-menuTitle: "Principles of Visualisation"
-weight: 10
+title: Principles of Visualisation
+output: 
+  learnr::tutorial
+weight: 2
 ---
 
 ## Designed to enable: exploration, discovery, communication
@@ -167,4 +168,4 @@ Practise! Gaining experience in interpreting graphics and drawing your own data 
 1) Go to the portals with open data (global: gapminder, national: office of national statistics, or local) and see if you can find data that is interesting for you to explore. Write down what interesting features you are expecting to see and suggest types of the visualistions that could be used to illustrate them.  
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic

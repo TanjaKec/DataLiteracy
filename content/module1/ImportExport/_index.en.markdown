@@ -148,7 +148,7 @@ str(polen)
 
 ```
 ## List of 4
-##  $ count   : int 26428
+##  $ count   : int 26441
 ##  $ next    : chr "http://polen.sepa.gov.rs/api/opendata/pollens/?page=2"
 ##  $ previous: NULL
 ##  $ results :'data.frame':	500 obs. of  4 variables:
@@ -286,4 +286,4 @@ You can use R with appropriate packages to access other data formats. The `haven
 
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic

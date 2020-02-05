@@ -25,13 +25,14 @@ In this module you will set up the working environment, connect to GitHub and pa
 
 **Data Wrangling and Visualising Data**
 
-In this module you will learn some of the fundamental techniques for data exploration and transformation through the use of dplyr package. This tidy verse package helps make your exploration intuitive to write and easy to read. You will learn dplyr’s key verbs for data manipulation that will help you uncover and shape the information within the data that is easy to turn into informative plots. Through the use of the grammar of graphics plotting concepts implemented in ggplot2 package you will be able create meaningful exploratory plots. You will develop understanding about the way in which you should be able to think about the necessary data transformations and summaries that can lead to an informative visualisation.  
+In this module you will learn some of the fundamental techniques for data exploration and transformation through the use of dplyr package. This tidy verse package helps make your exploration intuitive to write and easy to read. You will learn dplyr’s key verbs for data manipulation that will help you uncover and shape the information within the data that is easy to turn into informative plots. You will be introduced to fundamental principles behind effective data visualisation. Through the use of the grammar of graphics plotting concepts implemented in ggplot2 package you will be able create meaningful exploratory plots. You will develop understanding about the way in which you should be able to think about the necessary data transformations and summaries that can lead to an informative visualisation.  
 
 **What you will learn:**
 
 *	dplyr’s key data manipulation verbs: select, mutate, filter, arrange and summarise/summarize
 * to aggregate data by groups
 * to chain data manipulation operations using the pipe operator
+* basic principles of effective data visualisation
 * to specify ggplot2 building blocks and combine them to create graphical display
 * about the philosophy that guides ggplot2: grammatical elements (layers) and aesthetic mappings.
 
