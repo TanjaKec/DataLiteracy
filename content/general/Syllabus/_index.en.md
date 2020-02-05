@@ -76,4 +76,4 @@ You will be introduced to broad ideas of supervised and unsupervised learning al
 
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic

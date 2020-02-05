@@ -8,7 +8,17 @@
   </url>
   
   <url>
+    <loc>/module1/whatisr/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/general/</loc>
+  </url>
+  
+  <url>
+    <loc>/module1/installr/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
   <url>
@@ -17,7 +27,46 @@
   </url>
   
   <url>
+    <loc>/module1/</loc>
+  </url>
+  
+  <url>
     <loc>/general/syllabus/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/rstudioide/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/user/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/statsconcepts/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/datatypes/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/importexport/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/rmarkdown/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/principlesvisualisation/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   

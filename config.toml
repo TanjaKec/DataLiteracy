@@ -2,14 +2,14 @@ baseURL = "https://dataliteracy.netlify.com/"
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
-title = "Data Literacy"
+title = "DS Bootcamp in R"
 theme = "hugo-theme-learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
 [params]
   editURL = "https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/"
-  description = "Data Literacy"
+  description = "DS Bootcamp in R"
   author = "Tatjana Kecojevic"
   showVisitedLinks = true
   disableBreadcrumb = false
@@ -24,7 +24,7 @@ home = ["HTML"]
 
 [Languages]
 [Languages.en]
-title = "Data Literacy"
+title = "DS Bootcamp in R"
 weight = 1
 languageName = "English"
 

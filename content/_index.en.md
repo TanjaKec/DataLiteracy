@@ -1,7 +1,8 @@
 ---
-title: Data Literacy
+title: DS Bootcamp in R
 ---
-# Data Literacy: Learn to access, organise, analyse and argue with data using R
+# Data Science Bootcamp in R
+### Learn to access, organise, analyse and argue with data using R
 
 #### [Tatjana Kecojevic,](https://www.linkedin.com/in/tatjana-kecojevic-803704143/) [SisterAnalyst](https://sisteranalyst.org)
 
@@ -18,5 +19,5 @@ title: Data Literacy
 
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic
 

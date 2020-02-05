@@ -9,4 +9,4 @@ The instructor is **Dr Tatjana Kecojević** who is a longtime **R** user with a 
 ![Tatjana Kecojevic](/images/TK.jpg?width=40pc)
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic

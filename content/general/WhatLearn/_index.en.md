@@ -52,4 +52,4 @@ Data Science is not simply fashionable jargon, but rather a discipline with a se
 Workshop delivery will be in English and Serbian! 
 
 -----------------------------
-© 2019 Tatjana Kecojevic
+© 2020 Tatjana Kecojevic
