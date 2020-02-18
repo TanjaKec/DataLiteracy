@@ -86,10 +86,10 @@ The ideas and concepts for examining population data provide a framework for the
 For an attribute variable the number of occurrences of each attribute is obtained, and for a measured variable the sample descriptive statistics describing the centre, width and symmetry of the distribution are calculated. 
 
 **attribute:**
-<img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<img src="/day1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 **measured:**
-<img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="/day1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 #### What does the distribution show?
 
@@ -117,7 +117,7 @@ By analogy with the median it is possible to define the <span style="color:red">
 
 The diagram below shows this pictorially:
 
-<img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="/day1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 🤓💡 Conventionally the **mean and standard deviation** are given together as one pair of measures of location and spread, and the **median and inter-quartile range** as another pair of measures.
 
@@ -332,4 +332,4 @@ Make sure you can answer the following questions:
 
 
 -----------------------------
-© 2020 Tatjana Kecojevic
+© 2019 Tatjana Kecojevic

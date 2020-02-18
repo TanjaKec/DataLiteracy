@@ -54,6 +54,7 @@ In this module you will learn the fundamental concepts of statistical modelling,
 * To investigate relationships between M and A variables
   - Two tail t-test
   - One-way ANOVA
+* To investigate relationships between two M variables
   - Simple linear regression 
 * Statistical reporting
 

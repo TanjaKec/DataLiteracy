@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/module3/damethodology/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/module2/datawrangling/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -27,6 +32,11 @@
   </url>
   
   <url>
+    <loc>/module3/mva/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/general/instructor/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -46,6 +56,11 @@
   </url>
   
   <url>
+    <loc>/module3/visualisation/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/general/syllabus/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -56,12 +71,21 @@
   </url>
   
   <url>
+    <loc>/module3/spatialda/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/module2/</loc>
   </url>
   
   <url>
     <loc>/module1/rstudioide/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module3/</loc>
   </url>
   
   <url>
@@ -91,6 +115,11 @@
   
   <url>
     <loc>/module2/spatialda/images/mokrin/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/module3/spatialda/images/mokrin/</loc>
     <priority>0</priority>
   </url>
   
