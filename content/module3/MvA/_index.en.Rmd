@@ -327,7 +327,43 @@ Reference to the tables of the percentage points of the student's t distribution
 
 As we now realise, this stage calculates two key pieces of information, the value of **t_calc** as calculated from the sample data and the degrees of freedom. The degrees of freedom are required to enable the numerical value of **t_crit** to be looked up in the statistical tables or simply in R using the `qt(alpha, df)` function.
 
- 
+- **Stage 3**:		Doing the calculations:
+
+In practice this means using the sample data to calculate two things:
+
+> The numerical value of **t_calc** and the value of the degrees of freedom (**df**). This provides all the information to complete the test, the df figure enables the precise value of t_calc to be looked in the statistical tables or directly obtaine in R, once this value is known the conclusion results from applying mechanicallythe decision rule as seen above:
+>
+>  + If t_calc value is numerically between the range -t_crit & +t_crit then the decision rule is flagging H0. There is no > relationship.  
+> 
+>  + If t_calc value is numerically outside the range -t_crit & +t_crit then the decision rule is flagging H1.
+There is a relationship.
+
+- **Stage 4**:		The conclusions.
+
+This final stage requires a statement of the outcome in terms of the original problem specification.
+
+---
+
+**FDA: `Share_Price vs Competition`**
+
+Let us obtain the output for t-test for `Share_Price vs Competition`.
+
+```{r}
+t.test(Share_Price~Competition, data=companyd)
+```
+
+In the output abowe we can see the statistics for the model that has been fitted: Share_Price Vs Competition. For this sample the t_calc is -3.4619 (`t_calc=-3.46`) and the degrees of freedom are 56.578 (`df=56`). Those are the two numbers that we need from his output that would enable us to test the hypotheses. 
+
+In order to test the hypothesis we need to obtain the critical value of the student's t-ratio for df=56, thus we want the t_crit.  We use the qt(p, df) function in R, which stands for quantile of t distribution. Alternatively, you can use the statistical tables.
+
+This is two-tailed test of 5 percent significant level (thus, p = 1 - 0.5 / 2), so the critical value of Student's t is:
+
+```{r}
+qt(0.975, 56.578)
+```
+
+This means that in order to reject the null hypothesis our test statistic needs to be bigger than `t_crit=2.00`, and hence conclude that there is a relationship between the two variables used in the analysis. `t_calc=-3.46 < t_crit=2.00 => H1`, thus there is a relationship between the variables: Share_Price and Competition, hence DESCRIBE THE RELATIONSHIP!!!
+
 ---
 
 **YOUR TURN** 👇
