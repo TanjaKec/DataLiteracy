@@ -115,10 +115,60 @@ and start coding.
 
 Open the data:
 
-```{r}
+```{r, warnings=FALSE, message=FALSE}
+suppressPackageStartupMessages(library(dplyr))
+# read csv file
 companyd <- read.csv("https://tanjakec.github.io/mydata/SHARE_PRICE.csv", header=T)
-# have a look at the first few raws
+# have a look at the first few raws and the summary of data
 head(companyd)
+# When applied to an object of class data.frame, summary shows descriptive statistics (Mean, SD, etc.)
+summary(companyd)
+glimpse(companyd)
+```
+
+{{% notice warning %}}
+Does everything seem okay? Can you notice a problem?
+{{% /notice %}}
+
+The problem is that the variables: 'Comparison', 'Sector' and 'Type' are attribute variables and Currently they have been recognised as integer type. To encode a measured variable as an attribute variable we can use function `as.factor(variable_name)`.
+
+```{r}
+companyd[, 5] <- as.factor(companyd[, 5])
+companyd[, 6] <- as.factor(companyd[, 6])
+companyd[, 7] <- as.factor(companyd[, 7])
+# command lines for scanning your dataset quickly
+summary(companyd)
+glimpse(companyd)
+```
+
+{{% notice note %}}
+Note that the form of the value returned by `summary` depends on the class of its argument. The matrix and data frame methods return a matrix of class "table", obtained by applying summary to each column and collating the results.
+{{% /notice %}}
+
+Let us start our Share Price data analysis by familiarising with data and chacking individual summary for measured variables.
+```{r}
+sapply(companyd[,1:4], summary)
+# To focus on the center of the distributions for 
+# the masured variables you can ask only
+# for the rows showing mean and median to be displayed. 
+sapply(companyd[,1:4], summary)[3:4, ]
+# To observe spread of the data we can use standard deviation and/or Inter Quartile Range
+sapply(companyd[,1:4], sd) 
+sapply(companyd[,1:4], IQR)
+```
+
+Let us explore the distributions of the variables visually using the appropriate graphs. As we have discussed in the previous sections, we usualy use piechart or a barplot if you like to graph an attribute variable.
+
+```{r}
+barplot(table(companyd[, 5]), xlab="Commpetition", ylab="frequency")
+barplot(table(companyd[, 7]), xlab="Type", ylab="frequency")
+pie(table(companyd[, 6]), labels=names(companyd$Sector), col=c(3, 7, 5), main="Sector") 
+```
+
+We have learnt that histogram is appropriate to graphically explore a measured variable.
+
+```{r}
+hist(companyd[, 1], xlab="Share Price", main="Histogram of Share Price", col="gray")
 ```
 
 ## YOUR TURN 👇
