@@ -512,12 +512,11 @@ summary(m1)</code></pre>
 <p>{{% notice info %}}
 Remember that we have used the <code>summary( )</code> function on data.frame class object to obtain descriptive statistics of its variables. The function invokes particular methods which depend on the class of the first argument. The <code>summary( )</code> function is also used to produce summary results of the various model fitted functions.
 {{% /notice %}}</p>
-<p><strong>F_calc</strong> from the sample data is <strong>14.93</strong>. Note that for F satistic we have two numbers for the dergrees of freedom. The degrees of freedom <strong>df1=2.00</strong> and <strong>df2=57</strong> give us <strong>F_crit</strong>:</p>
+<p><span class="math inline">\(F_{calc}\)</span> from the sample data is <strong>14.93</strong>. Note that for F satistic we have two numbers for the dergrees of freedom. The degrees of freedom <span class="math inline">\(df1=2.00\)</span> and <span class="math inline">\(df2=57\)</span> give us <span class="math inline">\(F_{crit}\)</span>:</p>
 <pre class="r"><code>F_crit &lt;- qf(0.95, 2, 57)
 F_crit</code></pre>
 <pre><code>## [1] 3.158843</code></pre>
-<p><strong>Fcalc = 14.93 &gt; Ftable = 3.16 =&gt; accept H1</strong>, ie. ‘Share Price’ depends upon ‘Sector’ within which the company operates. Next question is <strong>how</strong>? Accepting H1 means that the ANOVA-test indicates that at least one group is different from all the others.
-Who is different from who? We need to fully describe this relationship, by pointing out which groups are different from which.</p>
+<p><span class="math inline">\(F_{calc} = 14.93 &gt; F_{crit} = 3.16 =&gt; accept H_1\)</span>, ie. ‘Share Price’ depends upon ‘Sector’ within which the company operates. Next question is <strong>how</strong>? Accepting <span class="math inline">\(H_1\)</span> means that the ANOVA-test indicates that at least one group is different from all the others. Who is different from who? We need to fully describe this relationship, by pointing out which groups are different from which.</p>
 <p>A Boxplot will often help you to recognise the obvious differences, but we have proceeded doing one-way ANOVA because those differences were not obvious. How to overcome this obstacle? We need a clear description of the relationship found pointing out where the difference lays. To do this, we need a pairwise comparisons between the groups, which in our case are:</p>
 <table>
 <thead>
@@ -529,14 +528,14 @@ Who is different from who? We need to fully describe this relationship, by point
 </thead>
 <tbody>
 <tr class="odd">
-<td>H0: µ1 = µ2</td>
-<td>H0: µ1 = µ3</td>
-<td>H0: µ2 = µ3</td>
+<td><span class="math inline">\(H_0: \mu_1 = \mu_2\)</span></td>
+<td><span class="math inline">\(H_0: \mu_1 = \mu_3\)</span></td>
+<td><span class="math inline">\(H_0: \mu_2 = \mu_3\)</span></td>
 </tr>
 <tr class="even">
-<td>H1: µ1 ≠ µ2</td>
-<td>H1: µ1 ≠ µ3</td>
-<td>H1: µ2 ≠ µ3</td>
+<td><span class="math inline">\(H_1: \mu_1 \ne \mu_2\)</span></td>
+<td><span class="math inline">\(H_1: \mu_1 \ne \mu_3\)</span></td>
+<td><span class="math inline">\(H_1: \mu_2 \ne \mu_3\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -559,7 +558,7 @@ Who is different from who? We need to fully describe this relationship, by point
 <p>This can be visualised by a plot of the list:</p>
 <pre class="r"><code>plot(TukeyHSD(m1))</code></pre>
 <p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>Looking at the output above and the plot of those 95% CI’s we can see that non of them contains value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: µ1 &lt; µ2 &lt; µ3. Now we can make the conclusion for our analysis.</p>
+<p>Looking at the output above and the plot of those 95% CI’s we can see that non of them contains value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: <span class="math inline">\(\mu_1 &lt; \mu_2 &lt; \mu_3\)</span>. Now we can make the conclusion for our analysis.</p>
 <p><strong>Stage 4:</strong> The conclusions.</p>
 <p>Based on the sample evidence there is a relationship between ‘Share Price’ and ‘Sector’. Companies operating in the IT business sector on average have the smallest value of the share price, which is 489.4 units. For the companies operating in the finance business sector the average value of share price is 595.4 units. The largest average value of the share price is for the companies operating in the pharmaceutical sector, which is 732.6 units.</p>
 <p>Based on the sample evidence there is a relationship between ‘Share Price’ and ‘Sector’. Companies operating in the IT business sector on average have the smallest value of the share price, which is £489.40. For the companies operating in the finance business sector the average value of share price is £595.40. The largest average value of the share price is for the companies operating in the pharmaceutical sector of around £732.60.</p>
@@ -568,5 +567,5 @@ Who is different from who? We need to fully describe this relationship, by point
 <ol style="list-style-type: decimal">
 <li>Investigate the nature of the relationship in Share Price Study data for <code>Share_Price vs Type</code>.</li>
 </ol>
-<p>1—————————-
-© 2020 Tatjana Kecojevic</p>
+<hr />
+<p>© 2020 Tatjana Kecojevic</p>

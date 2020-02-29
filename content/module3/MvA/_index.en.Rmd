@@ -513,22 +513,21 @@ summary(m1)
 Remember that we have used the `summary( )` function on data.frame class object to obtain descriptive statistics of its variables.  The function invokes particular methods which depend on the class of the first argument. The `summary( )` function is also used to produce summary results of the various model fitted functions.
 {{% /notice %}}
 
-**F_calc** from the sample data is **14.93**. Note that for F satistic we have two numbers for the dergrees of freedom. The degrees of freedom **df1=2.00** and **df2=57** give us **F_crit**:
+$F_{calc}$ from the sample data is **14.93**. Note that for F satistic we have two numbers for the dergrees of freedom. The degrees of freedom $df1=2.00$ and $df2=57$ give us $F_{crit}$:
 
 ```{r}
 F_crit <- qf(0.95, 2, 57)
 F_crit
 ```
 
-**Fcalc = 14.93 > Ftable = 3.16 => accept H1**, ie. 'Share Price' depends upon 'Sector' within which the company operates. Next question is **how**? Accepting H1 means that the ANOVA-test indicates that at least one group is different from all the others.
-Who is different from who? We need to fully describe this relationship, by pointing out which groups are different from which.
+$F_{calc} = 14.93 > F_{crit} = 3.16 => accept H_1$, ie. 'Share Price' depends upon 'Sector' within which the company operates. Next question is **how**? Accepting $H_1$ means that the ANOVA-test indicates that at least one group is different from all the others. Who is different from who? We need to fully describe this relationship, by pointing out which groups are different from which.
 
 A Boxplot will often help you to recognise the obvious differences, but we have proceeded doing one-way ANOVA because those differences were not obvious. How to overcome this obstacle? We need a clear description of the relationship found pointing out where the difference lays. To do this, we need a pairwise comparisons between the groups, which in our case are:
 
 |  1st with 2nd  |  1st with 3rd    | 2nd with 3rd |
 |-------------|---------------|--------------|
-| H0: µ1 = µ2	|  H0: µ1 = µ3	| H0: µ2 = µ3  |
-| H1: µ1 ≠ µ2 |  H1: µ1 ≠ µ3	| H1: µ2 ≠ µ3  |
+| $H_0: \mu_1 = \mu_2$	|  $H_0: \mu_1 = \mu_3$	| $H_0: \mu_2 = \mu_3$  |
+| $H_1: \mu_1 \ne \mu_2$ |  $H_1: \mu_1 \ne \mu_3$	| $H_1: \mu_2 \ne \mu_3$  |
 
 This can be done using **The Tukey multiple comparison procedure**, for which we use the `TukeyHSD( )` function. 
 
@@ -548,7 +547,7 @@ This can be visualised by a plot of the list:
 plot(TukeyHSD(m1))
 ```
 
-Looking at the output above and the plot of those 95% CI's we can see that non of them contains value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: µ1 < µ2 < µ3. Now we can make the conclusion for our analysis.
+Looking at the output above and the plot of those 95% CI's we can see that non of them contains value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: $\mu_1 < \mu_2 < \mu_3$. Now we can make the conclusion for our analysis.
 
 **Stage 4:**	The conclusions.
 
@@ -562,5 +561,5 @@ Based on the sample evidence there is a relationship between 'Share Price' and '
 
 1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs Type`.
 
-1----------------------------
+----------------------------
 © 2020 Tatjana Kecojevic
