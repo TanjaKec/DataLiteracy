@@ -12,18 +12,20 @@
     <title>Basic Stats Concepts :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1582122462" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1582122462" rel="stylesheet">
-    <link href="/css/hybrid.css?1582122462" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1582122462" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1582122462" rel="stylesheet">
-    <link href="/css/auto-complete.css?1582122462" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1582122462" rel="stylesheet">
-    <link href="/css/theme.css?1582122462" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1582122462" rel="stylesheet">
+    <link href="/css/nucleus.css?1583011754" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583011754" rel="stylesheet">
+    <link href="/css/hybrid.css?1583011754" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583011754" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583011754" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583011754" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583011754" rel="stylesheet">
+    <link href="/css/theme.css?1583011754" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583011754" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1582122462"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583011754"></script>
+
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1582122462"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1582122462"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583011754"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583011754"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1582122462"></script>
+<script type="text/javascript" src="/js/search.js?1583011754"></script>
 
     
   </div>
@@ -688,73 +690,18 @@
  
   
     
-    <li data-nav-id="/module3/visualisation/" title="Data Visualisation" class="dd-item 
+    <li data-nav-id="/module3/mvm/" title="Regression" class="dd-item 
         
         
         
         ">
-      <a href="/module3/visualisation/">
-          Data Visualisation
+      <a href="/module3/mvm/">
+          Regression
           
             <i class="fas fa-check read-icon"></i>
           
       </a>
       
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/module3/spatialda/" title="Spatial Data Analysis" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/module3/spatialda/">
-          Spatial Data Analysis
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/module3/spatialda/images/mokrin/" title="" class="dd-item ">
-        <a href="/module3/spatialda/images/mokrin/">
-        
-        <i class="fas fa-check read-icon"></i>
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
               
     </li>
   
@@ -867,9 +814,9 @@
           
             <a href='/'>DS Bootcamp in R</a> > <a href='/module1/'>Module 1</a> > Basic Stats Concepts
           
-         
+        
           
-         
+        
           
         
                  
@@ -991,7 +938,7 @@ This is the median by definition.</li>
 <p>The diagram below shows this pictorially:</p>
 <p><img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>🤓💡 Conventionally the <strong>mean and standard deviation</strong> are given together as one pair of measures of location and spread, and the <strong>median and inter-quartile range</strong> as another pair of measures.</p>
-<p>There are a number of <span style="color:red"><strong>measures of symmetry</strong></span>; the simplest way to measure symmetry is to compare the mean and the median. For a perfectly symmetric distribution the mean and the median will be exactly the same. This idea leads to the definition of Pearson’s coefficient of Skewness as:</p>
+<p>There are a number of <span style="color:red"><strong>measures of symmetry</strong></span>; the simplest way to measure symmetry is to compare the mean and the median. For a perfectly symmetrical distribution the mean and the median will be exactly the same. This idea leads to the definition of Pearson’s coefficient of Skewness as:</p>
 <p><code>Pearson's coefficient of Skewness = 3(mean - median) / standard deviation</code></p>
 <p>An alternative measure of Skewness is the Quartile Measure of Skewness defined as:</p>
 <p><code>Quartile Measure of Skewness  = [(Q1 - Q3) - (Q2 - Q1)]/(Q3 - Q1)</code></p>
@@ -1037,7 +984,7 @@ This is the median by definition.</li>
 </div>
 <p>The starting point for any <span style="color:red">investigation of the connections</span> between a <strong>response</strong> variable and an <strong>explanatory</strong> variable starts with examining the variables, and defining the response variable, or response variables, and the explanatory variables.</p>
 <p>🤓💡: In large empirical investigations there may be a number of objectives and a number of response variables.</p>
-<p>The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combination as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩</p>
+<p>The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combinations as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩</p>
 <hr />
 <p><strong>DA Methodology</strong></p>
 <p>The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable. This will provide a framework for defining a <span style="color:red">Data-Analysis process</span> to explore the connection between the two variables, and will utilise the ideas previously developed.</p>
@@ -1065,7 +1012,7 @@ This is the median by definition.</li>
 <hr />
 <p><strong>Measured Vs Attribute(2-levels)</strong></p>
 <p>There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.</p>
-<p>Given a measured response and an attribute explanatory variable with two levels, “<span style="color:red">red</span>” &amp; “<span style="color:blue">blue</span>”. If the statistical distribution of the response variable for attribute level “<span style="color:red">red</span>” and attribute level “<span style="color:blue">blue</span>” are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.</p>
+<p>Given a measured response and an attribute explanatory variable with two levels, “<span style="color:red">red</span>” &amp; “<span style="color:blue">blue</span>”, if the statistical distribution of the response variable for attribute level “<span style="color:red">red</span>” and attribute level “<span style="color:blue">blue</span>” are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.</p>
 <p>This can be illustrated as below:</p>
 <div class="figure">
 <img src="/module1/StatsConcepts/images/MvAMethodology.png?width=40pc" alt="Red variant" />
@@ -1582,38 +1529,6 @@ This ratio is always on the scale 0 to 1, but by convention is usually expressed
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
             
         
                     
@@ -1639,19 +1554,19 @@ This ratio is always on the scale 0 to 1, but by convention is usually expressed
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1582122462"></script>
-    <script src="/js/perfect-scrollbar.min.js?1582122462"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1582122462"></script>
-    <script src="/js/jquery.sticky.js?1582122462"></script>
-    <script src="/js/featherlight.min.js?1582122462"></script>
-    <script src="/js/highlight.pack.js?1582122462"></script>
+    <script src="/js/clipboard.min.js?1583011754"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583011754"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583011754"></script>
+    <script src="/js/jquery.sticky.js?1583011754"></script>
+    <script src="/js/featherlight.min.js?1583011754"></script>
+    <script src="/js/highlight.pack.js?1583011754"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1582122462"></script>
-    <script src="/js/learn.js?1582122462"></script>
-    <script src="/js/hugo-learn.js?1582122462"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583011754"></script>
+    <script src="/js/learn.js?1583011754"></script>
+    <script src="/js/hugo-learn.js?1583011754"></script>
 
-    <link href="/mermaid/mermaid.css?1582122462" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1582122462"></script>
+    <link href="/mermaid/mermaid.css?1583011754" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583011754"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

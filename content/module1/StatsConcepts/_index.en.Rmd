@@ -150,7 +150,7 @@ boxplot(xseq, horizontal=TRUE,  outline=TRUE,ylim=c(-4,4), frame=F, col = "darko
 
 🤓💡 Conventionally the **mean and standard deviation** are given together as one pair of measures of location and spread, and the **median and inter-quartile range** as another pair of measures.
 
-There are a number of <span style="color:red">**measures of symmetry**</span>; the simplest way to measure symmetry is to compare the mean and the median.  For a perfectly symmetric distribution the mean and the median will be exactly the same. This idea leads to the definition of Pearson's coefficient of Skewness as:
+There are a number of <span style="color:red">**measures of symmetry**</span>; the simplest way to measure symmetry is to compare the mean and the median.  For a perfectly symmetrical distribution the mean and the median will be exactly the same. This idea leads to the definition of Pearson's coefficient of Skewness as:
 
  `Pearson's coefficient of Skewness = 3(mean - median) / standard deviation`
 
@@ -198,7 +198,7 @@ The starting point for any  <span style="color:red">investigation of the connect
 
 🤓💡: In large empirical investigations there may be a number of objectives and a number of response variables.
 
-The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combination as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩  
+The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combinations as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩  
 
 ___
 **DA Methodology**
@@ -240,7 +240,7 @@ ___
 
 There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.
 
-Given a measured response and an attribute explanatory variable with two levels, "<span style="color:red">red</span>" & "<span style="color:blue">blue</span>". If the statistical distribution of the response variable for attribute level "<span style="color:red">red</span>" and attribute level "<span style="color:blue">blue</span>" are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.  
+Given a measured response and an attribute explanatory variable with two levels, "<span style="color:red">red</span>" & "<span style="color:blue">blue</span>", if the statistical distribution of the response variable for attribute level "<span style="color:red">red</span>" and attribute level "<span style="color:blue">blue</span>" are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.  
 
 This can be illustrated as below:
 

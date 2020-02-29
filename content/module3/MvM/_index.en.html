@@ -1,0 +1,51 @@
+---
+date: "2016-04-09T16:50:16+02:00"
+title: Regression
+output: 
+  learnr::tutorial
+weight: 3
+---
+
+
+
+<p>Earlier we looked at how to examine sample data to investigate the nature of any relationship that may exist between a measured response variable and an attribute explanatory variable. This section examines how to investigate the nature of any relationship that may exist between a measured response variable and a measured explanatory variable.</p>
+<p>The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable. The next step is to use some <strong>simple sample descriptive statistics</strong> to have a first look at the nature of the link between the response variable and the explanatory variable. This simple approach will lead to one of three conclusions, namely on the basis of the sample information:</p>
+<ol style="list-style-type: lower-roman">
+<li>there is very strong evidence to support a link</li>
+<li>there is absolutely no evidence of any link</li>
+<li>the sample evidence is inconclusive and further more sophisticated data analysis is required</li>
+</ol>
+<p>This step is called the <strong>Initial Data Analysis</strong> or the <strong>IDA</strong>.</p>
+<p>If the IDA suggests that <strong>Further Data Analysis</strong> is required, then this step seeks one of two conclusions:</p>
+<ol style="list-style-type: lower-roman">
+<li>The sample evidence is consistent with there being no link between the response variable and the explanatory variable.</li>
+<li>The sample evidence is consistent with there being a link between the response variable and the explanatory variable.</li>
+</ol>
+<p>As we have already seen in the previous sections, this process can be represented diagrammatically as:</p>
+<p><img src="/module3/DAMethodology/images/DAMethodology.png?width=40pc" /></p>
+<p>The Data-Analysis Methodology seeks to find the answer to the following key question:</p>
+<ul>
+<li>On the basis of the sample data, is there evidence of a connection/link/relationship between the response variable and the explanatory variable?</li>
+</ul>
+<p>The final outcome is one of two conclusions:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>There is no evidence of a relationship, labelled as the ‘No’ outcome in the diagram above, in which case the analysis is finished.</p></li>
+<li><p>There is evidence of a relationship, labelled as the ‘Yes’ outcome in the diagram above, in which case the nature of the relationship needs to be described.</p></li>
+</ol>
+<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of Y the response variable and the value of X the explanatory variable. For the whole population a graph of Y against X could be plotted conceptually. If the graph looked as in the diagram below, then there is quite clearly a link between Y and X. If the value of X is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a <strong>deterministic relationship</strong>. <em>Deterministic means that if the value of X is known then the value of Y can be precisely determined from the relationship between Y and X.</em></p>
+<p><img src="/module3/MvM/images/deterministic_relationship.png?width=40pc" /></p>
+<hr />
+<p><strong>Scatter Plot</strong></p>
+<p>When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with X and one axis for the response variable, which is labelled with Y. Thus, each point on the graph represents a single (X, Y) pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.</p>
+<p>Let us consider a few scatter plots. The following graph represents a perfect linear relationship, all points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, ie. gradient and hence specify the exact mathematical link between the response variable Y and the explanatory variable X.</p>
+<p><img src="/module3/MvM/images/Yes_perfect.png?width=30pc" /></p>
+<p>The relationship shown in the next graph shows clearly that as the value of X increases the value of Y also increases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable X increases the value of the response variable Ytends to decrease. An explanation for this is that the response Y may depend on a number of different variables, say <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span>, <span class="math inline">\(X_6\)</span> etc. which could be written as:</p>
+<p><span class="math inline">\(Y = f(X_1, X_2, X_3, X_4, X_5, X_6, ...)\)</span></p>
+<p><img src="/module3/MvM/images/Yes_75.png?width=30pc" /></p>
+<p>If the nature of the link between Y and X is under investigation then this could be represented as:</p>
+<p><span class="math display">\[Y = f(X) + \text{effect of all other variables}\]</span></p>
+<p>{{% notice note %}}
+The effect of all other variables is commonly abbreviated to <strong>e</strong>.
+{{% /notice %}}</p>
+<hr />
+<p>© 2020 Tatjana Kecojevic</p>

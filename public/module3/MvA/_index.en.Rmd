@@ -93,7 +93,7 @@ A business analyst is studying share prices of companies from three different bu
 
 | **Variable**    | **Description** |
 |-------------|-----------------------------------------------|
-| **Share_Price**	|	The market value of a company share |
+| **Share_Price**	|	The market value of a company share (£) |
 | **Profit**			| The company annual profit |
 | **RD**				  | Company annual spending on research and development |
 | **Turnover** 		|	Company annual total revenue| 
@@ -194,6 +194,8 @@ plot(density(companyd[,4]), main="Density Function of Turnover")
 
 ---
 
+**M vs A(2) Data Analysis**
+
 Exploratory analysis of the individual variables is important part of DA process as a way to familiarise with data and identify any anomalies that may be contained within the individual variables. However, the most exciting part of Data Analysis is exploration of the possible relationships between the variables and statistical modelling that we use in this part of DA process.
 
 The main focus in this study is *the study of share prices of companies from three different business sectors*, ultimately this will help us to identify the **response** variable for this study which is **Share_Price** that is a **measured** type. In this section we are learning how to investigate a possible relationship between measured response and attribute with two levels explanatory variable. In this study there are two attribute variables with two levels: **Competition** and **Type** and both of those attribute variable seem reasonable to use as explanatory variables.
@@ -231,13 +233,13 @@ boxplot(Share_Price ~ Competition, data = companyd, boxwex = 0.25, main="Share P
 
 From the obtained descriptive statistics visualised by the Boxplots the means are 530.00 for the companies which operate in a very competitive market and 675.50 for the companies that have a great deal of monopoly power. The key question now is: 
 
-Is the difference between the two means (675.50 – 530.00 = 145.50) indicating a real difference or is this difference a difference that could have occurred by chance as a result of sampling error?
+Is the difference between the two means (£675.50 – £530.00 = £145.50) indicating a real difference or is this difference a difference that could have occurred by chance as a result of sampling error?
 
 This is a complex question but by matching the means and the boxplots obtained in the analysis against the boxplots for the three possible model outcomes discussed earlier when talking about methodology used form MvA(2) a suitable decision can be made. For the example `Share_Price` vs `Competition` given above the analytical process is describe below:
 
-By matching the boxplots against the three model outcomes illustrated in the data analysis methodology diagram, the absolute difference (as above of 145.50) has limited value in isolation because the interpretation depends also on the variability of the sample data. The variability of the sample data is measured in terms of the standard deviation, and represented in the boxplot as the inter-quartile range (IQR) as the width of the box. This graphical display the boxplot enables both the difference in means relative to their spreads (variability) to be assessed.  If the two boxplots appear to be one of top of each other, then the difference is consistent with sampling error. If, however the difference is such that the boxplots appear to be well separated, then the difference is indicative of a real difference in means and suggests that a connection/relationship is present. The in-between situation is a matter of judgement but if the means are different, and the boxes of the boxplots overlap considerably then this is indicative of needing further data analysis. 
+By matching the boxplots against the three model outcomes illustrated in the data analysis methodology diagram, the absolute difference (as above of £145.50) has limited value in isolation because the interpretation depends also on the variability of the sample data. The variability of the sample data is measured in terms of the standard deviation, and represented in the boxplot as the inter-quartile range (IQR) as the width of the box. This graphical display the boxplot enables both the difference in means relative to their spreads (variability) to be assessed.  If the two boxplots appear to be one of top of each other, then the difference is consistent with sampling error. If, however the difference is such that the boxplots appear to be well separated, then the difference is indicative of a real difference in means and suggests that a connection/relationship is present. The in-between situation is a matter of judgement but if the means are different, and the boxes of the boxplots overlap considerably then this is indicative of needing further data analysis. 
 
-From the sample evidence following Data Analysis Methodology we can draw a conclusion that the market value of a company share does depend on the competition within which company operates. Average share price for the companies which operate in a very competitive market is 530.00, while for those that are operationg with a great deal of monopoly power is 145.50 more. 
+From the sample evidence following Data Analysis Methodology we can draw a conclusion that the market value of a company share does depend on the competition within which company operates. Average share price for the companies which operate in a very competitive market is £530.00, while for those that are operationg with a great deal of monopoly power is £145.50 more. 
 
 The outcome of the IDA has led us to the above conclusion skipping the FDA stage.  
 
@@ -295,8 +297,8 @@ The four stages are:
 
 - **Stage 1**:	Define the hypotheses:	
 
-  + H0: µ1 = µ2
-  +	H1: µ1 ≠ µ2
+  + $H_0: \mu_1 = \mu_2$
+  +	$H_1: \mu_1 \ne \mu_2$
 
 - **Stage 2**:	Defining the test parameters and the decision rule.
 
@@ -304,38 +306,37 @@ For 'M vs A' problem, what is required to help decide based on the sample eviden
 
 An agreed decision rule can be formulated that specifies that if this relative measure of the separation of the boxplots is greater than a threshold value then there is a connection otherwise there is no evidence to support as link.
 
+Such a measure of the relative separation of the boxplots exists and is called the 'Student's t Ratio'. The value of the **t-ratio** calculated from the sample data is normally called $t_{calc}$ to emphasis the fact that it is calculated from sample data.
 
-Such a measure of the relative separation of the boxplots exists and is called the 'Student's t Ratio'. The value of the **t-ratio** calculated from the sample data is normally called **t_calc** to emphasis the fact that it is calculated from sample data.
-
-> A decision rule can now be formulated using the **t_calc** value. The bigger the **t_calc** value the larger the separation between the boxplots and the more likely it is that there is a link between the response variable and the explanatory variable. The decision rule specifies the range of values that can take to be consistent with H0, i.e. no connection, if the **t_calc** is outside that range then the decision rule is specifying that the sample data is consistent with H1, namely with there being a connection.
+> A decision rule can now be formulated using the $t_calc$ value. The bigger the $t_calc$ value the larger the separation between the boxplots and the more likely it is that there is a link between the response variable and the explanatory variable. The decision rule specifies the range of values that can take to be consistent with H0, i.e. no connection, if the $t_calc$ is outside that range then the decision rule is specifying that the sample data is consistent with H1, namely with there being a connection.
 
 The problem is now how to specify the agreed limits. [W. S Gossett (1876-1937)](https://en.wikipedia.org/wiki/William_Sealy_Gosset) who wrote under the pseudonym of "Student" proposed the t-ratio in a paper published in 1908. He also evaluated the statistical distribution of the t-ratio to enable these threshold values to be obtained. This test procedure is called a hypothesis test and the test described is commonly referred to as **the student's t-test**.
 
-The agreed procedure for setting up the decision rule uses the distribution of the t-ratio and splits the area under the distribution into the proportions 2½% - 95% - 2½% giving the threshold value called **t_crit**.
+The agreed procedure for setting up the decision rule uses the distribution of the t-ratio and splits the area under the distribution into the proportions 2½% - 95% - 2½% giving the threshold value called $t_{crit}$.
 
-- If **t_calc** value is **numerically between** the range **-t_crit & +t_crit** then the decision rule is flagging **H0**. Supporting the viewpoint that **there is no relationship**.  
+- If $t_{calc}$* value is **numerically between** the range $-t_{crit}$ & $+t_{crit}$ then the decision rule is flagging $H_0$. Supporting the viewpoint that **there is no relationship**.  
 
-- If **t_calc**  value is **numerically outside** the range **–t_crit & +t_crit** then the decision rule is flagging **H1**. Supporting the viewpoint that **there is a relationship**.
+- If $t_{calc}$  value is **numerically outside** the range $-t_{crit}$ & $+t_{crit}$ then the decision rule is flagging $H_1$. Supporting the viewpoint that **there is a relationship**.
 
-The value **t_crit** depends upon the sample size, through a measure called **Degrees of Freedom** (**df**). The hypothesis test described above is called the student's **t-test** and is **a two tailed test using the 5% level of significance**. 
+The value $t_{crit}$ depends upon the sample size, through a measure called **Degrees of Freedom** (**df**). The hypothesis test described above is called the student's **t-test** and is **a two tailed test using the 5% level of significance**. 
 
 {{% notice info %}}
-Reference to the tables of the percentage points of the student's t distribution will show that one of the tabulations is the two tailed test at the 5% level of significance. The value obtained from the statistical tables will be referred to as **t_crit**.
+Reference to the tables of the percentage points of the student's t distribution will show that one of the tabulations is the two tailed test at the 5% level of significance. The value obtained from the statistical tables will be referred to as $t_{crit}$.
 {{% /notice %}}
 
 ![](/module3/MvA/images/t-test.png?width=40pc)
 
-As we now realise, this stage calculates two key pieces of information, the value of **t_calc** as calculated from the sample data and the degrees of freedom. The degrees of freedom are required to enable the numerical value of **t_crit** to be looked up in the statistical tables or simply in R using the `qt(alpha, df)` function.
+As we now realise, this stage calculates two key pieces of information, the value of $t_{calc}$ as calculated from the sample data and the degrees of freedom. The degrees of freedom are required to enable the numerical value of $t_{crit}$ to be looked up in the statistical tables or simply in R using the `qt(alpha, df)` function.
 
 - **Stage 3**:		Doing the calculations:
 
 In practice this means using the sample data to calculate two things:
 
-> The numerical value of **t_calc** and the value of the degrees of freedom (**df**). This provides all the information to complete the test, the df figure enables the precise value of t_calc to be looked in the statistical tables or directly obtaine in R, once this value is known the conclusion results from applying mechanicallythe decision rule as seen above:
+> The numerical value of $t_{calc}$ and the value of the degrees of freedom (**df**). This provides all the information to complete the test, the df figure enables the precise value of t_calc to be looked in the statistical tables or directly obtaine in R, once this value is known the conclusion results from applying mechanicallythe decision rule as seen above:
 >
->  + If t_calc value is numerically between the range -t_crit & +t_crit then the decision rule is flagging H0. There is no > relationship.  
+>  + If $t_{calc}$ value is numerically between the range $-t_{crit}$ & $+t_{crit}$ then the decision rule is flagging $H_0$. There is no relationship.  
 > 
->  + If t_calc value is numerically outside the range -t_crit & +t_crit then the decision rule is flagging H1.
+>  + If $t_{calc}$ value is numerically outside the range $-t_{crit}$ & $+t_{crit}$ then the decision rule is flagging $H_1$.
 There is a relationship.
 
 - **Stage 4**:		The conclusions.
@@ -352,23 +353,214 @@ Let us obtain the output for t-test for `Share_Price vs Competition`.
 t.test(Share_Price~Competition, data=companyd)
 ```
 
-In the output abowe we can see the statistics for the model that has been fitted: Share_Price Vs Competition. For this sample the t_calc is -3.4619 (`t_calc=-3.46`) and the degrees of freedom are 56.578 (`df=56`). Those are the two numbers that we need from his output that would enable us to test the hypotheses. 
+In the output abowe we can see the statistics for the model that has been fitted: Share_Price Vs Competition. For this sample the t_calc is -3.4619 ($t_{calc}=-3.46$) and the degrees of freedom are 56.578 ($df=56$). Those are the two numbers that we need from his output that would enable us to test the hypotheses. 
 
-In order to test the hypothesis we need to obtain the critical value of the student's t-ratio for df=56, thus we want the t_crit.  We use the qt(p, df) function in R, which stands for quantile of t distribution. Alternatively, you can use the statistical tables.
+In order to test the hypothesis we need to obtain the critical value of the student's t-ratio for $df=56$, thus we want the $t_{crit}$.  We use the `qt(p, df)` function in R, which stands for quantile of t distribution. Alternatively, you can use the statistical tables.
 
-This is two-tailed test of 5 percent significant level (thus, p = 1 - 0.5 / 2), so the critical value of Student's t is:
+This is two-tailed test of 5 percent significant level (thus, $p = 1 - 0.5 / 2$), so the critical value of Student's t is:
 
 ```{r}
 qt(0.975, 56.578)
 ```
 
-This means that in order to reject the null hypothesis our test statistic needs to be bigger than `t_crit=2.00`, and hence conclude that there is a relationship between the two variables used in the analysis. `t_calc=-3.46 < t_crit=2.00 => H1`, thus there is a relationship between the variables: Share_Price and Competition, hence DESCRIBE THE RELATIONSHIP!!!
+This means that in order to reject the null hypothesis our test statistic needs to be bigger than $t_{crit}=2.00$, and hence conclude that there is a relationship between the two variables used in the analysis. $t_{calc}=-3.46 < t_{crit}=2.00$ => $H_1$, thus there is a relationship between the variables: Share_Price and Competition, hence DESCRIBE THE RELATIONSHIP!!!
+
+{{% notice note %}}
+This FDA was unnecessary step in our DA for `Share_Price vs Competition`, as we were able to make a clear conclusion about the nature of the relationship by conducting IDA.   
+{{% /notice %}}
+
+---
+
+**M vs A(>2) Data Analysis**
+
+The example of the Initial Data Analysis above uses a two level attribute explanatory variable. The IDA for a measured response against an attribute explanatory variable with more than two levels is exactly the same, the interpretation is a little more difficult due to the larger number of levels but the principles are exactly the same.
+
+To make it as simple as possible, let us consider Data Analysis Methodology for the situation of M vs A(3). 
+
+![](/module3/MvA/images/DAM_MvA3.png?width=40pc)
+
+A way of examining the boxplots is to focus on the two boxplots, with the smallest mean and the largest mean, and treat them as a two-level attribute variable.
+
+**Definition of connection/link:**
+
+To detect a connection/link between the response variable and the explanatory variable requires a clear definition of exactly what a connection/link is.
+
+The formal definition of no link is: *If the average value of the response variable is independent of the level of the attribute explanatory variable then the response variable and the attribute explanatory variable are independent (not connected).*
+
+Conversely: *If the average value of the response variable is dependent on the level of the attribute explanatory variable then the attribute explanatory variable influences the value of the response variable, so the response variable and the attribute explanatory variable are connected.*
+
+If the sample evidence is inconclusive then further data analysis is required.  
+
+If further data analysis is required then it takes the form of a hypothesis test.  The data analysis situation Measured v Attribute requires two different hypotheses tests.  A hypothesis test for the data analysis situation where the attribute explanatory variable has exactly two levels has been discussed earlier in this chapter.
+
+A different hypothesis test is required for the situation where the attribute explanatory variable has three or more levels. The principles remain the same; if there is no connection then by definition all the true means will be the same, whilst if there is a connection then the means are likely to be different. The problem is exactly the same as with the two level attribute situation, namely is the difference between the means large enough to suggest that there is a real difference, or is the difference a difference that could have occurred by pure chance. (The difference is within the limits of sampling error).
+
+Observing the output of the IDA used in data analysis methodology for MvA(>2) we focus on the differences between the means of the response variable split by the levels of the attribute explanatory variable. Put simply, we check are the all boxplots on the top of each other, which would indicate no relationship between the two variables, or is there at least one different, indicating a clear relationship between the two variables. We need to ask: Is the separation sufficient to conclude that there is a connection? 
+
+In exactly the same way as for the two level attribute explanatory variable what is needed is **a measure of the relative separation** of the boxplots.  If this relative measure is small then this is indicating very little separation and suggesting no connection. If this relative measure of separation is large then this is suggesting that there is a connection. The hypothesis test utilises such a measure and provides a way of deciding **a threshold value** for the relative measure of separation such that is the value is smaller than the threshold then there is no connection, but it the relative measure is larger than the 'threshold value' then there is a connection.
+
+**The hypothesis test**
+
+Like all hypothesis tests, this particular test is carried out in four stages:
+
+- Stage 1:		Specifying the hypotheses.
+- Stage 2:		Defining the test parameters and the decision rule.
+- Stage 3:		Examining the sample evidence.
+- Stage 4:		The conclusions.
+
+We will start the investigation for the case: `Share_Price vs Sector`, variable coded:
+
+- 1 if the company operates in the IT business sector
+- 2 if the company operates in the Finance business sector
+- 3 if the company operates in the Pharmaceutical business sector
+
+`We need to investigate if the market value of a company share depends upon sector within which the company operate.`
+
+**Stage 1:** Specifying the hypotheses
+
+By definition if there is no connection then all the population means are equal,  whilst if there is a connection at least on of the means must be different, this defines the null and alternative hypotheses:
+
+- $H_0:  \mu_1 = \mu_2 = \mu_3$		
+- $H_1: \text{at least on mean is different.}$	 
+
+{{% notice note %}}
+In the context of the example $\mu_1$ is a mean value of a company share, which operates in the IT business sector, $\mu_2$ is a mean value of a company share, which operates in the Finance business sector, etc.}
+{{% /notice %}}
+
+**Stage 2:** Defining the test parameters and the decision rule.
+
+The decision rule is based on the **F-ratio**. The test procedure is called  **One-way Analysis of Variance** and was originally devised by *R. A. Fisher*, who proposed the Analysis of Variance hypothesis test, the term F-ratio is a reference to Fisher.
+
+{{% notice note %}}
+Analysis of Variance is often abbreviated to ANOVA.
+{{% /notice %}}
+
+![](/module3/MvA/images/F-ratio.png?width=40pc)
+
+$F_{crit}$ is the particular value of **F** that split the area under the distribution in the proportions 95% / 5%. 
+
+**The decision rule is:**
+
+- If the value of F_calc is between 0 and F_crit then conclude that **there is no link $(0 < F_{calc} < F_{crit})$
+
+- If the value of Fcalc is greater than Fcrit then conclude that on the basis of the sample evidence **there is a link $(F_{crit} < F_{calc})$
+
+**Stage 3:** Examining the sample evidence.
+
+The $F_{calc}$ value, as with the $t-{ratio}$ is a relative measure of the separation of the boxplots.
+
+> If the boxplots are nearly on top of each other, the $F_{calc}$ value would be small. The F-Ratio is defined in such a way that if the null hypothesis is true, i.e. all the means are equal then the $F_{calc}$ value is expected to be 1.
+> 
+> If the boxplots are relatively well separated, the $F_{calc}$ value measures this relative separation, and the wider the separation the larger the $F_{calc}$ value.
+>
+> The decision rule is simply and agreed threshold value, if the $F_{calc}$ value is smaller than the threshold value then the agreement is that the sample evidence is consistent with no link, whilst if the $F_{calc}$ value is larger than the threshold value the agreement is that the sample evidence is consistent with a link.
+
+To complete the test parameters the value of F_crit need to be determined, this depends on the amount of data contained within the sample.  As with the t-ratio the sample size plays a role through the degrees of freedom.  In the case of the F-ratio there are two degrees of freedom, and these are used to look up the value of F_crit in the statistical tables or when using the R function `qf(p, df1, df2)`. 
+
+**Stage 4:**	The conclusions
+
+---
+
+Let us go back to our Worked Example: `Share_Price vs Sector` to put this "theory" into practice.
+
+First we obtain simple descriptive statistics of `Share_Price` for each of the three levels of `Sector` attribute variable:
+
+```{r}
+with(companyd, tapply(Share_Price, Sector, summary))
+with(companyd, tapply(Share_Price, Sector, sd))
+with(companyd, tapply(Share_Price, Sector, IQR))
+```
+
+Are the means the same? 
+
+The biggest difference is between group 3 and group 1. The smallest mean is for the company operates in the IT business sector and the average value of the `Share_Price` of £480.40.  The largest average is for the companies that operate in the Pharmaceutical business sector with the mean value of the 'Share_Price' of £732.60. Thus, the difference being (£732.60 - £480.40) = £252.20. Is this difference large enough to indicate a real difference or could it have arisen by pure chance from a sample were the true means are all equal?
+
+{{% notice tip %}}
+Use your acquired knowledge! What was the difference between the two levels in the previous analysis? What conclusion did we draw?
+{{% /notice %}}
+
+We also notice the difference in standard deviations:  st.dev. of 'Share_Price" for 'Sector' coded 1 is £177.47 and st.dev. of `Share_Price` for `Sector` coded 3 is £109.53. All of this indicate that we should examine the boxplots to get visual interpretation of the results above.
+
+```{r}
+boxplot(Share_Price ~ Sector, data = companyd, boxwex = 0.25, main = "Share Price vs Sector", xlab ="Share_Price", ylab ="Sector", col=c("palegreen3", "orchid3", "cornflowerblue"), horizontal=T)
+```
+
+By examining the boxplots we can suggest that the information in the sample is inconclusive and more formal data analysis is required.
+
+---
+
+**The Formal Data Analysis:	The hypothesis test** for `Share_Price vs Sector`
+
+**Stage 1:** Specifying the hypotheses (H0 & H1)
+
+- $H0:  \mu_1 = \mu_2 = \mu_3$	
+- $H_1:  \text{at least on mean is different}$
+
+**Stage 2:** Defining the test parameters and the decision rule
+
+![](/module3/MvA/images/FDA_F-test.png?width=50pc)
+
+**Stage 3:** Examining the sample evidence
+
+To obtain the output in R for one-way ANOVA test used for MvA(>2) we use the `oneway.test( )` function: 
+
+```{r}
+m1 <- aov(Share_Price ~ Sector, data = companyd)
+summary(m1)
+```
+
+{{% notice info %}}
+Remember that we have used the `summary( )` function on data.frame class object to obtain descriptive statistics of its variables.  The function invokes particular methods which depend on the class of the first argument. The `summary( )` function is also used to produce summary results of the various model fitted functions.
+{{% /notice %}}
+
+**F_calc** from the sample data is **14.93**. Note that for F satistic we have two numbers for the dergrees of freedom. The degrees of freedom **df1=2.00** and **df2=57** give us **F_crit**:
+
+```{r}
+F_crit <- qf(0.95, 2, 57)
+F_crit
+```
+
+**Fcalc = 14.93 > Ftable = 3.16 => accept H1**, ie. 'Share Price' depends upon 'Sector' within which the company operates. Next question is **how**? Accepting H1 means that the ANOVA-test indicates that at least one group is different from all the others.
+Who is different from who? We need to fully describe this relationship, by pointing out which groups are different from which.
+
+A Boxplot will often help you to recognise the obvious differences, but we have proceeded doing one-way ANOVA because those differences were not obvious. How to overcome this obstacle? We need a clear description of the relationship found pointing out where the difference lays. To do this, we need a pairwise comparisons between the groups, which in our case are:
+
+|  1st with 2nd  |  1st with 3rd    | 2nd with 3rd |
+|-------------|---------------|--------------|
+| H0: µ1 = µ2	|  H0: µ1 = µ3	| H0: µ2 = µ3  |
+| H1: µ1 ≠ µ2 |  H1: µ1 ≠ µ3	| H1: µ2 ≠ µ3  |
+
+This can be done using **The Tukey multiple comparison procedure**, for which we use the `TukeyHSD( )` function. 
+
+{{% notice note %}}
+[John Tukey](https://en.wikipedia.org/wiki/John_Tukey) is an eminent statistician of XX century. He is credited with the invention of many graphical and numerical methods. One of them being the well used box plot. 
+{{% /notice %}}
+
+**The decision rule**: Differences between Sectors are significant at 5% level if the confidence interval around the estimation of the difference does not contain zero.
+
+```{r}
+TukeyHSD(m1)
+```
+
+This can be visualised by a plot of the list:
+
+```{r}
+plot(TukeyHSD(m1))
+```
+
+Looking at the output above and the plot of those 95% CI's we can see that non of them contains value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: µ1 < µ2 < µ3. Now we can make the conclusion for our analysis.
+
+**Stage 4:**	The conclusions.
+
+Based on the sample evidence there is a relationship between 'Share Price' and 'Sector'. Companies operating in the IT business sector on average have the smallest value of the share price, which is 489.4 units. For the companies operating in the finance business sector the average value of share price is 595.4 units. The largest average value of the share price is for the companies operating in the pharmaceutical sector, which is 732.6 units.
+
+Based on the sample evidence there is a relationship between 'Share Price' and 'Sector'. Companies operating in the IT business sector on average have the smallest value of the share price, which is £489.40. For the companies operating in the finance business sector the average value of share price is £595.40. The largest average value of the share price is for the companies operating in the pharmaceutical sector of around £732.60. 
 
 ---
 
 **YOUR TURN** 👇
 
-1) Go to the portals with open data (global: gapminder, national: office of national statistics, or local) and see if you can find data that is interesting for you to explore. Write down what interesting features you are expecting to see and suggest types of the visualistions that could be used to illustrate them.  
+1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs Type`.
 
------------------------------
+1----------------------------
 © 2020 Tatjana Kecojevic

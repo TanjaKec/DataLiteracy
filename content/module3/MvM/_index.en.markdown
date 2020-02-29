@@ -1,12 +1,25 @@
 ---
 date: "2016-04-09T16:50:16+02:00"
-title: Data Visualisation
+title: Regression
 output: 
   learnr::tutorial
 weight: 3
 ---
+Earlier we looked at how to examine sample data to investigate the nature of any relationship that may exist between a measured response variable and an attribute explanatory variable. This section examines how to investigate the nature of any relationship that may exist between a measured response variable and a measured explanatory variable. 
 
-Most of you, if not all, will be familiar with creating the graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
+The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable. The next step is to use some **simple sample descriptive statistics** to have a first look at the nature of the link between the response variable and the explanatory variable.  This simple approach will lead to one of three conclusions, namely on the basis of the sample information:
+
+i.	there is very strong evidence to support a link, 
+ii.	there is absolutely no evidence of any link, 
+iii.	the sample evidence is inconclusive and further more sophisticated data analysis is required.
+
+This step is called the **Initial Data Analysis** or the **IDA**.
+
+If the IDA suggests that **Further Data Analysis** is required, then this step seeks one of two conclusions:
+
+i.	The sample evidence is consistent with there being no link between the response variable and the explanatory
+variable.
+ii	The sample evidence is consistent with there being a link between the response variable and the explanatory variable.
 
 ### Grammar of Graphics
 
@@ -58,7 +71,8 @@ This will draw a blank ggplot, even though the x and y are specified. `ggplot` d
 
  We will add points using a **geom layer** called `geom_point`.
 
-```{r, echo = TRUE, fig.height = 3, fig.width = 8, fig.align = 'center'}
+
+```r
 # load the packages
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(gapminder))
@@ -74,6 +88,8 @@ ggplot(gapminder_pipe, aes(x = pop_e6, y = lifeExp)) +
   geom_point(col ="red")
 ```
 
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="768" style="display: block; margin: auto;" />
+
 {{% notice tip %}}
 🤓💡 **Tip**: You can use the following code template to make graphs with **ggplot2**:
 {{% /notice %}}
@@ -86,7 +102,8 @@ ggplot(data = <DATA>, (mapping = aes(<MAPPINGS>)) +
 ##### <span style="color:red">ggplot()</span> gallery
 Run the following code to see what graphs it will produce.
 
-```{r, echo = TRUE, eval = FALSE, warnings = FALSE, message = FALSE}
+
+```r
 ggplot(data = gapminder, mapping = aes(x = lifeExp), binwidth = 10) +
   geom_histogram()
 #
@@ -108,15 +125,38 @@ Does life expectancy depend upon the population size?
 Run this code in your console to fit the model `pop` vs `lifeExp`.
 
 Pay attention to spelling, capitalization, and parentheses!
-```{r, echo = TRUE, eval = FALSE, warning = FALSE}
+
+```r
 m1 <- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$pop_e6)
 summary(m1)
 ```
 
 **Can you answer the question using the output of the fitted model?**
-```{r, echo = TRUE, warning = FALSE}
+
+```r
 m1 <- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$pop_e6)
 summary(m1)
+```
+
+```
+## 
+## Call:
+## lm(formula = gapminder_pipe$lifeExp ~ gapminder_pipe$pop_e6)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -6.324 -2.562  1.007  2.245  4.277 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)           77.477421   0.721723 107.351   <2e-16 ***
+## gapminder_pipe$pop_e6  0.008762   0.023779   0.368    0.715    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.025 on 28 degrees of freedom
+## Multiple R-squared:  0.004826,	Adjusted R-squared:  -0.03072 
+## F-statistic: 0.1358 on 1 and 28 DF,  p-value: 0.7153
 ```
 
 ##### 👉 Practice ⏰💻: Use gapminder data.
@@ -133,8 +173,26 @@ Is the relationship linear? What conclusion(s) can you draw?
 4) What are the other questions you could ask; could you provide the answers to them?
 
 ##### 😃🙌 Solution: code Q1; sample
-```{r, echo = TRUE, warning = FALSE}
+
+```r
 sample_n(gapminder, 30)
+```
+
+```
+## # A tibble: 30 x 6
+##    country                  continent  year lifeExp      pop gdpPercap
+##    <fct>                    <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Ireland                  Europe     1957    68.9  2878220     5599.
+##  2 Malaysia                 Asia       1997    71.9 20476091    10133.
+##  3 Ireland                  Europe     1997    76.1  3667233    24522.
+##  4 Malawi                   Africa     1962    38.4  3628608      428.
+##  5 Dominican Republic       Americas   1997    70.0  7992357     3614.
+##  6 Ghana                    Africa     1997    58.6 18418288     1005.
+##  7 Botswana                 Africa     1962    51.5   512764      984.
+##  8 Central African Republic Africa     1967    41.5  1733638     1136.
+##  9 Swaziland                Africa     1972    49.6   480105     3365.
+## 10 Mozambique               Africa     2007    42.1 19951656      824.
+## # … with 20 more rows
 ```
 
 We will add layers onto this scatterplot: `liveExp` vs `gdpPercap`. We want to superimpose regression line of the best fit and non-parametric loess line that depict a possible relationship between the two variables. That means we will have:
@@ -145,17 +203,42 @@ We will add layers onto this scatterplot: `liveExp` vs `gdpPercap`. We want to s
 
 
 ##### 😃🙌 Solution: code Q2; Plot the data;
-```{r, echo = TRUE, warning = FALSE, fig.height = 4, fig.width = 8, fig.align = 'center'}
+
+```r
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.2, shape = 21, fill = "blue", colour="black", size = 5) + # set transparency, shape, colour and size for points
   geom_smooth(method = "lm", se = F, col = "maroon3") + # change the colour of line
   geom_smooth(method = "loess", se = F, col = "limegreen") # change the colour of line
 ```
 
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" />
+
 ##### 😃🙌 Solution: code Q3; simple regression model
-```{r, echo = TRUE, warning = FALSE}
+
+```r
 my.model <- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$gdpPercap)
 summary(my.model)
+```
+
+```
+## 
+## Call:
+## lm(formula = gapminder_pipe$lifeExp ~ gapminder_pipe$gdpPercap)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.79839 -1.30472  0.00807  1.33443  2.87766 
+## 
+## Coefficients:
+##                           Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)              7.227e+01  6.942e-01 104.113  < 2e-16 ***
+## gapminder_pipe$gdpPercap 2.146e-04  2.514e-05   8.537  2.8e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.598 on 28 degrees of freedom
+## Multiple R-squared:  0.7225,	Adjusted R-squared:  0.7125 
+## F-statistic: 72.88 on 1 and 28 DF,  p-value: 2.795e-09
 ```
 
 ### Playing with the aesthetic: adding more layers to your <span style="color:red">`ggplot()`</span>
@@ -167,7 +250,8 @@ Whenever possible you should strive to make your graph visually appealing and in
 **labs(<span style="color:blue">title =</span> <span style="color:orangered"> “your title”</span>, <span style="color:blue">subtitle =</span> <span style="color:orangered"> “your subtitle”</span>, <span style="color:blue">y =</span> <span style="color:orangered"> “y label”</span>, <span style="color:blue">x =</span> <span style="color:orangered"> “x label”</span>, <span style="color:blue">caption =</span> <span style="color:orangered"> “graph's caption”</span>)** 
  
 
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.2, shape = 20, col = "steelblue", size = 5) + 
   geom_smooth(method = "lm", se = F, col = "maroon3") + 
@@ -187,8 +271,9 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   # add the description
   geom_text(x = 80000, y = 125, label = "regression line", col = "maroon3") +
   geom_text(x = 90000, y = 75, label = "smooth line", col = "limegreen") 
-
 ```
+
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-8-1.png" width="768" style="display: block; margin: auto;" />
 
 Note, that we have added text on the plot for the two lines and have edited the plot in terms of legend and its appearance.
 
@@ -201,7 +286,8 @@ To learn more about how to modify the appearance of the theme go to [ggplot’s 
 
 #### Change the colour of the points to reflect categories of another, third variable.
 
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   
   # change the colour of the points to reflect continent it belongs to; set transparency, shape, and size for points
@@ -220,6 +306,8 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_text(x = 90000, y = 75, label = "smooth line", col = "dodgerblue3")
 ```
 
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-9-1.png" width="768" style="display: block; margin: auto;" />
+
 {{% notice note %}}
 Note that the legend is added automatically. You can remove it by setting the **legend.position** to `none` from within a `theme()` function.
 {{% /notice %}}
@@ -227,7 +315,8 @@ Note that the legend is added automatically. You can remove it by setting the **
 
 #### Adjust the X and Y axis limits and change the X axis texts and its ticks' location
 
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
   ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = "lm", se = F, col = "maroon3") + 
@@ -246,6 +335,22 @@ Note that the legend is added automatically. You can remove it by setting the **
   xlim(c(0, 90000)) + 
   ylim(c(25, 100)) 
 ```
+
+```
+## Warning: Removed 5 rows containing non-finite values (stat_smooth).
+
+## Warning: Removed 5 rows containing non-finite values (stat_smooth).
+```
+
+```
+## Warning: Removed 5 rows containing missing values (geom_point).
+```
+
+```
+## Warning: Removed 33 rows containing missing values (geom_smooth).
+```
+
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-10-1.png" width="768" style="display: block; margin: auto;" />
   
 Note that the regression and smooth lines have changed their shapes 😳… all those warnings 😬 What’s going on?! 😲
   
@@ -266,7 +371,8 @@ Try to play with changing the colour palette. For more options check [Sequential
 These are build-in themes which control all non-data display. You should use `theme_bw()` to have white background or `theme_dark()` for dark grey. For more build-in themes click [here](https://ggplot2.tidyverse.org/reference/ggtheme.html).
 
 
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = "lm", se = F, col = "maroon3") + 
@@ -291,9 +397,12 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   theme_bw()
 ```
 
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-11-1.png" width="768" style="display: block; margin: auto;" />
+
 There is a `ggthemes` library of themes that willhelp you create stylish ggplot charts used by different journals like the Wall Street Journal or the Economist. See what other themes you can use by going to [this website]( https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
 
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 ## If you don't have ggthemes installed yet, uncomment and run the line below
 #install.packeges("ggthemes")
 library(ggthemes)
@@ -317,13 +426,16 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   theme_wsj()
 ```
 
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-12-1.png" width="768" style="display: block; margin: auto;" />
+
 You are ready to make publication-ready visualizations in R. 😎 You can go further and explore for yourself to see if you can produce BBC style ggplot charts like those used in the BBC's data journalism. Check out the [BBC Visual and Data Journalism cookbook for R graphics]( https://bbc.github.io/rcookbook/).
 
 ##### Lay out panels in a grid
 
 Sometimes it might be hard to read one panel plot, like the one we have just created in which it is not very easy to see the points of each continent. To make it easier to follow and to understand the information you are trying to depict, it would be more effective to present different categories of the same information in a clear set of multi-panel plots. This is easy to do by applying powerful faceting functions of the `ggplot2`: `facet_wrap()` and `facet_grid()`.
   
-```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = "lm", se = F, col = "darkred") + 
@@ -342,6 +454,8 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   # forms a matrix of scatterplots for each continet
   facet_grid(rows = vars(continent))
 ```
+
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;" />
  
 The main difference between `facet_wrap()` and  `facet_grid()` is that the former can string together ggplots in different facets using a single variable, while the latter can do it for more than one.
 
@@ -360,17 +474,30 @@ Knowing about `group_by()` and `boxplot()` function and using `gapminder` data, 
 ##### 😃🙌 Solution: code
 
 Let us look at the median life expectancy for each continent
-```{r, echo = TRUE}
+
+```r
 gapminder %>%
     group_by(continent) %>%
     summarise(lifeExp = median(lifeExp))
+```
+
+```
+## # A tibble: 5 x 2
+##   continent lifeExp
+##   <fct>       <dbl>
+## 1 Africa       47.8
+## 2 Americas     67.0
+## 3 Asia         61.8
+## 4 Europe       72.2
+## 5 Oceania      73.7
 ```
 
 **We are lucky that we live in Serbia, ie. Europe!!!** 😅
 
 ##### 😃🙌 Solution: graph 
 
-```{r, echo = TRUE, warnings=FALSE, message=FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
+
+```r
 # visualise the information
 library("ggplot2")
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
@@ -384,12 +511,15 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
                                     size = .75),
         plot.title=element_text(hjust=0.5))
 ```
+
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-15-1.png" width="768" style="display: block; margin: auto;" />
 ##### Case study: NO2 2017 😁
 
 Let's try to compbine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
 
 Remember this?
-```{r}
+
+```r
 library(tidyr)
 library(forcats)
 no2 <- read.csv("http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv",
@@ -408,7 +538,16 @@ new_no2 <- no2 %>%
 glimpse(new_no2)
 ```
 
-```{r}
+```
+## Observations: 2,555
+## Variables: 3
+## $ Datum <chr> "01.01.2017", "02.01.2017", "03.01.2017", "04.01.2017", "0…
+## $ place <fct> NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens…
+## $ no2   <dbl> 22.89, 32.94, 14.86, 22.73, 20.89, 10.47, 9.58, 15.99, 14.…
+```
+
+
+```r
 new_no2 %>% 
   group_by(place) %>% 
   summarise(mean_no2 = mean(!is.na(no2))) %>% # !is.na(): is not NA; omits the missing values
@@ -420,6 +559,8 @@ new_no2 %>%
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank()) # 
 ```
+
+<img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ## YOUR TURN 👇
 
