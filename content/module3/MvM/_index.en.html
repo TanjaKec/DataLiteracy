@@ -32,20 +32,432 @@ weight: 3
 <li><p>There is no evidence of a relationship, labelled as the ‘No’ outcome in the diagram above, in which case the analysis is finished.</p></li>
 <li><p>There is evidence of a relationship, labelled as the ‘Yes’ outcome in the diagram above, in which case the nature of the relationship needs to be described.</p></li>
 </ol>
-<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of Y the response variable and the value of X the explanatory variable. For the whole population a graph of Y against X could be plotted conceptually. If the graph looked as in the diagram below, then there is quite clearly a link between Y and X. If the value of X is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a <strong>deterministic relationship</strong>. <em>Deterministic means that if the value of X is known then the value of Y can be precisely determined from the relationship between Y and X.</em></p>
+<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of <span class="math inline">\(Y\)</span> the response variable and the value of <span class="math inline">\(X\)</span> the explanatory variable. For the whole population a graph of <span class="math inline">\(Y\)</span> against <span class="math inline">\(X\)</span> could be plotted conceptually. If the graph looked as in the diagram below, then there is quite clearly a link between Y and X. If the value of <span class="math inline">\(X\)</span> is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a <strong>deterministic relationship</strong>. <em>Deterministic means that if the value of <span class="math inline">\(X\)</span> is known then the value of <span class="math inline">\(Y\)</span> can be precisely determined from the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>.</em></p>
 <p><img src="/module3/MvM/images/deterministic_relationship.png?width=40pc" /></p>
 <hr />
 <p><strong>Scatter Plot</strong></p>
-<p>When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with X and one axis for the response variable, which is labelled with Y. Thus, each point on the graph represents a single (X, Y) pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.</p>
-<p>Let us consider a few scatter plots. The following graph represents a perfect linear relationship, all points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, ie. gradient and hence specify the exact mathematical link between the response variable Y and the explanatory variable X.</p>
+<p>When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with <span class="math inline">\(X\)</span> and one axis for the response variable, which is labelled with <span class="math inline">\(Y\)</span>. Thus, each point on the graph represents a single <span class="math inline">\((X, Y)\)</span> pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.</p>
+<p>Let us consider a few scatter plots. The following graph represents a <strong>perfect linear relationship</strong>, all points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, ie. gradient and hence specify the exact mathematical link between the response variable <span class="math inline">\(Y\)</span> and the explanatory variable <span class="math inline">\(X\)</span>.</p>
+<p>-<strong>Graph 1</strong></p>
 <p><img src="/module3/MvM/images/Yes_perfect.png?width=30pc" /></p>
-<p>The relationship shown in the next graph shows clearly that as the value of X increases the value of Y also increases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable X increases the value of the response variable Ytends to decrease. An explanation for this is that the response Y may depend on a number of different variables, say <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span>, <span class="math inline">\(X_6\)</span> etc. which could be written as:</p>
+<p>The relationship shown in <em>Graph 2</em> shows clearly that as the value of <span class="math inline">\(X\)</span> increases the value of <span class="math inline">\(Y\)</span> indecreases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable <span class="math inline">\(X\)</span> increases the value of the response variable also <span class="math inline">\(Y\)</span> tends to increase. An explanation for this is that the response <span class="math inline">\(Y\)</span> may depend on a number of different variables, say <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span>, <span class="math inline">\(X_6\)</span> etc. which could be written as:</p>
 <p><span class="math inline">\(Y = f(X_1, X_2, X_3, X_4, X_5, X_6, ...)\)</span></p>
-<p><img src="/module3/MvM/images/Yes_75.png?width=30pc" /></p>
-<p>If the nature of the link between Y and X is under investigation then this could be represented as:</p>
+<p>-<strong>Graph 2</strong></p>
+<p><img src="/module3/MvM/images/Yes_50.png?width=30pc" /></p>
+<p>If the nature of the link between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> is under investigation then this could be represented as:</p>
 <p><span class="math display">\[Y = f(X) + \text{effect of all other variables}\]</span></p>
 <p>{{% notice note %}}
 The effect of all other variables is commonly abbreviated to <strong>e</strong>.
 {{% /notice %}}</p>
+<p><em>Graph 1</em> shows a link were the effect of al the other variables is nil. The response <span class="math inline">\(Y\)</span> depends solely on the variable <span class="math inline">\(X\)</span>, <em>Graph 2</em> shows a situation were <span class="math inline">\(Y\)</span> depends on <span class="math inline">\(X\)</span> but the other variables also have an influence.</p>
+<p>Considered the model:</p>
+<p><span class="math display">\[Y = f(X) + e\]</span>
+Remember 😃, <span class="math inline">\(\text{e is the effect of all other variables}\)</span>!</p>
+<p>The influence on the response variable <span class="math inline">\(Y\)</span> can be thought of as being made up of two components:</p>
+<ol style="list-style-type: lower-roman">
+<li>the component of <span class="math inline">\(Y\)</span> that is explained by changes in the value of <span class="math inline">\(X\)</span>, [the part due to changes in <span class="math inline">\(X\)</span> through <span class="math inline">\(f(X)\)</span>]</li>
+<li>the component of <span class="math inline">\(Y\)</span> that is explained by changes in the other factors [the part not explained by changes in <span class="math inline">\(X\)</span>]</li>
+</ol>
+<p>Or in more abbreviated forms:</p>
+<ol style="list-style-type: lower-roman">
+<li>the <em>Variation in <span class="math inline">\(Y\)</span> Explained by changes <span class="math inline">\(X\)</span></em> or <strong>Explained Variation</strong> and</li>
+<li>the <em>Variation in <span class="math inline">\(Y\)</span> not explained by changes in <span class="math inline">\(X\)</span></em> or the <strong>Unexplained Variation</strong></li>
+</ol>
+<p>The Total Variation in <span class="math inline">\(Y\)</span> are made up of the two components:</p>
+<ol style="list-style-type: decimal">
+<li><em>Changes in <span class="math inline">\(Y\)</span> Explained by changes in <span class="math inline">\(X\)</span></em> and the</li>
+<li><em>Changes in <span class="math inline">\(Y\)</span> not explained by changes in <span class="math inline">\(X\)</span></em></li>
+</ol>
+<p>Which may be written as:</p>
+<p><span class="math display">\[\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}\]</span></p>
+<p>In <em>Graph 1</em> the <strong>Unexplained Variation is nil</strong>, since the value of <span class="math inline">\(Y\)</span> is completely determined by the value of <span class="math inline">\(X\)</span>. In <em>Graph 2</em> the <strong>Explained Variation is large relative to the Unexplained Variation</strong>, since the value of <span class="math inline">\(Y\)</span> is very largely influenced by the value of <span class="math inline">\(X\)</span>.</p>
+<p>Consider Graph 3. Here there is no discernible pattern, and the value of Y seems to be unrelated to the value of X.</p>
+<p><strong>- Graph 3</strong></p>
+<p><img src="/module3/MvM/images/No_relationship.png?width=30pc" /></p>
+<p>If <span class="math inline">\(Y\)</span> is not related to <span class="math inline">\(X\)</span> the <strong>Explained Variation component is zero</strong> and all the changes in <span class="math inline">\(Y\)</span> are due to the other variables, that is the <strong>Unexplained Variation</strong>.</p>
+<p>Finally, consider Graphs 4 &amp; 5 below:</p>
+<p>-<strong>Graph 4</strong></p>
+<p><img src="/module3/MvM/images/Yes_75.png?width=30pc" /></p>
+<p>-<strong>Graph 5</strong></p>
+<p><img src="/module3/MvM/images/deterministic_neg.png?width=30pc" /></p>
+<p><em>Graph 4</em> shows a similar picture to <em>Graph 2</em>, the difference being that as the value of <span class="math inline">\(X\)</span> increases the value of <span class="math inline">\(Y\)</span> decreases. The value of <span class="math inline">\(Y\)</span> is influenced by the value of <span class="math inline">\(X\)</span>, so the <strong>Explained Variation is high relative to the Unexplained Variation</strong>. Consider the last graph, <em>Graph 5</em>, this is a deterministic relationship, <strong>the value of <span class="math inline">\(Y\)</span> is completely specified by the value of <span class="math inline">\(X\)</span></strong>. Hence the <strong>Unexplained Variation is zero</strong>.</p>
+<p>Graphs Summary:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Graph 1</th>
+<th>Graph 2</th>
+<th>Graph 3</th>
+<th>Graph 4</th>
+<th>Graph 5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Explained Variation in Y</td>
+<td>All</td>
+<td>High</td>
+<td>Zero</td>
+<td>High</td>
+<td>All</td>
+</tr>
+<tr class="even">
+<td>Unexplained Variation in Y</td>
+<td>Zero</td>
+<td>Low</td>
+<td>All</td>
+<td>Low</td>
+<td>Zero</td>
+</tr>
+</tbody>
+</table>
+<p>In regression the discussion started with the following idea:
+<span class="math display">\[Y = f(X) + e\]</span>
+And to quantify the strength of the link the influence on Y was broken down into two components:
+i. <span class="math display">\[\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}\]</span></p>
+<p>This presents two issues:</p>
+<ul>
+<li>A: Can a model of the link be made?</li>
+<li>B: Can <strong>The Total Variation in Y</strong>, <strong>Explained Variation</strong> and the <strong>Unexplained Variation</strong> be measured?</li>
+</ul>
+<p>{{% notice note %}}
+The simplest form of connection is a straight-line relationship and the question arises could a straight-line relationship be matched with the information contained in the graphs 1 -5?
+{{% /notice %}}</p>
+<ul>
+<li>Clearly it is easy for Graph 1 and Graph 5, the intercept and the gradient can be obtained directly from the graph. The relationship can then be written as:</li>
+</ul>
+<p><span class="math display">\[Y = a + bX\]</span>
+where:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>a is the intercept and</p></li>
+<li><p>b is the gradient</p></li>
+</ol>
+<ul>
+<li>Since the <strong>Explained Variation</strong> is the same as the <strong>Changes in Y</strong> and the <strong>Unexplained Variation</strong> <strong>is zero</strong>, the precise evaluation of these is not necessary.</li>
+</ul>
+<hr />
+<p><strong>Developing a Statistical Model</strong></p>
+<p>For the statistical relationships as shown in <em>Graphs</em> <em>2</em> &amp; <em>4</em> can:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The intercept and gradient be measured?</p></li>
+<li><p>The values of the three quantities <em>The Total Variation in Y</em>, <em>Explained Variation</em> and <em>The Unexplained Variation</em> be measured?</p></li>
+</ol>
+<p>It is sufficient to work out any two since:
+<span class="math display">\[\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}\]</span></p>
+<p>Fitting a line by eye is subjective. It is unlikely that any two analysts will draw exactly the same line, hence the intercept and gradient will be slightly different from one person to the next. What is needed is an agreed method that will provide an estimate of the intercept and the gradient.</p>
+<p>Consider the simple numerical example below:</p>
+<p>Suppose we would like to fit a straight-line relationship to the following data:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Y\)</span></td>
+<td>7</td>
+<td>8</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<p>The problem is to use this information to measure <strong>the intercept</strong> and <strong>the gradient</strong> for this data set.</p>
+<p>A simple way to do this is to draw what is considered to be <strong>the line of best fit</strong> by judgement or guesswork! 😁😉</p>
+<p><strong>The intercept</strong> can be read off the graph as approximately <span class="math inline">\(5\)</span>, and <strong>the gradient</strong> can be simply measured since if <span class="math inline">\(X = 0\)</span> then <span class="math inline">\(Y = 5\)</span>, and if <span class="math inline">\(X = 5\)</span> then <span class="math inline">\(Y = 15\)</span>, so for a change in <span class="math inline">\(X\)</span> of <span class="math inline">\(5\)</span> units (from 0 to 5) <span class="math inline">\(Y\)</span> changes by <span class="math inline">\(10\)</span>, from <span class="math inline">\(5\)</span> to <span class="math inline">\(15\)</span>. The definition of <strong>the gradient</strong> is <strong>The change in Y for a unit increase in X</strong> hence the gradient for this data set is <span class="math inline">\(15/5 = 2\)</span>.</p>
+<p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The straight-line relationship obtained by this process is <span class="math display">\[\hat{Y} = 5 + 2*X\]</span>.<br />
+Note, <span class="math inline">\(\hat{Y}\)</span> is a notation for the value of <span class="math inline">\(Y\)</span> as predicted by the straight-line relationship.</p>
+<p>We can add more information about the predicted values of <span class="math inline">\(Y\)</span> by the <em>“estimated”</em> model to our table, so that we have</p>
+<table>
+<thead>
+<tr class="header">
+<th>X</th>
+<th>Y</th>
+<th align="right"><span class="math inline">\(\hat{Y}\)</span></th>
+<th align="right"><span class="math inline">\({Y - \hat{Y}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>7</td>
+<td align="right">7.00</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>8</td>
+<td align="right">9.00</td>
+<td align="right">-1.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td align="right">11.00</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>13</td>
+<td align="right">13.00</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>14</td>
+<td align="right">15.00</td>
+<td align="right">-1.00</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>18</td>
+<td align="right">17.00</td>
+<td align="right">1.00</td>
+</tr>
+</tbody>
+</table>
+<p>Looking at the information contained in the previous plot, the column headed <span class="math inline">\(\hat{Y}\)</span> contains the predicted values of <span class="math inline">\(Y\)</span> for the values of <span class="math inline">\(X\)</span>. For example, the first value of <span class="math inline">\(\hat{Y}\)</span> is when <span class="math inline">\(X = 1\)</span> and <span class="math inline">\(Yp = 5 + 2*X\)</span> so <span class="math inline">\(\hat{Y} = 5 +2*1 = 7\)</span>. The column headed <span class="math inline">\((Y - \hat{Y})\)</span> is the difference between the actual value and the value predicted by the line. For example when <span class="math inline">\(X = 1\)</span>, <span class="math inline">\(Y = 7\)</span> and <span class="math inline">\(\hat{Y} = 7\)</span> so the predicted value lies on the line, as can be seen in the graph. For the value <span class="math inline">\(X = 2\)</span> the actual value lies <span class="math inline">\(1\)</span> unit below the line, again as can be seen from the graph.</p>
+<p>The column <span class="math inline">\((Y - \hat{Y})\)</span> <strong>measures the disagreement between the actual data and the line</strong> and a sensible strategy is to <strong>make this level of disagreement as small as possible</strong>. Referring to the graph on the table above notice that sometimes the actual data value is below the line and sometimes it is above the line, so on average the value will be close to zero. In this particular example the sum of the <span class="math inline">\((Y - \hat{Y})\)</span> values add to zero (in a more conventional notation <span class="math inline">\(\Sigma(Y - \hat{Y}) = 0\)</span>). The quantity <span class="math inline">\(\Sigma(Y - \hat{Y})\)</span> does not seem to be a satisfactory measure of disagreement, because there are a number of different lines with the property <span class="math inline">\(\Sigma(Y - \hat{Y}) = 0\)</span>.</p>
+<p><strong>A way of obtaining a satisfactory measure of disagreement is to square the individual <span class="math inline">\((Y - \hat{Y})\)</span> values and add them up</strong>. i.e. obtain the quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span>. The result is always a positive number since the square of a negative number is positive. If this quantity is then chosen to be as small as possible then the level of disagreement between the actual data points and the fitted line is the least. This provides a criterion for the choice of the best line.</p>
+<p>The quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> can be easily calculated and added to our table</p>
+<table>
+<thead>
+<tr class="header">
+<th>X</th>
+<th>Y</th>
+<th align="right"><span class="math inline">\(\hat{Y}\)</span></th>
+<th align="right"><span class="math inline">\({Y - \hat{Y}}\)</span></th>
+<th align="right"><span class="math inline">\((Y - \hat{Y})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>7</td>
+<td align="right">7.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>8</td>
+<td align="right">9.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td align="right">11.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>13</td>
+<td align="right">13.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>14</td>
+<td align="right">15.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>18</td>
+<td align="right">17.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>The quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> is a measure of the disagreement between the actual <span class="math inline">\(Y\)</span> values and the values predicted by the line. If this value is chosen to be as small as possible then the disagreement between the actual Y values and the line is the smallest it could possibly be, hence the line is <strong>The line of Best Fit</strong>.</p>
+<p>This procedure of finding the intercept and the gradient of a line that makes the quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> a minimum is called <strong>The Method of Least Squares</strong>.</p>
+<p>{{% notice info %}}
+<strong>The Method of Least Squares</strong> was developed by <a href="https://link.springer.com/referenceworkentry/10.1007%2F978-1-4020-4423-6_105">K. F Gauss (1777 - 1855)</a> a German mathematician, Gauss originated the ideas and a Russian mathematician <a href="https://en.wikipedia.org/wiki/Andrey_Markov">A. A. Markov (1856 - 1922)</a> developed the method.
+{{% /notice %}}</p>
+<p>In R we use the <code>lm( )</code> function to fit linear models as illustrated below.</p>
+<pre class="r"><code>x &lt;- c(1:6)
+y &lt;- c(7, 8, 12, 13, 14, 18)
+plot(x, y, pch = 16, main = &quot;y = f(x) + e&quot;, xlim = c(0.25, 6), ylim = c(0, 20))
+abline(lm(y~x), lwd = 2, lty = 2, col = 2)</code></pre>
+<p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The final issue is to find out how to measure the three quantities:</p>
+<ol style="list-style-type: lower-roman">
+<li>The Total Variation in <span class="math inline">\(Y\)</span></li>
+<li>The Explained Variation</li>
+<li>The Unexplained Variation</li>
+</ol>
+<p>Taking these quantities one at a time they can be measured as follows:</p>
+<p><strong>The ’Unexplained Variation</strong></p>
+<p>This turns out to be very simple to measure, the quantity: <strong><span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> is a measure of the Unexplained Variation</strong>. If the line were a perfect fit to the data, the value predicted by the line and the actual value would be exactly the same and the value of the quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> would be zero. This quantity is a measure of the disagreement between the actual <span class="math inline">\(Y\)</span> values and the predicted values <span class="math inline">\(\hat{Y}\)</span>,which are also known as <strong>the residuals</strong> and are measuring the <strong>Unexplained Variation in <span class="math inline">\(Y\)</span></strong>. For the example used above the value of <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> is <span class="math inline">\(3.77\)</span>.</p>
+<p><strong>The Total Variation in Y</strong></p>
+<p>This is related to the measures of variability (spread) introduced earlier in the course and in particular to the standard deviation (<span class="math inline">\(\sigma\)</span>). To measure <em>The Total Variation in Y</em> requires a measure of spread.</p>
+<p><em>The Total Variation in Y</em> is defined to be the quantity:
+<span class="math inline">\(\Sigma(Y - \bar{Y})^2\)</span>
+Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span class="math inline">\(Y\)</span> (<span class="math inline">\(\bar{Y} = \Sigma(Y)/n\)</span>).</p>
+<p>In our earlier example <span class="math inline">\(\bar{Y} = 12\)</span>, so we can expand the table to include this calculation</p>
+<table>
+<thead>
+<tr class="header">
+<th>X</th>
+<th>Y</th>
+<th align="right"><span class="math inline">\(\hat{Y}\)</span></th>
+<th align="right"><span class="math inline">\({Y - \hat{Y}}\)</span></th>
+<th align="right"><span class="math inline">\((Y - \hat{Y})^2\)</span></th>
+<th align="right"><span class="math inline">\(\Sigma(Y - \bar{Y})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>7</td>
+<td align="right">7.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+<td align="right">25.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>8</td>
+<td align="right">9.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+<td align="right">16.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td align="right">11.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>13</td>
+<td align="right">13.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>14</td>
+<td align="right">15.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+<td align="right">4.00</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>18</td>
+<td align="right">17.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">36.00</td>
+</tr>
+</tbody>
+</table>
+<p>giving <span class="math inline">\(\Sigma(Y - \bar{Y})^2 = 82\)</span>.</p>
+<p><strong>The Explained Variation in Y</strong></p>
+<p>If the line was a perfect fit, then the <span class="math inline">\(Y\)</span> values and the <span class="math inline">\(\hat{Y}\)</span> values would be exactly the same, and the quantity <span class="math inline">\((\hat{Y} - \bar{Y})^2\)</span> would measure <strong>The Total Variation in Y</strong>. If the line is not a perfect match to the actual <span class="math inline">\(Y\)</span> values then this quantity measures <strong>The Explained Variation in Y</strong>.</p>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="2%" />
+<col width="11%" />
+<col width="16%" />
+<col width="24%" />
+<col width="20%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>X</th>
+<th>Y</th>
+<th align="right"><span class="math inline">\(\hat{Y}\)</span></th>
+<th align="right"><span class="math inline">\({Y - \hat{Y}}\)</span></th>
+<th align="right"><span class="math inline">\((Y - \hat{Y})^2\)</span></th>
+<th align="right"><span class="math inline">\(\Sigma(Y - \bar{Y})^2\)</span></th>
+<th align="right"><span class="math inline">\((\hat{Y} - \bar{Y})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>7</td>
+<td align="right">7.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+<td align="right">25.00</td>
+<td align="right">27.94</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>8</td>
+<td align="right">9.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+<td align="right">16.00</td>
+<td align="right">10.06</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td align="right">11.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">0.00</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>13</td>
+<td align="right">13.00</td>
+<td align="right">0.00</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>14</td>
+<td align="right">15.00</td>
+<td align="right">-1.00</td>
+<td align="right">1</td>
+<td align="right">4.00</td>
+<td align="right">10.06</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>18</td>
+<td align="right">17.00</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">36.00</td>
+<td align="right">27.94</td>
+</tr>
+</tbody>
+</table>
+<p>incorporating this calculation into the table above will enable us to get <span class="math inline">\((\hat{Y} - \bar{Y})^2 = 78.23\)</span>.</p>
+<hr />
+<p><strong>The coefficient of Determination <span class="math inline">\(R^2\)</span></strong></p>
+<hr />
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
