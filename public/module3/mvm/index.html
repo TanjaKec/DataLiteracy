@@ -12,18 +12,18 @@
     <title>Regression :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1583158398" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1583158398" rel="stylesheet">
-    <link href="/css/hybrid.css?1583158398" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1583158398" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1583158398" rel="stylesheet">
-    <link href="/css/auto-complete.css?1583158398" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1583158398" rel="stylesheet">
-    <link href="/css/theme.css?1583158398" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1583158398" rel="stylesheet">
+    <link href="/css/nucleus.css?1583231362" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583231362" rel="stylesheet">
+    <link href="/css/hybrid.css?1583231362" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583231362" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583231362" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583231362" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583231362" rel="stylesheet">
+    <link href="/css/theme.css?1583231362" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583231362" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1583158398"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583231362"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1583158398"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1583158398"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583231362"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583231362"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1583158398"></script>
+<script type="text/javascript" src="/js/search.js?1583231362"></script>
 
     
   </div>
@@ -664,13 +664,13 @@
  
   
     
-    <li data-nav-id="/module3/mva/" title="M R var vs A E var" class="dd-item 
+    <li data-nav-id="/module3/mva/" title="t-test &amp; one-way ANOVA" class="dd-item 
         
         
         
         ">
       <a href="/module3/mva/">
-          M R var vs A E var
+          t-test &amp; one-way ANOVA
           
             <i class="fas fa-check read-icon"></i>
           
@@ -881,7 +881,7 @@
 <p><img src="/module3/MvM/images/deterministic_relationship.png?width=40pc" /></p>
 <hr />
 <p><strong>Scatter Plot</strong></p>
-<p>When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with <span class="math inline">\(X\)</span> and one axis for the response variable, which is labelled with <span class="math inline">\(Y\)</span>. Thus, each point on the graph represents a single <span class="math inline">\((X, Y)\)</span> pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.</p>
+<p>When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with <span class="math inline">\(X\)</span> and one axis for the response variable, which is labelled with <span class="math inline">\(Y\)</span> and commonly known as the outcome variable. Thus, each point on the graph represents a single <span class="math inline">\((X, Y)\)</span> pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.</p>
 <p>Let us consider a few scatter plots. The following graph represents a <strong>perfect linear relationship</strong>, all points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, ie. gradient and hence specify the exact mathematical link between the response variable <span class="math inline">\(Y\)</span> and the explanatory variable <span class="math inline">\(X\)</span>.</p>
 <p>-<strong>Graph 1</strong></p>
 <p><img src="/module3/MvM/images/Yes_perfect.png?width=30pc" /></p>
@@ -1306,7 +1306,116 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 <p>incorporating this calculation into the table above will enable us to get <span class="math inline">\((\hat{Y} - \bar{Y})^2 = 78.23\)</span>.</p>
 <hr />
 <p><strong>The coefficient of Determination <span class="math inline">\(R^2\)</span></strong></p>
+<p>We realise that when fitting a regression model we are seeking to find out how much variance is explained, or is accounted for, by the explanitary variable <span class="math inline">\(X\)</span> in an outcome variable <span class="math inline">\(Y\)</span>.</p>
+<p>From the above example the following has been calculated:</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(\text{The Total Variation in }\)</span><span class="math inline">\(Y = 82.00\)</span></li>
+<li><span class="math inline">\(\text{The Explained Variation in }\)</span><span class="math inline">\(Y = 78.23\)</span></li>
+<li><span class="math inline">\(\text{The Unexplained Variation in }\)</span><span class="math inline">\(Y = 3.77\)</span></li>
+</ol>
+<p>Notice the relationship proposed on page 5, given below, is satisfied</p>
+<p><span class="math display">\[\text{The Total Variation in Y = Explained Variation + Unexplained Variation}\]</span></p>
+<pre><code>$$82.00 = 78.23 + 3.77$$</code></pre>
+<p>What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.</p>
+<p>Consider the following ratio:</p>
+<pre><code>$${\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954$$</code></pre>
+<p>This is saying that <span class="math inline">\(0.954\)</span> or <span class="math inline">\(95.4\%\)</span> of the changes in <span class="math inline">\(Y\)</span> are explained by changes in <span class="math inline">\(X\)</span>. This is a useful and useable measure of the effectiveness of the match between the actual <span class="math inline">\(Y\)</span> values and the predicted <span class="math inline">\(Y\)</span> values.</p>
+<p>Reviewing the five scatter prolts (Graph 1 to 5) it can easily be seen that if the line is a perfect fit to the actual <span class="math inline">\(Y\)</span> values as in <em>Graphs 1 &amp; 5</em> then this ratio will have the value <span class="math inline">\(1\)</span> or <span class="math inline">\(100\%\)</span>.</p>
+<p>If there is no link between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> then the <em>The Explained Variation</em> is zero hence the ratio will be <span class="math inline">\(0\)</span> or <span class="math inline">\(0\%\)</span> an example of this is shown in <em>Graph 3</em>.</p>
+<p>The remaining graphs: <em>Graphs 2 &amp; 4</em> show a statistical relationship hence this ratio will lie between <span class="math inline">\(0\)</span> &amp; <span class="math inline">\(1\)</span>. The closer the ratio is to zero the less strong the link is, whilst the closer the ratio is to <span class="math inline">\(1\)</span> the stronger the connection is between <span class="math inline">\(X\)</span> &amp; <span class="math inline">\(Y\)</span>.</p>
+<p><strong>The Ratio:</strong></p>
+<p><span class="math display">\[R^2 = {\text{The Explained Variation in Y} \over \text{The Total Variation in Y}}\]</span></p>
+<p>is called <strong>the Coefficient of Determination</strong>, and usually labeled as <span class="math inline">\(R^2\)</span>, and may be defined as <strong>the proportion of the changes in <span class="math inline">\(Y\)</span> explained by changes in <span class="math inline">\(X\)</span></strong>.</p>
+<p>This ratio is always on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, but by convention is usually expressed as a percentage so is regarded as on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(100\%\)</span>. The interpretation of this ratio is as follows:</p>
+<p><img src="/module3/MvM/images/R_sq_interp.png?width=30pc" /></p>
+<p>The definition and interpretation of <strong><span class="math inline">\(R^2\)</span></strong> is a very <strong>important tool</strong> in the data analyst tool kit <strong>for tracking connections between a measures response variable and a measured explanatory variable</strong>.</p>
 <hr />
+<p><strong>Using Sample Data to Track a connection</strong></p>
+<p>When working with sample data to investigate any relationships that may exist between a measured response variable and a measured explanatory variable the information contained within the sample is imperfect, so has to be interpreted in the light of sampling error. This is particularly important when interpreting the value of R2 calculated from sample data. The sample R2 value gives a measure of the strength of the connection, and this can sometimes be difficult to interpret particularly if the sample size is small.</p>
+<p>The data analysis methodology as set out in earlier, is a procedure that enables the you to make judgements from sample data. The methodology requires you to know what specific procedures make up the Initial Data Analysis IDA and how to interpret the results of the IDA to obtain one of three outcomes:</p>
+<ol style="list-style-type: lower-roman">
+<li>No evidence of a connection between the response and the explanatory variable</li>
+<li>Clear evidence of a connection between the response and the explanatory variable</li>
+<li>The IDA is inconclusive and further analysis is required</li>
+</ol>
+<p>If Further Data Analysis FDA is required then you needs to know what constitutes this further analysis and how to interpret it.</p>
+<p>Finally, if a connection between the response variable and the explanatory variable is detected then a description of the connection is required. In this case the connection the connection needs to be described.</p>
+<p>To demonstrate the data analysis methodology we’ll go back to Share Price Study Case Study.</p>
+<p><strong>Share Price Study Data</strong></p>
+<p>A business analyst is studying share prices of companies from three different business sectors. As part of the study a random sample (n=60) of companies was selected and the following data was collected:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Variable</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Share_Price</strong></td>
+<td>The market value of a company share (£)</td>
+</tr>
+<tr class="even">
+<td><strong>Profit</strong></td>
+<td>The company annual profit</td>
+</tr>
+<tr class="odd">
+<td><strong>RD</strong></td>
+<td>Company annual spending on research and development</td>
+</tr>
+<tr class="even">
+<td><strong>Turnover</strong></td>
+<td>Company annual total revenue</td>
+</tr>
+<tr class="odd">
+<td><strong>Competition</strong></td>
+<td>A variable coded:</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <strong>0</strong> if the company operates in a very competitive market</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <strong>1</strong> if the company has a great deal of monopoly power</td>
+</tr>
+<tr class="even">
+<td><strong>Sector</strong></td>
+<td>A variable coded:</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <strong>1</strong> if the company operates in the IT business sector</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <strong>2</strong> if the company operates in the Finance business sector</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <strong>3</strong> if the company operates in the Pharmaceutical business sector</td>
+</tr>
+<tr class="even">
+<td><strong>Type</strong></td>
+<td>A variable coded:</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <strong>0</strong> if the company does business mainly in Europe</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <strong>1</strong> if the company trades globally</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s start off by investigating the relationship between the variables <code>Share_Price</code> and <code>Profit</code>.</p>
+<p>We will adopt the following notation</p>
+<ul>
+<li><span class="math inline">\(Y: Share_Price\)</span></li>
+<li><span class="math inline">\(X: Profit\)</span></li>
+</ul>
+<p><span class="math inline">\(\text{Model to be estimated:  } Y = b_0 + b_1X + e\)</span></p>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
 
@@ -1737,7 +1846,7 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 	 
 	 
 		
-			<a class="nav nav-prev" href="/module3/mva/" title="M R var vs A E var"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/module3/mva/" title="t-test &amp; one-way ANOVA"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/module3/damethodology/" title="Data Analysis Methodology" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1750,19 +1859,19 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1583158398"></script>
-    <script src="/js/perfect-scrollbar.min.js?1583158398"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1583158398"></script>
-    <script src="/js/jquery.sticky.js?1583158398"></script>
-    <script src="/js/featherlight.min.js?1583158398"></script>
-    <script src="/js/highlight.pack.js?1583158398"></script>
+    <script src="/js/clipboard.min.js?1583231362"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583231362"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583231362"></script>
+    <script src="/js/jquery.sticky.js?1583231362"></script>
+    <script src="/js/featherlight.min.js?1583231362"></script>
+    <script src="/js/highlight.pack.js?1583231362"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1583158398"></script>
-    <script src="/js/learn.js?1583158398"></script>
-    <script src="/js/hugo-learn.js?1583158398"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583231362"></script>
+    <script src="/js/learn.js?1583231362"></script>
+    <script src="/js/hugo-learn.js?1583231362"></script>
 
-    <link href="/mermaid/mermaid.css?1583158398" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1583158398"></script>
+    <link href="/mermaid/mermaid.css?1583231362" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583231362"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

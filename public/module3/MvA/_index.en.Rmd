@@ -1,6 +1,6 @@
 ---
 date: "2016-04-09T16:50:16+02:00"
-title: M R var vs A E var
+title: t-test & one-way ANOVA
 output: 
   learnr::tutorial
 weight: 2
@@ -108,10 +108,10 @@ A business analyst is studying share prices of companies from three different bu
 |					        |- **0** if the company does business mainly in Europe |
 |					        |- **1** if the company trades globally |
 
-First, we need to access this data in R. We will start by creating a new project the 'MvA_2' within which we will keep all relevant scripts (.R), R-Markdown (.Rmd), data files and so on. 
+First, we need to access this data in R. We will start by creating a new project the 'DAM' within which we will keep all relevant scripts (.R), R-Markdown (.Rmd), data files and so on. 
 
 
-Go to **File | New Project... | New Directory** in the directory name box type in the suggested name of the project and tick the box **open in new session**. Click on the "**Create Project**" button. Open a new script ile: 
+Go to **File | New Project... | New Directory** in the directory name box type in the suggested name of the project and tick the box **open in new session**. Click on the "**Create Project**" button. Open a new script: 
 
 ![](/module3/MvA/images/NewScript_MvsA.png?width=40pc)
 

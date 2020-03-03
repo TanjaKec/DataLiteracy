@@ -8,7 +8,7 @@ title: DS Bootcamp in R
 
 > You have more likely than not heard about the science of data; you may think of a world of clever people typing away at their computers in a language that is alien to you. If you are thinking this, you are not aware of the potential of data literacy to make your life, company, or institution better educated and more insightful and dynamic than your colleagues and competitors. 
 
-![RMarkdown](/images/DataLit.jpg?width=40pc)
+![RMarkdown](/images/boot-log.jpg?width=30pc)
 
 > **R** together with **RStudio** is the best data science tool! It is open source and free software that is available to anyone with a desire to discover, learn, explore, experience, expand and share the algorithms of their data science journey.  
 

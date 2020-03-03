@@ -42,7 +42,7 @@ The first step is to have a clear idea of what is meant by a connection between 
 
 **Scatter Plot**
 
-When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with $X$ and one axis for the response variable, which is labelled with $Y$. Thus, each point on the graph represents a single $(X, Y)$ pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.
+When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for explanatory variable commonly known in the regression modelling as a predictor and labelled with $X$ and one axis for the response variable, which is labelled with $Y$ and commonly known as the outcome variable. Thus, each point on the graph represents a single $(X, Y)$ pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.
 
 Let us consider a few scatter plots. The following graph represents a **perfect linear relationship**, all points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, ie. gradient and hence specify the exact mathematical link between the response variable $Y$ and the explanatory variable $X$.
 
@@ -286,14 +286,94 @@ incorporating this calculation into the table above will enable us to get $(\hat
 
 **The coefficient of Determination $R^2$**
 
+We realise that when fitting a regression model we are seeking to find out how much variance is explained, or is accounted for, by the explanitary variable $X$ in an outcome variable $Y$.
 
+From the above example the following has been calculated:
 
+i.   $\text{The Total Variation in }$$Y = 82.00$
+ii.  $\text{The Explained Variation in }$$Y = 78.23$
+iii. $\text{The Unexplained Variation in }$$Y = 3.77$
 
+Notice the relationship proposed on page 5, given below, is satisfied
 
+$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
+	
+	$$82.00 = 78.23 + 3.77$$
 
+What do these quantities tell us?  They are difficult to interpret because they are expressed in the units of the problem.
 
+Consider the following ratio:
+
+	$${\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954$$
+
+This is saying that $0.954$ or $95.4\%$ of the changes in $Y$ are explained by changes in $X$. This is a useful and useable measure of the effectiveness of the match between the actual $Y$ values and the predicted $Y$ values.
+
+Reviewing the five scatter prolts (Graph 1 to 5) it can easily be seen that if the line is a perfect fit to the actual $Y$ values as in *Graphs 1 & 5* then this ratio will have the value $1$ or $100\%$.
+
+If there is no link between $Y$ and $X$ then the *The Explained Variation* is zero hence the ratio will be $0$ or $0\%$ an example of this is shown in *Graph 3*.
+
+The remaining graphs: *Graphs 2 & 4* show a statistical relationship hence this ratio will lie between $0$  & $1$. The closer the ratio is to zero the less strong the link is, whilst the closer the ratio is to $1$ the stronger the connection is between $X$ & $Y$.
+
+**The Ratio:**
+
+ $$R^2 = {\text{The Explained Variation in Y} \over \text{The Total Variation in Y}}$$
+
+is called **the Coefficient of Determination**, and usually labeled as $R^2$, and may be defined as **the proportion of the changes in $Y$ explained by changes in $X$**.  
+
+This ratio is always on the scale $0$ to $1$, but by convention is usually expressed as a percentage so is regarded as on the scale $0$ to $100\%$. The interpretation of this ratio is as follows:
+
+![](/module3/MvM/images/R_sq_interp.png?width=30pc)
+
+The definition and interpretation of **$R^2$** is a very **important tool** in the data analyst tool kit **for tracking connections between a measures response variable and a measured explanatory variable**.
 
 ---
+
+**Using Sample Data to Track a connection**
+
+When working with sample data to investigate any relationships that may exist between a measured response variable and a measured explanatory variable the information contained within the sample is imperfect, so has to be interpreted in the light of sampling error. This is particularly important when interpreting the value of R2 calculated from sample data. The sample R2 value gives a measure of the strength of the connection, and this can sometimes be difficult to interpret particularly if the sample size is small. 
+
+The data analysis methodology as set out in earlier, is a procedure that enables the you to make judgements from sample data. The methodology requires you to know what specific procedures make up the Initial Data Analysis IDA and how to interpret the results of the IDA to obtain one of three outcomes:
+
+i.	 No evidence of a connection between the response and the explanatory variable
+ii.	 Clear evidence of a connection between the response and the explanatory variable
+iii. The IDA is inconclusive and further analysis is required
+
+If Further Data Analysis FDA is required then you needs to know what constitutes this further analysis and how to interpret it.  
+
+Finally, if a connection between the response variable and the explanatory variable is detected then a description of the connection is required. In this case the connection the connection needs to be described.
+
+To demonstrate the data analysis methodology we'll go back to Share Price Study Case Study.
+
+**Share Price Study Data**
+
+A business analyst is studying share prices of companies from three different business sectors. As part of the study a random sample (n=60) of companies was selected and the following data was collected:
+
+| **Variable**    | **Description** |
+|-------------|-----------------------------------------------|
+| **Share_Price**	|	The market value of a company share (£) |
+| **Profit**			| The company annual profit |
+| **RD**				  | Company annual spending on research and development |
+| **Turnover** 		|	Company annual total revenue| 
+| **Competition**	|	A variable coded: | 
+|					        |- **0** if the company operates in a very competitive market |
+|					        |- **1** if the company has a great deal of monopoly power |
+| **Sector**			|A variable coded: |
+|				  	      |- **1** if the company operates in the IT business sector |
+|					        |- **2** if the company operates in the Finance business sector |
+|				    	    |- **3** if the company operates in the Pharmaceutical business sector |
+| **Type**  	    |		A variable coded: |
+|					        |- **0** if the company does business mainly in Europe |
+|					        |- **1** if the company trades globally |
+
+Let's start off by investigating the relationship between the variables `Share_Price` and `Profit`.
+
+We will adopt the following notation
+
+- $Y: Share_Price$
+- $X: Profit$
+
+$\text{Model to be estimated:  } Y = b_0 + b_1X + e$ 
+
 
 
 
