@@ -12,18 +12,18 @@
     <title>Regression :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1583231362" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1583231362" rel="stylesheet">
-    <link href="/css/hybrid.css?1583231362" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1583231362" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1583231362" rel="stylesheet">
-    <link href="/css/auto-complete.css?1583231362" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1583231362" rel="stylesheet">
-    <link href="/css/theme.css?1583231362" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1583231362" rel="stylesheet">
+    <link href="/css/nucleus.css?1583236946" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583236946" rel="stylesheet">
+    <link href="/css/hybrid.css?1583236946" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583236946" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583236946" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583236946" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583236946" rel="stylesheet">
+    <link href="/css/theme.css?1583236946" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583236946" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1583231362"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583236946"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1583231362"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1583231362"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583236946"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583236946"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1583231362"></script>
+<script type="text/javascript" src="/js/search.js?1583236946"></script>
 
     
   </div>
@@ -1412,10 +1412,109 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 <p>Let’s start off by investigating the relationship between the variables <code>Share_Price</code> and <code>Profit</code>.</p>
 <p>We will adopt the following notation</p>
 <ul>
-<li><span class="math inline">\(Y: Share_Price\)</span></li>
+<li><span class="math inline">\(Y: Share\_Price\)</span></li>
 <li><span class="math inline">\(X: Profit\)</span></li>
 </ul>
 <p><span class="math inline">\(\text{Model to be estimated:  } Y = b_0 + b_1X + e\)</span></p>
+<p>We start by accessing data:</p>
+<pre class="r"><code>suppressPackageStartupMessages(library(dplyr))
+# read csv file
+companyd &lt;- read.csv(&quot;https://tanjakec.github.io/mydata/SHARE_PRICE.csv&quot;, header=T)
+# look at the data
+glimpse(companyd)</code></pre>
+<pre><code>## Observations: 60
+## Variables: 7
+## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 78…
+## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102…
+## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4,…
+## $ Turnover    &lt;dbl&gt; 320.9, 306.3, 279.5, 193.2, 182.4, 265.2, 212.0, 170…
+## $ Competition &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0…
+## $ Sector      &lt;int&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3…
+## $ Type        &lt;int&gt; 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1…</code></pre>
+<pre class="r"><code># convert into factore type variables
+companyd[, 5] &lt;- as.factor(companyd[, 5])
+companyd[, 6] &lt;- as.factor(companyd[, 6])
+companyd[, 7] &lt;- as.factor(companyd[, 7])
+# glance at data
+summary(companyd)</code></pre>
+<pre><code>##   Share_Price        Profit             RD            Turnover    
+##  Min.   :101.0   Min.   :  2.90   Min.   : 39.20   Min.   : 30.3  
+##  1st Qu.:501.2   1st Qu.: 59.73   1st Qu.: 75.78   1st Qu.:112.3  
+##  Median :598.5   Median : 88.85   Median : 90.60   Median :173.5  
+##  Mean   :602.8   Mean   : 84.76   Mean   : 89.64   Mean   :170.2  
+##  3rd Qu.:739.8   3rd Qu.:106.62   3rd Qu.:104.15   3rd Qu.:216.6  
+##  Max.   :880.0   Max.   :170.50   Max.   :152.60   Max.   :323.3  
+##  Competition Sector Type  
+##  0:30        1:20   0:30  
+##  1:30        2:20   1:30  
+##              3:20         
+##                           
+##                           
+## </code></pre>
+<pre class="r"><code>glimpse(companyd)</code></pre>
+<pre><code>## Observations: 60
+## Variables: 7
+## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 78…
+## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102…
+## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4,…
+## $ Turnover    &lt;dbl&gt; 320.9, 306.3, 279.5, 193.2, 182.4, 265.2, 212.0, 170…
+## $ Competition &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0…
+## $ Sector      &lt;fct&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3…
+## $ Type        &lt;fct&gt; 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1…</code></pre>
+<p>The Initial Data Analysis for investigating a connection between a measured response and a measured explanatory variable requires obtaining a graph of the response against the explanatory variable and to calculate the value of <span class="math inline">\(R^2\)</span> from the sample data.</p>
+<p>The IDA has three possible outcomes:</p>
+<ol style="list-style-type: lower-roman">
+<li>No evidence of a connection between the response and the explanatory variable.</li>
+<li>Clear evidence of a connection between the response and the explanatory variable.</li>
+<li>The I.D.A. is inconclusive and further analysis is required.</li>
+</ol>
+<p>The simplest form of connection is a straight-line relationship and the question arises could a
+straight-line relationship be matched with the information contained in the Graphs 1 to 5 discussed earlier?</p>
+<div class="figure">
+<img src="/module1/StatsConcepts/images/MvMMethodology.png?width=40pc" alt="Red variant" />
+<p class="caption">Red variant</p>
+</div>
+<p>As a part of informal investigation of the possible relationship between <code>Share_Price</code> and <code>Profit</code> first, we will obtain a scatted plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest we will attach our data and refer to the variables directly using only their names (see help for the <code>attach( )</code> function).</p>
+<pre class="r"><code>attach(companyd)
+names(companyd) # shows the names of the variables in the &#39;companyd&#39; data frame</code></pre>
+<pre><code>## [1] &quot;Share_Price&quot; &quot;Profit&quot;      &quot;RD&quot;          &quot;Turnover&quot;    &quot;Competition&quot;
+## [6] &quot;Sector&quot;      &quot;Type&quot;</code></pre>
+<pre class="r"><code>plot(Share_Price ~ Profit, cex = .6, main = &quot;Share Price = f(Profit) + e&quot;)
+abline(lm(Share_Price ~ Profit), lty = 2, col = 2)</code></pre>
+<p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Let’s go through the code and the functions we have used to produce this graph.
+The <code>plot( )</code> function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, ie. you ‘feed’ as the arguments first variable representing X and then variable representing Y: <code>plot( x, y)</code>.
+Considering that we are investigating a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the form of a regression line <span class="math inline">\(Y = b_0 + b1_X + e\)</span>, we specify that in <strong>R</strong> as a formula <code>Y ~ X</code>, which can be read as “<span class="math inline">\(Y\)</span> is modeled as a function of <span class="math inline">\(X\)</span>”. This means that in the <strong>R</strong>’s <code>plot( )</code> function a formula interface can also be used, in which case the response variable <span class="math inline">\(Y\)</span> needs to come before the tilde (<span class="math inline">\(\sim\)</span>) and <span class="math inline">\(X\)</span> variable that will be plotted on the horizontal axis.
+Next, we fit a <strong>line of the best-fit</strong> through our scatterplot using the <code>abline( )</code> function for the linear model <span class="math inline">\(Y = b_0 + b_1X\)</span> to see how close are the points to the fitted line. The basic R function for <strong>fitting linear models by ordinary least squares</strong> is the <code>lm( )</code>, which stands for <strong>l</strong>inear <strong>m</strong>odel. All we need to feed R with when using the <code>lm( )</code> function is the formula <span class="math inline">\(Y\sim{X}\)</span>.</p>
+<p>To go back to the graph… The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we clearly need more information about the fitted model. Let us see what does the <code>lm( )</code> fuction provide as a part of the output.</p>
+<pre class="r"><code>lm(Share_Price~Profit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Share_Price ~ Profit)
+## 
+## Coefficients:
+## (Intercept)       Profit  
+##     258.924        4.057</code></pre>
+<p>First, R displays the fitted model, after which it shows the estimates of the two parameters
+<span class="math inline">\(b_0\)</span> &amp; <span class="math inline">\(b_1\)</span> to which it refers to as coefficients.</p>
+<ul>
+<li>the intercept, <span class="math inline">\(b_0 = 258.924\)</span></li>
+<li>the slope, <span class="math inline">\(b_1= 4.057\)</span></li>
+</ul>
+<p>We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of yours, as a modeller, viewpoint/theory.</p>
+<p>Examining the scatterplot, we can see that not all of the points lie on the fitted line <span class="math inline">\(Share\_Price = 258.924 + 4.057Profit\)</span>. To explain how strong is the relatinship between the two variables we need to obatin the coefficient of determination known as the <span class="math inline">\(R^2\)</span> parameter.</p>
+<p>The coefficient of determination, <span class="math inline">\(R^2\)</span>, is a single number that measures the extent to which the explanatory variable can explain, or account for, the variability in <span class="math inline">\(Y\)</span> – that is, how well does the explanatory variable explain the variability in, or behaviour of, the phenomenon we are trying to understand.</p>
+<p>Earlier, we saw that R_sq is constrained to lie in the following range:</p>
+<p><span class="math display">\[0\%  \text{ &lt;---------- }  R^2  \text{ ----------&gt; }  100\%\]</span>
+We realised that the closer <span class="math inline">\(R^2\)</span> is to <span class="math inline">\(100\%\)</span> then the better is the model and conversely, a value of <span class="math inline">\(R^2\)</span> close to <span class="math inline">\(0\%\)</span> implies a weak/poor model.</p>
+<p>The adequacy of <span class="math inline">\(R^2\)</span> can be judged both informally and formally using hypothesis testing.
+Like all hypothesis tests, this test is carried out in four stages:</p>
+<p><strong>Stage 1:</strong> Specifying the hypotheses (<span class="math inline">\(H_0\)</span> &amp; <span class="math inline">\(H_1\)</span>).</p>
+<ul>
+<li><span class="math inline">\(H_0 : R^2 = 0\)</span> (that is, the explanatory variable is insignificant/useless)</li>
+<li><span class="math inline">\(H_1 : R^2 &gt; 0\)</span> (that is, the explanatory variable is significant/important)</li>
+</ul>
+<p><strong>Stage 2:</strong> Defining the test parameters and the decision rule.</p>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
 
@@ -1859,19 +1958,19 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1583231362"></script>
-    <script src="/js/perfect-scrollbar.min.js?1583231362"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1583231362"></script>
-    <script src="/js/jquery.sticky.js?1583231362"></script>
-    <script src="/js/featherlight.min.js?1583231362"></script>
-    <script src="/js/highlight.pack.js?1583231362"></script>
+    <script src="/js/clipboard.min.js?1583236946"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583236946"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583236946"></script>
+    <script src="/js/jquery.sticky.js?1583236946"></script>
+    <script src="/js/featherlight.min.js?1583236946"></script>
+    <script src="/js/highlight.pack.js?1583236946"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1583231362"></script>
-    <script src="/js/learn.js?1583231362"></script>
-    <script src="/js/hugo-learn.js?1583231362"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583236946"></script>
+    <script src="/js/learn.js?1583236946"></script>
+    <script src="/js/hugo-learn.js?1583236946"></script>
 
-    <link href="/mermaid/mermaid.css?1583231362" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1583231362"></script>
+    <link href="/mermaid/mermaid.css?1583236946" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583236946"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

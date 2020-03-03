@@ -369,12 +369,92 @@ Let's start off by investigating the relationship between the variables `Share_P
 
 We will adopt the following notation
 
-- $Y: Share_Price$
+- $Y: Share\_Price$
 - $X: Profit$
 
 $\text{Model to be estimated:  } Y = b_0 + b_1X + e$ 
 
+We start by accessing data:
 
+```{r, warnings=FALSE, message=FALSE}
+suppressPackageStartupMessages(library(dplyr))
+# read csv file
+companyd <- read.csv("https://tanjakec.github.io/mydata/SHARE_PRICE.csv", header=T)
+# look at the data
+glimpse(companyd)
+# convert into factore type variables
+companyd[, 5] <- as.factor(companyd[, 5])
+companyd[, 6] <- as.factor(companyd[, 6])
+companyd[, 7] <- as.factor(companyd[, 7])
+# glance at data
+summary(companyd)
+glimpse(companyd)
+```
+The Initial Data Analysis for investigating a connection between a measured response and a measured explanatory variable requires obtaining a graph of the response against the explanatory variable and to calculate the value of $R^2$ from the sample data.
+
+The IDA has three possible outcomes:
+
+i.	 No evidence of a connection between the response and the explanatory variable.
+ii.	 Clear evidence of a connection between the response and the explanatory variable.
+iii. 	The I.D.A. is inconclusive and further analysis is required.
+
+The simplest form of connection is a straight-line relationship and the question arises could a 
+straight-line relationship be matched with the information contained in the Graphs 1 to 5 discussed earlier?
+
+![Red variant](/module1/StatsConcepts/images/MvMMethodology.png?width=40pc)
+
+
+As a part of informal investigation of the possible relationship between `Share_Price` and `Profit` first, we will obtain a scatted plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest we will attach our data and refer to the variables directly using only their names (see help for the `attach( )` function). 
+
+```{r}
+attach(companyd)
+names(companyd)	# shows the names of the variables in the 'companyd' data frame
+plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
+abline(lm(Share_Price ~ Profit), lty = 2, col = 2)
+```
+
+Let's go through the code and the functions we have used to produce this graph. 
+The `plot( )` function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, ie. you 'feed' as the arguments first variable representing X and then variable representing Y: `plot( x, y)`.
+Considering that we are investigating a relationship between $X$ and $Y$ in the form of a regression line $Y = b_0 + b1_X + e$, we specify that in **R** as a formula `Y ~ X`, which can be read as "$Y$ is modeled as a function of $X$". This means that in the **R**’s `plot( )` function a formula interface can also be used, in which case the response variable $Y$ needs to come before the tilde ($\sim$) and $X$ variable that will be plotted on the horizontal axis.
+Next, we fit a **line of the best-fit** through our scatterplot using the `abline( )` function for the linear model $Y = b_0 + b_1X$ to see how close are the points to the fitted line. The basic R function for **fitting linear models by ordinary least squares** is the `lm( )`, which stands for **l**inear **m**odel. All we need to feed R with when using the `lm( )` function is the formula $Y\sim{X}$.
+
+To go back to the graph... The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we clearly need more information about the fitted model. Let us see what does the `lm( )` fuction provide as a part of the output.
+
+```{r}
+lm(Share_Price~Profit)
+```
+
+First, R displays the fitted model, after which it shows the estimates of the two parameters 
+$b_0$ & $b_1$ to which it refers to as coefficients.
+
+-	the intercept, $b_0 = 258.924$
+-	the slope, $b_1= 4.057$
+
+We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of yours, as a modeller, viewpoint/theory.
+
+Examining the scatterplot, we can see that not all of the points lie on the fitted line $Share\_Price = 258.924 + 4.057Profit$. To explain how strong is the relatinship between the two variables we need to obatin the coefficient of determination known as the $R^2$ parameter.  
+
+The coefficient of determination, $R^2$, is a single number that measures the extent to which the explanatory variable can explain, or account for, the variability in $Y$ – that is, how well does the explanatory variable explain the variability in, or behaviour of, the phenomenon we are trying to understand.
+
+Earlier, we saw that R_sq is constrained to lie in the following range:
+
+$$0\%  \text{ <---------- }  R^2  \text{ ----------> }  100\%$$
+We realised that the closer $R^2$ is to $100\%$ then the better is the model and conversely, a value of $R^2$ close to $0\%$ implies a weak/poor model. 
+
+
+ 
+
+
+
+The adequacy of $R^2$ can be judged both informally and formally using hypothesis testing.
+Like all hypothesis tests, this test is carried out in four stages:
+
+**Stage 1:** Specifying the hypotheses ($H_0$ & $H_1$).
+
++ $H_0 : R^2  = 0$ (that is, the explanatory variable is insignificant/useless)
++ $H_1 : R^2  > 0$ (that is, the explanatory variable is significant/important) 
+
+**Stage 2:**	Defining the test parameters and the decision rule.
 
 
 -----------------------------
