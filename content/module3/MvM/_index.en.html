@@ -470,7 +470,7 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 <pre><code>$$82.00 = 78.23 + 3.77$$</code></pre>
 <p>What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.</p>
 <p>Consider the following ratio:</p>
-<pre><code>$${\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954$$</code></pre>
+<p><span class="math inline">\({\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954\)</span></p>
 <p>This is saying that <span class="math inline">\(0.954\)</span> or <span class="math inline">\(95.4\%\)</span> of the changes in <span class="math inline">\(Y\)</span> are explained by changes in <span class="math inline">\(X\)</span>. This is a useful and useable measure of the effectiveness of the match between the actual <span class="math inline">\(Y\)</span> values and the predicted <span class="math inline">\(Y\)</span> values.</p>
 <p>Reviewing the five scatter prolts (Graph 1 to 5) it can easily be seen that if the line is a perfect fit to the actual <span class="math inline">\(Y\)</span> values as in <em>Graphs 1 &amp; 5</em> then this ratio will have the value <span class="math inline">\(1\)</span> or <span class="math inline">\(100\%\)</span>.</p>
 <p>If there is no link between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> then the <em>The Explained Variation</em> is zero hence the ratio will be <span class="math inline">\(0\)</span> or <span class="math inline">\(0\%\)</span> an example of this is shown in <em>Graph 3</em>.</p>
@@ -618,15 +618,12 @@ summary(companyd)</code></pre>
 <ol style="list-style-type: lower-roman">
 <li>No evidence of a connection between the response and the explanatory variable.</li>
 <li>Clear evidence of a connection between the response and the explanatory variable.</li>
-<li>The I.D.A. is inconclusive and further analysis is required.</li>
+<li>The IDA is inconclusive and further analysis is required.</li>
 </ol>
 <p>The simplest form of connection is a straight-line relationship and the question arises could a
-straight-line relationship be matched with the information contained in the Graphs 1 to 5 discussed earlier?</p>
-<div class="figure">
-<img src="/module1/StatsConcepts/images/MvMMethodology.png?width=40pc" alt="Red variant" />
-<p class="caption">Red variant</p>
-</div>
-<p>As a part of informal investigation of the possible relationship between <code>Share_Price</code> and <code>Profit</code> first, we will obtain a scatted plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest we will attach our data and refer to the variables directly using only their names (see help for the <code>attach( )</code> function).</p>
+straight-line relationship be matched with the information contained in the <em>Graphs</em> <em>1</em> to <em>5</em> discussed earlier?</p>
+<p><img src="/module3/MvM/images/DAM_MvM.png?width=40pc" /></p>
+<p>As a part of informal investigation of the possible relationship between <code>Share_Price</code> and <code>Profit</code> first, we will use R to obtain a scatted plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest, we will attach our data and refer to the variables directly using only their names (see help for the <code>attach( )</code> function).</p>
 <pre class="r"><code>attach(companyd)
 names(companyd) # shows the names of the variables in the &#39;companyd&#39; data frame</code></pre>
 <pre><code>## [1] &quot;Share_Price&quot; &quot;Profit&quot;      &quot;RD&quot;          &quot;Turnover&quot;    &quot;Competition&quot;
@@ -634,12 +631,16 @@ names(companyd) # shows the names of the variables in the &#39;companyd&#39; dat
 <pre class="r"><code>plot(Share_Price ~ Profit, cex = .6, main = &quot;Share Price = f(Profit) + e&quot;)
 abline(lm(Share_Price ~ Profit), lty = 2, col = 2)</code></pre>
 <p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Let’s go through the code and the functions we have used to produce this graph.
-The <code>plot( )</code> function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, ie. you ‘feed’ as the arguments first variable representing X and then variable representing Y: <code>plot( x, y)</code>.
-Considering that we are investigating a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the form of a regression line <span class="math inline">\(Y = b_0 + b1_X + e\)</span>, we specify that in <strong>R</strong> as a formula <code>Y ~ X</code>, which can be read as “<span class="math inline">\(Y\)</span> is modeled as a function of <span class="math inline">\(X\)</span>”. This means that in the <strong>R</strong>’s <code>plot( )</code> function a formula interface can also be used, in which case the response variable <span class="math inline">\(Y\)</span> needs to come before the tilde (<span class="math inline">\(\sim\)</span>) and <span class="math inline">\(X\)</span> variable that will be plotted on the horizontal axis.
-Next, we fit a <strong>line of the best-fit</strong> through our scatterplot using the <code>abline( )</code> function for the linear model <span class="math inline">\(Y = b_0 + b_1X\)</span> to see how close are the points to the fitted line. The basic R function for <strong>fitting linear models by ordinary least squares</strong> is the <code>lm( )</code>, which stands for <strong>l</strong>inear <strong>m</strong>odel. All we need to feed R with when using the <code>lm( )</code> function is the formula <span class="math inline">\(Y\sim{X}\)</span>.</p>
-<p>To go back to the graph… The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we clearly need more information about the fitted model. Let us see what does the <code>lm( )</code> fuction provide as a part of the output.</p>
-<pre class="r"><code>lm(Share_Price~Profit)</code></pre>
+<blockquote>
+<p>Let’s go through the code and the functions we have used to produce this graph.</p>
+<ul>
+<li><p>The <code>plot( )</code> function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, ie. you ‘feed’ as the arguments first variable representing X and then variable representing Y: <code>plot( x, y)</code>.
+Considering that we are investigating a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in the form of a regression line <span class="math inline">\(Y = b_0 + b1_X + e\)</span>, we specify that in <strong>R</strong> as a formula <code>Y ~ X</code>, which can be read as “<span class="math inline">\(Y\)</span> is modeled as a function of <span class="math inline">\(X\)</span>”. This means that in the <strong>R</strong>’s <code>plot( )</code> function a formula interface can also be used, in which case the response variable <span class="math inline">\(Y\)</span> needs to come before the tilde (<span class="math inline">\(\sim\)</span>) and <span class="math inline">\(X\)</span> variable that will be plotted on the horizontal axis.</p></li>
+<li><p>Next, we fit a <strong>line of the best-fit</strong> through our scatterplot using the <code>abline( )</code> function for the linear model <span class="math inline">\(Y = b_0 + b_1X\)</span> to see how close are the points to the fitted line. The basic R function for <strong>fitting linear models by ordinary least squares</strong> is the <code>lm( )</code>, which stands for <strong>l</strong>inear <strong>m</strong>odel. All we need to feed R with when using the <code>lm( )</code> function is the formula <code>Y~X</code>.</p></li>
+</ul>
+</blockquote>
+<p>The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we could do with some more information about it. Let us see what does the <code>lm( )</code> fuction provide as a part of the output.</p>
+<pre class="r"><code>lm(Share_Price ~ Profit)</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = Share_Price ~ Profit)
@@ -647,25 +648,165 @@ Next, we fit a <strong>line of the best-fit</strong> through our scatterplot usi
 ## Coefficients:
 ## (Intercept)       Profit  
 ##     258.924        4.057</code></pre>
+<blockquote>
 <p>First, R displays the fitted model, after which it shows the estimates of the two parameters
 <span class="math inline">\(b_0\)</span> &amp; <span class="math inline">\(b_1\)</span> to which it refers to as coefficients.</p>
 <ul>
 <li>the intercept, <span class="math inline">\(b_0 = 258.924\)</span></li>
 <li>the slope, <span class="math inline">\(b_1= 4.057\)</span></li>
 </ul>
+</blockquote>
 <p>We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of yours, as a modeller, viewpoint/theory.</p>
 <p>Examining the scatterplot, we can see that not all of the points lie on the fitted line <span class="math inline">\(Share\_Price = 258.924 + 4.057Profit\)</span>. To explain how strong is the relatinship between the two variables we need to obatin the coefficient of determination known as the <span class="math inline">\(R^2\)</span> parameter.</p>
 <p>The coefficient of determination, <span class="math inline">\(R^2\)</span>, is a single number that measures the extent to which the explanatory variable can explain, or account for, the variability in <span class="math inline">\(Y\)</span> – that is, how well does the explanatory variable explain the variability in, or behaviour of, the phenomenon we are trying to understand.</p>
-<p>Earlier, we saw that R_sq is constrained to lie in the following range:</p>
+<p>Earlier, we saw that <span class="math inline">\(R^2\)</span> is constrained to lie in the following range:</p>
 <p><span class="math display">\[0\%  \text{ &lt;---------- }  R^2  \text{ ----------&gt; }  100\%\]</span>
 We realised that the closer <span class="math inline">\(R^2\)</span> is to <span class="math inline">\(100\%\)</span> then the better is the model and conversely, a value of <span class="math inline">\(R^2\)</span> close to <span class="math inline">\(0\%\)</span> implies a weak/poor model.</p>
+<p>To obtain all of the information about the fitted model we can use the <code>summary( )</code> function as in the following:</p>
+<pre class="r"><code>summary(lm(Share_Price ~ Profit))</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Share_Price ~ Profit)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -175.513  -74.826    0.107   67.824  141.358 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 258.9243    28.7465   9.007 1.29e-12 ***
+## Profit        4.0567     0.3102  13.077  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 89.98 on 58 degrees of freedom
+## Multiple R-squared:  0.7467, Adjusted R-squared:  0.7424 
+## F-statistic:   171 on 1 and 58 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>So, what have we got here? 🤔</p>
+<p>We will discuss some of the key components of R’s <code>summary( )</code> function for linear regression models.</p>
+<blockquote>
+<ul>
+<li><strong>Call</strong>: shows what function and variables were used to create the model.</li>
+<li><strong>Residuals</strong>: difference between what the model predicted and the actual value of Y. Try to see if you can calculate this ‘residuals’ section by yourself using: <code>summary(Y-model$fitted.values)</code>. 🤓</li>
+<li><strong>Coefficients</strong>:</li>
+<li>estimated parameters for intercept and slope: <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span></li>
+<li>Std. Error is Residual Standard Error divided by the square root of the sum of the square of that particular explanatory variable.</li>
+<li>t value: Estimate divided by Std. Error</li>
+<li>Pr(&gt;|t|): is the value in a t distribution table with the given degrees of freedom.</li>
+</ul>
+<p>{{% notice note %}}
+We can notice that in the first section we can find statistics relevant to the estimation of the model’s parameters. In the second part of the output we can find statistics related to the overall goodness of the fitted model.
+{{% /notice %}}</p>
+<p>The <code>summary(lm( ))</code> produces the standard deviation of the error. We know that standard deviation is the square root of variance. Standard Error is very similar, the only difference is that instead of dividing by <span class="math inline">\(n-1\)</span>, you subtract <span class="math inline">\(n\)</span> minus <span class="math inline">\(1 + k\)</span>, where <span class="math inline">\(k\)</span> is the number of explanatory variables used in the model. See if you can use and adjudt the code below to calculate this statistic. 🤓</p>
+<pre><code># Residual Standard Error
+k &lt;- length(model$coefficients) - 1 #Subtract one to ignore intercept
+SSE &lt;- sum(model$residuals^2)
+n &lt;- length(model$residuals)
+sqrt(SSE / (n-(1+k)) ) # Residual Standard Error</code></pre>
+<p>Next is the <em>coefficient of determination</em>, which helps us determin how well the model fits to the data. We have already seen that <span class="math inline">\(R^2\)</span> subtracts the residual error from the variance in Y. The bigger the error, the worse the remaining variance will appear.</p>
+<p>For time being we will skip <span class="math inline">\(R^2_{adj}\)</span> and point out that it is used for the models with multiple variables, to which you will be introduced in the next section.</p>
+<p>Lastly, the <em>F-Statistic</em> is the second “test” that the summary function produces for <code>lm</code> models. The <em>F-Statistic</em> is a “global” test that checks if at least one of your coefficients are nonzero, ie when deling with simple regression model to check if the model is worth of further investigation and interpretation.</p>
+</blockquote>
+<p><strong>Model Interpretation:</strong></p>
+<p>To go back to our model interpretation. Earlier, we said after examining the scatter plot that there is a a clear link between <em>Share_Price</em> and <em>Profit</em>. This is confirmed by the value of <span class="math inline">\(R^2 = 74.67\%\)</span>. The interpretation of <span class="math inline">\(R^2\)</span> is suggesting that <span class="math inline">\(74.67\%\)</span> of the changes in <em>Share_Price</em> are explained by changes in <em>Profit</em>. Alternatively, <span class="math inline">\(25.33\%\)</span> of the changes in <em>Share_Price</em> are due to other variables.</p>
+<p>For this example the outcome of the IDA is that there is clear evidence of a link between <em>Share_Price</em> and <em>Profit</em> and the nature of the influence being that as <em>Profit</em> increases <em>Share_Price</em> also increases. It only remains to describe the connection, and discuss how effective the model is, and can it be used to predict <em>Share_Price</em> value from the value of <em>Profit</em>? 🤔</p>
+<hr />
+<p>** The Further Data Analysis**</p>
 <p>The adequacy of <span class="math inline">\(R^2\)</span> can be judged both informally and formally using hypothesis testing.
 Like all hypothesis tests, this test is carried out in four stages:</p>
-<p><strong>Stage 1:</strong> Specifying the hypotheses (<span class="math inline">\(H_0\)</span> &amp; <span class="math inline">\(H_1\)</span>).</p>
+<ol style="list-style-type: decimal">
+<li>Specify the hypotheses</li>
+<li>Defining the test parameters and decision rule</li>
+<li>Examining the sample evidence</li>
+<li>Conclusions</li>
+</ol>
+<p><strong>Stage 1:</strong> Specify the hypotheses (<span class="math inline">\(H_0\)</span> &amp; <span class="math inline">\(H_1\)</span>).</p>
+<p><em>The Coefficient of Determination</em> <span class="math inline">\(R^2\)</span> is a useful quantity, by definition if <span class="math inline">\(R^2 = 0\)</span> then there is no connection between the response variable and the explanatory variable. Conversely if the value of <span class="math inline">\(R^2\)</span> is greater than zero there must be a connection. This enables the formal hypotheses to be defined as:</p>
 <ul>
-<li><span class="math inline">\(H_0 : R^2 = 0\)</span> (that is, the explanatory variable is insignificant/useless)</li>
-<li><span class="math inline">\(H_1 : R^2 &gt; 0\)</span> (that is, the explanatory variable is significant/important)</li>
+<li><span class="math inline">\(H_0 : R^2 = 0\)</span> (There is no relationship between the response and interest and the explanatory variable.)</li>
+<li><span class="math inline">\(H_1 : R^2 &gt; 0\)</span> (There is a relationship between the response and the explanatory variable.)</li>
 </ul>
 <p><strong>Stage 2:</strong> Defining the test parameters and the decision rule.</p>
+<p>The decision rule is based on the <em>F statistic</em>. The <em>F distribution</em> has a shape as shown below:</p>
+<p><img src="/module3/MvM/images/F-dist.png?width=40pc" /></p>
+<p>The value of <span class="math inline">\(F_{crit}\)</span> is the value that divides the distribution with <span class="math inline">\(95\%\)</span> of the area to the left of the <span class="math inline">\(F_{crit}\)</span> ordinate, and <span class="math inline">\(5\%\)</span> to the right. The accepted terminology is <span class="math inline">\(F_{crit}\)</span> but this text will call this quantity <span class="math inline">\(F_{calc}\)</span> to signify it is a quantity obtained from statistical tables.</p>
+<p>The <strong>decision rule</strong> is:</p>
+<ul>
+<li><p>If the value of <span class="math inline">\(F_{calc}\)</span> from the sample data is larger than <span class="math inline">\(F_{crit}\)</span>, then the sample evidence favours the decision that there is a connection between the response variable and the explanatory variable. (i.e. favours <span class="math inline">\(H_1\)</span>.)</p></li>
+<li><p>If the value of <span class="math inline">\(F_{calc}\)</span> is smaller than <span class="math inline">\(F_{crit}\)</span> then the sample evidence is consistent with no connection between the response variable and the explanatory variable. (i.e. favours <span class="math inline">\(H_0\)</span>)</p></li>
+</ul>
+<p>The decision rule can be summarised as:</p>
+<p>If <span class="math inline">\(F_{calc} &lt; F_{crit}\)</span> then favour <span class="math inline">\(H_0\)</span>, whilst if <span class="math inline">\(F_{calc} &gt; F_{crit}\)</span> then favour <span class="math inline">\(H_1\)</span>. This decision rule can be represented graphically as below:</p>
+<p><img src="/module3/MvM/images/F-test.png?width=40pc" /></p>
+<p>The decision rule maybe written as:</p>
+<ul>
+<li>If <span class="math inline">\(F_{calc} &lt; F_{crit}\)</span> then accept <span class="math inline">\(H_0\)</span></li>
+<li>If <span class="math inline">\(F_{calc} &gt; F_{crit}\)</span> then accept <span class="math inline">\(H_1\)</span></li>
+</ul>
+<p>The value of <span class="math inline">\(F_{crit}\)</span> depends on the amount of data in the sample. The <em>Degrees of Freedom</em> (usually abbreviated to <span class="math inline">\(df\)</span>) express this dependence on the sample size. For any given set of sample data having obtained the <span class="math inline">\(df\)</span> the specific value of <span class="math inline">\(F_{crit}\)</span> can be obtained from Statistical Tables of the <em>F distribution</em>, or simply by using the <code>qf(p, df1, df2)</code> function in R.</p>
+<p>** Stage 3: Examining the sample evidence**</p>
+<p>For the investigation of the <em>Share_Price</em> vs <em>Profit</em> we plot the scatterplot and obtain the summary of the fitted model: <span class="math inline">\(Share\_Price = b_0 + b_1Profit\)</span></p>
+<pre class="r"><code># create a scatterplot
+plot(Share_Price ~ Profit, cex = .6, main = &quot;Share Price = f(Profit) + e&quot;)
+# fit the model
+model_1 &lt;- lm(Share_Price ~ Profit)
+# add the line of the best fit on the scatterplot
+abline(model_1, lty = 2, col = 2)</code></pre>
+<p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code># obtain R_sq of the fitted model
+summary(model_1)$r.squared</code></pre>
+<pre><code>## [1] 0.7467388</code></pre>
+<p>This is a good model explaining almost <span class="math inline">\(3/4\)</span> of the overall variability in the explanatory variable <span class="math inline">\(Y\)</span>. Hence, based on the sample evidence, variable <em>Profit</em>, can explain <span class="math inline">\(74.67\%\)</span> of overall variation in the variable <em>Share_Pice</em>.</p>
+<p>{{% notice note %}}
+Note, that if we don’t reject that there is a relationship between the two variables we will obtain full output of the <code>summary(lm(model_1))</code> function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need further to investigate the significance of the relationship we need relevant statsitics for conducting the FDA.
+{{% /notice %}}</p>
+<p>In the cases where <span class="math inline">\(R^2 \approx 0\)</span> we will carry out a hypothesis test for which we need <span class="math inline">\(F_{cal}\)</span> from the <code>summary( )</code> function.</p>
+<p>Let us assume that the <span class="math inline">\(R^2\)</span> for the given example <em>Share_Price vs Profit</em> is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship as <span class="math inline">\(R^2\)</span> is not zero, but neither can we with confidence accept it as statistically valid relationship based on the sample evidence we use.</p>
+<p>This step requires the calculation of the <span class="math inline">\(F_{calc}\)</span> value from the sample data, and the determining of the degrees of freedom.</p>
+<pre class="r"><code>summary(model_1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Share_Price ~ Profit)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -175.513  -74.826    0.107   67.824  141.358 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 258.9243    28.7465   9.007 1.29e-12 ***
+## Profit        4.0567     0.3102  13.077  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 89.98 on 58 degrees of freedom
+## Multiple R-squared:  0.7467, Adjusted R-squared:  0.7424 
+## F-statistic:   171 on 1 and 58 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p><strong>Stage 4:</strong> Conclusion</p>
+<p>The associated <em>F statistic</em> evaluating the significance of the full model <span class="math inline">\(F_{calc} = 171\)</span> with <span class="math inline">\(df_1=1\)</span> and <span class="math inline">\(df_2=58\)</span>. Thus,</p>
+<pre class="r"><code>F_crit &lt;- qf(0.95, 1, 58)
+F_crit</code></pre>
+<pre><code>## [1] 4.006873</code></pre>
+<p><span class="math inline">\(F_{crit} = 4.01\)</span> and using the decision rule given, we get that</p>
+<p><span class="math display">\[F_{calc}=171 &gt; F_{crit}=4.01\text{ =&gt; accept }H_1\]</span>
+, ie this model is statistically significant and we need to describe it.</p>
+<p><strong>Describe the Relationship</strong></p>
+<p>If the resulting outcome from either the Initial Data Analysis (IDA) or the Further Data Analysis (FDA) is that there is a connection between the response variable and the explanatory variable then the last step is to describe this connection.</p>
+<p>For the data analysis situation Measured v Measured this is simple stating the line of best fit. This is a description of the connection between the two variables. Additionally the <span class="math inline">\(R^2\)</span> value should be quoted as this gives a measure of how well the data and the line of best-fit match.</p>
+<p>The <span class="math inline">\(R^2\)</span> value can be interpreted as a measure of the quality of predictions made from the line of best fit according to the rule of thumb:</p>
+<p><img src="/module3/MvM/images/Prediction_Rsq.png?width=40pc" /></p>
+<p>In our example <em>Sare_Price vs Profit</em> we had the following estimations:</p>
+<ul>
+<li><span class="math inline">\(b_0 = 258.9243\)</span></li>
+<li><span class="math inline">\(b_1 = 4.0567\)</span></li>
+</ul>
+<p><span class="math display">\[Share\_Price = 258.9243 + 4.0567 Profit\]</span></p>
+<p>with <span class="math inline">\(R^2 = 74.67\%\)</span>.</p>
+<p><strong>Making predictions</strong></p>
+<p>Can the regression line be used to make predictions about the <em>Share_Price</em> for a company with a given value of the <em>Profit</em>?</p>
+<p>Suppose we have to to make a prediction of the <span class="math inline">\(Share_{Price}\)</span> for a company with the <span class="math inline">\(Profit = 137.2\)</span></p>
+<p>The predictions are calculated from the model as follows:</p>
+<p><span class="math display">\[Share_\Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035\]</span>
+Since the <span class="math inline">\(R^2\)</span> value is nearly <span class="math inline">\(75\%\)</span> any predictions about <em>Share_Price</em> made from this model are likely to be of quality.</p>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
