@@ -175,45 +175,45 @@ This is the median by definition.</li>
 </div>
 <hr />
 <p><strong>Measured Vs Measured</strong></p>
-<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of Y the response variable and the value of X the explanatory variable. For the whole population a graph of Y against X could be plotted conceptually.</p>
-<p>If the graph shows a perfect line, then there is quite clearly a link between Y and X. If the value of X is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because this kind of relationship is a <em>deterministic relationship</em>. Deterministic means that if the value of X is known then the value of Y can be precisely determined from the relationship between Y and X.
-What is more likely to happen is that other variables may also have an influence on Y.</p>
+<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of <span class="math inline">\(Y\)</span> the response variable and the value of <span class="math inline">\(X\)</span> the explanatory variable. For the whole population a graph of <span class="math inline">\(Y\)</span> against <span class="math inline">\(X\)</span> could be plotted conceptually.</p>
+<p>If the graph shows a perfect line, then there is quite clearly a link between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. If the value of <span class="math inline">\(X\)</span> is known, the exact value of <span class="math inline">\(Y\)</span> can be read off the graph. This is an unlikely scenario in the data-analysis context, because this kind of relationship is a <em>deterministic relationship</em>. Deterministic means that if the value of <span class="math inline">\(X\)</span> is known then the value of Y can be precisely determined from the relationship between Y and <span class="math inline">\(X\)</span>.
+What is more likely to happen is that other variables may also have an influence on <span class="math inline">\(Y\)</span>.</p>
 <p>If the nature of the link between Y and X is under investigation then this could be represented as:</p>
-<p><code>Y = f(X) + effect</code> of all other variables [effect of all other variables is commonly abbreviated to e]</p>
+<p><span class="math inline">\(Y = f(X) + effect\)</span> of all other variables [effect of all other variables is commonly abbreviated to <span class="math inline">\(e\)</span>]</p>
 <p>Considered the model:</p>
-<p><code>Y = f(X) + e</code> [e is the effect of all other variables]</p>
+<p><span class="math display">\[Y = f(X) + e \text{       [e is the effect of all other variables]}\]</span></p>
 <p>The influence on the response variable Y can be thought of as being made up of two components:</p>
 <ol style="list-style-type: lower-roman">
-<li><p>the component of Y that is explained by changes in the value of X, [the part due to changes in X through f(X)]</p></li>
-<li><p>the component of Y that is explained by changes in the other factors. [the part not explained by changes in X]</p></li>
+<li><p>the component of Y that is explained by changes in the value of X, [the part due to changes in <span class="math inline">\(X\)</span> through <span class="math inline">\(f(X)\)</span>]</p></li>
+<li><p>the component of Y that is explained by changes in the other factors. [the part not explained by changes in <span class="math inline">\(X\)</span>]</p></li>
 </ol>
 <p>Or in more abbreviated forms the ‘<span style="color:red">Variation in Y Explained by changes X</span>’ or ‘<span style="color:red"><strong>Explained Variation</strong></span>’ and the ‘<span style="color:red">Variation in Y not explained by changes in X</span>’ or the ‘<span style="color:red"><strong>Unexplained Variation</strong></span>’.</p>
 <p>In conclusion, the <em>Total Variation in Y</em> is made up of the two components:</p>
 <ul>
-<li>the ‘Changes in Y Explained by changes in X’ and<br />
+<li>the <span class="math inline">\(Changes in Y Explained by changes in X\)</span> and<br />
 </li>
-<li>the ‘Changes in Y not explained by changes in X’</li>
+<li>the <span class="math inline">\(Changes in Y not explained by changes in X\)</span></li>
 </ul>
 <p>Which may be written as:</p>
-<pre><code>`&#39;The Total Variation in Y&#39; = &#39;Explained Variation&#39; + &#39;Unexplained Variation&#39;`</code></pre>
+<p><span class="math display">\[\text{The Total Variation in Y = Explained Variation + Unexplained Variation}\]</span></p>
 <p>🤓💡 The discussion started with the following idea:</p>
-<p>Y = f(X) + e</p>
-<p>And to quantify the strength of the link the influence on Y was broken down into two components:</p>
-<pre><code>&#39;The Total Variation in Y&#39; = &#39;Explained Variation&#39; + &#39;Unexplained Variation&#39;</code></pre>
-<p>This presents two issues:
-A: Can a model of the link be made?
-B. Can ‘The Total Variation in Y’, ‘Explained Variation’ and the ‘Unexplained Variation’ be measured?</p>
+<p><span class="math display">\[Y = f(X) + e\]</span></p>
+<p>And to quantify the strength of the link the influence on <span class="math inline">\(Y\)</span> was broken down into two components:</p>
+<pre><code>$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$</code></pre>
+<p>This presents two issues:</p>
+<p>A: Can a model of the link be made?
+B. Can The <span class="math inline">\(Total Variation in Y\)</span>, <span class="math inline">\(Explained Variation\)</span> and the <span class="math inline">\(Unexplained Variation\)</span> be measured?</p>
 <p>What do these quantities tell us?</p>
-<p>Maybe we can observe a proportion of the ‘Explained Variation in Y’ over the ‘Total Variation in Y’.
-This ratio is always on the scale 0 to 1, but by convention is usually expressed as a percentage so is regarded as on the scale 0 to 100%. It is called ‘R Squared’ and interpretation of this ratio is as follows:</p>
-<p>R_sq: 0% (no link) &lt;————— 50% (Statistical Link) —————&gt; 100% (Perfect Link)</p>
+<p>Maybe we can observe a proportion of the <span class="math inline">\(Explained Variation in Y\)</span> over the <span class="math inline">\(Total Variation in Y\)</span>.
+This ratio is always on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, but by convention is usually expressed as a percentage so is regarded as on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(100\%\)</span>. It is called <span class="math inline">\(R^2\)</span> and interpretation of this ratio is as follows:</p>
+<p><span class="math display">\[R^2: 0\% \text{ (no link) &lt;--------------- } 50\% \text{(Statistical Link) ---------------&gt; }100\%\text{ (Perfect Link)}\]</span></p>
 <p>The definition and interpretation of <code>R_sq</code> is a very important tool in the data analyst’s tool kit for tracking connections between a measured response variable and a measured explanatory variable.</p>
 <p>We can put those ideas into our DA Methodology frameworks as shown below.</p>
 <div class="figure">
 <img src="/module1/StatsConcepts/images/MvMMethodology.png?width=40pc" alt="Red variant" />
 <p class="caption">Red variant</p>
 </div>
-<p>🤓💡 Note that you will hardly ever be in the situation in which R_sq would be so close to zero that would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If R_sq value is very small (for example around 2%) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.</p>
+<p>🤓💡 Note that you will hardly ever be in the situation in which <span class="math inline">\(R^2\)</span> would be so close to zero that would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If <span class="math inline">\(R^2\)</span> value is very small (for example around <span class="math inline">\(2\%\)</span>) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.</p>
 <hr />
 <p><strong>Further Data Analysis</strong></p>
 <p>If the <span style="color:red">‘<strong>Initial Data Analysis</strong>’</span> is <span style="color:red"><em>inconclusive</em></span> then <span style="color:red">‘<strong>Further Data Analysis</strong>’</span> is required.</p>

@@ -351,9 +351,9 @@ A business analyst is studying share prices of companies from three different bu
 | **Variable**    | **Description** |
 |-------------|-----------------------------------------------|
 | **Share_Price**	|	The market value of a company share (£) |
-| **Profit**			| The company annual profit |
-| **RD**				  | Company annual spending on research and development |
-| **Turnover** 		|	Company annual total revenue| 
+| **Profit**			| The company annual profit (£1.000.000) |
+| **RD**				  | Company annual spending on research and development (£1.000) |
+| **Turnover** 		|	Company annual total revenue (£1.000.000) | 
 | **Competition**	|	A variable coded: | 
 |					        |- **0** if the company operates in a very competitive market |
 |					        |- **1** if the company has a great deal of monopoly power |
@@ -557,7 +557,7 @@ This is a good model explaining almost $3/4$ of the overall variability in the e
 Note, that if we don't reject that there is a relationship between the two variables we will obtain full output of the `summary(lm(model_1))` function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need further to investigate the significance of the relationship we need relevant statsitics for conducting the FDA. 
 {{% /notice %}}
 
-In the cases where $R^2 \approx 0$ we will carry out a hypothesis test for which we need $F_{cal}$ from the `summary( )` function. 
+In the cases where $R^2 \approx 0$ we will carry out a hypothesis test for which we need $F_{calc}$ from the `summary( )` function. 
 
 Let us assume that the $R^2$ for the given example *Share_Price vs Profit* is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship as $R^2$ is not zero, but neither can we with confidence accept it as statistically valid relationship based on the sample evidence we use.
 
@@ -604,16 +604,51 @@ with $R^2 = 74.67\%$.
 
 Can the regression line be used to make predictions about the *Share_Price* for a company with a given value of the *Profit*?
 
-Suppose we have to to make a prediction of the $Share_{Price}$ for a company with the $Profit = 137.2$ 
+Suppose we have to to make a prediction of the $Share_{Price\_ for  company with the $Profit = 137.2$ 
 
 The predictions are calculated from the model as follows:
 
-$$Share_\Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035$$
-Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of quality.
+$$Share\_Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035$$
+Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of good quality, but there maybe some issues with some of these predictions of the *Profit* values out of the data range used in prediction. The *Profit* in the given data set range from about $3$ to $170$. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the $R^2$ value is nearly $75\%$.  
 
+```{r}
+summary(Profit)
+```
 
+The *Share_Price* for the company with the *Profit* that lies outside the range of experience is not likely to be very reliable, or of much value. These problems are caused by the fact that the information available about the link between *Share_Price* and *Profit* is only valid over the range of values that *Profit* takes in the data. There is no information about the nature of the connection outside this range and any predictions made must be treated with caution.  
 
+In general terms when interpreting a regression model the intercept is of little value, since it is generally out of the range of the data. The gradient term is the more important and the formal definition of the gradient provides the interpretation of this information. 
 
+The **gradient** is defined to be the **change in $Y$ for a unit increase in $X$**.  For the model developed the gradient is $4.06$. This is suggesting for every additional unit increase in *Profit*, *Share_Price* increases by $£4.06$.
+
+---
+
+**YOUR TURN** 👇
+
+1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs RD` and `Share_Price vs Turnover`.
+
+2) Download The *Supermarket* data set available at <https://github.com/TanjaKec/mydata> using the following link <https://tanjakec.github.io/mydata/SUPERM.csv>.
+
+**Crate an Rmd report in which you will:**
+
+1) Give a brief explanation of the following statistical terms:
+
+i.    Response Variable		
+ii.   Explanatory variable
+iii.  Measured Variable		
+iv.   Attribute Variable
+
+2) Provide a brief answer for the each of the following questions:
+
+i.    What is the ‘Data Analysis Methodology’, and why is this needed when working with sample data?
+ii.   What are the statistical concepts used to investigate the relationship between a measured
+response variable and an attribute explanatory variable?
+iii.  What are the statistical concepts used to investigate the relationship between a measured
+response variable and a measured explanatory variable?
+
+3) Undertake the Data Analysis for the Super Market Data Set to investigate the relationships between the response variable and from your point of view regarded as worth of attention set of explanatory variables. Present your point of views about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.
+
+**You are expected to bring your report into the next class**
 
 -----------------------------
 © 2020 Tatjana Kecojevic

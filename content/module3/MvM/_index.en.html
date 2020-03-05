@@ -509,15 +509,15 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 </tr>
 <tr class="even">
 <td><strong>Profit</strong></td>
-<td>The company annual profit</td>
+<td>The company annual profit (£1.000.000)</td>
 </tr>
 <tr class="odd">
 <td><strong>RD</strong></td>
-<td>Company annual spending on research and development</td>
+<td>Company annual spending on research and development (£1.000)</td>
 </tr>
 <tr class="even">
 <td><strong>Turnover</strong></td>
-<td>Company annual total revenue</td>
+<td>Company annual total revenue (£1.000.000)</td>
 </tr>
 <tr class="odd">
 <td><strong>Competition</strong></td>
@@ -760,7 +760,7 @@ summary(model_1)$r.squared</code></pre>
 <p>{{% notice note %}}
 Note, that if we don’t reject that there is a relationship between the two variables we will obtain full output of the <code>summary(lm(model_1))</code> function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need further to investigate the significance of the relationship we need relevant statsitics for conducting the FDA.
 {{% /notice %}}</p>
-<p>In the cases where <span class="math inline">\(R^2 \approx 0\)</span> we will carry out a hypothesis test for which we need <span class="math inline">\(F_{cal}\)</span> from the <code>summary( )</code> function.</p>
+<p>In the cases where <span class="math inline">\(R^2 \approx 0\)</span> we will carry out a hypothesis test for which we need <span class="math inline">\(F_{calc}\)</span> from the <code>summary( )</code> function.</p>
 <p>Let us assume that the <span class="math inline">\(R^2\)</span> for the given example <em>Share_Price vs Profit</em> is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship as <span class="math inline">\(R^2\)</span> is not zero, but neither can we with confidence accept it as statistically valid relationship based on the sample evidence we use.</p>
 <p>This step requires the calculation of the <span class="math inline">\(F_{calc}\)</span> value from the sample data, and the determining of the degrees of freedom.</p>
 <pre class="r"><code>summary(model_1)</code></pre>
@@ -804,9 +804,47 @@ F_crit</code></pre>
 <p>with <span class="math inline">\(R^2 = 74.67\%\)</span>.</p>
 <p><strong>Making predictions</strong></p>
 <p>Can the regression line be used to make predictions about the <em>Share_Price</em> for a company with a given value of the <em>Profit</em>?</p>
-<p>Suppose we have to to make a prediction of the <span class="math inline">\(Share_{Price}\)</span> for a company with the <span class="math inline">\(Profit = 137.2\)</span></p>
+<p>Suppose we have to to make a prediction of the $Share_{Price_ for company with the <span class="math inline">\(Profit = 137.2\)</span></p>
 <p>The predictions are calculated from the model as follows:</p>
-<p><span class="math display">\[Share_\Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035\]</span>
-Since the <span class="math inline">\(R^2\)</span> value is nearly <span class="math inline">\(75\%\)</span> any predictions about <em>Share_Price</em> made from this model are likely to be of quality.</p>
+<p><span class="math display">\[Share\_Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035\]</span>
+Since the <span class="math inline">\(R^2\)</span> value is nearly <span class="math inline">\(75\%\)</span> any predictions about <em>Share_Price</em> made from this model are likely to be of good quality, but there maybe some issues with some of these predictions of the <em>Profit</em> values out of the data range used in prediction. The <em>Profit</em> in the given data set range from about <span class="math inline">\(3\)</span> to <span class="math inline">\(170\)</span>. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the <span class="math inline">\(R^2\)</span> value is nearly <span class="math inline">\(75\%\)</span>.</p>
+<pre class="r"><code>summary(Profit)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.90   59.73   88.85   84.76  106.62  170.50</code></pre>
+<p>The <em>Share_Price</em> for the company with the <em>Profit</em> that lies outside the range of experience is not likely to be very reliable, or of much value. These problems are caused by the fact that the information available about the link between <em>Share_Price</em> and <em>Profit</em> is only valid over the range of values that <em>Profit</em> takes in the data. There is no information about the nature of the connection outside this range and any predictions made must be treated with caution.</p>
+<p>In general terms when interpreting a regression model the intercept is of little value, since it is generally out of the range of the data. The gradient term is the more important and the formal definition of the gradient provides the interpretation of this information.</p>
+<p>The <strong>gradient</strong> is defined to be the <strong>change in <span class="math inline">\(Y\)</span> for a unit increase in <span class="math inline">\(X\)</span></strong>. For the model developed the gradient is <span class="math inline">\(4.06\)</span>. This is suggesting for every additional unit increase in <em>Profit</em>, <em>Share_Price</em> increases by <span class="math inline">\(£4.06\)</span>.</p>
+<hr />
+<p><strong>YOUR TURN</strong> 👇</p>
+<ol style="list-style-type: decimal">
+<li><p>Investigate the nature of the relationship in Share Price Study data for <code>Share_Price vs RD</code> and <code>Share_Price vs Turnover</code>.</p></li>
+<li><p>Download The <em>Supermarket</em> data set available at <a href="https://github.com/TanjaKec/mydata" class="uri">https://github.com/TanjaKec/mydata</a> using the following link <a href="https://tanjakec.github.io/mydata/SUPERM.csv" class="uri">https://tanjakec.github.io/mydata/SUPERM.csv</a>.</p></li>
+</ol>
+<p><strong>Crate an Rmd report in which you will:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Give a brief explanation of the following statistical terms:</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>Response Variable<br />
+</li>
+<li>Explanatory variable</li>
+<li>Measured Variable<br />
+</li>
+<li>Attribute Variable</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Provide a brief answer for the each of the following questions:</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>What is the ‘Data Analysis Methodology’, and why is this needed when working with sample data?</li>
+<li>What are the statistical concepts used to investigate the relationship between a measured
+response variable and an attribute explanatory variable?</li>
+<li>What are the statistical concepts used to investigate the relationship between a measured
+response variable and a measured explanatory variable?</li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>Undertake the Data Analysis for the Super Market Data Set to investigate the relationships between the response variable and from your point of view regarded as worth of attention set of explanatory variables. Present your point of views about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.</li>
+</ol>
+<p><strong>You are expected to bring your report into the next class</strong></p>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>

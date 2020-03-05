@@ -249,54 +249,55 @@ This can be illustrated as below:
 ___
 **Measured Vs Measured**
 
-The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of Y the response variable and the value of X the explanatory variable. For the whole population a graph of Y against X could be plotted conceptually. 
+The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of $Y$ the response variable and the value of $X$ the explanatory variable. For the whole population a graph of $Y$ against $X$ could be plotted conceptually. 
 
-If the graph shows a perfect line, then there is quite clearly a link between Y and X. If the value of X is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because this kind of relationship is a *deterministic relationship*. Deterministic means that if the value of X is known then the value of Y can be precisely determined from the relationship between Y and X.
-What is more likely to happen is that other variables may also have an influence on Y. 
+If the graph shows a perfect line, then there is quite clearly a link between $Y$ and $X$. If the value of $X$ is known, the exact value of $Y$ can be read off the graph. This is an unlikely scenario in the data-analysis context, because this kind of relationship is a *deterministic relationship*. Deterministic means that if the value of $X$ is known then the value of Y can be precisely determined from the relationship between Y and $X$.
+What is more likely to happen is that other variables may also have an influence on $Y$. 
 
 If the nature of the link between Y and X is under investigation then this could be represented as:
 
-`Y = f(X) + effect` of all other variables [effect of all other variables is commonly abbreviated to e]
+$Y = f(X) + effect$ of all other variables [effect of all other variables is commonly abbreviated to $e$]
 
 Considered the model:
 
-`Y = f(X) + e`		[e is the effect of all other variables]
+$$Y = f(X) + e \text{		[e is the effect of all other variables]}$$
 
 The influence on the response variable Y can be thought of as being made up of two components:
 
-i) the component of Y that is explained by changes in the value of X, [the part due to changes in X through f(X)] 
+i) the component of Y that is explained by changes in the value of X, [the part due to changes in $X$ through $f(X)$] 
 
-ii)	the component of Y that is explained by changes in the other factors.  [the part not explained by changes in X]
+ii)	the component of Y that is explained by changes in the other factors.  [the part not explained by changes in $X$]
 
 Or in more abbreviated forms the '<span style="color:red">Variation in Y Explained by changes X</span>' or '<span style="color:red">**Explained Variation**</span>' and the '<span style="color:red">Variation in Y not explained by changes in X</span>' or the '<span style="color:red">**Unexplained Variation**</span>'. 
 
 In conclusion, the *Total Variation in Y* is made up of the two components:
 
-- the 'Changes in Y Explained by changes in X' and  
-- the 'Changes in Y not explained by changes in X' 
+- the $Changes in Y Explained by changes in X$ and  
+- the $Changes in Y not explained by changes in X$ 
 
 Which may be written as:
 
-	`'The Total Variation in Y' = 'Explained Variation' + 'Unexplained Variation'`
+$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
 
 🤓💡 The discussion started with the following idea:
 
-Y = f(X) + e
+$$Y = f(X) + e$$
 
-And to quantify the strength of the link the influence on Y was broken down into two components:
+And to quantify the strength of the link the influence on $Y$ was broken down into two components:
 
-	'The Total Variation in Y' = 'Explained Variation' + 'Unexplained Variation'
+	$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
 
 This presents two issues:
+
 A:	Can a model of the link be made?
-B.	Can 'The Total Variation in Y', 'Explained Variation' and the 'Unexplained Variation' be measured?
+B.	Can The $Total Variation in Y$, $Explained Variation$ and the $Unexplained Variation$ be measured?
 
 What do these quantities tell us?  
 
-Maybe we can observe a proportion of the 'Explained Variation in Y' over the 'Total Variation in Y'.
-This ratio is always on the scale 0 to 1, but by convention is usually expressed as a percentage so is regarded as on the scale 0 to 100%.  It is called 'R Squared' and interpretation of this ratio is as follows:
+Maybe we can observe a proportion of the $Explained Variation in Y$ over the $Total Variation in Y$.
+This ratio is always on the scale $0$ to $1$, but by convention is usually expressed as a percentage so is regarded as on the scale $0$ to $100\%$.  It is called $R^2$ and interpretation of this ratio is as follows:
 
-  R_sq: 0% (no link) <--------------- 50% (Statistical Link) ---------------> 100% (Perfect Link) 
+  $$R^2: 0\% \text{ (no link) <--------------- } 50\% \text{(Statistical Link) ---------------> }100\%\text{ (Perfect Link)}$$ 
 
 The definition and interpretation of `R_sq` is a very important tool in the data analyst's tool kit for tracking connections between a measured response variable and a measured explanatory variable.
 
@@ -304,7 +305,7 @@ We can put those ideas into our DA Methodology frameworks as shown below.
 
 ![Red variant](/module1/StatsConcepts/images/MvMMethodology.png?width=40pc)
 
-🤓💡 Note that you will hardly ever be in the situation in which R_sq would be so close to zero that would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If R_sq value is very small (for example around 2%) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.
+🤓💡 Note that you will hardly ever be in the situation in which $R^2$  would be so close to zero that would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If $R^2$ value is very small (for example around $2\%$) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.
 
 ___
 **Further Data Analysis**

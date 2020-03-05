@@ -94,9 +94,9 @@ A business analyst is studying share prices of companies from three different bu
 | **Variable**    | **Description** |
 |-------------|-----------------------------------------------|
 | **Share_Price**	|	The market value of a company share (£) |
-| **Profit**			| The company annual profit |
-| **RD**				  | Company annual spending on research and development |
-| **Turnover** 		|	Company annual total revenue| 
+| **Profit**			| The company annual profit (£1.000.000) |
+| **RD**				  | Company annual spending on research and development (£1.000) |
+| **Turnover** 		|	Company annual total revenue (£1.000.000) |
 | **Competition**	|	A variable coded: | 
 |					        |- **0** if the company operates in a very competitive market |
 |					        |- **1** if the company has a great deal of monopoly power |
