@@ -6,7 +6,7 @@ output:
 weight: 3
 ---
 
-Most of you, if not all, will be familiar with creating the graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
+Most of you, if not all, will be familiar with creating graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
 
 ### Grammar of Graphics
 
@@ -44,13 +44,12 @@ Unlike base graphics, ggplot works with dataframes and not individual vectors.
 The best way to master it is by practising. So let us create a first `ggplot`. 😃
 What we need to do is the following:
 
-- i) Wrangle the data in the format suitable for visualisation.
-
-- ii) "Initialise" a plot with `ggplot()`:
+i. Wrangle the data in the format suitable for visualisation.
+ii. "Initialise" a plot with `ggplot()`:
   
-**ggplot(<span style="color:blue">dataframe</span>, aes(<span style="color:orangered">x = explanatory variable</span>, <span style="color:green">y = resposne variable</span>))**
+**ggplot(<span style="color:blue">dataframe</span>, aes(<span style="color:orangered">x = explanatory variable</span>, <span style="color:green">y = response variable</span>))**
 
-This will draw a blank ggplot, even though the x and y are specified. `ggplot` doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Alos note that `aes( )` function is used to specify the x and y axes. 
+This will draw a blank ggplot, even though the x and y are specified. `ggplot` doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Also note that `aes( )` function is used to specify the x and y axes. 
   
 - iii) Add layers with `geom_` functions:
 
@@ -64,7 +63,7 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(ggplot2))
 
-# wrangle the data (Can you remember what this code do?)
+# wrangle the data (Can you remember what this code does?)
 gapminder_pipe <- gapminder %>%
   filter(continent == "Europe" & year ==  2007) %>%
   mutate(pop_e6 = pop / 1000000)
@@ -101,7 +100,7 @@ ggplot(data = gapminder, mapping = aes(x = continent, fill = continent)) +
 ```
 
 ##### 🗣👥 Confer with your neighbours: 
-Does life expectancy depend upon the population size?
+Does life expectancy depend upon population size?
 
 `y = b_0 + b_1 x + e`
 
@@ -121,7 +120,7 @@ summary(m1)
 
 ##### 👉 Practice ⏰💻: Use gapminder data.
 
-Does the life expectancy depend upon the GDP per capita?
+Does life expectancy depend upon the GDP per capita?
 
 1) Have a glance at the data. (tip: `sample_n(df, n)`)
 
@@ -259,7 +258,7 @@ Thankfully, there is another way to change the limits of the axis without deleti
 coord_cartesian(xlim = c(0, 90000), ylim = c(25, 100))  # zooming in specified limits of the x & y axis
 ```
 
-You can set the breaks on the x axis and label them by using `scale_x_continuous()`. Similarly, you can do it for the y axis? 
+You can set the breaks on the x axis and label them by using `scale_x_continuous()`. Similarly, can you can do it for the y axis? 
 
 Try to play with changing the colour palette. For more options check [Sequential, diverging and qualitative colour scales from colorbrewer.org](https://ggplot2.tidyverse.org/reference/scale_brewer.html).
 
@@ -339,7 +338,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   scale_colour_wsj() +
   theme_wsj() +
   
-  # forms a matrix of scatterplots for each continet
+  # forms a matrix of scatterplots for each continent
   facet_grid(rows = vars(continent))
 ```
  
@@ -386,7 +385,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 ```
 ##### Case study: NO2 2017 😁
 
-Let's try to compbine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
+Let's try to combine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
 
 Remember this?
 ```{r}
@@ -425,13 +424,13 @@ new_no2 %>%
 
 Practise by doing the following set of exercises:
 
-1) Chose a data set from <https://data.gov.rs> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?
+1) Choose a data set from <https://data.gov.rs> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?
 
 2) Go back to NO2 2017 case study:
 
   i)	What are the questions you can ask based on the available information within the dataset?
 
-  ii)	What plots would you recommend to use to help in answering those questions?
+  ii)	What plots would you recommend using to help in answering those questions?
 
   iii)	Create appropriate visualisations for i) & ii)
 

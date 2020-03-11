@@ -6,7 +6,7 @@ output:
 weight: 3
 ---
 
-Most of you, if not all, will be familiar with creating the graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
+Most of you, if not all, will be familiar with creating graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
 
 ### Grammar of Graphics
 
@@ -44,13 +44,12 @@ Unlike base graphics, ggplot works with dataframes and not individual vectors.
 The best way to master it is by practising. So let us create a first `ggplot`. 😃
 What we need to do is the following:
 
-- i) Wrangle the data in the format suitable for visualisation.
-
-- ii) "Initialise" a plot with `ggplot()`:
+i. Wrangle the data in the format suitable for visualisation.
+ii. "Initialise" a plot with `ggplot()`:
   
-**ggplot(<span style="color:blue">dataframe</span>, aes(<span style="color:orangered">x = explanatory variable</span>, <span style="color:green">y = resposne variable</span>))**
+**ggplot(<span style="color:blue">dataframe</span>, aes(<span style="color:orangered">x = explanatory variable</span>, <span style="color:green">y = response variable</span>))**
 
-This will draw a blank ggplot, even though the x and y are specified. `ggplot` doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Alos note that `aes( )` function is used to specify the x and y axes. 
+This will draw a blank ggplot, even though the x and y are specified. `ggplot` doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Also note that `aes( )` function is used to specify the x and y axes. 
   
 - iii) Add layers with `geom_` functions:
 
@@ -65,7 +64,7 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(ggplot2))
 
-# wrangle the data (Can you remember what this code do?)
+# wrangle the data (Can you remember what this code does?)
 gapminder_pipe <- gapminder %>%
   filter(continent == "Europe" & year ==  2007) %>%
   mutate(pop_e6 = pop / 1000000)
@@ -105,7 +104,7 @@ ggplot(data = gapminder, mapping = aes(x = continent, fill = continent)) +
 ```
 
 ##### 🗣👥 Confer with your neighbours: 
-Does life expectancy depend upon the population size?
+Does life expectancy depend upon population size?
 
 `y = b_0 + b_1 x + e`
 
@@ -148,7 +147,7 @@ summary(m1)
 
 ##### 👉 Practice ⏰💻: Use gapminder data.
 
-Does the life expectancy depend upon the GDP per capita?
+Does life expectancy depend upon the GDP per capita?
 
 1) Have a glance at the data. (tip: `sample_n(df, n)`)
 
@@ -167,18 +166,18 @@ sample_n(gapminder, 30)
 
 ```
 ## # A tibble: 30 x 6
-##    country   continent  year lifeExp      pop gdpPercap
-##    <fct>     <fct>     <int>   <dbl>    <int>     <dbl>
-##  1 Nicaragua Americas   1997    68.4  4609572     2253.
-##  2 Poland    Europe     1967    69.6 31785378     6557.
-##  3 Algeria   Africa     1977    58.0 17152804     4910.
-##  4 Burundi   Africa     2007    49.6  8390505      430.
-##  5 Ghana     Africa     2002    58.5 20550751     1112.
-##  6 Eritrea   Africa     2007    58.0  4906585      641.
-##  7 Lesotho   Africa     1957    45.0   813338      336.
-##  8 Singapore Asia       1992    75.8  3235865    24770.
-##  9 Thailand  Asia       1987    66.1 52910342     2983.
-## 10 Benin     Africa     1957    40.4  1925173      960.
+##    country            continent  year lifeExp      pop gdpPercap
+##    <fct>              <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Venezuela          Americas   1967    63.5  9709552     9541.
+##  2 Jamaica            Americas   1982    71.2  2298309     6068.
+##  3 Equatorial Guinea  Africa     1957    36.0   232922      426.
+##  4 Mali               Africa     1982    43.9  6998256      618.
+##  5 Kenya              Africa     1997    54.4 28263827     1360.
+##  6 Poland             Europe     1997    72.8 38654957    10160.
+##  7 Hungary            Europe     1987    69.6 10612740    12986.
+##  8 Angola             Africa     1962    34    4826015     4269.
+##  9 West Bank and Gaza Asia       1997    71.1  2826046     7111.
+## 10 Iceland            Europe     1962    73.7   182053    10350.
 ## # … with 20 more rows
 ```
 
@@ -351,7 +350,7 @@ Thankfully, there is another way to change the limits of the axis without deleti
 coord_cartesian(xlim = c(0, 90000), ylim = c(25, 100))  # zooming in specified limits of the x & y axis
 ```
 
-You can set the breaks on the x axis and label them by using `scale_x_continuous()`. Similarly, you can do it for the y axis? 
+You can set the breaks on the x axis and label them by using `scale_x_continuous()`. Similarly, can you can do it for the y axis? 
 
 Try to play with changing the colour palette. For more options check [Sequential, diverging and qualitative colour scales from colorbrewer.org](https://ggplot2.tidyverse.org/reference/scale_brewer.html).
 
@@ -438,7 +437,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   scale_colour_wsj() +
   theme_wsj() +
   
-  # forms a matrix of scatterplots for each continet
+  # forms a matrix of scatterplots for each continent
   facet_grid(rows = vars(continent))
 ```
 
@@ -502,7 +501,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 <img src="/module2/Visualisation/_index.en_files/figure-html/unnamed-chunk-15-1.png" width="768" style="display: block; margin: auto;" />
 ##### Case study: NO2 2017 😁
 
-Let's try to compbine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
+Let's try to combine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
 
 Remember this?
 
@@ -553,13 +552,13 @@ new_no2 %>%
 
 Practise by doing the following set of exercises:
 
-1) Chose a data set from <https://data.gov.rs> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?
+1) Choose a data set from <https://data.gov.rs> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?
 
 2) Go back to NO2 2017 case study:
 
   i)	What are the questions you can ask based on the available information within the dataset?
 
-  ii)	What plots would you recommend to use to help in answering those questions?
+  ii)	What plots would you recommend using to help in answering those questions?
 
   iii)	Create appropriate visualisations for i) & ii)
 

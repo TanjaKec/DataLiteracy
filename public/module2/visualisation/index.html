@@ -12,18 +12,18 @@
     <title>Data Visualisation :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1583500944" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1583500944" rel="stylesheet">
-    <link href="/css/hybrid.css?1583500944" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1583500944" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1583500944" rel="stylesheet">
-    <link href="/css/auto-complete.css?1583500944" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1583500944" rel="stylesheet">
-    <link href="/css/theme.css?1583500944" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1583500944" rel="stylesheet">
+    <link href="/css/nucleus.css?1583911466" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583911466" rel="stylesheet">
+    <link href="/css/hybrid.css?1583911466" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583911466" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583911466" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583911466" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583911466" rel="stylesheet">
+    <link href="/css/theme.css?1583911466" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583911466" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1583500944"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583911466"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1583500944"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1583500944"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583911466"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583911466"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1583500944"></script>
+<script type="text/javascript" src="/js/search.js?1583911466"></script>
 
     
   </div>
@@ -864,7 +864,7 @@
 
 
 
-	<p>Most of you, if not all, will be familiar with creating the graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: &ldquo;pretty graph&rdquo;. Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation.</p>
+	<p>Most of you, if not all, will be familiar with creating graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: &ldquo;pretty graph&rdquo;. Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation.</p>
 <h3 id="grammar-of-graphics">Grammar of Graphics</h3>
 <p>The <a href="http://vita.had.co.nz/papers/layered-grammar.html">grammar of graphics</a> enables a structured way of creating a plot by adding the components as layers, making it look effective and attractive.</p>
 <p>It enables you to specify building blocks of a plot and to combine them to create the graphical display that you want. There are 8 building blocks:</p>
@@ -903,16 +903,10 @@
 
 <p>The best way to master it is by practising. So let us create a first <code>ggplot</code>. 😃
 What we need to do is the following:</p>
-<ul>
-<li>
-<p>i) Wrangle the data in the format suitable for visualisation.</p>
-</li>
-<li>
-<p>ii) &ldquo;Initialise&rdquo; a plot with <code>ggplot()</code>:</p>
-</li>
-</ul>
-<p><strong>ggplot(<!-- raw HTML omitted -->dataframe<!-- raw HTML omitted -->, aes(<!-- raw HTML omitted -->x = explanatory variable<!-- raw HTML omitted -->, <!-- raw HTML omitted -->y = resposne variable<!-- raw HTML omitted -->))</strong></p>
-<p>This will draw a blank ggplot, even though the x and y are specified. <code>ggplot</code> doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Alos note that <code>aes( )</code> function is used to specify the x and y axes.</p>
+<p>i. Wrangle the data in the format suitable for visualisation.
+ii. &ldquo;Initialise&rdquo; a plot with <code>ggplot()</code>:</p>
+<p><strong>ggplot(<!-- raw HTML omitted -->dataframe<!-- raw HTML omitted -->, aes(<!-- raw HTML omitted -->x = explanatory variable<!-- raw HTML omitted -->, <!-- raw HTML omitted -->y = response variable<!-- raw HTML omitted -->))</strong></p>
+<p>This will draw a blank ggplot, even though the x and y are specified. <code>ggplot</code> doesn’t assume the plot you meant to be drawn (a scatterplot). You only specify the data set and columns ie. variables to be used. Also note that <code>aes( )</code> function is used to specify the x and y axes.</p>
 <ul>
 <li>iii) Add layers with <code>geom_</code> functions:</li>
 </ul>
@@ -923,7 +917,7 @@ What we need to do is the following:</p>
 <span style="color:#a6e22e">suppressPackageStartupMessages</span>(<span style="color:#a6e22e">library</span>(gapminder))
 <span style="color:#a6e22e">suppressPackageStartupMessages</span>(<span style="color:#a6e22e">library</span>(ggplot2))
 
-<span style="color:#75715e"># wrangle the data (Can you remember what this code do?)</span>
+<span style="color:#75715e"># wrangle the data (Can you remember what this code does?)</span>
 gapminder_pipe <span style="color:#f92672">&lt;-</span> gapminder <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">filter</span>(continent <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Europe&#34;</span> <span style="color:#f92672">&amp;</span> year <span style="color:#f92672">==</span>  <span style="color:#ae81ff">2007</span>) <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">mutate</span>(pop_e6 <span style="color:#f92672">=</span> pop <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>)
@@ -952,7 +946,7 @@ gapminder_pipe <span style="color:#f92672">&lt;-</span> gapminder <span style="c
 <span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> gapminder, mapping <span style="color:#f92672">=</span> <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> continent, fill <span style="color:#f92672">=</span> continent)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">geom_bar</span>()
 </code></pre></div><h5 id="-confer-with-your-neighbours">🗣👥 Confer with your neighbours:</h5>
-<p>Does life expectancy depend upon the population size?</p>
+<p>Does life expectancy depend upon population size?</p>
 <p><code>y = b_0 + b_1 x + e</code></p>
 <p>Run this code in your console to fit the model <code>pop</code> vs <code>lifeExp</code>.</p>
 <p>Pay attention to spelling, capitalization, and parentheses!</p>
@@ -980,7 +974,7 @@ gapminder_pipe <span style="color:#f92672">&lt;-</span> gapminder <span style="c
 ## Multiple R-squared:  0.004826,	Adjusted R-squared:  -0.03072 
 ## F-statistic: 0.1358 on 1 and 28 DF,  p-value: 0.7153
 </code></pre><h5 id="-practice--use-gapminder-data">👉 Practice ⏰💻: Use gapminder data.</h5>
-<p>Does the life expectancy depend upon the GDP per capita?</p>
+<p>Does life expectancy depend upon the GDP per capita?</p>
 <ol>
 <li>
 <p>Have a glance at the data. (tip: <code>sample_n(df, n)</code>)</p>
@@ -999,18 +993,18 @@ Is the relationship linear? What conclusion(s) can you draw?</p>
 <h5 id="-solution-code-q1-sample">😃🙌 Solution: code Q1; sample</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">sample_n</span>(gapminder, <span style="color:#ae81ff">30</span>)
 </code></pre></div><pre><code>## # A tibble: 30 x 6
-##    country   continent  year lifeExp      pop gdpPercap
-##    &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Nicaragua Americas   1997    68.4  4609572     2253.
-##  2 Poland    Europe     1967    69.6 31785378     6557.
-##  3 Algeria   Africa     1977    58.0 17152804     4910.
-##  4 Burundi   Africa     2007    49.6  8390505      430.
-##  5 Ghana     Africa     2002    58.5 20550751     1112.
-##  6 Eritrea   Africa     2007    58.0  4906585      641.
-##  7 Lesotho   Africa     1957    45.0   813338      336.
-##  8 Singapore Asia       1992    75.8  3235865    24770.
-##  9 Thailand  Asia       1987    66.1 52910342     2983.
-## 10 Benin     Africa     1957    40.4  1925173      960.
+##    country            continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;              &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Venezuela          Americas   1967    63.5  9709552     9541.
+##  2 Jamaica            Americas   1982    71.2  2298309     6068.
+##  3 Equatorial Guinea  Africa     1957    36.0   232922      426.
+##  4 Mali               Africa     1982    43.9  6998256      618.
+##  5 Kenya              Africa     1997    54.4 28263827     1360.
+##  6 Poland             Europe     1997    72.8 38654957    10160.
+##  7 Hungary            Europe     1987    69.6 10612740    12986.
+##  8 Angola             Africa     1962    34    4826015     4269.
+##  9 West Bank and Gaza Asia       1997    71.1  2826046     7111.
+## 10 Iceland            Europe     1962    73.7   182053    10350.
 ## # … with 20 more rows
 </code></pre><p>We will add layers onto this scatterplot: <code>liveExp</code> vs <code>gdpPercap</code>. We want to superimpose regression line of the best fit and non-parametric loess line that depict a possible relationship between the two variables. That means we will have:</p>
 <ul>
@@ -1126,7 +1120,7 @@ Is the relationship linear? What conclusion(s) can you draw?</p>
 
 <p>Thankfully, there is another way to change the limits of the axis without deleting the points by simply zooming in to the region of interest. This is done using <code>coord_cartesian()</code>. You can try to replace <code>xlim()</code> and <code>ylim()</code> commands in the previous code chunk with the code below to see what would happen.</p>
 <pre><code>coord_cartesian(xlim = c(0, 90000), ylim = c(25, 100))  # zooming in specified limits of the x &amp; y axis
-</code></pre><p>You can set the breaks on the x axis and label them by using <code>scale_x_continuous()</code>. Similarly, you can do it for the y axis?</p>
+</code></pre><p>You can set the breaks on the x axis and label them by using <code>scale_x_continuous()</code>. Similarly, can you can do it for the y axis?</p>
 <p>Try to play with changing the colour palette. For more options check <a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">Sequential, diverging and qualitative colour scales from colorbrewer.org</a>.</p>
 <p>These are build-in themes which control all non-data display. You should use <code>theme_bw()</code> to have white background or <code>theme_dark()</code> for dark grey. For more build-in themes click <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(gapminder, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> gdpPercap, y <span style="color:#f92672">=</span> lifeExp)) <span style="color:#f92672">+</span>
@@ -1193,7 +1187,7 @@ Is the relationship linear? What conclusion(s) can you draw?</p>
   <span style="color:#a6e22e">scale_colour_wsj</span>() <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">theme_wsj</span>() <span style="color:#f92672">+</span>
   
-  <span style="color:#75715e"># forms a matrix of scatterplots for each continet</span>
+  <span style="color:#75715e"># forms a matrix of scatterplots for each continent</span>
   <span style="color:#a6e22e">facet_grid</span>(rows <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(continent))
 </code></pre></div><p><!-- raw HTML omitted --></p>
 <p>The main difference between <code>facet_wrap()</code> and  <code>facet_grid()</code> is that the former can string together ggplots in different facets using a single variable, while the latter can do it for more than one.</p>
@@ -1240,7 +1234,7 @@ Is the relationship linear? What conclusion(s) can you draw?</p>
         plot.title<span style="color:#f92672">=</span><span style="color:#a6e22e">element_text</span>(hjust<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>))
 </code></pre></div><p><!-- raw HTML omitted --></p>
 <h5 id="case-study-no2-2017-">Case study: NO2 2017 😁</h5>
-<p>Let's try to compbine everything we have learnt so far and practise using well known to us <a href="http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv">2017-NO2.csv</a> data.</p>
+<p>Let's try to combine everything we have learnt so far and practise using well known to us <a href="http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv">2017-NO2.csv</a> data.</p>
 <p>Remember this?</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyr)
 <span style="color:#a6e22e">library</span>(forcats)
@@ -1278,14 +1272,14 @@ new_no2 <span style="color:#f92672">&lt;-</span> no2 <span style="color:#f92672"
 <p>Practise by doing the following set of exercises:</p>
 <ol>
 <li>
-<p>Chose a data set from <a href="https://data.gov.rs">https://data.gov.rs</a> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?</p>
+<p>Choose a data set from <a href="https://data.gov.rs">https://data.gov.rs</a> that is interesting to you. Import the dataset into R and examine what kinds of variables are there. What plots would you recommend using to help people get to know the dataset?</p>
 </li>
 <li>
 <p>Go back to NO2 2017 case study:</p>
 </li>
 </ol>
 <p>i)	What are the questions you can ask based on the available information within the dataset?</p>
-<p>ii)	What plots would you recommend to use to help in answering those questions?</p>
+<p>ii)	What plots would you recommend using to help in answering those questions?</p>
 <p>iii)	Create appropriate visualisations for i) &amp; ii)</p>
 <h5 id="useful-links">useful links:</h5>
 <p><a href="https://www.rstudio.com/resources/webinars/tidyverse-visualization-and-manipulation-basics/">tidyverse, visualization, and manipulation basics</a></p>
@@ -1741,19 +1735,19 @@ new_no2 <span style="color:#f92672">&lt;-</span> no2 <span style="color:#f92672"
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1583500944"></script>
-    <script src="/js/perfect-scrollbar.min.js?1583500944"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1583500944"></script>
-    <script src="/js/jquery.sticky.js?1583500944"></script>
-    <script src="/js/featherlight.min.js?1583500944"></script>
-    <script src="/js/highlight.pack.js?1583500944"></script>
+    <script src="/js/clipboard.min.js?1583911466"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583911466"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583911466"></script>
+    <script src="/js/jquery.sticky.js?1583911466"></script>
+    <script src="/js/featherlight.min.js?1583911466"></script>
+    <script src="/js/highlight.pack.js?1583911466"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1583500944"></script>
-    <script src="/js/learn.js?1583500944"></script>
-    <script src="/js/hugo-learn.js?1583500944"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583911466"></script>
+    <script src="/js/learn.js?1583911466"></script>
+    <script src="/js/hugo-learn.js?1583911466"></script>
 
-    <link href="/mermaid/mermaid.css?1583500944" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1583500944"></script>
+    <link href="/mermaid/mermaid.css?1583911466" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583911466"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
