@@ -8,7 +8,7 @@ weight: 3
 
 Most of you, if not all, will be familiar with creating graphs in Excel. Software such as Excel has a predefined set of menu options for plotting the data that is the focus of the end result: "pretty graph". Those types of menus assume data to be in a format ready for plotting, which when you get raw data is hardly the case. You are probably going to have to organise and wrangle your data to make it ready for effective visualisation. 
 
-### Grammar of Graphics
+**Grammar of Graphics**
 
 The [grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.html) enables a structured way of creating a plot by adding the components as layers, making it look effective and attractive. 
 
@@ -32,8 +32,9 @@ It enables you to specify building blocks of a plot and to combine them to creat
 
 Imagine talking about baking a cake and adding a cherry on the top. 🎂🍒 This philosophy has been built into the [`ggplot`](https://ggplot2.tidyverse.org/reference/) package by [Hadle Wickham](http://hadley.nz) for creating elegant and complex plots in R.
 
+---
 
-#### ggplot2
+**`ggplot2`**
 
 Learning how to use the `ggplot2` package can be challenging, but the results are highly rewarding and just like R itself, it becomes easier the more you use it.
 
@@ -82,7 +83,7 @@ ggplot(data = <DATA>, (mapping = aes(<MAPPINGS>)) +
       <GEOM_FUNCTION>()
 ```
 
-##### <span style="color:red">ggplot()</span> gallery
+**<span style="color:red">ggplot()</span> gallery**
 Run the following code to see what graphs it will produce.
 
 ```{r, echo = TRUE, eval = FALSE, warnings = FALSE, message = FALSE}
@@ -99,10 +100,12 @@ ggplot(data = gapminder, mapping = aes(x = continent, fill = continent)) +
   geom_bar()
 ```
 
-##### 🗣👥 Confer with your neighbours: 
+---
+
+ 🗣👥 Confer with your neighbours: 
 Does life expectancy depend upon population size?
 
-`y = b_0 + b_1 x + e`
+$$y = b_0 + b_1 x + e$$
 
 Run this code in your console to fit the model `pop` vs `lifeExp`.
 
@@ -118,7 +121,9 @@ m1 <- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$pop_e6)
 summary(m1)
 ```
 
-##### 👉 Practice ⏰💻: Use gapminder data.
+---
+
+👉 Practice ⏰💻: Use gapminder data.
 
 Does life expectancy depend upon the GDP per capita?
 
@@ -131,7 +136,7 @@ Is the relationship linear? What conclusion(s) can you draw?
 
 4) What are the other questions you could ask; could you provide the answers to them?
 
-##### 😃🙌 Solution: code Q1; sample
+😃🙌 Solution: code Q1; sample
 ```{r, echo = TRUE, warning = FALSE}
 sample_n(gapminder, 30)
 ```
@@ -143,7 +148,7 @@ We will add layers onto this scatterplot: `liveExp` vs `gdpPercap`. We want to s
 - 3rd layer: **loess curve**
 
 
-##### 😃🙌 Solution: code Q2; Plot the data;
+ 😃🙌 Solution: code Q2; Plot the data;
 ```{r, echo = TRUE, warning = FALSE, fig.height = 4, fig.width = 8, fig.align = 'center'}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.2, shape = 21, fill = "blue", colour="black", size = 5) + # set transparency, shape, colour and size for points
@@ -151,17 +156,19 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_smooth(method = "loess", se = F, col = "limegreen") # change the colour of line
 ```
 
-##### 😃🙌 Solution: code Q3; simple regression model
+😃🙌 Solution: code Q3; simple regression model
 ```{r, echo = TRUE, warning = FALSE}
 my.model <- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$gdpPercap)
 summary(my.model)
 ```
 
-### Playing with the aesthetic: adding more layers to your <span style="color:red">`ggplot()`</span>
+---
+
+**Playing with the aesthetic:** adding more layers to your <span style="color:red">`ggplot()`</span>
 
 Whenever possible you should strive to make your graph visually appealing and informative as discussed in the previous section *Principles of Visualisation*. 
 
-#### To change the title and axis labels use <span style="color:orangered">layer **labs**</span>
+**To change the title and axis labels use <span style="color:orangered">layer `labs`</span>**
 
 **labs(<span style="color:blue">title =</span> <span style="color:orangered"> “your title”</span>, <span style="color:blue">subtitle =</span> <span style="color:orangered"> “your subtitle”</span>, <span style="color:blue">y =</span> <span style="color:orangered"> “y label”</span>, <span style="color:blue">x =</span> <span style="color:orangered"> “x label”</span>, <span style="color:blue">caption =</span> <span style="color:orangered"> “graph's caption”</span>)** 
  
@@ -198,7 +205,9 @@ annotate("text", x = 80000, y = 125 label = "regression line", color = "maroon3"
 
 To learn more about how to modify the appearance of the theme go to [ggplot’s theme page](https://ggplot2.tidyverse.org/reference/theme.html).
 
-#### Change the colour of the points to reflect categories of another, third variable.
+---
+
+**Change the colour of the points to reflect categories of another, third variable.**
 
 ```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -223,8 +232,9 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 Note that the legend is added automatically. You can remove it by setting the **legend.position** to `none` from within a `theme()` function.
 {{% /notice %}}
 
+---
 
-#### Adjust the X and Y axis limits and change the X axis texts and its ticks' location
+**Adjust the X and Y axis limits and change the X axis texts and its ticks' location**
 
 ```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
   ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -318,7 +328,9 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 You are ready to make publication-ready visualizations in R. 😎 You can go further and explore for yourself to see if you can produce BBC style ggplot charts like those used in the BBC's data journalism. Check out the [BBC Visual and Data Journalism cookbook for R graphics]( https://bbc.github.io/rcookbook/).
 
-##### Lay out panels in a grid
+---
+
+**Lay out panels in a grid**
 
 Sometimes it might be hard to read one panel plot, like the one we have just created in which it is not very easy to see the points of each continent. To make it easier to follow and to understand the information you are trying to depict, it would be more effective to present different categories of the same information in a clear set of multi-panel plots. This is easy to do by applying powerful faceting functions of the `ggplot2`: `facet_wrap()` and `facet_grid()`.
   
@@ -348,7 +360,9 @@ The main difference between `facet_wrap()` and  `facet_grid()` is that the forme
 Try to explore the two functions for yourself and see where it will take you.
 {{% /notice %}}
  
-#### 💪 There is a challenge: 
+---
+
+💪 There is a challenge: 
 
 - `dplyr`'s `group_by()` function enables you to group your data. It allows you to create a separate df that splits the original df by a variable.
 
@@ -356,7 +370,7 @@ Try to explore the two functions for yourself and see where it will take you.
 
 Knowing about `group_by()` and `boxplot()` function and using `gapminder` data, can you compute the median life expectancy for year 2007 by continent and visualise your result?
 
-##### 😃🙌 Solution: code
+😃🙌 Solution: code
 
 Let us look at the median life expectancy for each continent
 ```{r, echo = TRUE}
@@ -367,7 +381,7 @@ gapminder %>%
 
 **We are lucky that we live in Serbia, ie. Europe!!!** 😅
 
-##### 😃🙌 Solution: graph 
+😃🙌 Solution: graph 
 
 ```{r, echo = TRUE, warnings=FALSE, message=FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
 # visualise the information
@@ -383,7 +397,10 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
                                     size = .75),
         plot.title=element_text(hjust=0.5))
 ```
-##### Case study: NO2 2017 😁
+
+---
+
+**Case study: NO2 2017 😁**
 
 Let's try to combine everything we have learnt so far and practise using well known to us [2017-NO2.csv](http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv) data. 
 
@@ -420,7 +437,9 @@ new_no2 %>%
           axis.ticks.x = element_blank()) # 
 ```
 
-## YOUR TURN 👇
+---
+
+**YOUR TURN 👇**
 
 Practise by doing the following set of exercises:
 
@@ -434,9 +453,9 @@ Practise by doing the following set of exercises:
 
   iii)	Create appropriate visualisations for i) & ii)
 
+---
 
-
-##### useful links: 
+**Useful links:** 
 
 [tidyverse, visualization, and manipulation basics](https://www.rstudio.com/resources/webinars/tidyverse-visualization-and-manipulation-basics/)
 
