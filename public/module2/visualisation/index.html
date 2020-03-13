@@ -12,18 +12,18 @@
     <title>Data Visualisation :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1583914469" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1583914469" rel="stylesheet">
-    <link href="/css/hybrid.css?1583914469" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1583914469" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1583914469" rel="stylesheet">
-    <link href="/css/auto-complete.css?1583914469" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1583914469" rel="stylesheet">
-    <link href="/css/theme.css?1583914469" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1583914469" rel="stylesheet">
+    <link href="/css/nucleus.css?1584081139" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1584081139" rel="stylesheet">
+    <link href="/css/hybrid.css?1584081139" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1584081139" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1584081139" rel="stylesheet">
+    <link href="/css/auto-complete.css?1584081139" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1584081139" rel="stylesheet">
+    <link href="/css/theme.css?1584081139" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1584081139" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1583914469"></script>
+    <script src="/js/jquery-3.3.1.min.js?1584081139"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1583914469"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1583914469"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1584081139"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1584081139"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1583914469"></script>
+<script type="text/javascript" src="/js/search.js?1584081139"></script>
 
     
   </div>
@@ -967,16 +967,16 @@ Is the relationship linear? What conclusion(s) can you draw?</p></li>
 <pre><code>## # A tibble: 30 x 6
 ##    country    continent  year lifeExp      pop gdpPercap
 ##    &lt;fct&gt;      &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Ethiopia   Africa     1967    42.1 27860297      516.
-##  2 Togo       Africa     1967    46.8  1735550     1478.
-##  3 Madagascar Africa     1977    46.9  8007166     1544.
-##  4 Poland     Europe     1957    65.8 28235346     4734.
-##  5 Senegal    Africa     1987    55.8  7171347     1442.
-##  6 Greece     Europe     1982    75.2  9786480    15268.
-##  7 Oman       Asia       1982    62.7  1301048    12955.
-##  8 Senegal    Africa     1957    39.3  3054547     1568.
-##  9 Gabon      Africa     1977    52.8   706367    21746.
-## 10 Mongolia   Asia       1967    51.3  1149500     1226.
+##  1 Taiwan     Asia       1977    70.6 16785196     5597.
+##  2 Gambia     Africa     1952    30     284320      485.
+##  3 Mauritania Africa     2002    62.2  2828858     1579.
+##  4 Haiti      Americas   1962    43.6  3880130     1797.
+##  5 Liberia    Africa     1967    41.5  1279406      714.
+##  6 Algeria    Africa     1952    43.1  9279525     2449.
+##  7 Pakistan   Asia       1977    54.0 78152686     1176.
+##  8 Chad       Africa     1957    39.9  2894855     1308.
+##  9 Poland     Europe     1987    71.0 37740710     9082.
+## 10 Gabon      Africa     1952    37.0   420702     4293.
 ## # … with 20 more rows</code></pre>
 <p>We will add layers onto this scatterplot: <code>liveExp</code> vs <code>gdpPercap</code>. We want to superimpose regression line of the best fit and non-parametric loess line that depict a possible relationship between the two variables. That means we will have:</p>
 <ul>
@@ -1123,7 +1123,7 @@ summary(my.model)</code></pre>
 <p><img src="/module2/Visualisation/_index.en_files/figure-html/unnamed-chunk-11-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>There is a <code>ggthemes</code> library of themes that willhelp you create stylish ggplot charts used by different journals like the Wall Street Journal or the Economist. See what other themes you can use by going to <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">this website</a></p>
 <pre class="r"><code>## If you don&#39;t have ggthemes installed yet, uncomment and run the line below
-#install.packeges(&quot;ggthemes&quot;)
+#install.packages(&quot;ggthemes&quot;)
 library(ggthemes)
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
@@ -1709,19 +1709,19 @@ glimpse(new_no2)</code></pre>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1583914469"></script>
-    <script src="/js/perfect-scrollbar.min.js?1583914469"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1583914469"></script>
-    <script src="/js/jquery.sticky.js?1583914469"></script>
-    <script src="/js/featherlight.min.js?1583914469"></script>
-    <script src="/js/highlight.pack.js?1583914469"></script>
+    <script src="/js/clipboard.min.js?1584081139"></script>
+    <script src="/js/perfect-scrollbar.min.js?1584081139"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1584081139"></script>
+    <script src="/js/jquery.sticky.js?1584081139"></script>
+    <script src="/js/featherlight.min.js?1584081139"></script>
+    <script src="/js/highlight.pack.js?1584081139"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1583914469"></script>
-    <script src="/js/learn.js?1583914469"></script>
-    <script src="/js/hugo-learn.js?1583914469"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1584081139"></script>
+    <script src="/js/learn.js?1584081139"></script>
+    <script src="/js/hugo-learn.js?1584081139"></script>
 
-    <link href="/mermaid/mermaid.css?1583914469" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1583914469"></script>
+    <link href="/mermaid/mermaid.css?1584081139" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1584081139"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

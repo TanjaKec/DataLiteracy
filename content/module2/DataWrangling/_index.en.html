@@ -438,7 +438,7 @@ plot(gapminder_pipe$pop_e6, gapminder_pipe$lifeExp, cex = 0.5, col = &quot;red&q
 <p>to name a few.</p>
 <p>To illustrate this, let us go back onto <a href="https://data.gov.rs/" class="uri">https://data.gov.rs/</a> and access <a href="https://data.gov.rs/sr/datasets/kvalitet-vazduha-2017/">Kvalitet Vazduha 2017</a>. In particular, we want to access <a href="http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv">2017-NO2.csv</a> data.</p>
 <pre class="r"><code>## If you don&#39;t have tidyr installed yet, uncomment and run the line below
-#install.packeges(&quot;tidyr&quot;)
+#install.packages(&quot;tidyr&quot;)
 library(tidyr)
 # access 2017-NO2.csv data
 no2 &lt;- read.csv(&quot;http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/74516688-5fb5-47b2-becc-6b6e31a24d80/download/2017-no2.csv&quot;,

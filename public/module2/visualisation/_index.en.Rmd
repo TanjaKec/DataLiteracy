@@ -304,7 +304,7 @@ There is a `ggthemes` library of themes that willhelp you create stylish ggplot 
 
 ```{r, echo = TRUE, warnings = FALSE, message = FALSE, fig.height = 6, fig.width = 8, fig.align = 'center'}
 ## If you don't have ggthemes installed yet, uncomment and run the line below
-#install.packeges("ggthemes")
+#install.packages("ggthemes")
 library(ggthemes)
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
