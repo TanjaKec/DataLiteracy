@@ -12,18 +12,18 @@
     <title>Data Visualisation :: DS Bootcamp in R</title>
 
     
-    <link href="/css/nucleus.css?1584081139" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1584081139" rel="stylesheet">
-    <link href="/css/hybrid.css?1584081139" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1584081139" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1584081139" rel="stylesheet">
-    <link href="/css/auto-complete.css?1584081139" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1584081139" rel="stylesheet">
-    <link href="/css/theme.css?1584081139" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1584081139" rel="stylesheet">
+    <link href="/css/nucleus.css?1585040719" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1585040719" rel="stylesheet">
+    <link href="/css/hybrid.css?1585040719" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1585040719" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1585040719" rel="stylesheet">
+    <link href="/css/auto-complete.css?1585040719" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1585040719" rel="stylesheet">
+    <link href="/css/theme.css?1585040719" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1585040719" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1584081139"></script>
+    <script src="/js/jquery-3.3.1.min.js?1585040719"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1584081139"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1584081139"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1585040719"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1585040719"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1584081139"></script>
+<script type="text/javascript" src="/js/search.js?1585040719"></script>
 
     
   </div>
@@ -965,18 +965,18 @@ Is the relationship linear? What conclusion(s) can you draw?</p></li>
 <p>😃🙌 Solution: code Q1; sample</p>
 <pre class="r"><code>sample_n(gapminder, 30)</code></pre>
 <pre><code>## # A tibble: 30 x 6
-##    country    continent  year lifeExp      pop gdpPercap
-##    &lt;fct&gt;      &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Taiwan     Asia       1977    70.6 16785196     5597.
-##  2 Gambia     Africa     1952    30     284320      485.
-##  3 Mauritania Africa     2002    62.2  2828858     1579.
-##  4 Haiti      Americas   1962    43.6  3880130     1797.
-##  5 Liberia    Africa     1967    41.5  1279406      714.
-##  6 Algeria    Africa     1952    43.1  9279525     2449.
-##  7 Pakistan   Asia       1977    54.0 78152686     1176.
-##  8 Chad       Africa     1957    39.9  2894855     1308.
-##  9 Poland     Europe     1987    71.0 37740710     9082.
-## 10 Gabon      Africa     1952    37.0   420702     4293.
+##    country                  continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;                    &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Central African Republic Africa     2002    43.3  4048013      739.
+##  2 Switzerland              Europe     1972    73.8  6401400    27195.
+##  3 Oman                     Asia       2007    75.6  3204897    22316.
+##  4 Korea, Rep.              Asia       1952    47.5 20947571     1031.
+##  5 Gabon                    Africa     1957    39.0   434904     4976.
+##  6 Swaziland                Africa     1992    58.5   962344     3553.
+##  7 Austria                  Europe     1957    67.5  6965860     8843.
+##  8 Mauritius                Africa     2007    72.8  1250882    10957.
+##  9 Slovak Republic          Europe     1962    70.3  4237384     7481.
+## 10 Trinidad and Tobago      Americas   2002    69.0  1101832    11461.
 ## # … with 20 more rows</code></pre>
 <p>We will add layers onto this scatterplot: <code>liveExp</code> vs <code>gdpPercap</code>. We want to superimpose regression line of the best fit and non-parametric loess line that depict a possible relationship between the two variables. That means we will have:</p>
 <ul>
@@ -1022,7 +1022,7 @@ summary(my.model)</code></pre>
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;limegreen&quot;) + 
  
   # give a title an label axes
-  labs(title = &quot;Life Exp. vs. Population Size&quot;, 
+  labs(title = &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   
   # modify the appearance
@@ -1049,7 +1049,7 @@ summary(my.model)</code></pre>
   
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;maroon3&quot;) + 
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;dodgerblue3&quot;) + 
-  labs (title= &quot;Life Exp. vs. Population Size&quot;, 
+  labs (title= &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   theme(legend.position = &quot;right&quot;, 
         panel.border = element_rect(fill = NA, 
@@ -1069,7 +1069,7 @@ summary(my.model)</code></pre>
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;maroon3&quot;) + 
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;dodgerblue3&quot;) + 
-  labs (title= &quot;Life Exp. vs. Population Size&quot;, 
+  labs (title= &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   theme(legend.position = &quot;right&quot;, 
         panel.border = element_rect(fill = NA, 
@@ -1102,7 +1102,7 @@ summary(my.model)</code></pre>
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;maroon3&quot;) + 
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;dodgerblue3&quot;) + 
-  labs (title= &quot;Life Exp. vs. Population Size&quot;, 
+  labs (title= &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   theme(legend.position = &quot;right&quot;, 
         panel.border = element_rect(fill = NA, 
@@ -1113,7 +1113,7 @@ summary(my.model)</code></pre>
   geom_text(x = 90000, y = 75, label = &quot;smooth line&quot;, col = &quot;dodgerblue3&quot;) +
   
   # change breaks and label them 
-  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;10K&quot;, &quot;12K&quot;)) +
+  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;100K&quot;, &quot;120K&quot;)) +
 
   # change color palette
   scale_colour_brewer(palette = &quot;Set1&quot;) + 
@@ -1129,7 +1129,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;darkred&quot;) + 
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;darkgreen&quot;) + 
-  labs (title= &quot;Life Exp. vs. Population Size&quot;, 
+  labs (title= &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   theme(legend.position = &quot;right&quot;, 
         panel.border = element_rect(fill = NA, 
@@ -1138,7 +1138,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
         plot.title=element_text(hjust=0.5)) + 
   geom_text(x = 80000, y = 125, label = &quot;regression line&quot;, col = &quot;darkred&quot;) + 
   geom_text(x = 90000, y = 75, label = &quot;smooth line&quot;, col = &quot;darkgreen&quot;) +
-  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;10K&quot;, &quot;12K&quot;)) +
+  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;100K&quot;, &quot;120K&quot;)) +
 
   # Wall Street Journal theme
   scale_colour_wsj() +
@@ -1152,14 +1152,14 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(col = continent), alpha = 0.5, shape = 20, size = 3) + 
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;darkred&quot;) + 
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;black&quot;) + 
-  labs (title= &quot;Life Exp. vs. Population Size&quot;, 
+  labs (title= &quot;GDP per Capita vs. Population Size&quot;, 
         x = &quot;population&quot;, y = &quot;Life Exp.&quot;) + 
   theme(legend.position = &quot;right&quot;, 
         panel.border = element_rect(fill = NA, 
                                     colour = &quot;black&quot;,
                                     size = .75),
         plot.title=element_text(hjust=0.5)) + 
-  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;10K&quot;, &quot;12K&quot;)) +
+  scale_x_continuous(breaks = seq(0, 120000, 20000), labels = c(&quot;0&quot;, &quot;20K&quot;, &quot;40K&quot;, &quot;60K&quot;, &quot;80K&quot;, &quot;100K&quot;, &quot;120K&quot;)) +
   scale_colour_wsj() +
   theme_wsj() +
   
@@ -1233,7 +1233,8 @@ glimpse(new_no2)</code></pre>
 ## $ no2   &lt;dbl&gt; 22.89, 32.94, 14.86, 22.73, 20.89, 10.47, 9.58, 15.99, 14.…</code></pre>
 <pre class="r"><code>new_no2 %&gt;% 
   group_by(place) %&gt;% 
-  summarise(mean_no2 = mean(!is.na(no2))) %&gt;% # !is.na(): is not NA; omits the missing values
+  filter(!is.na(no2)) %&gt;% 
+  summarise(mean_no2 = mean(no2)) %&gt;% # !is.na(): is not NA; omits the missing values
   ggplot(aes(x = place, y = mean_no2, fill = place)) + # fill: colours each bar differently   
     geom_bar(stat = &quot;identity&quot;) +
     xlab(&quot;Place&quot;) + 
@@ -1709,19 +1710,19 @@ glimpse(new_no2)</code></pre>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1584081139"></script>
-    <script src="/js/perfect-scrollbar.min.js?1584081139"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1584081139"></script>
-    <script src="/js/jquery.sticky.js?1584081139"></script>
-    <script src="/js/featherlight.min.js?1584081139"></script>
-    <script src="/js/highlight.pack.js?1584081139"></script>
+    <script src="/js/clipboard.min.js?1585040719"></script>
+    <script src="/js/perfect-scrollbar.min.js?1585040719"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1585040719"></script>
+    <script src="/js/jquery.sticky.js?1585040719"></script>
+    <script src="/js/featherlight.min.js?1585040719"></script>
+    <script src="/js/highlight.pack.js?1585040719"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1584081139"></script>
-    <script src="/js/learn.js?1584081139"></script>
-    <script src="/js/hugo-learn.js?1584081139"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1585040719"></script>
+    <script src="/js/learn.js?1585040719"></script>
+    <script src="/js/hugo-learn.js?1585040719"></script>
 
-    <link href="/mermaid/mermaid.css?1584081139" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1584081139"></script>
+    <link href="/mermaid/mermaid.css?1585040719" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1585040719"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
