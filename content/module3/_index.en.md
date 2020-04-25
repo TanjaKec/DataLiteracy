@@ -1,6 +1,6 @@
 ---
 chapter: true
-pre: <b>3. </b>
+pre: <b>4. </b>
 title: Module 3
 weight: 4
 ---

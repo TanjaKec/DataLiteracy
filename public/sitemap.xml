@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/showcases/covid-19/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/module3/damethodology/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -24,6 +29,11 @@
   
   <url>
     <loc>/general/</loc>
+  </url>
+  
+  <url>
+    <loc>/showcases/airpolution/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
   <url>
@@ -52,6 +62,11 @@
   
   <url>
     <loc>/module2/visualisation/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module1/git-and-github/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
@@ -89,6 +104,10 @@
   </url>
   
   <url>
+    <loc>/showcases/</loc>
+  </url>
+  
+  <url>
     <loc>/module1/statsconcepts/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -110,6 +129,16 @@
   
   <url>
     <loc>/module2/spatialda/images/mokrin/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/showcases/airpolution/images/mokrin/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/showcases/covid-19/images/mokrin/</loc>
     <priority>0</priority>
   </url>
   
