@@ -91,5 +91,6 @@ You can read about how to use GitHub further by exploring [`Chapter 9: Connect t
 You might find it useful bookmarking the link for [GitHub Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)!
 {{% /notice %}}
 
+
 -----------------------------
-© 201920Sister Analyst](https://sisteranalyst.org)
+© 2020 Tatjana Kecojevic

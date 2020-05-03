@@ -251,6 +251,9 @@ There is a list of files you should open and knit to see what features are incor
 
 Install the [`rticles`](https://github.com/rstudio/rticles) package to get all of the available `rmd` templates for various paper articles.
 
+{{% notice info %}}
+This secion is based on the material developed by [Dr Alison Hill](https://alison.rbind.io)'s for [R Markdown for Medicine](https://rmd4medicine.netlify.app) workshop.
+{{% /notice %}}
 
 R is a powerful tool for reproducible research. There are many other packages that you could also use for sharing your work. Creating Shiny application using the [R::Shiny](https://shiny.rstudio.com)  package is a nice way of engaging with the audience while sharing your work. Here is an example of reproducible research of the problem used in the [Resampling in the Undergraduate Statistics Curriculum](https://tatjanakec.shinyapps.io/permutation_bootstrap/_w_dc1f9850/Bootstrap_WhatTeacherShouldKnow.pdf) paper:
 
@@ -349,6 +352,7 @@ You're ready to go! 😃
 - [Advanced R Markdown – Tutorial::RStudio Conference 2017](https://www.rstudio.com/resources/videos/advanced-r-markdown-tutorial/)
 
 - [Writing in R Markdown](https://jdblischak.github.io/r-intermediate-altmetrics/09-rmarkdown.html) by [Software Carpentry](https://software-carpentry.org/)
+
 
 -----------------------------
 © 2020 Tatjana Kecojevic
