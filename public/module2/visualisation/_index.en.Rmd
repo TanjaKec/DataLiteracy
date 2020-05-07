@@ -458,7 +458,7 @@ Practise by doing the following set of exercises:
 
 **Useful links:** 
 
-[tidyverse, visualization, and manipulation basics](https://www.rstudio.com/resources/webinars/tidyverse-visualization-and-manipulation-basics/)
+[tidyverse, visualization, and manipulation basics](https://rstudio.com/resources/webinars/tidyverse-visualization-manipulation-basics-this-introduction-to-the-tidyverse-will-cover-several-best-practices-for-analyzing-data-with-r/)
 
 [Introduction to R graphics with ggplot2](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html#introduction)
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.60.1" />
+    <meta name="generator" content="Hugo 0.69.2" />
     <meta name="description" content="Data Literacy in R">
 <meta name="author" content="Tatjana Kecojevic">
 
@@ -12,18 +12,18 @@
     <title>Import Data to R :: Data Literacy in R</title>
 
     
-    <link href="/css/nucleus.css?1588525408" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1588525408" rel="stylesheet">
-    <link href="/css/hybrid.css?1588525408" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1588525408" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1588525408" rel="stylesheet">
-    <link href="/css/auto-complete.css?1588525408" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1588525408" rel="stylesheet">
-    <link href="/css/theme.css?1588525408" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1588525408" rel="stylesheet">
+    <link href="/css/nucleus.css?1588833529" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1588833529" rel="stylesheet">
+    <link href="/css/hybrid.css?1588833529" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1588833529" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1588833529" rel="stylesheet">
+    <link href="/css/auto-complete.css?1588833529" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1588833529" rel="stylesheet">
+    <link href="/css/theme.css?1588833529" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1588833529" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1588525408"></script>
+    <script src="/js/jquery-3.3.1.min.js?1588833529"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1588525408"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1588525408"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1588833529"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1588833529"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1588525408"></script>
+<script type="text/javascript" src="/js/search.js?1588833529"></script>
 
     
   </div>
@@ -585,35 +585,6 @@
           
       </a>
       
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/module2/spatialda/images/mokrin/" title="" class="dd-item ">
-        <a href="/module2/spatialda/images/mokrin/">
-        
-        <i class="fas fa-check read-icon"></i>
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
               
     </li>
   
@@ -790,35 +761,6 @@
           
       </a>
       
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/showcases/covid-19/images/mokrin/" title="" class="dd-item ">
-        <a href="/showcases/covid-19/images/mokrin/">
-        
-        <i class="fas fa-check read-icon"></i>
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
               
     </li>
   
@@ -845,35 +787,6 @@
           
       </a>
       
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/showcases/airpolution/images/mokrin/" title="" class="dd-item ">
-        <a href="/showcases/airpolution/images/mokrin/">
-        
-        <i class="fas fa-check read-icon"></i>
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
               
     </li>
   
@@ -1028,8 +941,8 @@
     <li>
       <ul>
         <li><a href="#the-r-base">the R base</a></li>
-        <li><a href="#importing-excel-files-with-readxl">Importing Excel files with readxl</a></li>
-        <li><a href="#importing-data-using-jsonlite">Importing data using jsonlite</a></li>
+        <li><a href="#importing-excel-files-with-readxl">Importing Excel files with <code>readxl</code></a></li>
+        <li><a href="#importing-data-using-jsonlite">Importing data using <code>jsonlite</code></a></li>
         <li><a href="#other-data-formats">Other data formats</a></li>
       </ul>
     </li>
@@ -1062,7 +975,7 @@
 
 	<p>It’s the first big hurdle to dealing with data in R.</p>
 <p>You are most likely to have looked at, organised and examined your data files in Excel.</p>
-<p>Opening data in R is fairly simply, but organising it for analysis might take some thought and consideration. You'll guess that it is possible to use the <strong>File | Import Dataset</strong> menu option in RStudio to import your data (to learn more see <a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio">Importing Data with RStudio</a>), however we’re going to do it the proper way with a command.</p>
+<p>Opening data in R is fairly simply, but organising it for analysis might take some thought and consideration. You&rsquo;ll guess that it is possible to use the <strong>File | Import Dataset</strong> menu option in RStudio to import your data (to learn more see <a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio">Importing Data with RStudio</a>), however we’re going to do it the proper way with a command.</p>
 <p>R can import all types of data:</p>
 <ul>
 <li>(Tab, Blank space) Delimited Text</li>
@@ -1085,7 +998,7 @@ df_txt &lt;- read.table(file_name.txt, header = FALSE)
 <h5 id="readcsv"><code>read.csv()</code></h5>
 <p>Let us go to <a href="https://data.gov.rs/">https://data.gov.rs/</a> Serbian open data portal. In particular, let us try to access <a href="https://data.gov.rs/sr/datasets/kvalitet-vazduha-2017/">Kvalitet vazduha 2017: pm2.5_2017.csv</a> and import this data to R.</p>
 <p>We are not going to download it onto our local computers, but rather we will import it to R directly from the web using the link provided.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df_csv <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/62983880-6fcd-4c65-b57c-fd4de5c367c8/download/pm2.5_2017.csv&#34;</span>, stringsAsFactors <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df_csv <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;http://data.sepa.gov.rs/dataset/ca463c44-fbfa-4de9-9a75-790995bf2830/resource/62983880-6fcd-4c65-b57c-fd4de5c367c8/download/pm2.5_2017.csv&#34;</span>, stringsAsFactors <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
 <span style="color:#a6e22e">head</span>(df_csv, <span style="color:#ae81ff">10</span>)
 </code></pre></div><pre><code>##        Datum Nis_IZJZ.Nis
 ## 1   1.1.2017    132.04583
@@ -1107,7 +1020,7 @@ Make sure you save the file into your R-Project working directory before you ask
 </div>
 
 <p>What do you think about this dataset? 🤔</p>
-<h4 id="using-readrreadcsv">Using readr::read_csv()</h4>
+<h4 id="using-readrread_csv">Using readr::read_csv()</h4>
 <p><code>readr</code> is a package that reads rectangular data more quickly than <strong>base R</strong> <code>read.cdv()</code>. Another difference from the <code>read.csv()</code> function is that it assumes characters are strings and not factors by default.</p>
 <p>Just so you can see how easy it is to use other packages for importing data into R, the code below illustrates the use of read_csv().</p>
 <pre><code>## If you don't have readr installed yet, uncomment and run the line below
@@ -1142,7 +1055,7 @@ df_xl &lt;- read_excel(&quot;nez-opendata-20199-20190925.xlsx&quot;, sheet = 1)
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## If you don&#39;t have readxl installed yet, uncomment the line below and run it </span>
 <span style="color:#75715e">#install.packages(&#34;jsonlite&#34;)</span>
 <span style="color:#a6e22e">library</span>(jsonlite)
-my_url <span style="color:#f92672">&lt;-</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">https://data.gov.rs/sr/datasets/r/41c2fe91-4ea1-4a64-b33c-183665ea6ab3&#34;</span>
+my_url <span style="color:#f92672">&lt;-</span><span style="color:#e6db74">&#34;https://data.gov.rs/sr/datasets/r/41c2fe91-4ea1-4a64-b33c-183665ea6ab3&#34;</span>
 polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJSON</span>(my_url)
 </code></pre></div><p>Check the structure of the <code>polen</code>! 😰</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">str</span>(polen)
@@ -1261,7 +1174,7 @@ polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJ
 <p>Ouch! 😳 JSON files are not very neat 😱 They are more than often nested, chained -&gt; you’ve got it: Very Messy! 😫 So, we will leave it there. 😬 If you do need to learn more about reading JSON files in R you can explore the functionality of the <code>jsonlite</code> package further by reading <a href="https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">Getting started with JSON and jsonlite</a>. Blog post <a href="https://blog.exploratory.io/working-with-json-data-in-very-simple-way-ad7ebcc0bb89">Working with JSON data in very simple way</a> by <a href="https://blog.exploratory.io/@kanaugust">Kan Nishida</a> provides a great example of how this data format can be used in R.</p>
 <h3 id="other-data-formats">Other data formats</h3>
 <p>To speed up the reading process of txt, csv data files you can use the <code>data.table::fread()</code> function. You should only pass to the function the name of the data file you want to import, and <code>fread()</code> will try to work out the appropriate data structure. Check out this blog post <a href="https://www.r-bloggers.com/getting-data-from-an-online-source/">Getting Data From An Online Source</a> for some more ideas.</p>
-<p>You can use R with appropriate packages to access other data formats. The <code>haven</code> package provides functions for importing SAS, SPSS and Stata file formats or you can use the <code>foreign</code> package for MiniTab portable worksheet data files. Try to look through the help section of the packages you've been introduced to and discover other options.</p>
+<p>You can use R with appropriate packages to access other data formats. The <code>haven</code> package provides functions for importing SAS, SPSS and Stata file formats or you can use the <code>foreign</code> package for MiniTab portable worksheet data files. Try to look through the help section of the packages you&rsquo;ve been introduced to and discover other options.</p>
 <h2 id="your-turn-">YOUR TURN 👇</h2>
 <ol>
 <li>
@@ -1623,22 +1536,6 @@ polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJ
                     
 
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1739,22 +1636,6 @@ polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJ
                     
 
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1770,22 +1651,6 @@ polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJ
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
             
         
@@ -1831,19 +1696,19 @@ polen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fromJ
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1588525408"></script>
-    <script src="/js/perfect-scrollbar.min.js?1588525408"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1588525408"></script>
-    <script src="/js/jquery.sticky.js?1588525408"></script>
-    <script src="/js/featherlight.min.js?1588525408"></script>
-    <script src="/js/highlight.pack.js?1588525408"></script>
+    <script src="/js/clipboard.min.js?1588833529"></script>
+    <script src="/js/perfect-scrollbar.min.js?1588833529"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1588833529"></script>
+    <script src="/js/jquery.sticky.js?1588833529"></script>
+    <script src="/js/featherlight.min.js?1588833529"></script>
+    <script src="/js/highlight.pack.js?1588833529"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1588525408"></script>
-    <script src="/js/learn.js?1588525408"></script>
-    <script src="/js/hugo-learn.js?1588525408"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1588833529"></script>
+    <script src="/js/learn.js?1588833529"></script>
+    <script src="/js/hugo-learn.js?1588833529"></script>
 
-    <link href="/mermaid/mermaid.css?1588525408" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1588525408"></script>
+    <link href="/mermaid/mermaid.css?1588833529" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1588833529"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

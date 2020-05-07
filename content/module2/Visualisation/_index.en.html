@@ -118,18 +118,18 @@ Is the relationship linear? What conclusion(s) can you draw?</p></li>
 <p>😃🙌 Solution: code Q1; sample</p>
 <pre class="r"><code>sample_n(gapminder, 30)</code></pre>
 <pre><code>## # A tibble: 30 x 6
-##    country                  continent  year lifeExp      pop gdpPercap
-##    &lt;fct&gt;                    &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Central African Republic Africa     2002    43.3  4048013      739.
-##  2 Switzerland              Europe     1972    73.8  6401400    27195.
-##  3 Oman                     Asia       2007    75.6  3204897    22316.
-##  4 Korea, Rep.              Asia       1952    47.5 20947571     1031.
-##  5 Gabon                    Africa     1957    39.0   434904     4976.
-##  6 Swaziland                Africa     1992    58.5   962344     3553.
-##  7 Austria                  Europe     1957    67.5  6965860     8843.
-##  8 Mauritius                Africa     2007    72.8  1250882    10957.
-##  9 Slovak Republic          Europe     1962    70.3  4237384     7481.
-## 10 Trinidad and Tobago      Americas   2002    69.0  1101832    11461.
+##    country          continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;            &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Comoros          Africa     1987    54.9   395114     1316.
+##  2 Burkina Faso     Africa     1967    40.7  5127935      795.
+##  3 Saudi Arabia     Asia       1962    45.9  4943029    11626.
+##  4 South Africa     Africa     2002    53.4 44433622     7711.
+##  5 Cote d&#39;Ivoire    Africa     1987    54.7 10761098     2157.
+##  6 Saudi Arabia     Asia       2007    72.8 27601038    21655.
+##  7 Hong Kong, China Asia       2002    81.5  6762476    30209.
+##  8 Spain            Europe     1962    69.7 31158061     5694.
+##  9 Sudan            Africa     2007    58.6 42292929     2602.
+## 10 Finland          Europe     1977    72.5  4738902    15605.
 ## # … with 20 more rows</code></pre>
 <p>We will add layers onto this scatterplot: <code>liveExp</code> vs <code>gdpPercap</code>. We want to superimpose regression line of the best fit and non-parametric loess line that depict a possible relationship between the two variables. That means we will have:</p>
 <ul>
@@ -142,6 +142,8 @@ Is the relationship linear? What conclusion(s) can you draw?</p></li>
   geom_point(alpha = 0.2, shape = 21, fill = &quot;blue&quot;, colour=&quot;black&quot;, size = 5) + # set transparency, shape, colour and size for points
   geom_smooth(method = &quot;lm&quot;, se = F, col = &quot;maroon3&quot;) + # change the colour of line
   geom_smooth(method = &quot;loess&quot;, se = F, col = &quot;limegreen&quot;) # change the colour of line</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/module2/Visualisation/_index.en_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>😃🙌 Solution: code Q3; simple regression model</p>
 <pre class="r"><code>my.model &lt;- lm(gapminder_pipe$lifeExp ~ gapminder_pipe$gdpPercap)
@@ -376,11 +378,11 @@ new_no2 &lt;- no2 %&gt;%
                             &quot;NI&quot; = &quot;Ni..IZJZ.Ni...NO2&quot;,
                             &quot;UZ&quot; = &quot;U.ice..NO2&quot;))
 glimpse(new_no2)</code></pre>
-<pre><code>## Observations: 2,555
-## Variables: 3
-## $ Datum &lt;chr&gt; &quot;01.01.2017&quot;, &quot;02.01.2017&quot;, &quot;03.01.2017&quot;, &quot;04.01.2017&quot;, &quot;0…
-## $ place &lt;fct&gt; NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens…
-## $ no2   &lt;dbl&gt; 22.89, 32.94, 14.86, 22.73, 20.89, 10.47, 9.58, 15.99, 14.…</code></pre>
+<pre><code>## Rows: 2,555
+## Columns: 3
+## $ Datum &lt;chr&gt; &quot;01.01.2017&quot;, &quot;02.01.2017&quot;, &quot;03.01.2017&quot;, &quot;04.01.2017&quot;, &quot;05.01.…
+## $ place &lt;fct&gt; NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_Spens, NS_…
+## $ no2   &lt;dbl&gt; 22.89, 32.94, 14.86, 22.73, 20.89, 10.47, 9.58, 15.99, 14.46, 9…</code></pre>
 <pre class="r"><code>new_no2 %&gt;% 
   group_by(place) %&gt;% 
   filter(!is.na(no2)) %&gt;% 
@@ -407,7 +409,7 @@ glimpse(new_no2)</code></pre>
 </ol>
 <hr />
 <p><strong>Useful links:</strong></p>
-<p><a href="https://www.rstudio.com/resources/webinars/tidyverse-visualization-and-manipulation-basics/">tidyverse, visualization, and manipulation basics</a></p>
+<p><a href="https://rstudio.com/resources/webinars/tidyverse-visualization-manipulation-basics-this-introduction-to-the-tidyverse-will-cover-several-best-practices-for-analyzing-data-with-r/">tidyverse, visualization, and manipulation basics</a></p>
 <p><a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html#introduction">Introduction to R graphics with ggplot2</a></p>
 <p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf"><code>gglopt</code> cheat sheet</a></p>
 <p><a href="https://www.data-to-viz.com/">from Data to Viz</a></p>
