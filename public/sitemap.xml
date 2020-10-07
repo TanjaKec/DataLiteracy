@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>/module4/what_is_ml/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/module1/whatisr/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -63,6 +68,11 @@
   </url>
   
   <url>
+    <loc>/module4/mva/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/module2/visualisation/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -84,6 +94,11 @@
   
   <url>
     <loc>/module3/mvm/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module4/mvm/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
@@ -113,12 +128,17 @@
   </url>
   
   <url>
-    <loc>/showcases/</loc>
+    <loc>/module4/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
   <url>
     <loc>/module1/statsconcepts/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/showcases/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
