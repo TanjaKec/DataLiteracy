@@ -100,7 +100,7 @@ Remember that $y = f(x) + \epsilon$ and therefore $\hat{f}$ is not directly appr
 
 1) obtaining the error (i.e. discrepancy between $\hat{f}(x_i)$ and $y_i$)
 2) squaring this value (making negative in positive the same, and greater error gets more severe penalty)
-3) Then averaging (mean) of these results
+3) then averaging (mean) of these results
 
 The mean of the squared error is the same as the expectation**$^*$** of our squared error so we can go ahead and simplify this a bit:
 
@@ -113,7 +113,7 @@ $$E[X+Y]=E[X] +E[Y]$$
 and recalling that $\sigma^2$ represent the variance of $\epsilon$, where the variance is calculated as
 $$E[X^2]-E[X]^2,$$
 and therefore
-$$Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2$$,
+$$Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2,$$
 with $\epsilon \sim N(0,\sigma)$
 
 $$E[\epsilon]^2=\mu^2=0^2=0$$
@@ -287,8 +287,9 @@ for (i in 1:1){
   cat (c("==============================================","\n"))
 }
 ``` 
- 
- 
+
+We realise that `the $MSE$ is more than just a simple error measurement. It is a tool that informs and educates the modeller about the performance of the model being used in the analysis of a problem. It is packed with information that when unwrapped can provide a greater insight into not just the fitted model, but the nature of the problem and its data. It provides you with desired agility for steering a boat in the sea of data.
+
 ---
 
 ---

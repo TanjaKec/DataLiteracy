@@ -12,18 +12,18 @@
     <title>Machine Learning :: Data Literacy in R</title>
 
     
-    <link href="/css/nucleus.css?1602073915" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1602073915" rel="stylesheet">
-    <link href="/css/hybrid.css?1602073915" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1602073915" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1602073915" rel="stylesheet">
-    <link href="/css/auto-complete.css?1602073915" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1602073915" rel="stylesheet">
-    <link href="/css/theme.css?1602073915" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1602073915" rel="stylesheet">
+    <link href="/css/nucleus.css?1602145565" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1602145565" rel="stylesheet">
+    <link href="/css/hybrid.css?1602145565" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1602145565" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1602145565" rel="stylesheet">
+    <link href="/css/auto-complete.css?1602145565" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1602145565" rel="stylesheet">
+    <link href="/css/theme.css?1602145565" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1602145565" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1602073915"></script>
+    <script src="/js/jquery-3.3.1.min.js?1602145565"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1602073915"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1602073915"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1602145565"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1602145565"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1602073915"></script>
+<script type="text/javascript" src="/js/search.js?1602145565"></script>
 
     
   </div>
@@ -1138,7 +1138,7 @@ Often data is arrange sequently and it is a good practice to randomise the rows 
 <ol style="list-style-type: decimal">
 <li>obtaining the error (i.e. discrepancy between <span class="math inline">\(\hat{f}(x_i)\)</span> and <span class="math inline">\(y_i\)</span>)</li>
 <li>squaring this value (making negative in positive the same, and greater error gets more severe penalty)</li>
-<li>Then averaging (mean) of these results</li>
+<li>then averaging (mean) of these results</li>
 </ol>
 <p>The mean of the squared error is the same as the expectation<strong><span class="math inline">\(^*\)</span></strong> of our squared error so we can go ahead and simplify this a bit:</p>
 <p><span class="math display">\[MSE=E[(y-\hat{f}(x))^2]\]</span>
@@ -1149,7 +1149,7 @@ Knowing that computing the expectation of adding two random variables is the sam
 and recalling that <span class="math inline">\(\sigma^2\)</span> represent the variance of <span class="math inline">\(\epsilon\)</span>, where the variance is calculated as
 <span class="math display">\[E[X^2]-E[X]^2,\]</span>
 and therefore
-<span class="math display">\[Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2\]</span>,
+<span class="math display">\[Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2,\]</span>
 with <span class="math inline">\(\epsilon \sim N(0,\sigma)\)</span></p>
 <p><span class="math display">\[E[\epsilon]^2=\mu^2=0^2=0\]</span>
 we get</p>
@@ -1323,6 +1323,7 @@ for (i in 1:1){
 ## variance_4 =  0 
 ## MSE_4 = 4 + bias_4^2 + variance_4 =  4 
 ## ==============================================</code></pre>
+<p>We realise that `the <span class="math inline">\(MSE\)</span> is more than just a simple error measurement. It is a tool that informs and educates the modeller about the performance of the model being used in the analysis of a problem. It is packed with information that when unwrapped can provide a greater insight into not just the fitted model, but the nature of the problem and its data. It provides you with desired agility for steering a boat in the sea of data.</p>
 <hr />
 <hr />
 <p><strong><span class="math inline">\(^*\)</span></strong> <em>The Expectation of a Random Variable</em> is the sum of its values weighted by their probability. For example: What is the average toss of a fair six-sided die?</p>
@@ -1912,19 +1913,19 @@ Of course, we do not expect to get a fraction when tossing a die, i.e. we do no
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1602073915"></script>
-    <script src="/js/perfect-scrollbar.min.js?1602073915"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1602073915"></script>
-    <script src="/js/jquery.sticky.js?1602073915"></script>
-    <script src="/js/featherlight.min.js?1602073915"></script>
-    <script src="/js/highlight.pack.js?1602073915"></script>
+    <script src="/js/clipboard.min.js?1602145565"></script>
+    <script src="/js/perfect-scrollbar.min.js?1602145565"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1602145565"></script>
+    <script src="/js/jquery.sticky.js?1602145565"></script>
+    <script src="/js/featherlight.min.js?1602145565"></script>
+    <script src="/js/highlight.pack.js?1602145565"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1602073915"></script>
-    <script src="/js/learn.js?1602073915"></script>
-    <script src="/js/hugo-learn.js?1602073915"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1602145565"></script>
+    <script src="/js/learn.js?1602145565"></script>
+    <script src="/js/hugo-learn.js?1602145565"></script>
 
-    <link href="/mermaid/mermaid.css?1602073915" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1602073915"></script>
+    <link href="/mermaid/mermaid.css?1602145565" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1602145565"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

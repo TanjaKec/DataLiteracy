@@ -68,7 +68,7 @@ Often data is arrange sequently and it is a good practice to randomise the rows 
 <ol style="list-style-type: decimal">
 <li>obtaining the error (i.e. discrepancy between <span class="math inline">\(\hat{f}(x_i)\)</span> and <span class="math inline">\(y_i\)</span>)</li>
 <li>squaring this value (making negative in positive the same, and greater error gets more severe penalty)</li>
-<li>Then averaging (mean) of these results</li>
+<li>then averaging (mean) of these results</li>
 </ol>
 <p>The mean of the squared error is the same as the expectation<strong><span class="math inline">\(^*\)</span></strong> of our squared error so we can go ahead and simplify this a bit:</p>
 <p><span class="math display">\[MSE=E[(y-\hat{f}(x))^2]\]</span>
@@ -79,7 +79,7 @@ Knowing that computing the expectation of adding two random variables is the sam
 and recalling that <span class="math inline">\(\sigma^2\)</span> represent the variance of <span class="math inline">\(\epsilon\)</span>, where the variance is calculated as
 <span class="math display">\[E[X^2]-E[X]^2,\]</span>
 and therefore
-<span class="math display">\[Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2\]</span>,
+<span class="math display">\[Var(\epsilon) = \sigma^2 = E[\epsilon^2] - E[\epsilon]^2,\]</span>
 with <span class="math inline">\(\epsilon \sim N(0,\sigma)\)</span></p>
 <p><span class="math display">\[E[\epsilon]^2=\mu^2=0^2=0\]</span>
 we get</p>
@@ -253,6 +253,7 @@ for (i in 1:1){
 ## variance_4 =  0 
 ## MSE_4 = 4 + bias_4^2 + variance_4 =  4 
 ## ==============================================</code></pre>
+<p>We realise that `the <span class="math inline">\(MSE\)</span> is more than just a simple error measurement. It is a tool that informs and educates the modeller about the performance of the model being used in the analysis of a problem. It is packed with information that when unwrapped can provide a greater insight into not just the fitted model, but the nature of the problem and its data. It provides you with desired agility for steering a boat in the sea of data.</p>
 <hr />
 <hr />
 <p><strong><span class="math inline">\(^*\)</span></strong> <em>The Expectation of a Random Variable</em> is the sum of its values weighted by their probability. For example: What is the average toss of a fair six-sided die?</p>
