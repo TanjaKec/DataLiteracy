@@ -12,7 +12,7 @@ This section introduces you to fundamental Machine Learning (ML) concepts and al
 
 ML can learn from the data that is processed and analysed and the more data it processes, the more it can learn. But, to create such intelligent machines it is useful to develop un understanding of classical statistics that is the LifeBlood of ML algorithms. Coated by the layers of k-nearest neighbours, linear regression, random forest, naïve bayes… machines can develop cognitive abilities of today’s Artificial Intelligence (AI). 
 
-Translating the statistical methodologies that can run on machines through the coding and programming is another vital part of ML. As such, R is a powerful statistical language for learning of important and desirable ML skill: code writing for statistical modelling. Using R greatly simplifies machine learning. Using R we can focus on developing understanding on how each algorithm can solve a problem, for which we can simply use a written package to quickly generate prediction models on data with a few command lines.
+Translating the statistical methodologies that can run on machines through the coding and programming is another vital part of ML. As such, R is a powerful statistical language for learning of important and desirable ML skill: code writing for statistical modelling. Using R greatly simplifies machine learning. Using R enables to focus on developing understanding on how each algorithm can solve a problem, for which we can simply use a written package to quickly generate prediction models on data with a few command lines.
 
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+2">**Types of ML**</font></p>
@@ -288,7 +288,7 @@ for (i in 1:1){
 }
 ``` 
 
-We realise that `the $MSE$ is more than just a simple error measurement. It is a tool that informs and educates the modeller about the performance of the model being used in the analysis of a problem. It is packed with information that when unwrapped can provide a greater insight into not just the fitted model, but the nature of the problem and its data. It provides you with desired agility for steering a boat in the sea of data.
+We realise that the $MSE$ is more than just a simple error measurement. It is a tool that informs and educates the modeller about the performance of the model being used in the analysis of a problem. It is packed with information that when unwrapped can provide a greater insight into not just the fitted model, but the nature of the problem and its data. It provides you with desired agility for steering a boat in the sea of data.
 
 ---
 
