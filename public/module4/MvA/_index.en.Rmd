@@ -1,18 +1,21 @@
 ---
 date: "2016-04-09T16:50:16+02:00"
-title: t-test & one-way ANOVA
+title: Resampling
 output: 
   learnr::tutorial
 weight: 2
 ---
 
-**Measured Response Variable vs Attribute Explanatory Variable**
+
+
 
 There are many cases where this data analysis situation is applicable. For example, if you would like to investigate if there is a gender pay gap in an organisation or if a chemical engineer wants to compare the hardness of five blends of paint you would conduct MvsA DA to reach a conclusion.
 
 The focus of investigation is the response variable for which we seek to describe its variability and its causes. We use the explanatory variable to explore if its behaviour influences the changes in the response variable, i.e. does the response variable respond to the changes in the explanatory variable? We seek to find out if the variability in the response variable can be explained by the explanatory variable.
 
 As in this data analysis situation the focal point of our attention is the measured response variable, we focus on its distribution. Since we investigate the influence on its behaviours caused by the change in the attribute explanatory variable, we apply the following underlying concept:
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1">**Supervised Versus Unsupervised Learning**</font></p>
 
 > There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.
 

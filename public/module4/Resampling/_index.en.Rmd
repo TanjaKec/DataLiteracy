@@ -1,0 +1,26 @@
+---
+date: "2016-04-09T16:50:16+02:00"
+title: Resampling
+output: 
+  learnr::tutorial
+weight: 2
+---
+
+
+We use resampling techniques for estimating model performance. In the previous section we presented the idea of fitting a model on a subset of data, known as tanning data and using the remaining sample, better known as test data, to assess the efficiency of the model. Often, this process is repeated multiple times and the results are aggregated and summarized. Hence, resampling method involves repeatedly drawing samples from a training data set and refitting a model to obtain addition information about that model. 
+
+Resampling methods involve fitting the same statistical method multiple times using different subsets of the training data that can be computationally taxing. Fortunately, computing power has greatly advanced in the last few decades allowing for resampling techniques to become an indispensable tool of a statistical modelling procedure. 
+
+In general, the resampling techniques differ in the way in which the subsets of data are chosen. We will consider the most commonly used resampling methods: cross-validation and bootstrap.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Cross-Validation**</font></p>
+
+
+---
+
+**YOUR TURN** 👇
+
+1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs Type`.
+
+----------------------------
+© 2020 Tatjana Kecojevic

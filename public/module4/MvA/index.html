@@ -9,21 +9,21 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>t-test &amp; one-way ANOVA :: Data Literacy in R</title>
+    <title>Resampling :: Data Literacy in R</title>
 
     
-    <link href="/css/nucleus.css?1602146495" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1602146495" rel="stylesheet">
-    <link href="/css/hybrid.css?1602146495" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1602146495" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1602146495" rel="stylesheet">
-    <link href="/css/auto-complete.css?1602146495" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1602146495" rel="stylesheet">
-    <link href="/css/theme.css?1602146495" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1602146495" rel="stylesheet">
+    <link href="/css/nucleus.css?1602147537" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1602147537" rel="stylesheet">
+    <link href="/css/hybrid.css?1602147537" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1602147537" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1602147537" rel="stylesheet">
+    <link href="/css/auto-complete.css?1602147537" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1602147537" rel="stylesheet">
+    <link href="/css/theme.css?1602147537" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1602147537" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1602146495"></script>
+    <script src="/js/jquery-3.3.1.min.js?1602147537"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1602146495"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1602146495"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1602147537"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1602147537"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1602146495"></script>
+<script type="text/javascript" src="/js/search.js?1602147537"></script>
 
     
   </div>
@@ -775,13 +775,39 @@
  
   
     
-    <li data-nav-id="/module4/mva/" title="t-test &amp; one-way ANOVA" class="dd-item 
+    <li data-nav-id="/module4/mva/" title="Resampling" class="dd-item 
         parent
         active
         
         ">
       <a href="/module4/mva/">
-          t-test &amp; one-way ANOVA
+          Resampling
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/module4/resampling/" title="Resampling" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/module4/resampling/">
+          Resampling
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1037,7 +1063,7 @@
             
           
           
-            <a href='/'>Data Literacy in R</a> > <a href='/module4/'>Module 4</a> > t-test & one-way ANOVA
+            <a href='/'>Data Literacy in R</a> > <a href='/module4/'>Module 4</a> > Resampling
           
         
           
@@ -1066,7 +1092,7 @@
           
             <h1>
               
-              t-test &amp; one-way ANOVA
+              Resampling
             </h1>
           
 
@@ -1078,10 +1104,12 @@
 	
 
 
-<p><strong>Measured Response Variable vs Attribute Explanatory Variable</strong></p>
 <p>There are many cases where this data analysis situation is applicable. For example, if you would like to investigate if there is a gender pay gap in an organisation or if a chemical engineer wants to compare the hardness of five blends of paint you would conduct MvsA DA to reach a conclusion.</p>
 <p>The focus of investigation is the response variable for which we seek to describe its variability and its causes. We use the explanatory variable to explore if its behaviour influences the changes in the response variable, i.e. does the response variable respond to the changes in the explanatory variable? We seek to find out if the variability in the response variable can be explained by the explanatory variable.</p>
 <p>As in this data analysis situation the focal point of our attention is the measured response variable, we focus on its distribution. Since we investigate the influence on its behaviours caused by the change in the attribute explanatory variable, we apply the following underlying concept:</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1"><strong>Supervised Versus Unsupervised Learning</strong></font>
+</p>
 <blockquote>
 <p>There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.</p>
 </blockquote>
@@ -1243,8 +1271,8 @@ summary(companyd)</code></pre>
 ##  3rd Qu.:1.0   3rd Qu.:3   3rd Qu.:1.0  
 ##  Max.   :1.0   Max.   :3   Max.   :1.0</code></pre>
 <pre class="r"><code>glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -1277,8 +1305,8 @@ summary(companyd)</code></pre>
 ##               
 ## </code></pre>
 <pre class="r"><code>glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -1315,25 +1343,25 @@ sapply(companyd[,1:4], sd) </code></pre>
 ##     238.500      46.900      28.375     104.250</code></pre>
 <p>Let us explore the distributions of the variables visually using the appropriate graphs. As we have discussed in the previous sections, we usually use a piechart or a barplot if you like to graph an attribute variable.</p>
 <pre class="r"><code>barplot(table(companyd[, 5]), xlab=&quot;Competition&quot;, ylab=&quot;frequency&quot;)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>barplot(table(companyd[, 7]), xlab=&quot;Type&quot;, ylab=&quot;frequency&quot;)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code>pie(table(companyd[, 6]), labels=names(companyd$Sector), col=c(3, 7, 5), main=&quot;Sector&quot;) </code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <p>We have learnt that a histogram is appropriate to graphically explore a measured variable.</p>
 <pre class="r"><code>hist(companyd[, 1], xlab=&quot;Share Price&quot;, main=&quot;Histogram of Share Price&quot;, col=&quot;gray&quot;)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>To see the density smoothing of the histogram, on your histogram you will plot the probability density rather than the freqeuncy of the measured variable, over which you can superimpose a kernel density smoothing line.</p>
 <pre class="r"><code>hist(companyd[, 1], xlab=&quot;Share Price&quot;, main=&quot;Histogram of Share Price&quot;, col=&quot;gray&quot;, prob=T)
 lines(density(companyd[, 1]), col=&quot;red&quot;)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>You can also have the kernel density smoothing as an individual plot.</p>
 <pre class="r"><code>par(mfrow=c(2, 2))  # splits the graph window into 2 rows and 2 columns
 plot(density(companyd[,1]), main=&quot;Density Function of Share Price&quot;)
 plot(density(companyd[,2]), main=&quot;Density Function of Profit&quot;)
 plot(density(companyd[,3]), main=&quot;Density Function of R&amp;D&quot;)
 plot(density(companyd[,4]), main=&quot;Density Function of Turnover&quot;)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <hr />
 <p><strong>M vs A(2) Data Analysis</strong></p>
 <p>Exploratory analysis of the individual variables is an important part of the DA process as a way to familiarise with data and identify any anomalies that may be contained within the individual variables. However, the most exciting part of Data Analysis is the exploration of the possible relationships between the variables and statistical modelling that we use in this part of the DA process.</p>
@@ -1368,7 +1396,7 @@ plot(density(companyd[,4]), main=&quot;Density Function of Turnover&quot;)</code
 <p>Graphical visualisation of the two sub-distributions might help to answer this question! <strong>Boxplots</strong> are the standard graphical method of displaying this sort of data. <strong>Boxplots</strong> enable both the difference in means relative to their spreads (variability) to be assessed.</p>
 <pre class="r"><code>#par(mfrow=c(1,1))
 boxplot(Share_Price ~ Competition, data = companyd, boxwex = 0.25, main=&quot;Share Price vs Competition&quot;, xlab =&quot;Share_Price&quot;, ylab =&quot;Competition&quot;, col=c(&quot;palegreen3&quot;, &quot;orchid3&quot;), horizontal=T) </code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>From the obtained descriptive statistics visualised by the Boxplots the means are 530.00 for the companies which operate in a very competitive market and 675.50 for the companies that have a great deal of monopoly power. The key question now is:</p>
 <p>Is the difference between the two means (£675.50 – £530.00 = £145.50) indicating a real difference or is this difference one that could have occurred by chance as a result of sampling error?</p>
 <p>This is a complex question but by matching the means and the boxplots obtained in the analysis against the boxplots for the three possible model outcomes discussed earlier when talking about methodology used form MvA(2), a suitable decision can be made. For the example <code>Share_Price</code> vs <code>Competition</code> given above the analytical process is described below:</p>
@@ -1570,9 +1598,9 @@ There is a relationship.</p></li>
 <div class="notices tip" ><p>Use your acquired knowledge! What was the difference between the two levels in the previous analysis? What conclusion did we draw?</p>
 </div>
 
-<p>We also notice the difference in standard deviations: st.dev. of ‘Share_Price&quot; for ’Sector’ coded 1 is £177.47 and st.dev. of <code>Share_Price</code> for <code>Sector</code> coded 3 is £109.53. All of this indicate that we should examine the boxplots to get visual interpretation of the results above.</p>
+<p>We also notice the difference in standard deviations: st.dev. of ‘Share_Price" for ’Sector’ coded 1 is £177.47 and st.dev. of <code>Share_Price</code> for <code>Sector</code> coded 3 is £109.53. All of this indicate that we should examine the boxplots to get visual interpretation of the results above.</p>
 <pre class="r"><code>boxplot(Share_Price ~ Sector, data = companyd, boxwex = 0.25, main = &quot;Share Price vs Sector&quot;, xlab =&quot;Share_Price&quot;, ylab =&quot;Sector&quot;, col=c(&quot;palegreen3&quot;, &quot;orchid3&quot;, &quot;cornflowerblue&quot;), horizontal=T)</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>By examining the boxplots we can suggest that the information in the sample is inconclusive and more formal data analysis is required.</p>
 <hr />
 <p><strong>The Formal Data Analysis: The hypothesis test</strong> for <code>Share_Price vs Sector</code></p>
@@ -1643,7 +1671,7 @@ F_crit</code></pre>
 ## 3-2 137.15  25.959878 248.3401 0.0119886</code></pre>
 <p>This can be visualised by a plot of the list:</p>
 <pre class="r"><code>plot(TukeyHSD(m1))</code></pre>
-<p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="/module4/MvA/_index.en_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Looking at the output above and the plot of those 95% CI’s we can see that none of them contains the value of zero. The implication of this is that for all three pairwise comparisons we acept H1. Looking at the output of the descriptive statistics we can conclude: <span class="math inline">\(\mu_1 &lt; \mu_2 &lt; \mu_3\)</span>. Now we can make the conclusion for our analysis.</p>
 <p><strong>Stage 4:</strong> The conclusions.</p>
 <p>Based on the sample evidence there is a relationship between ‘Share Price’ and ‘Sector’. Companies operating in the IT business sector on average have the smallest value of the share price, which is 489.4 units. For the companies operating in the finance business sector the average value of the share price is 595.4 units. The largest average value of the share price is for the companies operating in the pharmaceutical sector, which is 732.6 units.</p>
@@ -2140,6 +2168,22 @@ F_crit</code></pre>
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -2221,7 +2265,7 @@ F_crit</code></pre>
 			<a class="nav nav-prev" href="/module4/what_is_ml/" title="Machine Learning"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/module4/mvm/" title="Regression" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/module4/resampling/" title="Resampling" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2231,19 +2275,19 @@ F_crit</code></pre>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1602146495"></script>
-    <script src="/js/perfect-scrollbar.min.js?1602146495"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1602146495"></script>
-    <script src="/js/jquery.sticky.js?1602146495"></script>
-    <script src="/js/featherlight.min.js?1602146495"></script>
-    <script src="/js/highlight.pack.js?1602146495"></script>
+    <script src="/js/clipboard.min.js?1602147537"></script>
+    <script src="/js/perfect-scrollbar.min.js?1602147537"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1602147537"></script>
+    <script src="/js/jquery.sticky.js?1602147537"></script>
+    <script src="/js/featherlight.min.js?1602147537"></script>
+    <script src="/js/highlight.pack.js?1602147537"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1602146495"></script>
-    <script src="/js/learn.js?1602146495"></script>
-    <script src="/js/hugo-learn.js?1602146495"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1602147537"></script>
+    <script src="/js/learn.js?1602147537"></script>
+    <script src="/js/hugo-learn.js?1602147537"></script>
 
-    <link href="/mermaid/mermaid.css?1602146495" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1602146495"></script>
+    <link href="/mermaid/mermaid.css?1602147537" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1602147537"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
