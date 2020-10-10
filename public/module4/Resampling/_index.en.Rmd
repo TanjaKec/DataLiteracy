@@ -13,14 +13,30 @@ Resampling methods involve fitting the same statistical method multiple times us
 
 In general, the resampling techniques differ in the way in which the subsets of data are chosen. We will consider the most commonly used resampling methods: cross-validation and bootstrap.
 
-<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Cross-Validation**</font></p>
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Cross-Validation: a refinement of the test set approach**</font></p>
+
+When splitting data into training and test subset it is possible that we can end up with a test subset that may not be representative of the overall population. As a consequence, the resulting model may appear to be highly accurate when it just happened to fit well on an atypical data set and essentially it has a poor accuracy when applied to future data. 
+
+Cross-Validation (CV), enables more assiduous accuracy checking of a model, as it is assessed on multiple different subsets of data, ensuring it will generalise well to data collected in the future. It is an extension of the training and test process that minimizes the sampling bias of machine learning models.
+
+**K-Fold Cross-Validation**
+
+This approach involves **randomly dividing the set of observations into _k_ groups**, known as **folds** of approximately equal size.  
+
+With cross-validation the test data is held out (approximately one fifth of data), and the remaining training data is randomly dividing into k groups. Several different portions of this training data are used for validation, and the remaining part of data is used for training as shown in the diagram below.   
+
+
+![](/module4/Resampling/images/5-fold-cv.png?width=40pc)
+
+Since the non-holdout data is divided into five portions, we call this “5-fold cross-validation.” If there had been ten blocks, it would have been 10-fold cross-validation.
+
 
 
 ---
 
 **YOUR TURN** 👇
 
-1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs Type`.
+1) 
 
 ----------------------------
 © 2020 Tatjana Kecojevic

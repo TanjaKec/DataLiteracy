@@ -313,7 +313,7 @@ ___
 
 1) Identify a data set from your own work experience or from amongst many available freely on Internet and describe a problem that can be addressed using this data. Write a brief report describing identified data and a problem that can be addressed using this data. Discuss further in your report which of the categories of ML would be applicable for the analysis of this problem? Try to justify your thinking.
 
-2) In the simulation study, notice the difference between $MSE$ calculated from the simulated data and the one we obtain by plugging in the values of $\sigma^2$ and estimators' $bias$ and $variance$. Try to increase the sample size of the simulation and comment on the changes you may notice (hint: make a change for a smaller steps in the $seq()$ function). Can you draw any conclusions; what are they? 
+2) In the simulation study, notice the difference between $MSE$ calculated from the simulated data and the one we obtain by plugging in the values of $\sigma^2$ and estimator's $bias$ and $variance$. Try to increase the sample size of the simulation and comment on the changes you may notice (hint: make a change for a smaller steps in the $seq()$ function). Can you draw any conclusions; what are they? 
 
 -----------------------------
 © 2020 Tatjana Kecojevic
