@@ -12,18 +12,18 @@
     <title>Machine Learning :: Data Literacy in R</title>
 
     
-    <link href="/css/nucleus.css?1602359665" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1602359665" rel="stylesheet">
-    <link href="/css/hybrid.css?1602359665" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1602359665" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1602359665" rel="stylesheet">
-    <link href="/css/auto-complete.css?1602359665" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1602359665" rel="stylesheet">
-    <link href="/css/theme.css?1602359665" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1602359665" rel="stylesheet">
+    <link href="/css/nucleus.css?1602434321" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1602434321" rel="stylesheet">
+    <link href="/css/hybrid.css?1602434321" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1602434321" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1602434321" rel="stylesheet">
+    <link href="/css/auto-complete.css?1602434321" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1602434321" rel="stylesheet">
+    <link href="/css/theme.css?1602434321" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1602434321" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1602359665"></script>
+    <script src="/js/jquery-3.3.1.min.js?1602434321"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1602359665"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1602359665"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1602434321"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1602434321"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1602359665"></script>
+<script type="text/javascript" src="/js/search.js?1602434321"></script>
 
     
   </div>
@@ -1091,7 +1091,7 @@
 <p>
 <font color="black" face="Verdana, Geneva, sans-serif" size="+1"><strong>Supervised Versus Unsupervised Learning</strong></font>
 </p>
-<p>Majority od data analysis problems fall into one of the two ML categories: <em>supervised</em> or <em>unsupervised</em>. Sometimes we deal with a problem in which for each observation we have a predictor(s) <span class="math inline">\(x_i\)</span>, <span class="math inline">\(i = 1, 2, … n\)</span> there is a response <span class="math inline">\(y_i\)</span>. In those cases, we seek to find a model that reflects the possible relationship between response and predictor(s), with the aim to be able to predict the response values for future observation accurately with greater understanding of the relationship between the two. In statistical terms, we wish to conduct:</p>
+<p>Majority of data analysis problems fall into one of the two ML categories: <em>supervised</em> or <em>unsupervised</em>. Sometimes we deal with a problem in which for each observation we have a predictor(s) <span class="math inline">\(x_i\)</span>, <span class="math inline">\(i = 1, 2, … n\)</span> there is a response <span class="math inline">\(y_i\)</span>. In those cases, we seek to find a model that reflects the possible relationship between response and predictor(s), with the aim to be able to predict the response values for future observation accurately with greater understanding of the relationship between the two. In statistical terms, we wish to conduct:</p>
 <ul>
 <li>the prediction of <span class="math inline">\(y\)</span>’s for future values of <span class="math inline">\(x\)</span>’s and</li>
 <li>the inference about the nature of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
@@ -1117,16 +1117,16 @@
 <li><strong>test data</strong>: a subset to test the model</li>
 </ul>
 <p><img src="/module4/What_is_ML/images/training_testing_data.png?width=40pc" /></p>
-<p>The ratio of of two splits should be aproximately around 75/25. This means that <em>trainig data</em> should account for around 75 percent of the rows in the given data and other 25 percent of rows is the <em>test data</em>. Good performance on the <em>test data</em> is a useful indicator of good performance on the new data in general, assuming that the test data is sufficiently large and that don’t take advantage of using the same test data over and over to make your model look better than it is.
-Often data is arrange sequently and it is a good practice to randomise the rows in the data set prior to the split, as it helps to avoid bias in the fitted model. The easiest way to split the data into a training and test set is to take a random sample.</p>
+<p>The ratio of of two splits should be approximately around 75/25. This means that <em>training data</em> should account for around 75 percent of the rows in the given data and other 25 percent of rows is the <em>test data</em>. Good performance on the <em>test data</em> is a useful indicator of good performance on the new data in general, assuming that the test data is sufficiently large and that don’t take advantage of using the same test data over and over to make your model look better than it is.
+Often data is arranged sequently and it is a good practice to randomise the rows in the data set prior to the split, as it helps to avoid bias in the fitted model. The easiest way to split the data into a training and test set is to take a random sample.</p>
 
-<div class="notices tip" ><p>The <!-- raw HTML omitted -->MSE<!-- raw HTML omitted --> above is computed using the <!-- raw HTML omitted -->training data<!-- raw HTML omitted -->, used to fit the model, and as such it would be more correct to referre to it as the <!-- raw HTML omitted -->training<!-- raw HTML omitted --> <!-- raw HTML omitted -->MSE<!-- raw HTML omitted -->.</p>
+<div class="notices tip" ><p>The <!-- raw HTML omitted -->MSE<!-- raw HTML omitted --> above is computed using the <!-- raw HTML omitted -->training data<!-- raw HTML omitted -->, used to fit the model, and as such it would be more correct to refer to it as the <!-- raw HTML omitted -->training<!-- raw HTML omitted --> <!-- raw HTML omitted -->MSE<!-- raw HTML omitted -->.</p>
 </div>
 
 <p>But we have already discussed that we are not really interested how well the model works training on the training data, ie. <span class="math inline">\(\hat{f}(x_i) \approx y_i\)</span>. We are rather interested in the accuracy of the predictions <span class="math inline">\(\hat{f}(x_0)\)</span> that are obtain when we apply the model to previously unseen test data <span class="math inline">\((x_0, y_0)\)</span>, ie. <span class="math inline">\(\hat{f}(x_0) \approx y_0\)</span>. In other words, we want to chose the model with the lowest <strong><span class="math inline">\(test\)</span></strong> <strong><span class="math inline">\(MSE\)</span></strong> and to do so we need large enough number of of observations in the test data to calculate the <strong>mean square prediction error</strong> for the test observations (<span class="math inline">\(x_0\)</span>, <span class="math inline">\(y_0\)</span>), to which we can refer to as the <strong><span class="math inline">\(test\)</span></strong> <strong><span class="math inline">\(MSE\)</span></strong>.</p>
 <p><span class="math display">\[mean(y_0 - \hat{f}(x_0))^2\]</span></p>
 
-<div class="notices note" ><p>💡 Note that after randomising data we can begin to apply ML to the training data. The remaining test data is put asside and reserved for testing the accuracy of the model.</p>
+<div class="notices note" ><p>💡 Note that after randomising data we can begin to apply ML to the training data. The remaining test data is put aside and reserved for testing the accuracy of the model.</p>
 </div>
 
 <p>In statistics noting is black and white. In other words, nothing is straight forwards and there are many considerations one needs to take into account when applying statistical modelling. Same situation is here. We need to realise that when a given model yields a small training MSE but a large test MSE, we are said to be <strong>overfitting</strong> the data. The statistical model is too ‘preoccupied’ to find patterns in the training data and as a subsequence is modelling the patterns that are caused by random effect, rather than by true features of the unknown function <span class="math inline">\(f\)</span>. When the model overfits the training data the test MSE will be large because the modelled features that the model identifies in the training data just do not exist in the test data. Saying that, regardless of overfitting occurring or not, we expect the training MSE to be smaller than the test MSE, as most of the statistical models either directly or indirectly seek to minimize the training MSE. We need to be aware that the chosen model needs to be flexible and not rigid and glued to the training data.</p>
@@ -1140,7 +1140,7 @@ Often data is arrange sequently and it is a good practice to randomise the rows 
 <p>We have talked earlier about <strong>variance</strong> in general, but we have not explained the idea of <strong>bias</strong> in statistical term. Bias is the average difference between the estimator <span class="math inline">\(\hat{y}\)</span> and true value <span class="math inline">\(y\)</span>. Mathematically we write bias as:</p>
 <p><span class="math display">\[E[\hat{y} – y]\]</span></p>
 <p>As it is not squared difference, it can be either positive or negative. Positive or negative bias implies that the model is over or under “predicting”, while the value of zero would indicate that the model is likely to predict too much as it is to predict too little. The latter implies that the model can be completely wrong in its prediction and still provides us with the bias of zero. This implies that bias on its own provides little information about how correct the model is in its prediction.</p>
-<p>Remember that <span class="math inline">\(y = f(x) + \epsilon\)</span> and therefore <span class="math inline">\(\hat{f}\)</span> is not directly approximating <span class="math inline">\(f\)</span>. <span class="math inline">\(\hat{f}\)</span> models <span class="math inline">\(y\)</span> that include the noise. It can be challenging and in some casese even impossible to meaningfully capture the behavior of <span class="math inline">\(f\)</span> itself when the noise term is very large. We have discussed earlier that we asses model accuracy using MSE which is calculated by</p>
+<p>Remember that <span class="math inline">\(y = f(x) + \epsilon\)</span> and therefore <span class="math inline">\(\hat{f}\)</span> is not directly approximating <span class="math inline">\(f\)</span>. <span class="math inline">\(\hat{f}\)</span> models <span class="math inline">\(y\)</span> that include the noise. It can be challenging and in some cases even impossible to meaningfully capture the behaviour of <span class="math inline">\(f\)</span> itself when the noise term is very large. We have discussed earlier that we asses model accuracy using MSE which is calculated by</p>
 <ol style="list-style-type: decimal">
 <li>obtaining the error (i.e. discrepancy between <span class="math inline">\(\hat{f}(x_i)\)</span> and <span class="math inline">\(y_i\)</span>)</li>
 <li>squaring this value (making negative in positive the same, and greater error gets more severe penalty)</li>
@@ -1920,19 +1920,19 @@ Of course, we do not expect to get a fraction when tossing a die, i.e. we do no
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1602359665"></script>
-    <script src="/js/perfect-scrollbar.min.js?1602359665"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1602359665"></script>
-    <script src="/js/jquery.sticky.js?1602359665"></script>
-    <script src="/js/featherlight.min.js?1602359665"></script>
-    <script src="/js/highlight.pack.js?1602359665"></script>
+    <script src="/js/clipboard.min.js?1602434321"></script>
+    <script src="/js/perfect-scrollbar.min.js?1602434321"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1602434321"></script>
+    <script src="/js/jquery.sticky.js?1602434321"></script>
+    <script src="/js/featherlight.min.js?1602434321"></script>
+    <script src="/js/highlight.pack.js?1602434321"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1602359665"></script>
-    <script src="/js/learn.js?1602359665"></script>
-    <script src="/js/hugo-learn.js?1602359665"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1602434321"></script>
+    <script src="/js/learn.js?1602434321"></script>
+    <script src="/js/hugo-learn.js?1602434321"></script>
 
-    <link href="/mermaid/mermaid.css?1602359665" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1602359665"></script>
+    <link href="/mermaid/mermaid.css?1602434321" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1602434321"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
