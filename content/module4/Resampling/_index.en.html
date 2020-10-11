@@ -18,9 +18,9 @@ weight: 2
 <p>Cross-Validation (CV), enables more assiduous accuracy checking of a model, as it is assessed on multiple different subsets of data, ensuring it will generalise well to data collected in the future. It is an extension of the training and test process that minimizes the sampling bias of machine learning models.</p>
 <p><strong>K-Fold Cross-Validation</strong></p>
 <p>This approach involves <strong>randomly dividing the set of observations into <em>k</em> groups</strong>, known as <strong>folds</strong> of approximately equal size.</p>
-<p>With cross-validation the test data is held out (approximately one fifth of data), and the remaining training data is randomly dividing into k groups. Several different portions of this training data are used for validation, and the remaining part of data is used for training as shown in the diagram below.</p>
-<p><img src="/module4/Resampling/images/5-fold-cv.png?width=40pc" /></p>
-<p>Since the non-holdout data is divided into five portions, we call this “5-fold cross-validation.” If there had been ten blocks, it would have been 10-fold cross-validation.</p>
+<p>With cross-validation the test data is held out (approximately one fifth of data), and the remaining training data is randomly dividing into k groups. Several different portions of this training data are used for validation, and the remaining part of data is used for training as shown in the diagram below. The k resampled estimates of performance are summarized and used for testing and model building.</p>
+<p><img src="/module4/Resampling/images/k-fold-cv.png?width=40pc" /></p>
+<p>Since the non-holdout data is divided into five portions, we call this “5-fold cross-validation.” If there had been ten blocks, it would have been 10-fold cross-validation. The model that has been built using k-fold cross-validation is then tested on the originally held out test data subset.</p>
 <hr />
 <p><strong>YOUR TURN</strong> 👇</p>
 <ol style="list-style-type: decimal">

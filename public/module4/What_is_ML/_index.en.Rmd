@@ -149,9 +149,9 @@ We come to a conclusion that in order to **_minimize_** the **expected test erro
 
 > 💡 Note that in practice we would never know what is the variance $\sigma^2$ of the error $\epsilon$ and therefore we would not be able to determine the variance and the bias of the model. However, since $\sigma^2$ is constant, to improve a model we have to decrease either bias or variance.
 
-Testing the model using the test data and observing its bias and variance can help us address some important issuesreason, allowing us to reson with the model. If the model fails to find the $f$ in data and is systematically over or under predicting will indicate **underfitting** and it will be reflected through high bias.  However, high variance when working with test data indicates the issue of **overfitting**. What happens is that the model has learnt the training data really well and is too close to the data, so much so that it starts to mistake the $f(x) + \epsilon$ for true $f(x)$.
+Testing the model using the test data and observing its bias and variance can help us address some important issues, allowing us to reason with the model. If the model fails to find the $f$ in data and is systematically over or under predicting will indicate **underfitting** and it will be reflected through high bias.  However, high variance when working with test data indicates the issue of **overfitting**. What happens is that the model has learnt the training data really well and is too close to the data, so much so that it starts to mistake the $f(x) + \epsilon$ for true $f(x)$.
 
-<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1">**Simmulation Study**</font></p>
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1">**Simulation Study**</font></p>
 
 
 To understend those concepts, let us run a small simulation study. We will:
