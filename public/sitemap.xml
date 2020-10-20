@@ -73,11 +73,6 @@
   </url>
   
   <url>
-    <loc>/module4/clasification/</loc>
-    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/module2/visualisation/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
@@ -98,12 +93,12 @@
   </url>
   
   <url>
-    <loc>/module3/mvm/</loc>
+    <loc>/module4/mlregression/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/module4/mvm/</loc>
+    <loc>/module3/mvm/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
@@ -114,6 +109,11 @@
   
   <url>
     <loc>/showcases/tricks_tips/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module4/clasification/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   

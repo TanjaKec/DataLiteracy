@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>Basic Stats Concepts :: Data Literacy in R</title>
+    <title>Multiple Regression :: Data Literacy in R</title>
 
     
     <link href="/css/nucleus.css?1603223200" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/module1/statsconcepts/">
+  <body class="" data-url="/module4/mlregression/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -197,7 +197,7 @@
   
     
     <li data-nav-id="/module1/" title="Module 1" class="dd-item 
-        parent
+        
         
         
         ">
@@ -356,8 +356,8 @@
   
     
     <li data-nav-id="/module1/statsconcepts/" title="Basic Stats Concepts" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/module1/statsconcepts/">
@@ -721,7 +721,7 @@
   
     
     <li data-nav-id="/module4/" title="Module 4" class="dd-item 
-        
+        parent
         
         
         ">
@@ -802,8 +802,8 @@
   
     
     <li data-nav-id="/module4/mlregression/" title="Multiple Regression" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/module4/mlregression/">
@@ -1032,7 +1032,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/module1/StatsConcepts/_index.en.html" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/module4/MLRegression/_index.en.html" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -1063,7 +1063,7 @@
             
           
           
-            <a href='/'>Data Literacy in R</a> > <a href='/module1/'>Module 1</a> > Basic Stats Concepts
+            <a href='/'>Data Literacy in R</a> > <a href='/module4/'>Module 4</a> > Multiple Regression
           
         
           
@@ -1092,7 +1092,7 @@
           
             <h1>
               
-              Basic Stats Concepts
+              Multiple Regression
             </h1>
           
 
@@ -1104,263 +1104,131 @@
 	
 
 
-<p>In this section you will be introduced to a set of concepts that enable data to be explored with the <strong>objective</strong></p>
+<p>In the previous section we have learn about <em>simple linear regression</em> as a very simple tool for predicting quantitative measured response variable. Its simple application and interpretation make it one of the most popular approach for supervised learning. Developing good understanding of the linear regression serves as a solid base for learning how to use and adopt other more sophisticating modelling procedures in the context of machine learning.</p>
+<p>The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; or Government officials may be interested in explaining the behaviour of unemployment statistics.</p>
+<p>Let the phenomenon of interest be denoted by <span class="math inline">\(Y\)</span>; as discussed in the previous sections, <span class="math inline">\(Y\)</span> is also known as the response variable, or the dependent variable. The fundamental nature of <span class="math inline">\(Y\)</span> is that it displays variability and it is this inherent variability that the data analyst seeks to explain by using regression modelling. Intuitively, if we can account for a large amount of the movements in <span class="math inline">\(Y\)</span> then in some sense this is <em>good</em>. Conversely, if we put forward an argument which explains only a very small amount of the behaviour of the phenomenon of interest then in some sense this is <em>bad</em>.</p>
+<p>In trying to explain, or account for, the behaviour of <span class="math inline">\(Y\)</span> we often build a regression model. As a first step in building such a model we specify a set of variables, called the explanatory or predictor variables, that we believe to be important in explaining the behaviour of, or the variability in, <span class="math inline">\(Y\)</span>. Specifying this set of variables is in effect the first step in developing as the data analysts our viewpoint, our model, our theory. As such we are entitled to ask where such a viewpoint comes from - for example, it may be the logical outcome of some theoretical argument or it may be a replication of a previous study.</p>
+
+<div class="notices warning" ><p>💡 We do well to remember that this statement of a model is a viewpoint, a belief, a theory and need not be correct, i.e. true.</p>
+</div>
+
+<p>Indeed, it is the very essence of regression model validation to judge if a viewpoint, a belief, a theory is in any sense acceptable. So, when developing a regression model all we argue is: <span class="math inline">\(Y = f(X_1, X_2, X_3, … , X_k)\)</span>, which represents a belief that the response variable <span class="math inline">\(Y\)</span> depends upon a set of <span class="math inline">\(k\)</span> explanatory variables <span class="math inline">\((X_1, X_2, X_3,… , X_k)\)</span>.</p>
+<p>Specifying a set of variables is not in itself a complete model. We have to be prepared to indicate and argue more precisely how the explanatory variables are supposed to relate to <span class="math inline">\(Y\)</span>: that is, we must specify the functional form that links the set of variables to <span class="math inline">\(Y\)</span>. The simplest relationship is a linear relationship or a straight line. As we have already learnt for a single explanatory variable, <span class="math inline">\(X_1\)</span>, this is given by:</p>
 <ul>
-<li>of summarising and understanding the main features of the variables contained within the data and</li>
-<li>to investigate the nature of any linkages between the variables that may exist</li>
+<li><span class="math inline">\(Y = b_0 + b_1X_1\)</span> (Within this structure it is important that <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> can be interpreted clearly.)</li>
 </ul>
-<p>The starting point is to understand <strong>what data is</strong>.</p>
+<p>and for a set of <span class="math inline">\(k\)</span>-variables this is given by:</p>
 <ul>
-<li>What is the <strong>population</strong>?</li>
-<li>Why do we use <strong>samples</strong>?</li>
+<li><span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 +... + b_kX_k\)</span> (Within this structure it is important that <span class="math inline">\(b_0, b_1, b_2,… , b_k\)</span> can be interpreted clearly.)</li>
 </ul>
-<p>Can you provide a formal definition of the population and the sample? 😁</p>
-<p><em>The population is the set of all people/objects of interest in the study being undertaken.</em></p>
-<p>In statistical terms the whole data set is called the <strong>population</strong>. This represents <strong>“Perfect Information”</strong>, however in practice it is often impossible to enumerate the whole population. The analyst therefore takes a sample drawn from the population and uses this information to make judgements (<strong>inferences</strong>) about the population.</p>
-<p>Clearly if the results of any analysis are based on a <strong>sample drawn from the population</strong>, then if the sample is going to have any validity, then the sample should be chosen in a way that is fair and reflects the structure of the population.</p>
-<p>The process of sampling to obtain a representative sample is a large area of statistical study. The simplest model of a representative sample is a <strong>“random sample”</strong>:</p>
-<p><em>A sample chosen in such a way that each item in the population has an equal chance of being included in the sample.</em></p>
-<p>As soon as sample data is used, the information contained within the sample is <em>“Imperfect”</em> and depends on the particular sample chosen. The <strong>key problem</strong> is to use this sample data to draw valid conclusions about the population with the knowledge of and taking into account the ‘<em>error due to sampling</em>’.</p>
-<p>The importance of working with representative samples should be seriously considered; a good way to appreciate this importance is to see the consequences of using unrepresentative samples. A book by <a href="https://en.wikipedia.org/wiki/Darrell_Huff">Darrell Huff</a> called <a href="https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics">How to Lie with Statistics</a>, published by <a href="https://www.penguin.co.uk/">Penguin</a> contains several anecdotes of unrepresentative samples and the consequences of treating them as representative.</p>
-<hr />
-<p><strong>Data Analysis Using Sample Data</strong></p>
-<p>Usually the data will have been collected in response to some perceived problem, in the hope of being able to glean some pointers from this data that will be helpful in the analysis of the problem. Data is commonly presented to the data analyst in this way with a request to analyse the data.</p>
-<p>Before attempting to analyse any data, the analyst should:</p>
+<p>Those linear models specified so far are <strong>exact</strong> or <strong>deterministic</strong>. Such structures do not represent statistical problems. The very nature of statistical data is that there is inherent variability in that there is some part of the responses variable that we cannot explain. Thus there is a random element whose behaviour is by nature and definition unpredictable. We know that a random component is going to impact on <span class="math inline">\(Y\)</span>, but we do not know the size or sign of such random happenings.</p>
+<p>This random/stochastic part of the model is captured as follows:</p>
+<ul>
+<li><p><span class="math inline">\(Y = b_0 + b_1X_1 + e\)</span>, for a single explanatory variable model, and</p></li>
+<li><p><span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k + e\)</span>, for the general <span class="math inline">\(k\)</span> explanatory variable model</p></li>
+</ul>
+<p>where <span class="math inline">\(e\)</span> is also known as the error term.</p>
+
+<div class="notices warning" ><p>💡 These expressions need to be fully understood and the role and significance of the random/stochastic element has to be fully recognised.</p>
+</div>
+
+<p>In order to complete the specification of the statistical regression model some assumption has to be made about the underlying process that produces <span class="math inline">\(e\)</span>. The standard approach is to adopt the following distribution structure:</p>
+<p><span class="math inline">\(e \sim N(0,\sigma^2)\)</span>, with the error term from a normal distribution with a mean of <span class="math inline">\(0\)</span>, and a variance of <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Knowing this, we should now be in a position to understand and identify the structure of the standard <strong>multiple linear regression model</strong>.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Prior Knowledge</strong></font>
+</p>
+<p>As a statement of belief, the specified model just suggests a list of important explanatory variable within a linear structure. We need to be willing to take an extra conceptual step by specifying our expectation on how the individual explanatory variables are connected to the response variable. We should make assertions about</p>
 <ol style="list-style-type: lower-roman">
-<li><p>Make sure that the problem under investigation is clearly understood, and that the objectives of the investigation have been clearly specified.</p></li>
-<li><p>Before any analysis is considered the analyst should make sure that the individual variables making up the data set are clearly understood.</p></li>
+<li>the expected sign of each slope (or marginal response coefficient) for each explanatory variable?</li>
+<li>the expected size of each slope?</li>
 </ol>
-<p><span style="color:red">The analyst must understand the data before attempting any analysis.</span></p>
-<p>In the summary you should <span style="color:blue">ask yourself</span>:</p>
+<p>Again knowledge of these two potential tricky areas are connected to theoretical arguments and often the results of previous similar studies. Such knowledge is sometimes called <strong>prior knowledge</strong>, or <strong>prior views</strong>.</p>
+<p>In order to give a viewpoint some evidential or empirical support a sample of data has to be collected and the model has to be put to a scrutany of the rigour diagnostic checking – that is the proposed theory has to be tested against the available evidence. It needs to be fully understood that the model developed so far is no more than a belief.</p>
+<p>We may believe passionately that <span class="math inline">\(Y\)</span> is caused by the structure put forward but we do not know the structure in that we do not know the values of the <span class="math inline">\(b\)</span> parameters. These <span class="math inline">\(b\)</span> values are held to exist and have particular true numerical values which we do not know what they are. In an attempt to give our model that reflects our viewpoint empirical content the we use pertinent data. On the basis of the information contained in this particular data the we have to estimate the <span class="math inline">\(b\)</span> values and draw valid conclusions about the nature of the true but unknown underlying structure which is claimed to be responsible for the behaviour of <span class="math inline">\(Y\)</span>.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Building a Model</strong></font>
+</p>
+<p>The sample, of size <span class="math inline">\(n\)</span>, evidence is seen as coming from the following structure:</p>
+<p><span class="math display">\[Y_i = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + … + b_kX_{ik} + e_i, \;\;\;\;\; where \;\; i=1, 2, ...n\]</span>
+Selecting a sample by definition means that we have imperfect information, that is we do not have information on the whole population or we do not see the whole picture. We only see a, possibly disjoint, part of the whole picture and thus taking a sample gives obvious difficulties in making sense of what we can see. Taking a sample introduces an interpretation problem of trying to say something sensible about the whole picture, the true model, from part of the picture.</p>
+<p>The data handling process involves two major steps, namely:</p>
 <ol style="list-style-type: lower-roman">
-<li><p><strong>Do I understand the problem</strong> under investigation and are the objectives of the investigation clear?
-<em>The only way to obtain this information is to ask questions, and keep asking questions until satisfactory answers have been obtained.</em></p></li>
-<li><p>Do I understand exactly <strong>what each variable is measuring/recording?</strong></p></li>
-</ol>
-<hr />
-<p><strong>Describing Variables</strong></p>
-<p>A starting point is to examine the characteristics of each individual variable in the data set.</p>
-<p>The way to proceed depends upon the type of variable being examined.</p>
-<p><strong>Classification of variable types</strong></p>
-<p>The variables can be one of two broad types:</p>
-<ul>
-<li><strong>Attribute variables</strong>: are variables that have their outcomes described in terms of their characteristics or attributes.</li>
-<li>gender</li>
-<li>days in a week</li>
-</ul>
-<p>A common way of handling attribute data is to give it a numerical code. Hence, we often refer to them as coded variables.</p>
-<ul>
-<li><strong>Measured variables</strong>: are variables that have their outcomes taken from a numerical scale; the resulting outcome is expressed in numerical terms.<br />
+<li>model estimation and<br />
 </li>
-<li>weight</li>
-<li>age</li>
-</ul>
-<p>There are two types of measured variables, a measured variable that is measured on some continuous scale of measurement, e.g. a person’s height. This type of measured variable is called a <em>continuous variable</em>. The other type of measured variable is a <em>discrete variable</em>. This results from counting; for example ‘the number of passengers on a given flight’.</p>
-<hr />
-<p><strong>The Concept of Statistical Distribution</strong></p>
-<p><strong>The concept of statistical distribution is central to statistical analysis.</strong></p>
-<p>This concept relates to the population and conceptually assumes that we have perfect information, the exact composition of the population is known.</p>
-<p>The ideas and concepts for examining population data provide a framework for the way of examining data obtained from a sample. The Data Analyst classifies the variables as either attribute or measured and examines the statistical distribution of the particular sample variable from the sample data.<br />
-For an attribute variable the number of occurrences of each attribute is obtained, and for a measured variable the sample descriptive statistics describing the centre, width and symmetry of the distribution are calculated.</p>
-<p><strong>attribute:</strong>
-<img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p><strong>measured:</strong>
-<img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<hr />
-<p><strong>What does the distribution show?</strong></p>
-<p>For an attribute variable it is very simple. We observe the frequency of occurrence of each level of the attribute variable as shown in the barplot above.</p>
-<p>For a measured variable the area under the curve from one value to another measures the relative proportion of the population having the outcome value in that range.</p>
-<p>A statistical distribution for a measured variable can be summarised using three key descriptions:</p>
-<ul>
-<li>the <span style="color:red">centre</span> of the distribution;</li>
-<li>the <span style="color:red">width</span> of the distribution;</li>
-<li>the <span style="color:red">symmetry</span> of the distribution</li>
-</ul>
-<p>The <span style="color:red"><strong>common measures of the centre</strong></span> of a distribution are the <strong>Mean</strong> (arithmetic average) and the <strong>Median</strong>. The <em>median value</em> of the variable is defined to be the particular value of the variable such that half the data values are less than the median value and half are greater.</p>
-<p>The <span style="color:red"><strong>common measures of the width</strong></span> of a distribution are the <strong>Standard Deviation</strong> and the <strong>Inter-Quartile Range</strong>. The <span style="color:red">Standard Deviation</span> is the square root of the average squared deviation from the mean. Ultimately the standard deviation is a relative measure of spread (width), the larger the standard deviation the wider the distribution. The <span style="color:red">inter-quartile range</span> is the range over which the middle 50% of the data values varies.</p>
-<p>By analogy with the median it is possible to define the <span style="color:red">quartiles</span>:</p>
-<ul>
-<li>Q1 is the value of the variable that divides the distribution 25% to the left and 75% to the right.</li>
-<li>Q2 is the value of the variable that divides the distribution 50% to the left and 50% to the right.
-This is the median by definition.</li>
-<li>Q3 is the value of the variable that divides the distribution 75% to the left and 25% to the right.</li>
-<li>The inter-quartile range is the value Q3 - Q1.</li>
-</ul>
-<p>The diagram below shows this pictorially:</p>
-<p><img src="/module1/StatsConcepts/_index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>🤓💡 Conventionally the <strong>mean and standard deviation</strong> are given together as one pair of measures of location and spread, and the <strong>median and inter-quartile range</strong> as another pair of measures.</p>
-<p>There are a number of <span style="color:red"><strong>measures of symmetry</strong></span>; the simplest way to measure symmetry is to compare the mean and the median. For a perfectly symmetrical distribution the mean and the median will be exactly the same. This idea leads to the definition of Pearson’s coefficient of Skewness as:</p>
-<p><code>Pearson's coefficient of Skewness = 3(mean - median) / standard deviation</code></p>
-<p>An alternative measure of Skewness is the Quartile Measure of Skewness defined as:</p>
-<p><code>Quartile Measure of Skewness  = [(Q1 - Q3) - (Q2 - Q1)]/(Q3 - Q1)</code></p>
-<hr />
-<p><strong>Important Key Points:</strong></p>
-<ul>
-<li>What is Data?</li>
-<li>Variables</li>
-<li>Two types of variable:
-<ul>
-<li>an attribute variable</li>
-<li>a measured variable</li>
-</ul></li>
-<li>The concept of Statistical Distribution:
-<ul>
-<li>As applied to an attribute variable</li>
-<li>As applied to a measured variable</li>
-</ul></li>
-<li>Descriptive Statistics for a measured variable:
-<ul>
-<li>Measures of Centre
-<ul>
-<li>Mean, Median</li>
-</ul></li>
-<li>Measures of Width:
-<ul>
-<li>Standard Deviation</li>
-<li>Inter-Quartile Range</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>The descriptive statistics provide a numerical description of the key parameters of the distribution of a measured sample variable.</p>
-<hr />
-<p><strong>Investigating the relationship between variables</strong></p>
-<p>One of the key steps required of the Data Analyst is to investigate the relationship between variables. This requires a further <strong>classification of the variables</strong> contained within the data, as either a <span style="color:red"><strong>response</strong></span> variable or an <span style="color:red"><strong>explanatory</strong></span> variable.</p>
-<p>A <strong>response</strong> variable is a variable that measures either directly or indirectly the objectives of the analysis.</p>
-<p>An <strong>explanatory</strong> variable is a variable that may influence the response variable.</p>
-<p><strong>Bivariate Relationships</strong></p>
-<p>In general there are four different combinations of type of Response Variable and type of Explanatory Variable. These four combinations are shown below:</p>
-<div class="figure">
-<img src="/module1/StatsConcepts/images/RelationshipMatrix.png?width=30pc" alt="DA Matrix" />
-<p class="caption">DA Matrix</p>
-</div>
-<p>The starting point for any <span style="color:red">investigation of the connections</span> between a <strong>response</strong> variable and an <strong>explanatory</strong> variable starts with examining the variables, and defining the response variable, or response variables, and the explanatory variables.</p>
-<p>🤓💡: In large empirical investigations there may be a number of objectives and a number of response variables.</p>
-<p>The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combinations as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩</p>
-<hr />
-<p><strong>DA Methodology</strong></p>
-<p>The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable. This will provide a framework for defining a <span style="color:red">Data-Analysis process</span> to explore the connection between the two variables, and will utilise the ideas previously developed.</p>
-<p>The next step is to <span style="color:red"><em>use some simple sample descriptive statistics to have a first look at the nature of the link between the variables</em></span>. This simple approach may allow the analyst to conclude that on the basis of the sample information there is strong evidence to support a link, or there is no evidence of a link, or that the simple approach is inconclusive and further more sophisticated data analysis is required. This step is called the <span style="color:red"><strong>Initial Data Analysis</strong></span> and sometimes abbreviated to <span style="color:red"><strong>IDA</strong></span>.</p>
-<p>If the Initial Data Analysis suggests that <span style="color:red"><strong>Further Data Analysis</strong></span> (<span style="color:red"><strong>FDA</strong></span>) is required, then this step seeks one of two conclusions:</p>
+<li>model validation</li>
+</ol>
+<p><strong>Model Estimation</strong></p>
+<p>As we have discussed, the model developed so far is a viewpoint. It represents our view as to the true underlying structure of the world. We believe that this structure exists but unfortunately, we do not know the values of the parameters. These parameters are held to exist but their true values are unknown. Hence there is a need to develop estimates of the true but unknown parameters. These estimates are based on a sample of data and it is to be hoped that they are in some sense acceptable, i.e. good.</p>
+<p>The most common estimating approach is the <strong>principle of Ordinary Least Squares</strong> (<strong>OLS</strong>). As we have already learnt, this idea is easiest to understand when there is only one explanatory variable and the problem can be easily depicted with a scatter diagram onto which we can superimpose the line of the best fit. This process of finding the line of best fit has been programmed in R through the <code>lm()</code> function. Problems involving more than one explanatory variable are handled in a similar fashion. As part of the model fitting process R produces a great deal of output which should be used to judge the validity, or usefulness, of the fitted model.</p>
+<p><strong>Model Validation</strong></p>
+<p>On deriving coefficient estimates from a sample of data we end up with a fitted regression model. We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good or bad. That is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of our viewpoint.</p>
+<p><strong>Test a)</strong>: Does the fitted model make sense?</p>
+<p>This type of testing is based on the <em>prior knowledge</em>. We need to be in a position to judge if the parameter estimates are meaningful. This comes in two guises:</p>
 <ol style="list-style-type: lower-roman">
-<li>The sample evidence is consistent with there being no link between the response variable and the explanatory variable.</li>
+<li>Do the estimated coefficients have the correct <strong>sign</strong>?</li>
+<li>Do the estimated coefficients have the correct <strong>size</strong>?</li>
 </ol>
-<p>or</p>
-<ol start="2" style="list-style-type: lower-roman">
-<li>The sample evidence is consistent with there being a link between the response variable and the explanatory variable.</li>
-</ol>
-<p>The outcome of the analysis is one of the two alternatives given above. If the outcome is that there is no evidence of a connection, then no further action is required by the analyst since the analysis is now complete.</p>
-<p>If however the outcome of the analysis is that there is evidence of a connection, then the nature of the connection between the two variables needs to be described.</p>
-<p>🤓💡 The <span style="color:red"><strong>Data-Analysis Methodology</strong></span> described above seeks to find the answer to the following key question:</p>
-<p>On the basis of the sample data is there evidence of a connection between the response variable and the explanatory variable?</p>
-<p>The outcome is one of two conclusions</p>
-<ol style="list-style-type: lower-roman">
-<li><p>No evidence of a relationship</p></li>
-<li><p>Yes there is evidence of a relationship, in which case the link needs to be described.</p></li>
-</ol>
-<p>This process can be represented diagrammatically as:</p>
-<p><img src="/module1/StatsConcepts/images/DAMethodology.png?width=40pc" /></p>
-<p>For each of the four data analysis situations given, the data analyst needs to know what constitutes the Initial Data Analysis (I.D.A.) and how to undertake and interpret the I.D.A. If Further Data Analysis is required the analyst needs to know how to undertake and interpret the Further Data Analysis.</p>
-<hr />
-<p><strong>Measured Vs Attribute(2-levels)</strong></p>
-<p>There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.</p>
-<p>Given a measured response and an attribute explanatory variable with two levels, “<span style="color:red">red</span>” &amp; “<span style="color:blue">blue</span>”, if the statistical distribution of the response variable for attribute level “<span style="color:red">red</span>” and attribute level “<span style="color:blue">blue</span>” are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.</p>
-<p>This can be illustrated as below:</p>
-<div class="figure">
-<img src="/module1/StatsConcepts/images/MvAMethodology.png?width=40pc" alt="Red variant" />
-<p class="caption">Red variant</p>
-</div>
-<hr />
-<p><strong>Measured Vs Measured</strong></p>
-<p>The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of <span class="math inline">\(Y\)</span> the response variable and the value of <span class="math inline">\(X\)</span> the explanatory variable. For the whole population a graph of <span class="math inline">\(Y\)</span> against <span class="math inline">\(X\)</span> could be plotted conceptually.</p>
-<p>If the graph shows a perfect line, then there is quite clearly a link between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. If the value of <span class="math inline">\(X\)</span> is known, the exact value of <span class="math inline">\(Y\)</span> can be read off the graph. This is an unlikely scenario in the data-analysis context, because this kind of relationship is a <em>deterministic relationship</em>. Deterministic means that if the value of <span class="math inline">\(X\)</span> is known then the value of Y can be precisely determined from the relationship between Y and <span class="math inline">\(X\)</span>.
-What is more likely to happen is that other variables may also have an influence on <span class="math inline">\(Y\)</span>.</p>
-<p>If the nature of the link between Y and X is under investigation then this could be represented as:</p>
-<p><span class="math inline">\(Y = f(X) + effect\)</span> of all other variables [effect of all other variables is commonly abbreviated to <span class="math inline">\(e\)</span>]</p>
-<p>Considered the model:</p>
-<p><span class="math display">\[Y = f(X) + e \text{       [e is the effect of all other variables]}\]</span></p>
-<p>The influence on the response variable Y can be thought of as being made up of two components:</p>
-<ol style="list-style-type: lower-roman">
-<li><p>the component of Y that is explained by changes in the value of X, [the part due to changes in <span class="math inline">\(X\)</span> through <span class="math inline">\(f(X)\)</span>]</p></li>
-<li><p>the component of Y that is explained by changes in the other factors. [the part not explained by changes in <span class="math inline">\(X\)</span>]</p></li>
-</ol>
-<p>Or in more abbreviated forms the ‘<span style="color:red">Variation in Y Explained by changes X</span>’ or ‘<span style="color:red"><strong>Explained Variation</strong></span>’ and the ‘<span style="color:red">Variation in Y not explained by changes in X</span>’ or the ‘<span style="color:red"><strong>Unexplained Variation</strong></span>’.</p>
-<p>In conclusion, the <em>Total Variation in Y</em> is made up of the two components:</p>
-<ul>
-<li>the <span class="math inline">\(Changes in Y Explained by changes in X\)</span> and<br />
-</li>
-<li>the <span class="math inline">\(Changes in Y not explained by changes in X\)</span></li>
-</ul>
-<p>Which may be written as:</p>
-<p><span class="math display">\[\text{The Total Variation in Y = Explained Variation + Unexplained Variation}\]</span></p>
-<p>🤓💡 The discussion started with the following idea:</p>
-<p><span class="math display">\[Y = f(X) + e\]</span></p>
-<p>And to quantify the strength of the link the influence on <span class="math inline">\(Y\)</span> was broken down into two components:</p>
-<pre><code>$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$</code></pre>
-<p>This presents two issues:</p>
-<p>A: Can a model of the link be made?
-B. Can The <span class="math inline">\(Total Variation in Y\)</span>, <span class="math inline">\(Explained Variation\)</span> and the <span class="math inline">\(Unexplained Variation\)</span> be measured?</p>
-<p>What do these quantities tell us?</p>
-<p>Maybe we can observe a proportion of the <span class="math inline">\(Explained Variation in Y\)</span> over the <span class="math inline">\(Total Variation in Y\)</span>.
-This ratio is always on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, but by convention is usually expressed as a percentage so is regarded as on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(100\%\)</span>. It is called <span class="math inline">\(R^2\)</span> and interpretation of this ratio is as follows:</p>
-<p><span class="math display">\[R^2: 0\% \text{ (no link) &lt;--------------- } 50\% \text{(Statistical Link) ---------------&gt; }100\%\text{ (Perfect Link)}\]</span></p>
-<p>The definition and interpretation of <code>R_sq</code> is a very important tool in the data analyst’s tool kit for tracking connections between a measured response variable and a measured explanatory variable.</p>
-<p>We can put those ideas into our DA Methodology frameworks as shown below.</p>
-<div class="figure">
-<img src="/module1/StatsConcepts/images/MvMMethodology.png?width=40pc" alt="Red variant" />
-<p class="caption">Red variant</p>
-</div>
-<p>🤓💡 Note that you will hardly ever be in the situation in which <span class="math inline">\(R^2\)</span> would be so close to zero that would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If <span class="math inline">\(R^2\)</span> value is very small (for example around <span class="math inline">\(2\%\)</span>) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.</p>
-<hr />
-<p><strong>Further Data Analysis</strong></p>
-<p>If the <span style="color:red">‘<strong>Initial Data Analysis</strong>’</span> is <span style="color:red"><em>inconclusive</em></span> then <span style="color:red">‘<strong>Further Data Analysis</strong>’</span> is required.</p>
-<p>The ‘Further Data Analysis’ is a procedure that enables a decision to be made, based on the sample evidence, as to one of two outcomes:<br />
-- There is no relationship
-- There is a relationship</p>
-<p>These statistical procedures are called <span style="color:red"><strong>hypothesis tests</strong></span>, which essentially <span style="color:red"><em>provide a decision rule for choosing between one of the two outcomes</em></span>: “There is no relationship” or “There is a relationship” based on the sample evidence.</p>
-<p>All hypothesis tests are carried out in four stages:</p>
-<ul>
-<li><p>Stage 1: Specifying the hypotheses.</p></li>
-<li><p>Stage 2: Defining the test parameters and the decision rule.</p></li>
-<li><p>Stage 3: Examining the sample evidence.</p></li>
-<li><p>Stage 4: The conclusions.</p></li>
-</ul>
-<p><strong>Statistical Models used in FDA</strong></p>
-<ul>
-<li><p>Measured Response v Attribute Explanatory Variable with exactly two levels:</p>
-<ul>
-<li>t-test</li>
-</ul></li>
-<li><p>Measured Response v Attribute Explanatory Variable with more than two levels:</p>
-<ul>
-<li>One-Way ANOVA</li>
-</ul></li>
-<li><p>Measured Response v Measured Explanatory Variable</p>
-<ul>
-<li>Simple Regression Model</li>
-</ul></li>
-<li>Measured Response v Measured Explanatory Variable<strong>s</strong>
-<ul>
-<li>Multifactor Regression Model</li>
-</ul></li>
-<li>Attribute Response v Attribute Explanatory Variable
-<ul>
-<li>Chi-Square Test of Independence</li>
-</ul></li>
-</ul>
-<hr />
-<p><strong>YOUR TURN 👇</strong></p>
-<p>Make sure you can answer the following questions:</p>
+<p>This test assesses if the <em>marginal response coefficients</em> display both the correct signs and sizes. To assist the analyst with these issues theoretical reasoning and information gained from past studies should be used. For example, if one was relating sales to advertising then a positive connection would be expected and a simple plot of sales against advertising would reveal information concerning the direction and strength of any sample relationship. Similarly, in a study of sales against price then a negative relationship would be expected. The issue of “correct size” is normally more troublesome. Possibly some clue as to size can be gleaned from similar, past studies and this can be compared with the current estimated values.</p>
+<p>By way of addressing this test the modeller may adopt the following approach:</p>
 <ol style="list-style-type: decimal">
-<li><p>What are the underlying ideas that enable a relationship between two variables to be investigated?</p></li>
-<li><p>What is the purpose of summary statistics?</p></li>
-<li><p>What is the data analysis methodology for exploring the relationship between:</p></li>
+<li>Fit a regression model for each of the explanatory variables one at a time. Check each one for Test a).</li>
+<li>Fit a regression model to all of the explanatory variables together. Check each explanatory variable for Test a).</li>
+<li>Check if Test a) from 1) and 2) are consistent. If <em>Yes</em> then great? 😅; if <em>No</em> then…? 😟</li>
 </ol>
+<p><strong>Test b) <span class="math inline">\(R^2 / R^2_{adjusted}\)</span></strong>: Overall is the model a good fit?</p>
+<p>The coefficient of determination, <span class="math inline">\(R^2\)</span>, is a single number that measures the extent to which the set of explanatory variables can explain, or account for, the variability in <span class="math inline">\(Y\)</span>. That is, how well does the set of explanatory variables explain the behaviour of the phenomenon we are trying to understand. It is looking at the set of explanatory variables as a whole and is making no judgement about the contribution or importance of any individual explanatory variable. By construction <span class="math inline">\(R^2\)</span> is constrained to lie in the following range:</p>
+<p><span class="math display">\[0\%  &lt;---------- \;\; R^2 \;\; ----------&gt;  100\%\]</span></p>
+<p>Intuitively the closer <span class="math inline">\(R^2\)</span> is to <span class="math inline">\(100\%\)</span> then the better is the model in the sense that the set of explanatory variables can explain a lot of the variability in <span class="math inline">\(Y\)</span>. Conversely, a value of <span class="math inline">\(R^2\)</span> close to <span class="math inline">\(0\)</span> implies a weak, i.e. poor model in that the set of explanatory variables can only account for a limited amount of the behaviour of <span class="math inline">\(Y\)</span>. But what about non-extreme values of <span class="math inline">\(R^2\)</span>?</p>
+<p>The adequacy of <span class="math inline">\(R^2\)</span> can be judged both formally and informally.</p>
+<p>The formal test is given by the result:</p>
+<p><span class="math inline">\(H_0: R^2 = 0\)</span> (that is, the set of explanatory variables are <em>insignificant</em>, or in other words: useless)
+<span class="math inline">\(H_1: R^2 &gt; 0\)</span> (that is, at least one explanatory variable is <em>significant</em>, or in other words: important)</p>
+<p>and the appropriate test statistic is such that <span class="math inline">\(F_{calc} \sim F(k, (n-(k+1)))\)</span>, obtained using a data set of size <span class="math inline">\(n\)</span> for a fitted model with <span class="math inline">\(k\)</span> number of explanatory variables.</p>
+<p>The mechanics of an <strong>F-test</strong> are as follows:</p>
+<ul>
+<li><p>Two vital pieces of information are required for an F-test: <span class="math inline">\(F_{calc}\)</span> and <span class="math inline">\(F_{crit}\)</span>.</p></li>
+<li><p><span class="math inline">\(F_{calc}\)</span> is displayed within the R’s standard output. <span class="math inline">\(F_{crit}\)</span> however is a figure derived from degrees of freedom elements and a designated level of significance. For hypothesis testing the <span class="math inline">\(5\%\)</span> significance (<span class="math inline">\(\alpha = 5\%\)</span>) level is commonly used. The degrees of freedom elements are</p>
 <ol style="list-style-type: lower-roman">
-<li><p>a measured response variable and an attribute explanatory variable?</p></li>
-<li><p>a measured response variable and a measured explanatory variable?</p></li>
-</ol>
+<li><em>Regression</em>: number of explanatory variables in the model.</li>
+<li><em>Error</em>: number of observations minus the number of estimated <span class="math inline">\(b\)</span> coefficients in the fitted regression model.</li>
+</ol></li>
+<li><p>The all important <strong>decision making rule</strong> is: if <span class="math inline">\(F_{calc}\)</span> is less than <span class="math inline">\(F_{crit}\)</span> then the null hypothesis <span class="math inline">\(H_0\)</span> is accepted; if <span class="math inline">\(F_{calc}\)</span> is larger than <span class="math inline">\(F_{crit}\)</span> then the alternate hypothesis <span class="math inline">\(H_1\)</span> is accepted:</p>
+<ul>
+<li>if <span class="math inline">\(F_{calc} &lt; F_{crit} =&gt; H_0\)</span></li>
+<li>if <span class="math inline">\(F_{calc} &gt; F_{crit} =&gt; H_1\)</span></li>
+</ul></li>
+</ul>
+<p>This formal test involves a rather weak alternative hypothesis, which says only that <span class="math inline">\(R^2\)</span> is significantly bigger than <span class="math inline">\(0\)</span>. If <span class="math inline">\(H_1\)</span> is accepted we will have to make a judgement, without the aid of any further formal test, about the usefulness of <span class="math inline">\(R^2\)</span> and hence the model being studied.</p>
+<p><strong><span class="math inline">\(R^2 Adjusted\)</span></strong></p>
+<p><span class="math inline">\(R^2\)</span> can also be used in comparing competing models. If two or more models have been put forward to explain the same response variable then a reasonable rule is to rank the explanatory power of the models in terms of their <span class="math inline">\(R^2\)</span> values. Thus the model with the highest <span class="math inline">\(R^2\)</span> value would be the best model.</p>
+<p>The information gathered form the individual regressions carried out in <em>Test a)</em> can be used to give an initial judgement and ranking of the relative importance of the various explanatory variables.</p>
+<p>However this rule should be used carefully. It is a valid rule when the competing models have the same number of explanatory variables. It is not valid when comparing models that have different numbers of explanatory variables. It is intuitively obvious that a model with more explanatory variables will have a better chance of explaining the <span class="math inline">\(Y\)</span> variable than a model with fewer variables.Thus the highest <span class="math inline">\(R^2\)</span> rule is biased in favour of those models with more explanatory variables even when some of these explanatory variables are not very useful. In an attempt to redress the imbalance when comparing models with different numbers of explanatory variables a different version of <span class="math inline">\(R^2\)</span> called <span class="math inline">\(R^2_{adjusted}\)</span> has been developed as follows:</p>
+<p><span class="math display">\[\bar{R}^2 = 1 - \frac{(n-1)}{(n-(k+1))}(1-R^2)\]</span>
+💡 Note that mathematically adopted way of writing <span class="math inline">\(R^2_{adjusted}\)</span> is <span class="math inline">\(\bar{R}^2\)</span>.</p>
+<p>By examining <span class="math inline">\(\bar{R}^2\)</span> it can be seen that when <span class="math inline">\(k\)</span> goes up it is possible for the value of <span class="math inline">\(\bar{R}^2\)</span> to fall. Thus this statistic gives a better way of comparing models with different values for <span class="math inline">\(k\)</span>. s before the rule for comparing models is straightforward: <strong>choose the model with the highest <span class="math inline">\(\bar{R}^2\)</span></strong>.</p>
+<p><strong>Test c) t-tests</strong>: Individually are the explanatory variables important?</p>
+<p>Using <span class="math inline">\(R^2\)</span> to judge the goodness of the set of explanatory variables does not tell us anything about the importance of any one single explanatory variable. Just because a set of variables is important does not necessarily mean that each individual variable is contributing towards explaining the behaviour of <span class="math inline">\(Y\)</span>. What is needed is a test than enables us to check the validity of each variable one at a time. Such a test procedure is available as follows:</p>
+<ul>
+<li><span class="math inline">\(H_0: b_i = 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> is not important)</li>
+<li><span class="math inline">\(H_1: b_i &lt; 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has a positive influence) or
+<span class="math inline">\(H_1: b_i &gt; 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has a negative influence) or
+<span class="math inline">\(H_1: b_i \neq 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has an influence)</li>
+</ul>
+<p>The appropriate <span class="math inline">\(H_1\)</span> for any particular variable is crucially connected with the prior view as to the nature of the connection between any one proposed explanatory variable and the response variable.</p>
+<p>The appropriate test statistic involves a <strong>t-test</strong> based on <span class="math inline">\((n-(k+1))\)</span> degrees of freedom.</p>
+<p>The critical region, denoted by <span class="math inline">\(H_1\)</span>, is crucially dependent upon the nature of the alternate hypothesis as put forward by the data analyst. <span class="math inline">\(t_{calc}\)</span> is generated from the R output. <span class="math inline">\(t_{crit}\)</span> is a combination of the Degrees of Freedom from Error and the level of test significance. <span class="math inline">\(t_{crit}\)</span> is the benchmark helping to determine whether one accepts or rejects the <em>null</em> Hypothesis.</p>
+<p>If <span class="math inline">\(t_calc\)</span> lies in the critical region then the <em>alternative</em> hypothesis is accepted and the modeller accepts that the explanatory variable does have an influence on the behaviour of <span class="math inline">\(Y\)</span>. If this is not the case and <span class="math inline">\(t_calc\)</span> lies in the <span class="math inline">\(H_0\)</span> area, the modeller accepts that the explanatory variable is useless and that it should be eliminated from the model.</p>
+<p>The hypothesis testing methodology typically adopts the <span class="math inline">\(\alpha = 5\%\)</span> level of significance and can be illustrated as follows:</p>
+<p><img src="/module4/MLRegression/images/t-test_regression.png?width=25pc" /></p>
+<p>Once all the variables have been individually analysed a further regression command should be given on all remaining acceptable explanatory variables in order to ascertain the best fitted model.</p>
+<p>Some of the decision making outcomes form the series of <strong>t-test</strong> may be uncomfortable in terms of the information form other tests and we may have to experiment with various competing fitted models using subtle combinations of prior views, <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\bar{R}^2\)</span> values, and <span class="math inline">\(F\)</span>, <span class="math inline">\(t-test\)</span> outcomes before selecting a best model or a set of equally good models.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Summary</strong></font>
+</p>
+<p>For problems ranging from bioinformatics to marketing, many analysts desire to develop “classifiers” instead of developing predictive models</p>
 <hr />
-<p>© 2019 Tatjana Kec20evic</p>
+<p>© 2020 Tatjana Kecojevic</p>
 
 
 
@@ -1470,7 +1338,6 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
                 
                     
-                    
                 
                 
 
@@ -1485,9 +1352,6 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1569,7 +1433,6 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
                 
                     
-                    
                 
                 
 
@@ -1585,9 +1448,6 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1788,6 +1648,7 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
                 
                     
+                    
                 
                 
 
@@ -1802,6 +1663,9 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1835,6 +1699,7 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
                 
                     
+                    
                 
                 
 
@@ -1850,6 +1715,9 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1940,10 +1808,10 @@ This ratio is always on the scale <span class="math inline">\(0\)</span> to <spa
 	 
 	 
 		
-			<a class="nav nav-prev" href="/module1/user/" title="How to use R?"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/module4/resampling/" title="Resampling"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/module1/datatypes/" title="Data Types" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/module4/clasification/" title="Clasification" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

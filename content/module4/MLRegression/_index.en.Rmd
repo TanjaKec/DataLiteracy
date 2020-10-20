@@ -1,0 +1,182 @@
+---
+date: "2016-04-09T16:50:16+02:00"
+title: Multiple Regression
+output: 
+  learnr::tutorial
+weight: 3
+---
+
+
+In the previous section we have learn about _simple linear regression_ as a very simple tool for predicting quantitative measured response variable. Its simple application and interpretation make it one of the most popular approach for supervised learning. Developing good understanding of the linear regression serves as a solid base for learning how to use and adopt other more sophisticating modelling procedures in the context of machine learning. 
+
+The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; or Government officials may be interested in explaining the behaviour of unemployment statistics.
+
+Let the phenomenon of interest be denoted by $Y$; as discussed in the previous sections, $Y$ is also known as the response variable, or the dependent variable. The fundamental nature of $Y$ is that it displays variability and it is this inherent variability that the data analyst seeks to explain by using  regression modelling. Intuitively, if we can account for a large amount of the movements in $Y$ then in some sense this is _good_. Conversely, if we put forward an argument which explains only a very small amount of the behaviour of the phenomenon of interest then in some sense this is _bad_. 
+
+In trying to explain, or account for, the behaviour of $Y$ we often build a regression model. As a first step in building such a model we specify a set of variables, called the explanatory or predictor variables, that we believe to be important in explaining the behaviour of, or the variability in, $Y$. Specifying this set of variables is in effect the first step in developing as the data analysts our viewpoint, our model, our theory. As such we are entitled to ask where such a viewpoint comes from - for example, it may be the logical outcome of some theoretical argument or it may be a replication of a previous study. 
+
+{{% notice warning %}}
+💡 We do well to remember that this statement of a model is a viewpoint, a belief, a theory and need not be correct, i.e. true. 
+{{% /notice %}}
+
+Indeed, it is the very essence of regression model validation to judge if a viewpoint, a belief, a theory is in any sense acceptable. So, when developing a regression model all we argue is: $Y = f(X_1, X_2, X_3, … , X_k)$, which represents a belief that the response variable $Y$ depends upon a set of $k$ explanatory variables $(X_1, X_2, X_3,… , X_k)$.
+
+Specifying a set of variables is not in itself a complete model. We have to be prepared to indicate and argue more precisely how the explanatory variables are supposed to relate to $Y$: that is, we must specify the functional form that links the set of variables to $Y$. The simplest relationship is a linear relationship or a straight line. As we have already learnt for a single explanatory variable, $X_1$, this is given by:
+
+- $Y = b_0 + b_1X_1$ (Within this structure it is important that $b_0$ and $b_1$ can be interpreted clearly.)
+
+and for a set of $k$-variables this is given by:
+
+- $Y = b_0 + b_1X_1 + b_2X_2 +... + b_kX_k$ (Within this structure it is important that $b_0, b_1, b_2,… , b_k$  can be interpreted clearly.)
+
+Those linear models specified so far are **exact** or **deterministic**. Such structures do not represent statistical problems. The very nature of statistical data is that there is inherent variability in that there is some part of the responses variable that we cannot explain. Thus there is a random element whose behaviour is by nature and definition unpredictable. We know that a random component is going to impact on $Y$, but we do not know the size or sign of such random happenings.
+
+This random/stochastic part of the model is captured as follows:
+
+- $Y = b_0 + b_1X_1 + e$, for a single explanatory variable model, and
+
+- $Y = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k + e$, for the general $k$ explanatory variable model
+
+where $e$ is also known as the error term.
+
+{{% notice warning %}}
+💡 These expressions need to be fully understood and the role and significance of the random/stochastic element has to be fully recognised. 
+{{% /notice %}}
+
+In order to complete the specification of the statistical regression model some assumption has to be made about the underlying process that produces $e$. The standard approach is to adopt the following distribution structure:
+
+$e \sim N(0,\sigma^2)$,  with the error term from a normal distribution with a mean of $0$, and a variance of $\sigma^2$.
+
+Knowing this, we should now be in a position to understand and identify the structure of the standard **multiple linear regression model**.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Prior Knowledge**</font></p>
+
+As a statement of belief, the specified model just suggests a list of important explanatory variable within a linear structure. We need to be willing to take an extra conceptual step by specifying our expectation on how the individual explanatory variables are connected to the response variable. We should make assertions about 
+
+i) the expected sign of each slope (or marginal response coefficient) for each explanatory variable?
+ii)	the expected size of each slope?
+
+Again knowledge of these two potential tricky areas are connected to theoretical arguments and often the results of previous similar studies. Such knowledge is sometimes called **prior knowledge**, or **prior views**.
+
+In order to give a viewpoint some evidential or empirical support a sample of data has to be collected and the model has to be put to a scrutany of the rigour diagnostic checking – that is the proposed theory has to be tested against the available evidence. It needs to be fully understood that the model developed so far is no more than a belief. 
+
+We may believe passionately that $Y$ is caused by the structure put forward but we do not know the structure in that we do not know the values of the $b$ parameters. These $b$ values are held to exist and have particular true numerical values which we do not know what they are. In an attempt to give our model that reflects our viewpoint empirical content the we use pertinent data. On the basis of the information contained in this particular data the we have to estimate the $b$ values and draw valid conclusions about the nature of the true but unknown underlying structure which is claimed to be responsible for the behaviour of $Y$.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Building a Model**</font></p>
+
+The sample, of size $n$, evidence is seen as coming from the following structure:
+
+$$Y_i = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + … + b_kX_{ik} + e_i, \;\;\;\;\; where \;\; i=1, 2, ...n$$ 
+Selecting a sample by definition means that we have imperfect information, that is we do not have information on the whole population or we do not see the whole picture. We only see a, possibly disjoint, part of the whole picture and thus taking a sample gives obvious difficulties in making sense of what we can see. Taking a sample introduces an interpretation problem of trying to say something sensible about the whole picture, the true model, from part of the picture. 
+
+The data handling process involves two major steps, namely:
+
+i.	model estimation and	
+ii.	model validation
+
+**Model Estimation**
+
+As we have discussed, the model developed so far is a viewpoint. It represents our view as to the true underlying structure of the world. We believe that this structure exists but unfortunately, we do not know the values of the parameters. These parameters are held to exist but their true values are unknown. Hence there is a need to develop estimates of the true but unknown parameters. These estimates are based on a sample of data and it is to be hoped that they are in some sense acceptable, i.e. good.
+
+The most common estimating approach is the **principle of Ordinary Least Squares** (**OLS**). As we have already learnt, this idea is easiest to understand when there is only one explanatory variable and the problem can be easily depicted with a scatter diagram onto which we can superimpose the line of the best fit. This process of finding the line of best fit has been programmed in R through the `lm()` function. Problems involving more than one explanatory variable are handled in a similar fashion. As part of the model fitting process R produces a great deal of output which should be used to judge the validity, or usefulness, of the fitted model.
+
+**Model Validation**
+
+On deriving coefficient estimates from a sample of data we end up with a fitted regression model. We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good or bad. That is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of our viewpoint.
+
+
+**Test a)**:  Does the fitted model make sense?
+
+This type of testing is based on the _prior knowledge_. We need to be in a position to judge if the parameter estimates are meaningful. This comes in two guises:
+
+i.	Do the estimated coefficients have the correct **sign**?
+ii. Do the estimated coefficients have the correct **size**?
+
+This test assesses if the _marginal response coefficients_ display both the correct signs and sizes. To assist the analyst with these issues theoretical reasoning and information gained from past studies should be used. For example, if one was relating sales to advertising then a positive connection would be expected and a simple plot of sales against advertising would reveal information concerning the direction and strength of any sample relationship. Similarly, in a study of sales against price then a negative relationship would be expected. The issue of "correct size" is normally more troublesome. Possibly some clue as to size can be gleaned from similar, past studies and this can be compared with the current estimated values.
+
+By way of addressing this test the modeller may adopt the following approach:
+
+1)	Fit a regression model for each of the explanatory variables one at a time. Check each one for Test a).
+2)	Fit a regression model to all of the explanatory variables together. Check each explanatory variable for Test a). 
+3)	Check if Test a) from 1) and 2) are consistent. If _Yes_ then great? 😅; if _No_ then...? 😟
+
+**Test b)  $R^2 / R^2_{adjusted}$**:  Overall is the model a good fit?
+
+The coefficient of determination, $R^2$, is a single number that measures the extent to which the set of explanatory variables can explain, or account for, the variability in $Y$. That is, how well does the set of explanatory variables explain the behaviour of the phenomenon we are trying to understand. It is looking at the set of explanatory variables as a whole and is making no judgement about the contribution or importance of any individual explanatory variable. By construction $R^2$ is constrained to lie in the following range:
+
+$$0\%  <---------- \;\; R^2 \;\; ---------->  100\%$$
+
+Intuitively the closer $R^2$ is to $100\%$ then the better is the model in the sense that the set of explanatory variables can explain a lot of the variability in $Y$. Conversely, a value of $R^2$ close to $0$ implies a weak, i.e. poor model in that the set of explanatory variables can only account for a limited amount of the behaviour of $Y$. But what about non-extreme values of $R^2$?
+
+The adequacy of $R^2$ can be judged both formally and informally.
+
+The formal test is given by the result:
+
+$H_0: R^2  = 0$ (that is,  the set of explanatory variables are _insignificant_, or in other words: useless)
+$H_1: R^2  > 0$ (that is, at least one explanatory variable is _significant_, or in other words: important) 
+
+and the appropriate test statistic is such that $F_{calc} \sim F(k, (n-(k+1)))$, obtained using a data set of size $n$ for a fitted model with $k$ number of explanatory variables.
+
+The mechanics of an **F-test** are as follows: 
+
+- Two vital pieces of information are required for an F-test: $F_{calc}$ and $F_{crit}$.
+
+- $F_{calc}$ is displayed within the R's standard output. $F_{crit}$ however is a figure derived from degrees of freedom elements and a designated level of significance. For hypothesis testing the $5\%$ significance ($\alpha = 5\%$) level is commonly used. The degrees of freedom elements are 
+
+    i.	_Regression_: number of  explanatory variables in the model.
+    ii.	_Error_: number of  observations minus the number of estimated $b$ coefficients in the fitted regression model.	
+
+- The all important **decision making rule** is: if $F_{calc}$ is less than $F_{crit}$ then the null hypothesis $H_0$ is accepted; if $F_{calc}$ is larger than $F_{crit}$ then the alternate hypothesis $H_1$ is accepted:
+
+    - if $F_{calc} < F_{crit} => H_0$
+    - if $F_{calc} > F_{crit} => H_1$
+
+This formal test involves a rather weak alternative hypothesis, which says only that $R^2$ is significantly bigger than $0$. If $H_1$ is accepted we will have to make a judgement, without the aid of any further formal test, about the usefulness of $R^2$ and hence the model being studied.  
+
+**$R^2 Adjusted$**
+
+$R^2$ can also be used in comparing competing models. If two or more models have been put forward to explain the same response variable then a reasonable rule is to rank the explanatory power of the models in terms of their $R^2$ values. Thus the model with the highest $R^2$ value would be the best model.
+
+The information gathered form the individual regressions carried out in _Test a)_ can be used to give an initial judgement and ranking of the relative importance of the various explanatory variables. 
+
+However this rule should be used carefully. It is a valid rule when the competing models have the same number of explanatory variables. It is not valid when comparing models that have different numbers of explanatory variables. It is intuitively obvious that a model with more explanatory variables will have a better chance of explaining the $Y$ variable than a model with fewer variables.Thus the highest $R^2$ rule is biased in favour of those models with more explanatory variables even when some of these explanatory variables are not very useful. In an attempt to redress the imbalance when comparing models with different numbers of explanatory variables a different version of $R^2$ called $R^2_{adjusted}$ has been developed as follows:
+
+$$\bar{R}^2 = 1 - \frac{(n-1)}{(n-(k+1))}(1-R^2)$$
+💡 Note that mathematically adopted way of writing $R^2_{adjusted}$ is $\bar{R}^2$.
+
+By examining $\bar{R}^2$ it can be seen that when $k$ goes up it is possible for the value of $\bar{R}^2$ to fall. Thus this statistic gives a better way of comparing models with different values for $k$.  s before the rule for comparing models is straightforward: **choose the model with the highest $\bar{R}^2$**.
+
+**Test c) t-tests**: Individually are the explanatory variables important?
+
+Using $R^2$  to judge the goodness of the set of  explanatory  variables does not tell us anything about the importance of any one single explanatory variable.  Just because a set of variables is important does not necessarily mean that each individual variable is contributing towards explaining the behaviour of $Y$. What is needed is a test than enables us to check the validity of each variable one at a time.  Such a test procedure is available as follows:
+
+- $H_0: b_i = 0$ (explanatory variable $i$ is not important)
+- $H_1: b_i < 0$ (explanatory variable $i$ has a positive influence) or
+$H_1: b_i > 0$ (explanatory variable $i$ has a negative influence) or
+$H_1: b_i \neq 0$ (explanatory variable $i$ has an influence)
+
+The appropriate $H_1$ for any particular variable is crucially connected with the prior view as to the nature of the connection between any one proposed explanatory variable and the response variable. 
+
+The appropriate test statistic involves a **t-test** based on $(n-(k+1))$ degrees of freedom.
+
+The critical region, denoted by $H_1$, is crucially dependent upon the nature of the alternate hypothesis as put forward by the data analyst. $t_{calc}$ is generated from the R output. $t_{crit}$ is a combination of the Degrees of Freedom from Error and the level of test significance. $t_{crit}$ is the benchmark helping to determine whether one accepts or rejects the _null_ Hypothesis.
+
+If $t_calc$ lies in the critical region then the _alternative_ hypothesis is accepted and the modeller accepts that the explanatory variable does have an influence on the behaviour of $Y$. If this is not the case and $t_calc$ lies in the $H_0$ area, the modeller accepts that the explanatory variable is useless and that it should be eliminated from the model.
+
+The hypothesis testing methodology typically adopts the $\alpha = 5\%$ level of significance and can be illustrated as follows:
+
+![](/module4/MLRegression/images/t-test_regression.png?width=25pc)
+
+Once all the variables have been individually analysed a further regression command should be given on all remaining acceptable explanatory variables in order to ascertain the best fitted model.
+
+Some of the decision making outcomes form the series of **t-test** may be uncomfortable in terms of the information form other tests and we may have to experiment with various competing fitted models using subtle combinations of prior views, $R^2$, $\bar{R}^2$ values, and $F$, $t-test$ outcomes before selecting a best model or a set of equally good models.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Summary**</font></p>
+
+For problems ranging from bioinformatics to marketing, many analysts desire to develop “classifiers” instead of developing predictive models
+
+
+
+
+-----------------------------
+© 2020 Tatjana Kecojevic

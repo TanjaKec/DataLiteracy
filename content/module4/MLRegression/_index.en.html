@@ -1,0 +1,133 @@
+---
+date: "2016-04-09T16:50:16+02:00"
+title: Multiple Regression
+output: 
+  learnr::tutorial
+weight: 3
+---
+
+
+
+<p>In the previous section we have learn about <em>simple linear regression</em> as a very simple tool for predicting quantitative measured response variable. Its simple application and interpretation make it one of the most popular approach for supervised learning. Developing good understanding of the linear regression serves as a solid base for learning how to use and adopt other more sophisticating modelling procedures in the context of machine learning.</p>
+<p>The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; or Government officials may be interested in explaining the behaviour of unemployment statistics.</p>
+<p>Let the phenomenon of interest be denoted by <span class="math inline">\(Y\)</span>; as discussed in the previous sections, <span class="math inline">\(Y\)</span> is also known as the response variable, or the dependent variable. The fundamental nature of <span class="math inline">\(Y\)</span> is that it displays variability and it is this inherent variability that the data analyst seeks to explain by using regression modelling. Intuitively, if we can account for a large amount of the movements in <span class="math inline">\(Y\)</span> then in some sense this is <em>good</em>. Conversely, if we put forward an argument which explains only a very small amount of the behaviour of the phenomenon of interest then in some sense this is <em>bad</em>.</p>
+<p>In trying to explain, or account for, the behaviour of <span class="math inline">\(Y\)</span> we often build a regression model. As a first step in building such a model we specify a set of variables, called the explanatory or predictor variables, that we believe to be important in explaining the behaviour of, or the variability in, <span class="math inline">\(Y\)</span>. Specifying this set of variables is in effect the first step in developing as the data analysts our viewpoint, our model, our theory. As such we are entitled to ask where such a viewpoint comes from - for example, it may be the logical outcome of some theoretical argument or it may be a replication of a previous study.</p>
+<p>{{% notice warning %}}
+💡 We do well to remember that this statement of a model is a viewpoint, a belief, a theory and need not be correct, i.e. true.
+{{% /notice %}}</p>
+<p>Indeed, it is the very essence of regression model validation to judge if a viewpoint, a belief, a theory is in any sense acceptable. So, when developing a regression model all we argue is: <span class="math inline">\(Y = f(X_1, X_2, X_3, … , X_k)\)</span>, which represents a belief that the response variable <span class="math inline">\(Y\)</span> depends upon a set of <span class="math inline">\(k\)</span> explanatory variables <span class="math inline">\((X_1, X_2, X_3,… , X_k)\)</span>.</p>
+<p>Specifying a set of variables is not in itself a complete model. We have to be prepared to indicate and argue more precisely how the explanatory variables are supposed to relate to <span class="math inline">\(Y\)</span>: that is, we must specify the functional form that links the set of variables to <span class="math inline">\(Y\)</span>. The simplest relationship is a linear relationship or a straight line. As we have already learnt for a single explanatory variable, <span class="math inline">\(X_1\)</span>, this is given by:</p>
+<ul>
+<li><span class="math inline">\(Y = b_0 + b_1X_1\)</span> (Within this structure it is important that <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> can be interpreted clearly.)</li>
+</ul>
+<p>and for a set of <span class="math inline">\(k\)</span>-variables this is given by:</p>
+<ul>
+<li><span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 +... + b_kX_k\)</span> (Within this structure it is important that <span class="math inline">\(b_0, b_1, b_2,… , b_k\)</span> can be interpreted clearly.)</li>
+</ul>
+<p>Those linear models specified so far are <strong>exact</strong> or <strong>deterministic</strong>. Such structures do not represent statistical problems. The very nature of statistical data is that there is inherent variability in that there is some part of the responses variable that we cannot explain. Thus there is a random element whose behaviour is by nature and definition unpredictable. We know that a random component is going to impact on <span class="math inline">\(Y\)</span>, but we do not know the size or sign of such random happenings.</p>
+<p>This random/stochastic part of the model is captured as follows:</p>
+<ul>
+<li><p><span class="math inline">\(Y = b_0 + b_1X_1 + e\)</span>, for a single explanatory variable model, and</p></li>
+<li><p><span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k + e\)</span>, for the general <span class="math inline">\(k\)</span> explanatory variable model</p></li>
+</ul>
+<p>where <span class="math inline">\(e\)</span> is also known as the error term.</p>
+<p>{{% notice warning %}}
+💡 These expressions need to be fully understood and the role and significance of the random/stochastic element has to be fully recognised.
+{{% /notice %}}</p>
+<p>In order to complete the specification of the statistical regression model some assumption has to be made about the underlying process that produces <span class="math inline">\(e\)</span>. The standard approach is to adopt the following distribution structure:</p>
+<p><span class="math inline">\(e \sim N(0,\sigma^2)\)</span>, with the error term from a normal distribution with a mean of <span class="math inline">\(0\)</span>, and a variance of <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Knowing this, we should now be in a position to understand and identify the structure of the standard <strong>multiple linear regression model</strong>.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Prior Knowledge</strong></font>
+</p>
+<p>As a statement of belief, the specified model just suggests a list of important explanatory variable within a linear structure. We need to be willing to take an extra conceptual step by specifying our expectation on how the individual explanatory variables are connected to the response variable. We should make assertions about</p>
+<ol style="list-style-type: lower-roman">
+<li>the expected sign of each slope (or marginal response coefficient) for each explanatory variable?</li>
+<li>the expected size of each slope?</li>
+</ol>
+<p>Again knowledge of these two potential tricky areas are connected to theoretical arguments and often the results of previous similar studies. Such knowledge is sometimes called <strong>prior knowledge</strong>, or <strong>prior views</strong>.</p>
+<p>In order to give a viewpoint some evidential or empirical support a sample of data has to be collected and the model has to be put to a scrutany of the rigour diagnostic checking – that is the proposed theory has to be tested against the available evidence. It needs to be fully understood that the model developed so far is no more than a belief.</p>
+<p>We may believe passionately that <span class="math inline">\(Y\)</span> is caused by the structure put forward but we do not know the structure in that we do not know the values of the <span class="math inline">\(b\)</span> parameters. These <span class="math inline">\(b\)</span> values are held to exist and have particular true numerical values which we do not know what they are. In an attempt to give our model that reflects our viewpoint empirical content the we use pertinent data. On the basis of the information contained in this particular data the we have to estimate the <span class="math inline">\(b\)</span> values and draw valid conclusions about the nature of the true but unknown underlying structure which is claimed to be responsible for the behaviour of <span class="math inline">\(Y\)</span>.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Building a Model</strong></font>
+</p>
+<p>The sample, of size <span class="math inline">\(n\)</span>, evidence is seen as coming from the following structure:</p>
+<p><span class="math display">\[Y_i = b_0 + b_1X_{i1} + b_2X_{i2} + b_3X_{i3} + … + b_kX_{ik} + e_i, \;\;\;\;\; where \;\; i=1, 2, ...n\]</span>
+Selecting a sample by definition means that we have imperfect information, that is we do not have information on the whole population or we do not see the whole picture. We only see a, possibly disjoint, part of the whole picture and thus taking a sample gives obvious difficulties in making sense of what we can see. Taking a sample introduces an interpretation problem of trying to say something sensible about the whole picture, the true model, from part of the picture.</p>
+<p>The data handling process involves two major steps, namely:</p>
+<ol style="list-style-type: lower-roman">
+<li>model estimation and<br />
+</li>
+<li>model validation</li>
+</ol>
+<p><strong>Model Estimation</strong></p>
+<p>As we have discussed, the model developed so far is a viewpoint. It represents our view as to the true underlying structure of the world. We believe that this structure exists but unfortunately, we do not know the values of the parameters. These parameters are held to exist but their true values are unknown. Hence there is a need to develop estimates of the true but unknown parameters. These estimates are based on a sample of data and it is to be hoped that they are in some sense acceptable, i.e. good.</p>
+<p>The most common estimating approach is the <strong>principle of Ordinary Least Squares</strong> (<strong>OLS</strong>). As we have already learnt, this idea is easiest to understand when there is only one explanatory variable and the problem can be easily depicted with a scatter diagram onto which we can superimpose the line of the best fit. This process of finding the line of best fit has been programmed in R through the <code>lm()</code> function. Problems involving more than one explanatory variable are handled in a similar fashion. As part of the model fitting process R produces a great deal of output which should be used to judge the validity, or usefulness, of the fitted model.</p>
+<p><strong>Model Validation</strong></p>
+<p>On deriving coefficient estimates from a sample of data we end up with a fitted regression model. We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good or bad. That is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of our viewpoint.</p>
+<p><strong>Test a)</strong>: Does the fitted model make sense?</p>
+<p>This type of testing is based on the <em>prior knowledge</em>. We need to be in a position to judge if the parameter estimates are meaningful. This comes in two guises:</p>
+<ol style="list-style-type: lower-roman">
+<li>Do the estimated coefficients have the correct <strong>sign</strong>?</li>
+<li>Do the estimated coefficients have the correct <strong>size</strong>?</li>
+</ol>
+<p>This test assesses if the <em>marginal response coefficients</em> display both the correct signs and sizes. To assist the analyst with these issues theoretical reasoning and information gained from past studies should be used. For example, if one was relating sales to advertising then a positive connection would be expected and a simple plot of sales against advertising would reveal information concerning the direction and strength of any sample relationship. Similarly, in a study of sales against price then a negative relationship would be expected. The issue of “correct size” is normally more troublesome. Possibly some clue as to size can be gleaned from similar, past studies and this can be compared with the current estimated values.</p>
+<p>By way of addressing this test the modeller may adopt the following approach:</p>
+<ol style="list-style-type: decimal">
+<li>Fit a regression model for each of the explanatory variables one at a time. Check each one for Test a).</li>
+<li>Fit a regression model to all of the explanatory variables together. Check each explanatory variable for Test a).</li>
+<li>Check if Test a) from 1) and 2) are consistent. If <em>Yes</em> then great? 😅; if <em>No</em> then…? 😟</li>
+</ol>
+<p><strong>Test b) <span class="math inline">\(R^2 / R^2_{adjusted}\)</span></strong>: Overall is the model a good fit?</p>
+<p>The coefficient of determination, <span class="math inline">\(R^2\)</span>, is a single number that measures the extent to which the set of explanatory variables can explain, or account for, the variability in <span class="math inline">\(Y\)</span>. That is, how well does the set of explanatory variables explain the behaviour of the phenomenon we are trying to understand. It is looking at the set of explanatory variables as a whole and is making no judgement about the contribution or importance of any individual explanatory variable. By construction <span class="math inline">\(R^2\)</span> is constrained to lie in the following range:</p>
+<p><span class="math display">\[0\%  &lt;---------- \;\; R^2 \;\; ----------&gt;  100\%\]</span></p>
+<p>Intuitively the closer <span class="math inline">\(R^2\)</span> is to <span class="math inline">\(100\%\)</span> then the better is the model in the sense that the set of explanatory variables can explain a lot of the variability in <span class="math inline">\(Y\)</span>. Conversely, a value of <span class="math inline">\(R^2\)</span> close to <span class="math inline">\(0\)</span> implies a weak, i.e. poor model in that the set of explanatory variables can only account for a limited amount of the behaviour of <span class="math inline">\(Y\)</span>. But what about non-extreme values of <span class="math inline">\(R^2\)</span>?</p>
+<p>The adequacy of <span class="math inline">\(R^2\)</span> can be judged both formally and informally.</p>
+<p>The formal test is given by the result:</p>
+<p><span class="math inline">\(H_0: R^2 = 0\)</span> (that is, the set of explanatory variables are <em>insignificant</em>, or in other words: useless)
+<span class="math inline">\(H_1: R^2 &gt; 0\)</span> (that is, at least one explanatory variable is <em>significant</em>, or in other words: important)</p>
+<p>and the appropriate test statistic is such that <span class="math inline">\(F_{calc} \sim F(k, (n-(k+1)))\)</span>, obtained using a data set of size <span class="math inline">\(n\)</span> for a fitted model with <span class="math inline">\(k\)</span> number of explanatory variables.</p>
+<p>The mechanics of an <strong>F-test</strong> are as follows:</p>
+<ul>
+<li><p>Two vital pieces of information are required for an F-test: <span class="math inline">\(F_{calc}\)</span> and <span class="math inline">\(F_{crit}\)</span>.</p></li>
+<li><p><span class="math inline">\(F_{calc}\)</span> is displayed within the R’s standard output. <span class="math inline">\(F_{crit}\)</span> however is a figure derived from degrees of freedom elements and a designated level of significance. For hypothesis testing the <span class="math inline">\(5\%\)</span> significance (<span class="math inline">\(\alpha = 5\%\)</span>) level is commonly used. The degrees of freedom elements are</p>
+<ol style="list-style-type: lower-roman">
+<li><em>Regression</em>: number of explanatory variables in the model.</li>
+<li><em>Error</em>: number of observations minus the number of estimated <span class="math inline">\(b\)</span> coefficients in the fitted regression model.</li>
+</ol></li>
+<li><p>The all important <strong>decision making rule</strong> is: if <span class="math inline">\(F_{calc}\)</span> is less than <span class="math inline">\(F_{crit}\)</span> then the null hypothesis <span class="math inline">\(H_0\)</span> is accepted; if <span class="math inline">\(F_{calc}\)</span> is larger than <span class="math inline">\(F_{crit}\)</span> then the alternate hypothesis <span class="math inline">\(H_1\)</span> is accepted:</p>
+<ul>
+<li>if <span class="math inline">\(F_{calc} &lt; F_{crit} =&gt; H_0\)</span></li>
+<li>if <span class="math inline">\(F_{calc} &gt; F_{crit} =&gt; H_1\)</span></li>
+</ul></li>
+</ul>
+<p>This formal test involves a rather weak alternative hypothesis, which says only that <span class="math inline">\(R^2\)</span> is significantly bigger than <span class="math inline">\(0\)</span>. If <span class="math inline">\(H_1\)</span> is accepted we will have to make a judgement, without the aid of any further formal test, about the usefulness of <span class="math inline">\(R^2\)</span> and hence the model being studied.</p>
+<p><strong><span class="math inline">\(R^2 Adjusted\)</span></strong></p>
+<p><span class="math inline">\(R^2\)</span> can also be used in comparing competing models. If two or more models have been put forward to explain the same response variable then a reasonable rule is to rank the explanatory power of the models in terms of their <span class="math inline">\(R^2\)</span> values. Thus the model with the highest <span class="math inline">\(R^2\)</span> value would be the best model.</p>
+<p>The information gathered form the individual regressions carried out in <em>Test a)</em> can be used to give an initial judgement and ranking of the relative importance of the various explanatory variables.</p>
+<p>However this rule should be used carefully. It is a valid rule when the competing models have the same number of explanatory variables. It is not valid when comparing models that have different numbers of explanatory variables. It is intuitively obvious that a model with more explanatory variables will have a better chance of explaining the <span class="math inline">\(Y\)</span> variable than a model with fewer variables.Thus the highest <span class="math inline">\(R^2\)</span> rule is biased in favour of those models with more explanatory variables even when some of these explanatory variables are not very useful. In an attempt to redress the imbalance when comparing models with different numbers of explanatory variables a different version of <span class="math inline">\(R^2\)</span> called <span class="math inline">\(R^2_{adjusted}\)</span> has been developed as follows:</p>
+<p><span class="math display">\[\bar{R}^2 = 1 - \frac{(n-1)}{(n-(k+1))}(1-R^2)\]</span>
+💡 Note that mathematically adopted way of writing <span class="math inline">\(R^2_{adjusted}\)</span> is <span class="math inline">\(\bar{R}^2\)</span>.</p>
+<p>By examining <span class="math inline">\(\bar{R}^2\)</span> it can be seen that when <span class="math inline">\(k\)</span> goes up it is possible for the value of <span class="math inline">\(\bar{R}^2\)</span> to fall. Thus this statistic gives a better way of comparing models with different values for <span class="math inline">\(k\)</span>. s before the rule for comparing models is straightforward: <strong>choose the model with the highest <span class="math inline">\(\bar{R}^2\)</span></strong>.</p>
+<p><strong>Test c) t-tests</strong>: Individually are the explanatory variables important?</p>
+<p>Using <span class="math inline">\(R^2\)</span> to judge the goodness of the set of explanatory variables does not tell us anything about the importance of any one single explanatory variable. Just because a set of variables is important does not necessarily mean that each individual variable is contributing towards explaining the behaviour of <span class="math inline">\(Y\)</span>. What is needed is a test than enables us to check the validity of each variable one at a time. Such a test procedure is available as follows:</p>
+<ul>
+<li><span class="math inline">\(H_0: b_i = 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> is not important)</li>
+<li><span class="math inline">\(H_1: b_i &lt; 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has a positive influence) or
+<span class="math inline">\(H_1: b_i &gt; 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has a negative influence) or
+<span class="math inline">\(H_1: b_i \neq 0\)</span> (explanatory variable <span class="math inline">\(i\)</span> has an influence)</li>
+</ul>
+<p>The appropriate <span class="math inline">\(H_1\)</span> for any particular variable is crucially connected with the prior view as to the nature of the connection between any one proposed explanatory variable and the response variable.</p>
+<p>The appropriate test statistic involves a <strong>t-test</strong> based on <span class="math inline">\((n-(k+1))\)</span> degrees of freedom.</p>
+<p>The critical region, denoted by <span class="math inline">\(H_1\)</span>, is crucially dependent upon the nature of the alternate hypothesis as put forward by the data analyst. <span class="math inline">\(t_{calc}\)</span> is generated from the R output. <span class="math inline">\(t_{crit}\)</span> is a combination of the Degrees of Freedom from Error and the level of test significance. <span class="math inline">\(t_{crit}\)</span> is the benchmark helping to determine whether one accepts or rejects the <em>null</em> Hypothesis.</p>
+<p>If <span class="math inline">\(t_calc\)</span> lies in the critical region then the <em>alternative</em> hypothesis is accepted and the modeller accepts that the explanatory variable does have an influence on the behaviour of <span class="math inline">\(Y\)</span>. If this is not the case and <span class="math inline">\(t_calc\)</span> lies in the <span class="math inline">\(H_0\)</span> area, the modeller accepts that the explanatory variable is useless and that it should be eliminated from the model.</p>
+<p>The hypothesis testing methodology typically adopts the <span class="math inline">\(\alpha = 5\%\)</span> level of significance and can be illustrated as follows:</p>
+<p><img src="/module4/MLRegression/images/t-test_regression.png?width=25pc" /></p>
+<p>Once all the variables have been individually analysed a further regression command should be given on all remaining acceptable explanatory variables in order to ascertain the best fitted model.</p>
+<p>Some of the decision making outcomes form the series of <strong>t-test</strong> may be uncomfortable in terms of the information form other tests and we may have to experiment with various competing fitted models using subtle combinations of prior views, <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\bar{R}^2\)</span> values, and <span class="math inline">\(F\)</span>, <span class="math inline">\(t-test\)</span> outcomes before selecting a best model or a set of equally good models.</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>Summary</strong></font>
+</p>
+<p>For problems ranging from bioinformatics to marketing, many analysts desire to develop “classifiers” instead of developing predictive models</p>
+<hr />
+<p>© 2020 Tatjana Kecojevic</p>
