@@ -7,7 +7,7 @@ weight: 3
 ---
 
 
-In the previous section we have learn about _simple linear regression_ as a very simple tool for predicting quantitative measured response variable. Its simple application and interpretation make it one of the most popular approach for supervised learning. Developing good understanding of the linear regression serves as a solid base for learning how to use and adopt other more sophisticating modelling procedures in the context of machine learning. 
+In the previous section we have learn about _simple linear regression_ as a very simple tool for predicting quantitative measured response variable. Its simple application, easy interpretation and predictive capabilities make it one of the most popular approach for supervised learning. Developing good understanding of the linear regression serves as a solid base for learning how to use and adopt other more sophisticating modelling procedures in the context of machine learning. 
 
 The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; or Government officials may be interested in explaining the behaviour of unemployment statistics.
 
@@ -128,8 +128,11 @@ The mechanics of an **F-test** are as follows:
 
 - The all important **decision making rule** is: if $F_{calc}$ is less than $F_{crit}$ then the null hypothesis $H_0$ is accepted; if $F_{calc}$ is larger than $F_{crit}$ then the alternate hypothesis $H_1$ is accepted:
 
-    - if $F_{calc} < F_{crit} => H_0$
-    - if $F_{calc} > F_{crit} => H_1$
+     if $F_{calc} < F_{crit} => H_0$
+
+     if $F_{calc} > F_{crit} => H_1$
+
+![](/module4/MLRegression/images/F-test.png?width=30pc)
 
 This formal test involves a rather weak alternative hypothesis, which says only that $R^2$ is significantly bigger than $0$. If $H_1$ is accepted we will have to make a judgement, without the aid of any further formal test, about the usefulness of $R^2$ and hence the model being studied.  
 
@@ -171,10 +174,243 @@ Once all the variables have been individually analysed a further regression comm
 
 Some of the decision making outcomes form the series of **t-test** may be uncomfortable in terms of the information form other tests and we may have to experiment with various competing fitted models using subtle combinations of prior views, $R^2$, $\bar{R}^2$ values, and $F$, $t-test$ outcomes before selecting a best model or a set of equally good models.
 
+There are many other, more sophisticated, tests that can be used to judge the validity, i.e. usefulness of a fitted regression model. Before we get familiar with them and in order to appreciate their practicality and effectiveness we will conduct an analysis for fitting multiple regression model based on the procedure explained above.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Case Study**</font></p>
+
+**`carData::Salaries`**: The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data were collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members.
+
+**Format:** A data frame with 397 observations on the following 6 variables:
+  
+  - **_rank_**: a factor with levels:
+    + AssocProf 
+    + AsstProf 
+    + Prof
+  - **_discipline_**: a factor with levels:
+    + A (“theoretical” departments) or 
+    + B (“applied” departments)
+  - **_yrs.since.phd_**: years since PhD
+  - **_yrs.service_**: years of service
+  - **_sex_**: a factor with levels 
+    + Female 
+    + Male
+  - **_salary_**: nine-month salary, in dollars
+
+First set of questions is:
+
+- which of the measured variable is the response variable?
+- which are the explanatory variables?
+- are the explanatory variables measured or attribute, or a mixture of both?
+
+Considering that the data is collected for the purpose of the analysis of academic salary we are going to identify **_salary_** as the response variable. The rest of the variables we can use as possible factors that can influence the behaviour of the response variable. 
+
+In a "standard" regression approach assumes modelling a relationship between measured response and measured explanatory variables. 
+
+**Dummy Variables**
+
+As we have learnt previously, attribute variables are vectors of class factor in R. This vector is encoded numerically, with information about the levels of the variable saved in the levels attribute. 
+
+```{r}
+# If you don't have carData installed yet, uncomment and run the line below
+# install.packages(carData)
+library(carData)
+data(Salaries)
+attach(Salaries)
+class(sex)
+unclass(sex)
+```
+
+Note, that the `unclass()` function removes the attributes of the **_sex_** variable above and prints it using default print method, allowing for easier examination of the internal structure of the object.
+
+However, when using attribute variable in a linear regression model it would make no sense to treat it as a measured explanatory variable because of its numeric levels. In the context of linear modelling we need to code them to represent the levels of the attribute. 
+
+Two-level attribute variables are very easy to code. We simply create an **indicator** or **dummy** variable that takes on two possible _dummy_ numerical values. Consider the **_sex_** indicator variable. We can code this using a dummy variable $d$:
+$$\begin{equation}
+  d=\left\{
+  \begin{array}{@{}ll@{}}
+    0, & \text{if female} \\
+    1, & \text{if male}
+  \end{array}\right.
+\end{equation}$$ 
+
+{{% notice warning %}}
+💡 This is the default coding used in R. Zero value is assigned to the level which is first alphabetically, unless it is changed by using the `releveld()` function for example, or by specifying the levels of the factor variable specifically.
+{{% /notice %}}
+
+For a simple regression model of **_salary_** verses **_sex_**:
+
+$$salary = b_0 + b_1sex + e,$$
+
+this results in the model
+
+$$\begin{equation}
+  salary_i = b_0 + b_1sex_i + e_i=\left\{
+  \begin{array}{@{}ll@{}}
+    b_0 + b_1 \times 1 + e_i = b_0 + b_1 + e_i, & \text{if the person is male} \\
+    b_0 + b_1 \times 0 + e_i = b_0 + e_i, & \text{if the person is female}
+  \end{array}\right.
+\end{equation}$$ 
+
+where $b_0$ can be interpreted as the average $\text{salary}$ for females, and $b_0 + b_1$ as the average $\text{salary}$ for males. The value of $b_1$ represents the average difference in $\text{salary}$ between females and males.  
+
+We can conclude that dealing with an attribute variable with two levels in a linear model is straight forward. In this case, a dummy variable indicates whether an observation has a particular characteristic: yes/no. We can observe it as a "switch" in a model, as this dummy variable can only assume the values 0 and 1, where 0 indicates the absence of the effect, and 1 indicates the presence. The values 0/1 can be seen as off/on.
+
+The way in which R codes dummy variables is controlled by the `contrast` option:
+
+```{r}
+options("contrasts")
+```
+
+The output points out the conversion of the factor into appropriate set of contrasts. In particular, the first one: for unordered factors, and the second one: the order for order factors. The former one is applicable in our context. 
+
+To explicitly identify the coding of the factor, i.e. dummy variable used by R, we can use the `contrasts()` function.
+
+```{r}
+contrasts(sex)
+contrasts(discipline)
+contrasts(rank)
+```
+
+Note that applied "contr.treatment" conversion takes only the value 0 or 1 and that for an attribute variable with k levels it will create k-1 dummy variables. One can argue that the printout of the function could have been more informative by putting indexed letter d as a header for each of the printed columns. For example:
+
+- attribute variable **_sex_**, where k=2
+
+| attribute | $d$ | 
+| ------- | -------|
+| Female    | 0 |
+| Male      | 1 |
+
+- attribute variable **_rank_**, where k=3
+
+| attribute | $d_1$ | $d_2$
+| ------- | ------- | ------- |
+| AsstProf    | 0 | 0 |
+| AssocProf   | 1 | 0 |
+| Prof        | 0 | 1 |
+
+There are many different ways of coding attribute variables besides the dummy variable approach explained here. All of these different approaches lead to equivalent model fits, what differ are  the coefficients, i.e. model parameters as they require different interpretations, arranged to measure particular contrasts. This 0/1 coding implemented in R's default `contr.treatment` contrast offers straightforward interpretation of the associated parameter in the model, which often is not the case when implementing other contrasts. 
+
+
+**Fitting a Moultivariate Regression Model**
+
+We are interested in the extent to which variation in the response variable **_salary_** is associated with variation in the explanatory variables available in the `Salory` data set, that is we want to fit a multiple linear regression model to the given data. The model we wish to construct should be plentiful enough to explain relations in the data and at the same time simple enough to understand, explain to others, and use.
+
+For the convenience we will adopt the following notation:
+ 	
+- $y$: **_salary_**
+- $x_1$: **_yrs.since.phd_**
+- $x_2$: **_yrs.service_**
+- $x_3$: **_discipline_**
+- $x_4$: **_sex_**
+- $x-5$: **_rank_**
+
+Generally, in multiple regression we have a continuous response variable and two or more continuous explanatory variables, however in this dataset we have three attribute variables that we wish to include as the explanatory variables in the model. 
+
+Next, we need to specify the model that embodies our mechanistic understanding of the
+factors involved and the way that they are related to the response variable. It would make sense to expect that all of the available $x$ variables may impact the behaviour of $y$, thus the model we wish to built should reflect our view point, i.e. $y = f(x_2, x_2, x_3, x_4, x_5)$:
+
+$$y = b_0 + b_1x_1 + b_2x_2 + b_3x_3 + b_4x_4 + b_4x_4 + e$$
+Our view point states a belief that all explanatory variables have positive impact on the response. For example, more years in service will cause higher salary.
+
+The object now is to determine the values of the parameters in the model that lead to **the best fit of the model to the data**. That is, we not only trying to estimate the parameters of the model, but we are also seeking for the minimal adequate model to describe the data. 
+
+{{% notice tip %}}
+The best model is the model that produces the least unexplained variation following the principle of parsimony rather than complexity. That is the model should have as few parameters as possible, subject to the constraint that the parameters in the model should all be statistically significant.
+{{% /notice %}}
+
+For regression modelling in R we use the `lm()` function, that fits a linear model assuming normal errors and constant variance. We specify the model by a formula that uses arithmetic operators: `+`, `-`, `*`, `/` and `^` which enable different functionalities from their ordinary ones. But, before we dive into statistical modelling of the given data, we will **Get to Know Your Data**.
+
+Examining multivariate data intrinsically more challenging when examining univariate and bivariate data. To get the most indepth vision into multivariate data behaviour we cunstruct scatterplot matrices that enable display of pairwise relationships. In R, the scatterplot matrices are composed by the `pairs` function, which comes as a part of the default `graphics` package. Since we wish to include attribute variables in our analysis we are going to use the `GGally::ggpairs()` function that produces a pairwise comparison of multivariate data for both data types: measured and attribute.         
+
+```{r}
+# If you don't have GGally installed yet, uncomment and run the line below
+# install.packages(GGally)
+suppressPackageStartupMessages(library(GGally))
+ggpairs(Salaries)
+```
+
+It is an information rich visualisation that includes pairwise relationships of all the variables we want to consider for our model. By focusing on the last column of the plots, we can notice influence from all explanatory variables onto the response, expect maybe for `disscipline` and `sex`. We also notice unbalanced representation of the groups for variables `rank` and `sex`, but for the purpose of our practice in fitting a multi factor model this isn't that problematic. What should be of more interest to us is the high multicollinearity between `rank`, `yrs.since.phd` and `yrs.service`, which happens when the variables are highly linearly related. As a consequence, we will need to keep an eye on the significance of using both of those variables in the model.
+
+So, let us bild the model.
+
+**Fitting the Model**
+
+There are no fixed rules when fitting a linear modelles, but there are adopted standards that have proven to work well in practice. We start off by fitting a maximal model then simplifying it by removing non-significant explanatory variables. This needs to be done with caution, making sure that the simplifications make good scientific sense, and do not lead to significant reductions in explanatory power. Although this should be adopted strategy for fitting a model it is not a warrant in finding all the important structures in a complex data frame. 
+
+We can summarise our model building procedure algorithm as following:
+
+i) Fit the **maximal model** that includes all the variables
+    -Check the overall significance of the model by checking how big is the $R^2$/$_bar{R}^2_{adjusted}. If statistically significant, carry on with the model fitting procedure, otherwise stop (F-test).
+ii) Remove the least significant terms one at the time
+    - Remove the one with the smallest $t_{calculated}$ value (t-test)
+    - If the deletion causes an insignificant increase in $\bar{R}_^{2}_{adjusted}$ leave that term out of the model
+iii) Keep removing terms from the model until the model contains nothing but significant terms.
+
+
+
+
+
+With large numbers of explanatory variables, and many interactions and non-linear terms, the process of model simplification can take a very long time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+By fitting a multivariate regression model to the data we wish to to identify and understand how the value of a dependent response variable changes when any one of the independent explanatory variables is changed while the other independent variables stay the same.
+
+
+In general, it is used for regression analysis using measured explanatory variables. However, often when building multiple regression models we don't wont to be limited to the choice of only measured explanatory variables. That is, we want to be able to include attribute explanatory variables in the model too.
+
+---
+
+**Useful links:**
+
+- [The F-test for Linear Regression](http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm)
+-[Best Subset](http://www.science.smith.edu/~jcrouser/SDS293/labs/lab8-r.html)
+
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Summary**</font></p>
 
 For problems ranging from bioinformatics to marketing, many analysts desire to develop “classifiers” instead of developing predictive models
 
+Data to practice:
+
+<https://www.kdnuggets.com/datasets/index.html>
+
+<http://archive.ics.uci.edu/ml/index.php>
+
+---
+
+**Further Reading**
+
+Claeskens, G. and Hjort, N.L. (2008) Model Selection and Model Averaging, Cambridge University
+Press, Cambridge.
+
+Fox, J. (2002) An R and S-Plus Companion to Applied Regression, Sage, Thousand Oaks, CA.
+
+
+
+---
+
+To practice multiple regression model fitting procedure we are going to use `Prestige` data available from the `carData` package  of datasets designed to accompany [J. Fox and S. Weisberg book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/). 
+
+**`carData::data(Prestige)`**: The Canadian occupational prestige data.
+Although there are many more occupations in the Canadian census, these 102 do not constitute a random sample from the larger population of occupations. Justification for treating the 102 occupations as a sample implicitly rests on the claim that they are "typical" of
+the population, at least with respect to the relationship between prestige and income.
+
+Data on the prestige and other characteristics of
 
 
 

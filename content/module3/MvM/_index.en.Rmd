@@ -294,11 +294,11 @@ i.   $\text{The Total Variation in }$$Y = 82.00$
 ii.  $\text{The Explained Variation in }$$Y = 78.23$
 iii. $\text{The Unexplained Variation in }$$Y = 3.77$
 
-Notice the relationship proposed on page 5, given below, is satisfied
+Notice the relationship given below, is satisfied
 
 $$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
 	
-	$$82.00 = 78.23 + 3.77$$
+$$82.00 = 78.23 + 3.77$$
 
 What do these quantities tell us?  They are difficult to interpret because they are expressed in the units of the problem.
 
@@ -480,7 +480,7 @@ Note that in the first section we can find statistics relevant to the estimation
 >
 > Next is the *coefficient of determination*, which helps us determine how well the model fits to the data. We have already seen that $R^2$ subtracts the residual error from the variance in Y. The bigger the error, the worse the remaining variance will appear.
 > 
-> For the time being we will skip $R^2_{adj}$ and point out that it is used for models with multiple variables, to which you will be introduced in the next section.   
+> For the time being we will skip $R^2_{adjusted}$ and point out that it is used for models with multiple variables, to which you will be introduced in the next section.   
 >
 Lastly, the *F-Statistic* is the second “test” that the summary function produces for `lm` models. The *F-Statistic* is a “global” test that checks if at least one of your coefficients are nonzero, i.e. when dealing with a simple regression model to check if the model is worthy of further investigation and interpretation.
 
@@ -490,9 +490,11 @@ To go back to our model interpretation. Earlier, we said after examining the sca
 
 For this example the outcome of the IDA is that there is clear evidence of a link between *Share_Price* and *Profit* and the nature of the influence being that as *Profit* increases *Share_Price* also increases. It only remains to describe the connection, and discuss how effective the model is, and ask if it can be used to predict *Share_Price* value from the value of *Profit*? 🤔 
 
+
 ---
 
-** Further Data Analysis**
+
+**Further Data Analysis**
 
 The adequacy of $R^2$ can be judged both informally and formally using hypothesis testing.
 Like all hypothesis tests, this test is carried out in four stages:

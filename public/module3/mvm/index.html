@@ -12,18 +12,18 @@
     <title>Regression :: Data Literacy in R</title>
 
     
-    <link href="/css/nucleus.css?1603223200" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1603223200" rel="stylesheet">
-    <link href="/css/hybrid.css?1603223200" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1603223200" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1603223200" rel="stylesheet">
-    <link href="/css/auto-complete.css?1603223200" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1603223200" rel="stylesheet">
-    <link href="/css/theme.css?1603223200" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1603223200" rel="stylesheet">
+    <link href="/css/nucleus.css?1603714004" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1603714004" rel="stylesheet">
+    <link href="/css/hybrid.css?1603714004" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1603714004" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1603714004" rel="stylesheet">
+    <link href="/css/auto-complete.css?1603714004" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1603714004" rel="stylesheet">
+    <link href="/css/theme.css?1603714004" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1603714004" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1603223200"></script>
+    <script src="/js/jquery-3.3.1.min.js?1603714004"></script>
 
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1603223200"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1603223200"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1603714004"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1603714004"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1603223200"></script>
+<script type="text/javascript" src="/js/search.js?1603714004"></script>
 
     
   </div>
@@ -1564,9 +1564,9 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 <li><span class="math inline">\(\text{The Explained Variation in }\)</span><span class="math inline">\(Y = 78.23\)</span></li>
 <li><span class="math inline">\(\text{The Unexplained Variation in }\)</span><span class="math inline">\(Y = 3.77\)</span></li>
 </ol>
-<p>Notice the relationship proposed on page 5, given below, is satisfied</p>
+<p>Notice the relationship given below, is satisfied</p>
 <p><span class="math display">\[\text{The Total Variation in Y = Explained Variation + Unexplained Variation}\]</span></p>
-<pre><code>$$82.00 = 78.23 + 3.77$$</code></pre>
+<p><span class="math display">\[82.00 = 78.23 + 3.77\]</span></p>
 <p>What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.</p>
 <p>Consider the following ratio:</p>
 <p><span class="math inline">\({\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954\)</span></p>
@@ -1673,8 +1673,8 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 companyd &lt;- read.csv(&quot;https://tanjakec.github.io/mydata/SHARE_PRICE.csv&quot;, header=T)
 # look at the data
 glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -1703,8 +1703,8 @@ summary(companyd)</code></pre>
 ##               
 ## </code></pre>
 <pre class="r"><code>glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -1804,14 +1804,14 @@ SSE &lt;- sum(model$residuals^2)
 n &lt;- length(model$residuals)
 sqrt(SSE / (n-(1+k)) ) # Residual Standard Error</code></pre>
 <p>Next is the <em>coefficient of determination</em>, which helps us determine how well the model fits to the data. We have already seen that <span class="math inline">\(R^2\)</span> subtracts the residual error from the variance in Y. The bigger the error, the worse the remaining variance will appear.</p>
-<p>For the time being we will skip <span class="math inline">\(R^2_{adj}\)</span> and point out that it is used for models with multiple variables, to which you will be introduced in the next section.</p>
+<p>For the time being we will skip <span class="math inline">\(R^2_{adjusted}\)</span> and point out that it is used for models with multiple variables, to which you will be introduced in the next section.</p>
 <p>Lastly, the <em>F-Statistic</em> is the second “test” that the summary function produces for <code>lm</code> models. The <em>F-Statistic</em> is a “global” test that checks if at least one of your coefficients are nonzero, i.e. when dealing with a simple regression model to check if the model is worthy of further investigation and interpretation.</p>
 </blockquote>
 <p><strong>Model Interpretation:</strong></p>
 <p>To go back to our model interpretation. Earlier, we said after examining the scatter plot that there is a a clear link between <em>Share_Price</em> and <em>Profit</em>. This is confirmed by the value of <span class="math inline">\(R^2 = 74.67\%\)</span>. The interpretation of <span class="math inline">\(R^2\)</span> is suggesting that <span class="math inline">\(74.67\%\)</span> of the changes in <em>Share_Price</em> are explained by changes in <em>Profit</em>. Alternatively, <span class="math inline">\(25.33\%\)</span> of the changes in <em>Share_Price</em> are due to other variables.</p>
 <p>For this example the outcome of the IDA is that there is clear evidence of a link between <em>Share_Price</em> and <em>Profit</em> and the nature of the influence being that as <em>Profit</em> increases <em>Share_Price</em> also increases. It only remains to describe the connection, and discuss how effective the model is, and ask if it can be used to predict <em>Share_Price</em> value from the value of <em>Profit</em>? 🤔</p>
 <hr />
-<p>** Further Data Analysis**</p>
+<p><strong>Further Data Analysis</strong></p>
 <p>The adequacy of <span class="math inline">\(R^2\)</span> can be judged both informally and formally using hypothesis testing.
 Like all hypothesis tests, this test is carried out in four stages:</p>
 <ol style="list-style-type: decimal">
@@ -2541,19 +2541,19 @@ response variable and a measured explanatory variable?</li>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1603223200"></script>
-    <script src="/js/perfect-scrollbar.min.js?1603223200"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1603223200"></script>
-    <script src="/js/jquery.sticky.js?1603223200"></script>
-    <script src="/js/featherlight.min.js?1603223200"></script>
-    <script src="/js/highlight.pack.js?1603223200"></script>
+    <script src="/js/clipboard.min.js?1603714004"></script>
+    <script src="/js/perfect-scrollbar.min.js?1603714004"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1603714004"></script>
+    <script src="/js/jquery.sticky.js?1603714004"></script>
+    <script src="/js/featherlight.min.js?1603714004"></script>
+    <script src="/js/highlight.pack.js?1603714004"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1603223200"></script>
-    <script src="/js/learn.js?1603223200"></script>
-    <script src="/js/hugo-learn.js?1603223200"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1603714004"></script>
+    <script src="/js/learn.js?1603714004"></script>
+    <script src="/js/hugo-learn.js?1603714004"></script>
 
-    <link href="/mermaid/mermaid.css?1603223200" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1603223200"></script>
+    <link href="/mermaid/mermaid.css?1603714004" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1603714004"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
