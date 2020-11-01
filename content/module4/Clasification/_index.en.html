@@ -846,5 +846,33 @@ response variable and a measured explanatory variable?</li>
 <li>Undertake the Data Analysis for the Supermarket Data Set to investigate the relationships between the response variable and from your point of view regarded as worth of attention set of explanatory variables. Present your points of views about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.</li>
 </ol>
 <p><strong>You are expected to bring your report to into the next class.</strong></p>
-<hr />
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>Challenger USA Space Shuttle O-Ring Data Set</code> available from a data set from <a href="http://archive.ics.uci.edu/ml/datasets/Forest+Fires">UCI Machine Learning Repository</a>, to analyse the number of O-rings that experience thermal distress on a flight at 31 degrees F given data on the previous 23 shuttle flights.</td>
+</tr>
+<tr class="even">
+<td>1. Number of O-rings at risk on a given flight
+2. Number experiencing thermal distress
+3. Launch temperature (degrees F)
+4. Leak-check pressure (psi)
+5. Temporal order of flight</td>
+</tr>
+<tr class="odd">
+<td><code>r shuttle = read.table( "http://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data", quote = "\"", comment.char = "", stringsAsFactors = FALSE) summary(shuttle)</code></td>
+</tr>
+<tr class="even">
+<td><code>##        V1          V2               V3              V4              V5 ##  Min.   :6   Min.   :0.0000   Min.   :53.00   Min.   : 50.0   Min.   : 1.0 ##  1st Qu.:6   1st Qu.:0.0000   1st Qu.:67.00   1st Qu.: 75.0   1st Qu.: 6.5 ##  Median :6   Median :0.0000   Median :70.00   Median :200.0   Median :12.0 ##  Mean   :6   Mean   :0.3043   Mean   :69.57   Mean   :152.2   Mean   :12.0 ##  3rd Qu.:6   3rd Qu.:0.5000   3rd Qu.:75.00   3rd Qu.:200.0   3rd Qu.:17.5 ##  Max.   :6   Max.   :2.0000   Max.   :81.00   Max.   :200.0   Max.   :23.0</code></td>
+</tr>
+<tr class="odd">
+<td><code>r shuttle &lt;- shuttle %&gt;% rename(orings = V1) %&gt;% rename(distress = V2) %&gt;% rename(temp = V3) %&gt;% rename(pressure = V4) %&gt;% rename(temp_flight = V5) glimpse(shuttle)</code></td>
+</tr>
+<tr class="even">
+<td><code>## Rows: 23 ## Columns: 5 ## $ orings      &lt;int&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, … ## $ distress    &lt;int&gt; 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, … ## $ temp        &lt;int&gt; 66, 70, 69, 68, 67, 72, 73, 70, 57, 63, 70, 78, 67, 53, 6… ## $ pressure    &lt;int&gt; 50, 50, 50, 50, 50, 50, 100, 100, 200, 200, 200, 200, 200… ## $ temp_flight &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</code></td>
+</tr>
+</tbody>
+</table>
 <p>© 2020 Tatjana Kecojevic</p>

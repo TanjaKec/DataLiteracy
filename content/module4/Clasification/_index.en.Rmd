@@ -651,5 +651,35 @@ response variable and a measured explanatory variable?
 
 **You are expected to bring your report to into the next class.**
 
+---
+`Challenger USA Space Shuttle O-Ring Data Set ` available from a data set from [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Forest+Fires), to analyse the number of O-rings that experience thermal distress on a flight at 31 degrees F given data on the previous 23 shuttle flights. 
+
+1. Number of O-rings at risk on a given flight 
+2. Number experiencing thermal distress 
+3. Launch temperature (degrees F) 
+4. Leak-check pressure (psi) 
+5. Temporal order of flight
+
+```{r}
+shuttle = read.table(
+  "http://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data",
+  quote = "\"",
+  comment.char = "",
+  stringsAsFactors = FALSE)
+summary(shuttle)
+```
+
+```{r}
+shuttle <- shuttle %>% 
+  rename(orings = V1) %>% 
+  rename(distress = V2) %>% 
+  rename(temp = V3) %>% 
+  rename(pressure = V4) %>%
+  rename(temp_flight = V5)
+glimpse(shuttle)
+```
+
+
+
 -----------------------------
 © 2020 Tatjana Kecojevic

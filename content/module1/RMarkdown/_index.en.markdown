@@ -343,6 +343,6 @@ You're ready to go! 😃
 
 - [Writing in R Markdown](https://jdblischak.github.io/r-intermediate-altmetrics/09-rmarkdown.html) by [Software Carpentry](https://software-carpentry.org/)
 
-
+- [Tables Generator](https://www.tablesgenerator.com/markdown_tables)
 -----------------------------
 © 2020 Tatjana Kecojevic
