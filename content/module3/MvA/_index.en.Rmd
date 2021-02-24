@@ -563,5 +563,9 @@ Based on the sample evidence there is a relationship between 'Share Price' and '
 
 1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs Type`.
 
+----
+Check out this tweet and learn more about the #rstats boxplots:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I learned A TON about <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> boxplots, as well as new and old features in <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> creating this blog post:<a href="https://t.co/eYnhSjq0iP">https://t.co/eYnhSjq0iP</a><br>Take your own deep dive into the world of boxplots and ggplot2. <a href="https://t.co/1jVkImwvZN">pic.twitter.com/1jVkImwvZN</a></p>&mdash; Laura DeCicco (@DeCiccoDonk) <a href="https://twitter.com/DeCiccoDonk/status/1027948380780208128?ref_src=twsrc%5Etfw">August 10, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ----------------------------
 © 2020 Tatjana Kecojevic

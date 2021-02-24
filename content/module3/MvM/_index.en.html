@@ -174,7 +174,7 @@ where:</p>
 </table>
 <p>The problem is to use this information to measure <strong>the intercept</strong> and <strong>the gradient</strong> for this data set.</p>
 <p>A simple way to do this is to draw what is considered to be <strong>the line of best fit</strong> by judgement or guesswork! 😁😉</p>
-<p><strong>The intercept</strong> can be read off the graph as approximately <span class="math inline">\(5\)</span>, and <strong>the gradient</strong> can be simply measured since if <span class="math inline">\(X = 0\)</span> then <span class="math inline">\(Y = 5\)</span>, and if <span class="math inline">\(X = 5\)</span> then <span class="math inline">\(Y = 15\)</span>, so for a change in <span class="math inline">\(X\)</span> of <span class="math inline">\(5\)</span> units (from 0 to 5) <span class="math inline">\(Y\)</span> changes by <span class="math inline">\(10\)</span>, from <span class="math inline">\(5\)</span> to <span class="math inline">\(15\)</span>. The definition of <strong>the gradient</strong> is <strong>The change in Y for a unit increase in X</strong> hence the gradient for this data set is <span class="math inline">\(15/5 = 2\)</span>.</p>
+<p><strong>The intercept</strong> can be read off the graph as approximately <span class="math inline">\(5\)</span>, and <strong>the gradient</strong> can be simply measured since if <span class="math inline">\(X = 0\)</span> then <span class="math inline">\(Y = 5\)</span>, and if <span class="math inline">\(X = 5\)</span> then <span class="math inline">\(Y = 15\)</span>, so for a change in <span class="math inline">\(X\)</span> of <span class="math inline">\(5\)</span> units (from 0 to 5) <span class="math inline">\(Y\)</span> changes by <span class="math inline">\(10\)</span>, from <span class="math inline">\(5\)</span> to <span class="math inline">\(15\)</span>. The definition of <strong>the gradient</strong> is <strong>The change in Y for a unit increase in X</strong> hence the gradient for this data set is <span class="math inline">\(10/5 = 2\)</span>.</p>
 <p><img src="/module3/MvM/_index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>The straight-line relationship obtained by this process is <span class="math display">\[\hat{Y} = 5 + 2*X\]</span>.<br />
 Note, <span class="math inline">\(\hat{Y}\)</span> is a notation for the value of <span class="math inline">\(Y\)</span> as predicted by the straight-line relationship.</p>
@@ -288,9 +288,7 @@ Note, <span class="math inline">\(\hat{Y}\)</span> is a notation for the value o
 </table>
 <p>The quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> is a measure of the disagreement between the actual <span class="math inline">\(Y\)</span> values and the values predicted by the line. If this value is chosen to be as small as possible then the disagreement between the actual Y values and the line is the smallest it could possibly be, hence the line is <strong>The line of Best Fit</strong>.</p>
 <p>This procedure of finding the intercept and the gradient of a line that makes the quantity <span class="math inline">\(\Sigma(Y - \hat{Y})^2\)</span> a minimum is called <strong>The Method of Least Squares</strong>.</p>
-<p>{{% notice info %}}
-<strong>The Method of Least Squares</strong> was developed by <a href="https://link.springer.com/referenceworkentry/10.1007%2F978-1-4020-4423-6_105">K. F Gauss (1777 - 1855)</a> a German mathematician, Gauss originated the ideas and a Russian mathematician <a href="https://en.wikipedia.org/wiki/Andrey_Markov">A. A. Markov (1856 - 1922)</a> developed the method.
-{{% /notice %}}</p>
+<p><strong>The Method of Least Squares</strong> was developed by <a href="https://link.springer.com/referenceworkentry/10.1007%2F978-1-4020-4423-6_105">K. F Gauss (1777 - 1855)</a> a German mathematician, Gauss originated the ideas and a Russian mathematician <a href="https://en.wikipedia.org/wiki/Andrey_Markov">A. A. Markov (1856 - 1922)</a> developed the method.</p>
 <p>In R we use the <code>lm( )</code> function to fit linear models as illustrated below.</p>
 <pre class="r"><code>x &lt;- c(1:6)
 y &lt;- c(7, 8, 12, 13, 14, 18)
@@ -457,9 +455,38 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 </table>
 <p>incorporating this calculation into the table above will enable us to get <span class="math inline">\((\hat{Y} - \bar{Y})^2 = 78.23\)</span>.</p>
 <hr />
+<p><strong>Correlation does not imply causation</strong></p>
+<p>Once the intercept and slope have been estimated using the method of least squares, various indices are studied to determine the reliability of these estimates. One of the most popular of these reliability indices is the <strong>correlation coefficient</strong>. A sample correlation coefficient, more specifically known as the <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson Product Moment correlation coefficient</a>, denoted <span class="math inline">\(r\)</span>, has possible values between <span class="math inline">\(-1\)</span> and <span class="math inline">\(+1\)</span>, as illustrated in the diagram below.</p>
+<p><img src="/module3/MvM/images/corr_coeff_r.png?width=40pc" /></p>
+<p>In fact, the correlation is a parameter of the bivariate normal distribution, that is <strong>used to describe the association</strong> between two variables, which does not include a cause and effect statement. That is, one variable does not depend on the other, i.e. the variables are not labelled as dependent and independent. Rather, they are considered as two random variables that seem to vary together. Hence, it is important to recognise that <em>correlation does not imply causation</em>. In correlation analysis, both <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are assumed to be random variables, whiles in linear regression, <span class="math inline">\(Y\)</span> is assumed to be a random variable and <span class="math inline">\(X\)</span> is assumed to be a fixed variable.</p>
+<p>Main characteristic of the correlation coefficient <span class="math inline">\(r\)</span> are:</p>
+<ul>
+<li>there are no units for the correlation coefficient</li>
+<li>it lies between <span class="math inline">\(-1 \leqslant r \leqslant 1\)</span>
+<ul>
+<li>when its value is near -1 or +1 it shows a strong linear association</li>
+<li>a correlation coefficient of -1 or +1 indicates a perfect linear association</li>
+<li>value near 0 suggests no relationship</li>
+</ul></li>
+<li>the sign of the correlation coefficient indicates the directions of the association
+<ul>
+<li>a positive <span class="math inline">\(r\)</span> is associated with an estimated positive slope</li>
+<li>a negative <span class="math inline">\(r\)</span> is associated with an estimated negative slope</li>
+</ul></li>
+</ul>
+<p><strong>BUT!!!</strong></p>
+<ul>
+<li><span class="math inline">\(r\)</span> is a measure of the strength of a linear association and it should not be used when the relationship is non-linear, therefore <span class="math inline">\(r\)</span> is NOT used to measure strength of a curved line</li>
+<li><span class="math inline">\(r\)</span> is sensitive to outliers</li>
+<li><span class="math inline">\(r\)</span> does not make a distinction between the response variable and the explanatory variable. That is, the correlation of <span class="math inline">\(X\)</span> with <span class="math inline">\(Y\)</span> is the same as the correlation of <span class="math inline">\(Y\)</span> with <span class="math inline">\(X\)</span>.</li>
+<li>in simple linear regression, squaring the correlation coefficient, <span class="math inline">\(r^2\)</span>, results in the value of the coefficient of determination <span class="math inline">\(R^2\)</span></li>
+</ul>
+<p>{{% notice note %}}
+The <strong>Spearman rank correlation coefficient</strong> is an corresponding nonparametric equivalent of the Pearson correlation coefficient. This statistic is computed by replacing the data values with their ranks and pplying the Pearson correlation formula to the ranks of the data. Tied values are replaced with the average rank of the ties. Just like in the case of Pearson coefficient, this one is also really a measure of association rather than correlation, since the ranks are unchanged by a monotonic transformation of the original data. For the sample sizes greater than 10, the distribution of the Spearman rank correlation coefficient can be approximated by the distribution of the Pearson correlation coefficient. It is also worth knowing that the Spearman rank correlation coefficient uses the weights when weights are specified.
+{{% /notice %}}</p>
 <p><strong>The coefficient of Determination <span class="math inline">\(R^2\)</span></strong></p>
 <p>We realise that when fitting a regression model we are seeking to find out how much variance is explained, or is accounted for, by the explanatory variable <span class="math inline">\(X\)</span> in an outcome variable <span class="math inline">\(Y\)</span>.</p>
-<p>From the above example the following has been calculated:</p>
+<p>In the earlier example above the following has been calculated:</p>
 <ol style="list-style-type: lower-roman">
 <li><span class="math inline">\(\text{The Total Variation in }\)</span><span class="math inline">\(Y = 82.00\)</span></li>
 <li><span class="math inline">\(\text{The Explained Variation in }\)</span><span class="math inline">\(Y = 78.23\)</span></li>
@@ -467,8 +494,8 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 </ol>
 <p>Notice the relationship given below, is satisfied</p>
 <p><span class="math display">\[\text{The Total Variation in Y = Explained Variation + Unexplained Variation}\]</span></p>
-<p><span class="math display">\[82.00 = 78.23 + 3.77\]</span></p>
-<p>What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.</p>
+<p><span class="math display">\[82.00 = 78.23 + 3.77\]</span>
+What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.</p>
 <p>Consider the following ratio:</p>
 <p><span class="math inline">\({\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954\)</span></p>
 <p>This is saying that <span class="math inline">\(0.954\)</span> or <span class="math inline">\(95.4\%\)</span> of the changes in <span class="math inline">\(Y\)</span> are explained by changes in <span class="math inline">\(X\)</span>. This is a useful and useable measure of the effectiveness of the match between the actual <span class="math inline">\(Y\)</span> values and the predicted <span class="math inline">\(Y\)</span> values.</p>
@@ -480,7 +507,7 @@ Where <span class="math inline">\(\bar{Y}\)</span> is the average value of <span
 <p>is called <strong>the Coefficient of Determination</strong>, and usually labelled as <span class="math inline">\(R^2\)</span>, and may be defined as <strong>the proportion of the changes in <span class="math inline">\(Y\)</span> explained by changes in <span class="math inline">\(X\)</span></strong>.</p>
 <p>This ratio is always on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, but by convention is usually expressed as a percentage, so is regarded as on the scale <span class="math inline">\(0\)</span> to <span class="math inline">\(100\%\)</span>. The interpretation of this ratio is as follows:</p>
 <p><img src="/module3/MvM/images/R_sq_interp.png?width=30pc" /></p>
-<p>The definition and interpretation of <strong><span class="math inline">\(R^2\)</span></strong> is a very <strong>important tool</strong> in the data analyst’s tool kit <strong>for tracking connections between a measured response variable and a measured explanatory variable</strong>.</p>
+<p>The theoretical minimum <strong><span class="math inline">\(R^2\)</span></strong> is <span class="math inline">\(0\)</span>. However, since linear regression is based on the best possible fit, <strong><span class="math inline">\(R^2\)</span></strong> will always be greater than zero, even when the predictor and outcome variables bear no relationship to one another. The definition and interpretation of <strong><span class="math inline">\(R^2\)</span></strong> is a very <strong>important tool</strong> in the data analyst’s tool kit <strong>for tracking connections between a measured response variable and a measured explanatory variable</strong>.</p>
 <hr />
 <p><strong>Using Sample Data to Track a connection</strong></p>
 <p>When working with sample data to investigate any relationships that may exist between a measured response variable and a measured explanatory variable, the information contained within the sample is imperfect, so has to be interpreted in the light of sampling error. This is particularly important when interpreting the value of <span class="math inline">\(R^2\)</span> calculated from sample data. The sample R2 value gives a measure of the strength of the connection, and this can sometimes be difficult to interpret particularly if the sample size is small.</p>
@@ -814,6 +841,9 @@ Since the <span class="math inline">\(R^2\)</span> value is nearly <span class="
 <p>The <em>Share_Price</em> for the company with the <em>Profit</em> that lies outside the range of experience is not likely to be very reliable, or of much value. These problems are caused by the fact that the information available about the link between <em>Share_Price</em> and <em>Profit</em> is only valid over the range of values that <em>Profit</em> takes in the data. There is no information about the nature of the connection outside this range and any predictions made must be treated with caution.</p>
 <p>In general terms when interpreting a regression model the intercept is of little value, since it is generally out of the range of the data. The gradient term is the more important and the formal definition of the gradient provides the interpretation of this information.</p>
 <p>The <strong>gradient</strong> is defined to be the <strong>change in <span class="math inline">\(Y\)</span> for a unit increase in <span class="math inline">\(X\)</span></strong>. For the model developed the gradient is <span class="math inline">\(4.06\)</span>. This is suggesting for every additional unit increase in <em>Profit</em>, <em>Share_Price</em> increases by <span class="math inline">\(£4.06\)</span>.</p>
+<p>{{% notice warning %}}
+Avoid extrapolation! Refrain from predicting/interpreting the regression line for X-values outside the range of X in the data set!
+{{% /notice %}}</p>
 <hr />
 <p><strong>YOUR TURN</strong> 👇</p>
 <ol style="list-style-type: decimal">

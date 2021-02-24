@@ -171,8 +171,8 @@ summary(companyd)</code></pre>
 ##  3rd Qu.:1.0   3rd Qu.:3   3rd Qu.:1.0  
 ##  Max.   :1.0   Max.   :3   Max.   :1.0</code></pre>
 <pre class="r"><code>glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -204,8 +204,8 @@ summary(companyd)</code></pre>
 ##               
 ## </code></pre>
 <pre class="r"><code>glimpse(companyd)</code></pre>
-<pre><code>## Observations: 60
-## Variables: 7
+<pre><code>## Rows: 60
+## Columns: 7
 ## $ Share_Price &lt;int&gt; 880, 862, 850, 840, 838, 825, 808, 806, 801, 799, 783, 77…
 ## $ Profit      &lt;dbl&gt; 161.3, 170.5, 140.7, 115.7, 107.9, 138.8, 102.0, 102.7, 1…
 ## $ RD          &lt;dbl&gt; 152.6, 118.3, 110.6, 87.2, 75.1, 116.2, 91.3, 100.4, 113.…
@@ -490,7 +490,7 @@ Analysis of Variance is often abbreviated to ANOVA.
 <p>{{% notice tip %}}
 Use your acquired knowledge! What was the difference between the two levels in the previous analysis? What conclusion did we draw?
 {{% /notice %}}</p>
-<p>We also notice the difference in standard deviations: st.dev. of ‘Share_Price&quot; for ’Sector’ coded 1 is £177.47 and st.dev. of <code>Share_Price</code> for <code>Sector</code> coded 3 is £109.53. All of this indicate that we should examine the boxplots to get visual interpretation of the results above.</p>
+<p>We also notice the difference in standard deviations: st.dev. of ‘Share_Price" for ’Sector’ coded 1 is £177.47 and st.dev. of <code>Share_Price</code> for <code>Sector</code> coded 3 is £109.53. All of this indicate that we should examine the boxplots to get visual interpretation of the results above.</p>
 <pre class="r"><code>boxplot(Share_Price ~ Sector, data = companyd, boxwex = 0.25, main = &quot;Share Price vs Sector&quot;, xlab =&quot;Share_Price&quot;, ylab =&quot;Sector&quot;, col=c(&quot;palegreen3&quot;, &quot;orchid3&quot;, &quot;cornflowerblue&quot;), horizontal=T)</code></pre>
 <p><img src="/module3/MvA/_index.en_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>By examining the boxplots we can suggest that the information in the sample is inconclusive and more formal data analysis is required.</p>
@@ -571,5 +571,14 @@ F_crit</code></pre>
 <ol style="list-style-type: decimal">
 <li>Investigate the nature of the relationship in Share Price Study data for <code>Share_Price vs Type</code>.</li>
 </ol>
+<hr />
+<p>Check out this tweet and learn more about the #rstats boxplots:</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I learned A TON about <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> boxplots, as well as new and old features in <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> creating this blog post:<a href="https://t.co/eYnhSjq0iP">https://t.co/eYnhSjq0iP</a><br>Take your own deep dive into the world of boxplots and ggplot2. <a href="https://t.co/1jVkImwvZN">pic.twitter.com/1jVkImwvZN</a>
+</p>
+— Laura DeCicco (<span class="citation">@DeCiccoDonk</span>) <a href="https://twitter.com/DeCiccoDonk/status/1027948380780208128?ref_src=twsrc%5Etfw">August 10, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
