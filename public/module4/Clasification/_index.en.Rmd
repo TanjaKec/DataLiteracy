@@ -5,679 +5,901 @@ output:
   learnr::tutorial
 weight: 5
 ---
-Earlier we looked at how to examine sample data to investigate the nature of any relationship that may exist between a measured response variable and an attribute explanatory variable. This section examines how to investigate the nature of any relationship that may exist between a measured response variable and a measured explanatory variable. 
 
-The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable. The next step is to use some **simple sample descriptive statistics** to have a first look at the nature of the link between the response variable and the explanatory variable.  This simple approach will lead to one of three conclusions, namely, on the basis of the sample information:
+```{r, message = FALSE, warning = FALSE, echo = FALSE}
+require(knitr)
+opts_chunk$set(eval = T)
+```
 
-i.	there is very strong evidence to support a link 
-ii.	there is absolutely no evidence of any link 
-iii.	the sample evidence is inconclusive and further more sophisticated data analysis is required
 
-This step is called the **Initial Data Analysis** or the **IDA**.
+Classification is a form of supervised learning focused on building and evaluating models for qualitative response, which we often refer to as categorical response. For example, is someone a smoker is a qualitative variable taking values _yes_ and _no_. Another example would be _European Country_, which is a qualitative variable taking qualitative values: Italy, France, Spain, Great Britain, Germany, Serbia,... Here, we will study approaches for predicting qualitative responses, a **process** that is known as **classification**. 
 
-If the IDA suggests that **Further Data Analysis** is required, then this step seeks one of two conclusions:
+Predicting a qualitative response for an observation can be referred to as classifying that observation, since it assigns to a category, or class. Classification methods tend to predict the probability of each of the categories of a qualitative variable as a basis for generating the classification. In this sense they also behave like regression methods. Although many of the regression
+modelling techniques can be used for classification, the way we evaluate
+model performance is, needless to say, different since MSE and $R^2$ are not appropriate in the context of classification.           
 
-i.	The sample evidence is consistent with there being no link between the response variable and the explanatory variable.
-ii.	The sample evidence is consistent with there being a link between the response variable and the explanatory variable.
+Classification problems occur often, perhaps even more so than regression problems. Classification methods have wide practical applications. In environmental studies they are used to assess flood susceptibility. They are a popular financial tool for the assessment of bankruptcy prediction. In medical studies, breast cancer is often classified according to the number of oestrogen receptors present on the tumour. These are just a few of many examples where classification methods are used to perform the prediction.   
 
-As we have already seen in the previous sections, this process can be represented diagrammatically as:
+There are many **classification methods**, also known as **classifiers**, that can be used to predict a qualitative response. We will familiarise ourself with the two most widely-used classifiers: K-nearest neighbours and logistic regression.
 
-![](/module3/DAMethodology/images/DAMethodology.png?width=40pc)
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**K-nearest neighbours**</font></p>
 
-The Data-Analysis Methodology seeks to find the answer to the following key question:
+K-nearest neighbours (KNN) algorithm is one of the simplest techniques used in machine learning. Because of its simplicity and low calculation time KNN is a popular classification method preferred by many. It is a simple recommendation system used by [Amazon](https://www.amazon.co.uk/) and [Netflix](https://www.netflix.com/) (see [Use of KNN for the Netflix Prize](http://cs229.stanford.edu/proj2006/HongTsamis-KNNForNetflix.pdf)). It is a non-parametric method meaning that the model is made up entirely from the data given to it, instead of being based on the assumptions about the structure of the given data. In other words the KNN approach makes no assumptions about the shape of the decision boundary. 
 
-- On the basis of the sample data, is there evidence of a connection/link/relationship between the response variable and the explanatory variable?
+When implementing KNN, the first step is to transform data points into feature vectors, or their mathematical value. The algorithm then works by finding the distance between the mathematical values of these points. The most common way to find this distance is the Euclidean distance
 
-The final outcome is one of two conclusions:  
 
-a)	There is no evidence of a relationship, labelled as the ‘No’ outcome in the diagram above, in which case the analysis is finished.
+$$
+\begin{equation} 
+\begin{split}
+d(p, q) & = d(q, p) \\
+& & =  \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2 + \dotsc + (p_n - q_n)^2} \\ 
+& &= \sqrt{\sum_{i=1}^{n}(p_i-q_i)^2}
+\end{split}
+\end{equation}
+$$
+where 
 
-b)	There is evidence of a relationship, labelled as the ‘Yes’ outcome in the diagram above, in which case the nature of the relationship needs to be described.
+- $p$ and $q$ are	two points in Euclidean $n$-space and
+- $q_i$ and $p_i$	are	Euclidean vectors, starting from the origin of the space (initial point).
 
-The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of $Y$ the response variable and the value of $X$ the explanatory variable. For the whole population a graph of $Y$ against $X$ could be plotted conceptually. If the graph looked as in the diagram below, then there is quite clearly a link between Y and X. If the value of $X$ is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a **deterministic relationship**. *Deterministic means that if the value of $X$ is known then the value of $Y$ can be precisely determined from the relationship between $Y$ and $X$.*  
+This can be illustrated as
 
-![](/module3/MvM/images/deterministic_relationship.png?width=40pc)
+![](images/euclidian_distance.png?width=20pc)
 
----
+The figure below provides an illustrative example of the KNN approach. It consists of a small training data set of twelve red dots and twelve green squares. The goal is to make a prediction for the point labelled by the yellow star. For the choice of $K=3$ the KNN will identify the three observations that are closest to the yellow star. These neighbour observations are shaded in the circle around the yellow star. It consists of two red points and one green square, resulting in estimated probabilities of 2/3 for the red circle class and 1/3 for the green square class. As a result KNN will predict that the yellow star belongs to the red circle class.
 
-**Scatter Plot**
+![](images/KNN.png?width=30pc)
 
-When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for the explanatory variable commonly known in the regression modelling as a predictor and labelled with $X$, and one axis for the response variable, which is labelled with $Y$ and commonly known as the outcome variable. Thus, each point on the graph represents a single $(X, Y)$ pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.
+Let us assume we are dealing with a problem of classification of animals into two categories: dogs or cats. Classification needs to be conducted in respect of the two measurements: 
 
-Let us consider a few scatter plots. The following graph represents a **perfect linear relationship**. All points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, i.e. gradient and hence specify the exact mathematical link between the response variable $Y$ and the explanatory variable $X$.
+- Measurement **A**: The length of the animal (in cm) from the tip of its nose to the back of its body, excluding the tail
+- Measurement **B**: The height of the animal's leg from floor to shoulder (in cm)
 
--**Graph 1**
+We have a test data with the length and height measurements of several dogs and cats. For a new set of observed measurements we need to be able to determine if they belong to a dog or a cat. That is, the unknown animal needs to be classified into one of the two groups based on the given measurements. To do this we create a 2D plane like the one above. Next, we follow the same procedure of calculating the distance of the new object from the older ones, and the closer it is to either one of the categories will determine its own category. 
 
-![](/module3/MvM/images/Yes_perfect.png?width=30pc)
+```{r}
+animal <- as.factor(c("cat", "dog", "cat", "cat", "dog", "dog", "dog", "cat", "cat", "dog", "cat", "dog", "unknown"))
+A <- c(40, 34, 43, 37, 30, 39, 40, 43, 42, 37, 41, 35, 39)
+B <- c(24, 20, 23, 21, 26, 30, 39, 25, 27, 35, 18, 28, 20)
 
-The relationship shown in *Graph 2* shows clearly that as the value of $X$ increases the value of $Y$ indecreases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable $X$ increases the value of the response variable $Y$ also tends to increase. An explanation for this is that the response $Y$ may depend on a number of different variables, say  $X_1$, $X_2$, $X_3$, $X_4$, $X_5$, $X_6$ etc.  which could be written as:
+animals_data <- data.frame(animal, A, B)
 
-$Y = f(X_1, X_2, X_3, X_4, X_5, X_6, ...)$
+library(ggplot2)
+ggplot(animals_data, aes(x = A, y = B)) +
+  geom_point(aes(col = animal), shape = 20, size = 3) +
+  geom_point(x = 39, y = 20, shape = 13, size = 7) +
+  labs (title= "Cat & Dogs",
+        x = "length", y = "height") +
+  theme_minimal() +
+  theme(legend.position = "bottom", 
+        panel.border = element_rect(fill = NA, 
+                                    colour = "black",
+                                    size = .75),
+        plot.title=element_text(hjust=0.5)) +
+  scale_colour_brewer(palette = "Set1") 
+```
 
--**Graph 2**
+We can see that the new animal with 20cm of height and 39cm of length is in proximity with cats more than dogs. Hence, we predict that the new animal is a cat. However, in most cases we will deal with situations in which categories will be defined by many more attributes that will prevent us from simply drawing them on a scatter diagram like we did in this example.
 
-![](/module3/MvM/images/Yes_50.png?width=30pc)
+The more arguments describing the categories we have greater chance of appropriate prediction there is. For example if we get two more measurements to consider:
 
-If the nature of the link between $Y$ and $X$ is under investigation then this could be represented as:
+- Measurement **C**: The width of the animal (in cm) across the shoulders, or the widest part of the animal if not the shoulders
+- Measurement **D**: The height of the animal (in cm) from the ground to the top of its head, including the ears if they are erect
 
-$$Y = f(X) + \text{effect of all other variables}$$
+we simply use the above stated Euclidean formula to calculate the distance of the new upcoming animal from the already given animals. We take the square root of 
 
+$$\sqrt{(A_1-A_2)^2 + (B_1-B_2)^2 + (C_1-C_2)^2 + (D_1-D_2)^2}$$
 
-{{% notice note %}}
-The effect of all other variables is commonly abbreviated to **e**.
-{{% /notice %}}
+where 1 is representing the already drawn data point and 2 is representing the new data point that you want to determine the category of. This calculation shown above will be used with every data point available. That is, it will run as many times as there are rows in your dataset.
 
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**KNN summary**</font></p>
 
+When running the KNN algorithm we first need to define the value $K$. If $K$ is 3 it will check the 3 closest neighbours in order to determine the category. If the majority of neighbours belong to a certain category from within those three nearest neighbours, then that will be chosen as the category of the upcoming object. 
 
-*Graph 1* shows a link where the effect of all the other variables is nil.  The response $Y$ depends solely on the variable $X$, *Graph 2* shows a situation where $Y$ depends on $X$ but the other variables also have an influence.
+As different variables have different scaling units, like weight in kg and height in cm, they need to be normalised prior to their use in the calculation of their distance:
 
-Consider the model:
+$$\text{standardised } x =\frac{(x-min(x))}{(min(x) — max(x))}$$
+This will convert the values onto a scale 0 to 1. 
 
-$$Y = f(X) + e$$
-Remember 😃, $\text{e is the effect of all other variables}$!
+Note that this can be done with numerical variables, which is not to say that KNN cannot deal with categorical variables too. There is much more than just Euclidean distance that can be used in the KNN algorithm. There are various theoretical measures which may be much more appropriate in those cases: Jaccard similarity, Tanimoto coefficient, Sørensen–Dice coefficient and so on. 
 
-The influence on the response variable $Y$ can be thought of as being made up of two components:
+In a nutshell, when running the KNN algorithm, data should be normalised prior to splitting it into training and testing sets. KNN runs a formula to compute the distance between each data point and the test data. It then finds the probability of these points being similar to the test data and classifies it based on which points share the highest probabilities.
 
-i. the component of $Y$ that is explained by changes in the value of $X$, [the part due to changes in $X$ through $f(X)$] 
-ii.	the component of $Y$ that is explained by changes in the other factors [the part not explained by changes in $X$]
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Example in R**</font></p>
 
-Or in more abbreviated forms:
+When calculating distances between data points in the KNN algorithm, we must use numeric predictor variables only. However, the outcome variable for KNN classification should remain a factor variable.
 
-i. the *Variation in $Y$ Explained by changes $X$* or **Explained Variation** and 
-ii. the *Variation in $Y$ not explained by changes in $X$* or the **Unexplained Variation** 
+In the following examples we will apply the KNN classification in R using two packages: the `class` and the `caret`. We will also conduct KNN classification on two data sets: one in which all predictor variables are the measured type and the other data set in which some of the predictor variables are attribute variables with a different number of levels. 
 
-The Total Variation in $Y$ is made up of two components: 
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Using the `class` package and the `iris` data**</font></p>
 
-1) *Changes in $Y$ Explained by changes in $X$*  and the 
-2) *Changes in $Y$ not explained by changes in $X$* 
+To run the KNN algorithm in R we will use the `knn()` function which is part of the `class` package. This function requires the following input information:
 
-Which may be written as:
+1) a matrix containing the predictor associated with the training data: `training.X`
+2) a matrix containing the predictor associated with the data for which we wish to make predictors: `test.X`
+3) a vector containing the class labels for the training observations: `train`
+4) a number of nearest neighbours to be used by the classifier: `K`
 
-$$\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}$$
+Let us illustrate the K Nearest Neighbours algorithm classification on the well known Iris Dataset. This famous (Fisher's or Anderson's) iris data set gives the measurements in centimetres of the variables' sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
 
-In *Graph 1* the **Unexplained Variation is nil**, since the value of $Y$ is completely determined by the value of $X$.  In *Graph 2* the **Explained Variation is large relative to the Unexplained Variation**, since the value of $Y$ is very largely influenced by the value of $X$.
+```{r}
+# load iris data
+suppressPackageStartupMessages(library(dplyr))
+data("iris") 
+glimpse(iris)
+```
+Note that apart from the `Species` category the rest of the variables are all numeric types.
 
-Consider Graph 3.  Here there is no discernible pattern, and the value of Y seems to be unrelated to the value of X.
+Since classification is a type of Supervised Learning, we will would require two sets of data: **training data** and **test data**. Hence, we will divide the dataset into two subsets in the proportions of 80:20 percent. Since the `iris` dataset is sorted by `Species` by default, we will first have to mix up the data rows and then take the subset: 
 
-**- Graph 3**
+- `iris.train`: training subset 
+- `iris.test`: testing subset
 
-![](/module3/MvM/images/No_relationship.png?width=30pc)
+```{r}
+set.seed(123) # required to reproduce the results
+rnums<- sample(rep(1:150)) # randomly generate numbers from 1 to 150; 150 - number of rows 
+iris<- iris[rnums, ] # jumbling up "iris" dataset by randomising 
+#head(iris, n=10)
+DT::datatable(iris)
+```
 
-If $Y$ is not related to $X$ the **Explained Variation component is zero** and all the changes in $Y$ are due to the other variables, that is the **Unexplained Variation**.
+Remember that data should be normalised prior to splitting it into training and testing sets. Therefore, as our next step we will normalise data, scaling it to a z-score metric to have values between 0 and 1, after which we will split it into two subsets: training and testing. 
 
-Finally, consider Graphs 4 & 5 below:
+```{r}
+# normalise data
+normalise <- function(x){
+  return ((x-min(x)) / (max(x)-min(x)))
+}
 
--**Graph 4**
+iris_norm <- as.data.frame(lapply(iris[,c(1,2,3,4)], normalise))
+#head(iris_norm, n=10)
+DT::datatable(iris_norm)
 
-![](/module3/MvM/images/Yes_75.png?width=30pc)
+# split data
+iris_train <- iris_norm[1:120, ]
+iris_train_target <- iris[1:120, 5]
+iris_test <- iris_norm[121:150, ]
+iris_test_target <- iris[121:150, 5]
+summary(iris_norm)
+```
+
+Once we have prepared our data for the application of the KNN classification we can run the algorithm. We can also obtain predicted probabilities, given test predictors by setting the probability argument as true: `prob = TRUE`. 
+
+```{r}
+# If you don't have class installed yet, uncomment and run the line below
+#install.packages("class")
+library(class)
+model_knn <- knn(train = iris_train, 
+                 test = iris_test, 
+                 cl = iris_train_target, 
+                 k = 10,
+                 prob  = TRUE)
+model_knn
+
+attributes(model_knn)$prob
+```
+
+Unfortunately, this only returns the predicted probability of the most common class. In the binary case, this would be sufficient to recover all probabilities, however, for multi-class problems, we cannot recover each of the probabilities of interest. This will simply be a minor annoyance for now, which we will fix when we introduce the `caret` package for model training.
+
+A common method for describing the performance of a classification model is the **_confusion matrix_**. So, to check how well the model has performed we will construct the confusion matrix, which is a table that is used to show the number of correct and incorrect predictions on a classification problem when the real values of the *test data* are known. For a two class problem it is of the format
+
+![](images/confusion_matrix.png?width=30pc)
+
+The `TRUE` values are the number of correct predictions made.
+
+```{r}
+how_well <- data.frame(model_knn, iris_test_target) %>% 
+  mutate(result = model_knn == iris_test_target)
+
+how_well
+
+confusion_matrix <- table(iris_test_target, model_knn)
+
+summary(model_knn)
+confusion_matrix
+```
+
+The values on the diagonal shows the number of correctly classified instances for each category. In our example it is showing that the KNN algorithm has correctly classified 29 instances out of a total 30 data points in the test data. The values not on the diagonal imply that they have been incorrectly classified. In our case it is only 1 observation, giving an accuracy of `r round(1 - 1/30, 2)*100`%.
+
+The simplest metric for model classification is the overall **_accuracy rate_**. To evaluate predicted classes, we are going to create a function that can calculate the accuracy of the KNN algorithm.
+
+```{r}
+# calculate percentage accuracy
+accuracy <- function(x){
+  sum(diag(x) / (sum(rowSums(x)))) * 100
+}
+accuracy(confusion_matrix)
+```
+
+Although the overall accuracy rate might be easy to compute and to interpret, it makes no distinction about the type of errors being made. Choosing the correct level of flexibility is critical to the success of any machine learning method. For the KNN method this can be adjusted by trying different values of `K`, but the bias-variance trade off can make this a difficult task.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Using the `caret` package and the `penguins` data**</font></p>
+
+The R's [`caret`](https://cran.r-project.org/web/packages/caret/caret.pdf) package (**c**lassification **a**nd **re**gression **t**raining) holds many functions that help to build predictive models. It holds tools for data splitting, pre-processing, feature selection, tuning and supervised – unsupervised learning algorithms, etc. The `caret` package provides direct access to various functions for training a model with a machine learning algorithm for KNN classification. But, before we can use `caret` to perform various tasks to carry out the necessary machine learning work, we need to familiarise ourselves with our data.
+
+The `penguins` data set is available from the `palmerpenguins` package. It includes 6 measurements of 344 penguin species and information about the year during which data was collected. We will start by loading the R packages we will need for this exercise and reading the `penguins` data set.
+
+```{r}
+# If you don't have tidyr, caret, gmodels, psych, palmerpenguins and pscl installed yet, uncomment and run the lines below
+#install.packages("tidyr")
+#install.packages("caret")
+#install.packages("gmodels")
+#install.packages("psych")
+#install.packages("palmerpenguins")
+#install.packages("pscl") # pR2()
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(caret))
+suppressPackageStartupMessages(library(gmodels)) # CrossTable()
+suppressPackageStartupMessages(library(psych)) # dummy.code()
+library(palmerpenguins)
+library(ggplot2)
 
--**Graph 5**
+penguins <- read.csv(path_to_file("penguins.csv"))
+glimpse(penguins)
+```
 
-![](/module3/MvM/images/deterministic_neg.png?width=30pc)
+- `species` a factor denoting penguin species (Adélie, Chinstrap and Gentoo)
+- `island` a factor denoting an island in the Palmer Archipelago, Antarctica (Biscoe, Dream or Torgersen)
+- `bill_length_mm` a number denoting bill length (millimetres)
+- `bill_depth_mm` a number denoting bill depth (millimetres)
+- `flipper_length_mm` an integer denoting flipper length (millimetres)
+- `body_mass_g` an integer denoting body mass (grams)
+- `sex` a factor denoting penguin sex (female, male)
+- `year` an integer denoting the study year (2007, 2008 or 2009)
 
-*Graph 4* shows a similar picture to *Graph 2*, the difference being that as the value of $X$ increases the value of $Y$ decreases. The value of $Y$ is influenced by the value of $X$, so the **Explained Variation is high relative to the Unexplained Variation**. Consider the last graph, *Graph 5*, which is a deterministic relationship. **The value of $Y$ is completely specified by the value of $X$**. Hence the **Unexplained Variation is zero**.
+For k-NN classification, we are going to predict the categorical variable `species` using all the other variables within the data set. This data set has both measured and attribute variables as the predictors. As `year` is a variable of the recording we will not consider it in our modelling and therefore we will remove it from the data set we will work with. ML algorithms are sensitive to missing values. For the aim of this analysis, instead of constructing imputation for the missing values we will simply drop them from the data set.
+ 
+```{r, warning = FALSE, comment = FALSE}
+pingo <- penguins[1:7]
 
-Graphs Summary:
+pingo %>%
+  summarise_all(funs(sum(is.na(.)))) %>%
+  pivot_longer(cols = 1:7, names_to = 'columns', values_to = 'NA_count') %>%
+  arrange(desc(NA_count)) %>%
+  ggplot(aes(y = columns, x = NA_count)) + geom_col(fill = 'deepskyblue4') +
+  geom_label(aes(label = NA_count)) +
+  theme_minimal() +
+  labs(title = 'Penguins - NA Count',
+       caption = "Visualisation: https://www.r-bloggers.com/2020/06/penguins-dataset-overview-iris-alternative-in-r",
+       y = "variables") +
+  theme(plot.title = element_text(hjust = 0.5))
 
-|	  |Graph 1|	Graph 2|	Graph 3|	Graph 4|	Graph 5|
-|---|-------|--------|---------|---------|---------|
-|Explained Variation in Y|	All|	High|	Zero|	High|	All|
-|Unexplained Variation in Y|	Zero|	Low|	All|	Low|	Zero|
+data_class <- pingo %>% 
+  drop_na()
+```
+Next, we need to prepare data further for our k-NN classification. First, we will put our outcome variable `species` into its own object and remove it from the data set.
 
-In regression the discussion started with the following idea:
-$$Y = f(X) + e$$
-And to quantify the strength of the link the influence on Y was broken down into two components:
-i. $$\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}$$
+```{r}
+species_outcome <- data_class %>% select(species)
 
-This presents two issues:
+# remove original variable from the data set
+data_class <- data_class %>% select(-species)
 
-- A: Can a model of the link be made?
-- B: Can **The Total Variation in Y**, **Explained Variation** and the **Unexplained Variation** be measured?
+glimpse(data_class)
+```
 
-{{% notice note %}}
-The simplest form of connection is a straight-line relationship and the question arises could a straight-line relationship be matched with the information contained in the graphs 1 -5?
-{{% /notice %}}
+We see that `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm` and `body_mass_g` are measured variables of which the features are measured on different metrics, which means they have to be scaled. To do this we are going to use the `scale` function, which means we are scaling to a z-score metric.
 
--	Clearly it is easy for Graph 1 and Graph 5, the intercept and the gradient can be obtained directly from the graph. The relationship can then be written as:
+```{r}
+data_class[, c("bill_length_mm",
+               "bill_depth_mm", 
+               "flipper_length_mm", 
+               "body_mass_g")] <- scale(data_class[, c("bill_length_mm", 
+                                                      "bill_depth_mm", 
+                                                      "flipper_length_mm", 
+                                                      "body_mass_g")])
+glimpse(data_class)
+head(data_class)
+```
 
-$$Y = a + bX$$
-where:
+As our next step in preparing data for the application of the KNN algorithm we need to dummy code attribute variables. From data description we know that the variable `island` is an attribute variable that has three levels and `sex` is an attribute variable with two levels.
 
-  i) a is the intercept and 
-     
-  ii) b is the gradient  
+We will first dummy code the attribute variable `sex` that has only two levels and then the one with more than two levels using the `dummy.code()` function from the [`psych` package](https://cran.r-project.org/web/packages/psych/psych.pdf).
 
--	Since the **Explained Variation** is the same as the **Changes in Y** and the **Unexplained Variation** **is zero**, the precise evaluation of these is not necessary.
+```{r}
+data_class$sex <- dummy.code(data_class$sex)
+```
 
----
+For `island`, the variable `dummy.code()` function will create three new variables coded with 0 and 1, which will then need to be combined with the original data set. As the final preparation, since we have created a single variable for each island category we will now remove the original `island` variable from our data. 
 
-**Developing a Statistical Model**
+```{r}
+island <- as.data.frame(dummy.code(data_class$island))
+data_class <- cbind(data_class, island)
+data_class <- data_class %>% select(-island)
 
-For the statistical relationships as shown in *Graphs* *2* & *4*:
+glimpse(data_class)
 
-a) Can the intercept and gradient be measured?
+print.data.frame(head(data_class, ))
+```
+Once we have prepared data, we can run the KNN algorithm. First, we will split the data into training and test sets. We partition 80% of the data into the training set and the remaining 20% into the test set.
+```{r KNN}
 
-b) Can the values of the three quantities *The Total Variation in Y*, *Explained Variation* and *The   Unexplained Variation* be measured?  
+set.seed(1) # set the seed to make the partition reproducible
 
-It is sufficient to work out any two since:
+# 80% of the sample size
+smp_size <- floor(0.80 * nrow(data_class))
 
-$$\text{The Total Variation in Y} = \text{Explained Variation} + \text{Unexplained Variation}$$
+train_ind <- sample(seq_len(nrow(data_class)), size = smp_size)
 
-Fitting a line by eye is subjective. It is unlikely that any two analysts will draw exactly the same line, hence the intercept and gradient will be slightly different from one person to the next. What is needed is an agreed method that will provide an estimate of the intercept and the gradient.  
+# creating test and training sets that contain all of the predictors
+class_pred_train <- data_class[train_ind, ]
+class_pred_test <- data_class[-train_ind, ]
+```
 
-Consider the simple numerical example below:
+We will also split the response variable into training and test sets using the same partition as above.
 
-Suppose we would like to fit a straight-line relationship to the following data:
+```{r}
+species_outcome_train <- species_outcome[train_ind, ]
+species_outcome_test <- species_outcome[-train_ind, ]
+```
 
-|$X$|	1|	2|	3|	4|	5|	6|
-|---|--|---|---|---|---|---|
-|$Y$|	7|	8|	12|	13|	14|	18|
+We will start by using the `knn()` classification function available from the `class` package. There are several rules of thumb we can use when choosing the number of `k`. One that we will adopt is the square root of the number of observations in the training set, which in our case is `r length(species_outcome_train)`. So, in this case, we select `r round(sqrt(length(species_outcome_train)), 0)` as the number of neighbours.
 
-The problem is to use this information to measure **the intercept** and **the gradient** for this data set.  
+```{r}
+pingo_knn <- knn(train = class_pred_train, test = class_pred_test, cl = species_outcome_train, k=16)
 
-A simple way to do this is to draw what is considered to be **the line of best fit** by judgement or guesswork! 😁😉
 
-**The intercept** can be read off the graph as approximately $5$, and **the gradient** can be simply measured since if $X = 0$  then  $Y = 5$, and if  $X = 5$ then  $Y = 15$,  so for a change in $X$ of $5$ units (from 0 to 5) $Y$ changes by $10$, from $5$ to $15$. The definition of **the gradient** is  **The change in Y for a unit increase in X**  hence the gradient for this data set is $15/5 = 2$.
+# put "species_outcome_test" in a data frame
+species_outcome_test <- data.frame(species_outcome_test)
+
+# merge "pingo_knn" and "species_outcome_test" 
+class_comparison <- data.frame(pingo_knn, species_outcome_test)
+
+# specify column names for "class_comparison"
+names(class_comparison) <- c("predicted_species", "observed_species")
+
+# inspect "class_comparison" 
+DT::datatable(class_comparison)
+```
+
+To evaluate the model, this time we will construct the confusion matrix by using the `CrossTable()` function available from the [`gmodels`](https://cran.r-project.org/web/packages/gmodels/gmodels.pdf) package. 
+
+```{r}
+CrossTable(x = class_comparison$observed_species, y = class_comparison$predicted_species, prop.chisq=FALSE, prop.c = FALSE, prop.r = FALSE, prop.t = FALSE)
+```
+
+The results of the confusion matrix indicate that our model predicts species very well. The numbers are all zeros in the off-diagonals apart from one case in which a penguin from the Chinstrap class has been classified as Adelie. This is indicating that our model has successfully classified the outcome based on the given predictors.
+
+Next, we will run the KNN classification using the `caret` package which 'authomatically' picks the optimal number of neighbours `K`. 
+
+```{r}
+### caret
+
+pingo_knn_caret <- train(class_pred_train, 
+                         species_outcome_train,
+                         method = "knn", 
+                         preProcess = c("center", "scale"))
+
+pingo_knn_caret
+```
+
+
+Looking at the output of the `caret` package KNN model, we can see that it chose `K = 7`, given that this was the number at which accuracy and kappa peaked. Kappa statistic is a measure of inter-rater reliability which is a more robust measure than a simple percent agreement calculation. However, its interpretation is not as intuitive and easy to comprehend as a single percentage measure. For more on the kappa statistic see the [Statistic How To](https://www.statisticshowto.com/cohens-kappa-statistic/) website.
+
+```{r}
+plot(pingo_knn_caret)
+```
+
+Next, we compare our predicted values of `species` to our actual values. We also print the confusion matrix, which will give an indication of how well our model has predicted the actual values. In the `caret` package the confusion matrix output also shows overall model statistics and statistics by class.
+
+We can see that we have obtained the same results as previously. Do you have any suggestions why that may be? 
+
+```{r}
+knn_predict <- predict(pingo_knn_caret, newdata = class_pred_test) 
+
+confusionMatrix(knn_predict, as.factor(species_outcome_test$species_outcome_test))
+```
+
+So far we have learnt how to prepare data for KNN as well as conduct k-NN classification. In the next section we will learn about another popular classification method: logistic regression.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Logistic Regression**</font></p>
+
+Often in studies, we encounter outcomes that are not continuous, but instead fall into 1 of 2 categories. In these cases we have binary outcomes, variables that can have only two possible values:
+
+- Measuring a performance labeled as $Y$. Candidates are classified as “good” or “poor”, coded as 1 and 0 respectively, i.e. $Y$=1 representing good performance and $Y$=0 representing poor performance.
+- Risk factor for cancer: person has cancer ($Y$=1), or does not ($Y$=0)
+- Whether a political candidate is going to win an election: lose $Y$=0, win $Y$=1
+- ‘Health’ of a business can be observed by monitoring the solvency of the firm: bankrupt $Y$=0, solvent $Y$=1
+
+Here $Y$ is the binary response variable, that is coded as 0 or 1 and rather than predicting these two values for binary response we try to model the probabilities that $Y$ takes one of these two values.
+
+Let us examine one such example using [the bankruptcies data](https://tanjakec.github.io/mydata/Bankrupticies.csv) available from 👉 <https://tanjakec.github.io/mydata/Bankruptcies.csv>.
+
+[`Bankruptcies.csv`](https://tanjakec.github.io/mydata/Bankruptcies.csv) file contains data of the operating financial ratios of 66 firms which either went bankrupt or remained solvent after a 2 years period. The data is taken from the book ["Regression Analysis by Example"](https://www.wiley.com/en-us/Regression+Analysis+by+Example%2C+5th+Edition-p-9781118456248) by [Chatterjee](http://people.stern.nyu.edu/schatter/chatterjee.html) and [Hadi](http://www1.aucegypt.edu/faculty/hadi/). The variables are:
+
+- three financial ratios (the explanatory variables; measured variables): 
+  * $X_1$: Retained Earnings / Total Assets 
+  * $X_2$: Earnings Before Interest and Taxes / Total Assets
+  * $X_3$: Sales / Total Assets
+- a binary response variable $Y$: 
+  * 0 - if bankrupt after 2 years
+  * 1 - if solvent after 2 years
+
+```{r}
+bankrup <- read.csv("https://tanjakec.github.io/mydata/Bankruptcies.csv")
+summary(bankrup)
+```
+
+Since 
+
+1) linear regression expects a numeric response variable and 
+2) we are interested in the analysis of the risk, ie. the probability of a firm going bankrupt based on its Retained Earnings / Total Assets ratio (RE/TA ratio) figure 
+
+it would be very attractive to be able to use the same modelling techniques as for linear models. We are going to do just that: fit a simple linear regression model to examine this relationship to see if it will work.
+
+$$Y = b_0 + b_1X_3$$
+```{r}
+model_lm = lm(Y ~  X1, data = bankrup)
+# plot a scatter diagram of Y vs X1
+plot(Y ~  X1, data = bankrup, 
+     col = "orangered", pch = "|", ylim = c(-0.2, 1.2),
+     main = "using linear regression function for binomial Y")
+abline(h = 0, lty = 3)
+abline(h = 1, lty = 3)
+abline(h = 0.5, lty = 2)
+abline(model_lm, lwd = 3, col = "navy")
+```
+
+Examining this plot we can make two obvious observations:
+
+1) the higher the ration of RE/TA the better the chances is for the firm to be solvent 
+
+2) by analysing the risk we analyse a chance, a probability of a company being solvent based on the value of the RE/TA. Since $Y$ is limited to the values of 0 and 1, rather than predicting these two values we will try to model the probabilities $p$ that $Y$ takes one of these two values.
+
+Let $p$ denote the probability that $Y$ = 1 when $X = x$. If we use the standard linear model to describe $p$, then our model for the probability would be
+
+
+$$p = P(Y = 1 | X = x) = b_0 + b_1x + e$$
+
+Note that since $p$ is a probability it must lie between 0 and 1. It seems rational that $X\hat{b}$ is a reasonable estimate of $P(Y=1∣X=x)$. Nonetheless, the plot has flagged a big issue with this model and that is that it has predicted probabilities less than 0.  
+  
+As we can see the linear regression model does not work for this type of problem, for which we do not expect predictions that are off-scale values: below zero or above 1. 
+
+Apart from the fact that the linear function given is unbounded, and hence cannot be used to model probability, the other assumptions of linear regression when dealing with this type of a problem are also not valid: 
+
+- the relationship between $Y$ and $X$ is nonlinear
+- error terms are not normally distributed
+- the assumption of equal/constant variance (homoscedasticity) dos not hold
+
+
+A workaround these issues is to fit a different model, one that is bounded by the minimum and maximum probabilities. It makes better sense to model the probabilities on a transformed scale and this is what is done in logistic regression analysis. The relationship between the probability $p$ and $X$ can be presented by a **logistic regression function**.
+
+```{r, echo=FALSE, results='hide', warning = FALSE}
+lgreg_plot <- glm(Y ~  X1, data = bankrup, binomial(logit))
+summary(lgreg_plot)
+range(bankrup$Y)
+range(bankrup$X1)
+x1re_ta <- seq(-309, 69, 3)
+yx1 <- predict(lgreg_plot, list(X1 = x1re_ta), type="response")
+```
 
 ```{r, echo=FALSE}
-x <- c(1:6)
-y <- c(7, 8, 12, 13, 14, 18)
-plot(x, y, pch = 16, main = "y = 5 + 2x + e", xlim = c(0.25, 6), ylim = c(0, 20))
-abline(a = 5, b = 2, lwd = 2, lty = 2, col = 2)
+plot(Y ~  X1, data = bankrup, 
+     col = "orangered", pch = "|", ylim = c(-0.2, 1.2),
+     main = "using logistic regression function for binomial Y ")
+abline(h = 0, lty = 3)
+abline(h = 1, lty = 3)
+lines(x1re_ta, yx1, lty = 1, lwd = 3, col = "navy")
 ```
 
-The straight-line relationship obtained by this process is $$\hat{Y} = 5 + 2*X$$.  
-Note, $\hat{Y}$ is a notation for the value of $Y$ as predicted by the straight-line relationship.
+The shape of the S-curve given in the figure above can be reproduced if we model the probabilities as follows
 
-We can add more information about the predicted values of $Y$ by the *"estimated"* model to our table, so that we have
+$$p = P(Y = 1 | X = x) = \frac{e^{\beta_0 + \beta_1x}}{1 + e^{\beta_0 + \beta_1x}},$$
 
-|X |Y |$\hat{Y}$  |${Y - \hat{Y}}$ |
-|--|--|----------:|--------------:|
-|1 |7 |7.00 | 0.00 |
-|2 |8 |9.00 | -1.00|
-|3 |12|11.00| 1.00|
-|4 |13|13.00| 0.00|
-|5 |14|15.00| -1.00|
-|6 |18|17.00| 1.00|
+where $e$ is the base of the natural logarithm. The logistic model can be generalized directly to the situation where we have several predictor variables. The probability $p$ is modelled as
 
-Looking at the information contained in the previous plot, the column headed $\hat{Y}$ contains the predicted values of $Y$ for the values of $X$. For example, the first value of $\hat{Y}$ is when $X = 1$ and $Yp = 5 + 2*X$ so $\hat{Y} = 5 +2*1 = 7$.  The column headed $(Y - \hat{Y})$ is the difference between the actual value and the value predicted by the line.  For example when $X = 1$, $Y = 7$ and $\hat{Y} = 7$ so the predicted value lies on the line, as can be seen in the graph. For the value $X = 2$ the actual value lies $1$ unit below the line, as can also be seen from the graph.
+$$p = P(Y = 1 | X_1 = x_1, X_2=x_2, ..., X_q=x_q) = \frac{e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_qx_q}}{1 + e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_qx_q}},$$
+where $q$ is the number of predictors. The two equations above are called the logistic regression functions. It is nonlinear in the parameters $\beta_0, \beta_1,... \beta_q$. However, it can be linearised by the **logit transformation**. Instead of working directly with $p$ we work with a transformed value of $p$. If $p$ is the probability of an event happening, the ratio $\frac{p}{(1-p)}$ is called the **odds ratio** for the event. By moving some terms around
 
-The column $(Y - \hat{Y})$  **measures the disagreement between the actual data and the line** and a sensible strategy is to **make this level of disagreement as small as possible**. Referring to the graph on the table above notice that sometimes the actual data value is below the line and sometimes it is above the line, so on average the value will be close to zero. In this particular example the sum of the $(Y - \hat{Y})$ values add up to zero (in a more conventional notation $\Sigma(Y - \hat{Y})  = 0$). The quantity $\Sigma(Y - \hat{Y})$ does not seem to be a satisfactory measure of disagreement, because there are a number of different lines with the property $\Sigma(Y - \hat{Y}) = 0$.
+$$1 - p = P(Y = 1 | X_1 = x_1, X_2=x_2, ..., X_q=x_q) = \frac{1}{1 + e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_qx_q}},$$
+we get 
 
-**A way of obtaining a satisfactory measure of disagreement is to square the individual $(Y - \hat{Y})$ values and add them up**.  i.e. obtain the quantity $\Sigma(Y - \hat{Y})^2$. The result is always a positive number since the square of a negative number is positive. If this quantity is then chosen to be as small as possible then the level of disagreement between the actual data points and the fitted line is the least. This provides a criterion for the choice of the best line.
+$$\frac{p}{1-p} = e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_qx_q}$$
+Taking the natural logarithm of both sides of the above expression, we obtain
 
-The quantity $\Sigma(Y - \hat{Y})^2$ can be easily calculated and added to our table
+$$g(x_1, x_2, ... x_q) = log(\frac{p}{1-p}) = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_qx_q$$
+where the logarithm of the odds ratio is called the **logit**. We realise that the logit transformation produces a linear function of the parameters $\beta_0, \beta_1,... \beta_q$. It is important to realise is that while the range of values of $p$ of binomial response $Y$ is between 0 and 1, the range of values of $log\frac{p}{(1-p)}$ is between $-\infty$ and $+\infty$. This makes the logarithm of the odds ratio, known as logits, more appropriate for linear regression fitting.
 
-|X |Y |$\hat{Y}$  |${Y - \hat{Y}}$ |$(Y - \hat{Y})^2$ |
-|--|--|----------:|---------------:|-----------------------:|
-|1 |7 |7.00 | 0.00 | 0|
-|2 |8 |9.00 | -1.00| 1|
-|3 |12|11.00| 1.00| 1|
-|4 |13|13.00| 0.00| 0|
-|5 |14|15.00| -1.00| 1|
-|6 |18|17.00| 1.00| 1|
+In logistic regression the response probabilities are modelled by the logistic distribution function. That is, the model does not use the binned version of the predictor, but rather the log odds are modelled as a function of the predictor. The model parameters are estimated by working with logits which produces a model that is linear in the parameters. 
 
-The quantity $\Sigma(Y - \hat{Y})^2$ is a measure of the disagreement between the actual $Y$ values and the values predicted by the line. If this value is chosen to be as small as possible then the disagreement between the actual Y values and the line is the smallest it could possibly be, hence the line is **The line of Best Fit**. 
+The method of model estimation is the **maximum likelihood** method. Maximum likelihood parameter estimation is a technique that can be used when we can make assumptions about the probability distribution of the data. Based on the theoretical probability distribution and the observed data, the likelihood function is a probability statement that can be made about a particular set of parameter values. In logistic regression modelling the maximum likelihood parameters are obtained numerically using an interactive procedure. This is explained in the [book by McCullagh and Nelder](http://www.utstat.toronto.edu/~brunner/oldclass/2201s11/readings/glmbook.pdf) in Section 4.4.2.  
+Although the method of maximum likelihood is used for the model estimation we ask the same set of questions that are usually considered in linear regression. That is, we can not use the very familiar least square regression tools such as $R^2$, $t$ and $F$, but that is not to say that we are not able to answer the same questions as we do when assessing a leaner regression model for which we use the listed tools.
 
-This procedure of finding the intercept and the gradient of a line that makes the quantity $\Sigma(Y - \hat{Y})^2$ a minimum is called **The Method of Least Squares**. 
+[John Nelder](https://en.wikipedia.org/wiki/John_Nelder) and [Robert Wedderburn](https://en.wikipedia.org/wiki/Robert_Wedderburn_(statistician)) formulated a modelling technique for accommodating response variables with non-normal conditional distribution. Logistic regression and ordinary linear regression fall into this larger class of techniques called [**Generalised Linear Models**](https://docs.ufpr.br/~taconeli/CE225/Artigo.pdf) (**GLM**s) which accommodate many different probability distributions. They substantially extend the range of application of linear statistical models by accommodating response variables with non-normal conditional distribution. Except for the error, the right hand side of a GLM model equation is basically the same as for a linear model. This is reflected in the syntax of the `glm()` function in R, which expects the formula that specifies the right-hand side of GLM to be the same as those used for the least square linear regression model, with the addition of description for the error distribution.
 
-{{% notice info %}}
-**The Method of Least Squares** was developed by [K. F Gauss (1777 - 1855)](https://link.springer.com/referenceworkentry/10.1007%2F978-1-4020-4423-6_105) a German mathematician, Gauss originated the ideas and a Russian mathematician [A. A. Markov (1856 - 1922)](https://en.wikipedia.org/wiki/Andrey_Markov) developed the method.
-{{% /notice %}}
 
-In R we use the `lm( )` function to fit linear models as illustrated below.
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Example in R **</font></p>
+
+In the following examples we will apply logistic regression in R by directly applying the `glm()` function and by using the `caret` package. We will use two data sets: [`Bankrupticies.csv`](https://tanjakec.github.io/mydata/Bankruptcies.csv) which we introduced earlier and the `CreditCard` data set from the `AER` package. This is cross-section data on the credit history for a sample of applicants for a type of credit card that consists of 1319 observations with 12 variables.   
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Using the `glm()` function **</font></p>
+
+Through this example we will fit a logistic regression model using the `glom` function in order to learn how such models are fitted and evaluated. 
+
+We have already uploaded the [`Bankrupticies.csv`](https://tanjakec.github.io/mydata/Bankruptcies.csv) data file, which contains information of the operating financial ratios of 66 firms which either went bankrupt or remained solvent after a 2 years period earlier. Hence, the response variable is defined as
+
+$$
+Y =
+  \begin{cases}
+   0 & \text{if bunkrupt after 2 year}} \\
+   1       & \text{if solvent after 2 years}
+  \end{cases}
+$$
+
+Here, we will instead of predicting $Y$, fit the model to predict the logits $log\frac{p}{(1-p)}$, which after transformation means we can get the predicted probabilities for $Y$. 
+
+Let us remind ourselves what the data looks like.
 
 ```{r}
-x <- c(1:6)
-y <- c(7, 8, 12, 13, 14, 18)
-plot(x, y, pch = 16, main = "y = f(x) + e", xlim = c(0.25, 6), ylim = c(0, 20))
-abline(lm(y~x), lwd = 2, lty = 2, col = 2)
-```
-
-The final issue is to find out how to measure the three quantities:
-
-i.	The Total Variation in $Y$
-ii.	The Explained Variation
-iii.	The Unexplained Variation
-
-Taking these quantities one at a time they can be measured as follows:
-
-**The Unexplained Variation**
- 
-This turns out to be very simple to measure. The quantity: **$\Sigma(Y - \hat{Y})^2$ is a measure of the Unexplained Variation**.  If the line were a perfect fit to the data, the value predicted by the line and the actual value would be exactly the same and the value of the quantity $\Sigma(Y - \hat{Y})^2$ would be zero. This quantity is a measure of the disagreement between the actual $Y$ values and the predicted values $\hat{Y}$, which are also known as **the residuals** and are measuring the **Unexplained Variation in $Y$**. For the example used above the value of $\Sigma(Y - \hat{Y})^2$ is $3.77$.
-
-**The Total Variation in Y**
-
-This is related to the measures of variability (spread) introduced earlier in the course and in particular to the standard deviation ($\sigma$). To measure *The Total Variation in Y* requires a measure of spread.
-
-*The Total Variation in Y* is defined to be the quantity: 
-$\Sigma(Y - \bar{Y})^2$
-Where $\bar{Y}$ is the average value of $Y$ ($\bar{Y} = \Sigma(Y)/n$).  
-
-In our earlier example $\bar{Y} = 12$, so we can expand the table to include this calculation
-
-|X |Y |$\hat{Y}$  |${Y - \hat{Y}}$ |$(Y - \hat{Y})^2$ | $\Sigma(Y - \bar{Y})^2$
-|--|--|----------:|---------------:|-----------------------:|-------------------:|
-|1 |7 |7.00 | 0.00 | 0| 25.00|
-|2 |8 |9.00 | -1.00| 1| 16.00|
-|3 |12|11.00| 1.00| 1| 0.00|
-|4 |13|13.00| 0.00| 0| 1.00|
-|5 |14|15.00| -1.00| 1| 4.00|
-|6 |18|17.00| 1.00| 1| 36.00|
-
-giving $\Sigma(Y - \bar{Y})^2 = 82$.
-
-**The Explained Variation in Y**
-
-If the line was a perfect fit, then the $Y$ values and the $\hat{Y}$ values would be exactly the same, and the quantity $(\hat{Y} - \bar{Y})^2$ would measure **The Total Variation in Y**. If the line is not a perfect match to the actual $Y$ values then this quantity measures **The Explained Variation in Y**.
-
-|X |Y |$\hat{Y}$  |${Y - \hat{Y}}$ |$(Y - \hat{Y})^2$ | $\Sigma(Y - \bar{Y})^2$ | $(\hat{Y} - \bar{Y})^2$ |
-|--|--|----------:|---------------:|-----------------------:|-------------------:|-----------------------:|
-|1 |7 |7.00 | 0.00 | 0| 25.00| 27.94 |
-|2 |8 |9.00 | -1.00| 1| 16.00| 10.06 |
-|3 |12|11.00| 1.00| 1| 0.00| 1.12 |
-|4 |13|13.00| 0.00| 0| 1.00| 1.12 |
-|5 |14|15.00| -1.00| 1| 4.00| 10.06 |
-|6 |18|17.00| 1.00| 1| 36.00| 27.94 |
-
-incorporating this calculation into the table above will enable us to get $(\hat{Y} - \bar{Y})^2 = 78.23$.
-
----
-
-**The coefficient of Determination $R^2$**
-
-We realise that when fitting a regression model we are seeking to find out how much variance is explained, or is accounted for, by the explanatory variable $X$ in an outcome variable $Y$.
-
-From the above example the following has been calculated:
-
-i.   $\text{The Total Variation in }$$Y = 82.00$
-ii.  $\text{The Explained Variation in }$$Y = 78.23$
-iii. $\text{The Unexplained Variation in }$$Y = 3.77$
-
-Notice the relationship proposed on page 5, given below, is satisfied
-
-$$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
-	
-	$$82.00 = 78.23 + 3.77$$
-
-What do these quantities tell us?  They are difficult to interpret because they are expressed in the units of the problem.
-
-Consider the following ratio:
-
-${\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {78.23 \over 82.00} = 0.954$
-
-This is saying that $0.954$ or $95.4\%$ of the changes in $Y$ are explained by changes in $X$. This is a useful and useable measure of the effectiveness of the match between the actual $Y$ values and the predicted $Y$ values.
-
-Reviewing the five scatter prolos (Graphs 1 to 5) it can easily be seen that if the line is a perfect fit to the actual $Y$ values as in *Graphs 1 & 5* then this ratio will have the value $1$ or $100\%$.
-
-If there is no link between $Y$ and $X$ then the *The Explained Variation* is zero hence the ratio will be $0$ or $0\%$. An example of this is shown in *Graph 3*.
-
-The remaining graphs: *Graphs 2 & 4* show a statistical relationship hence this ratio will lie between $0$  & $1$. The closer the ratio is to zero the less strong the link is, whilst the closer the ratio is to $1$ the stronger the connection is between $X$ & $Y$.
-
-**The Ratio:**
-
- $$R^2 = {\text{The Explained Variation in Y} \over \text{The Total Variation in Y}}$$
-
-is called **the Coefficient of Determination**, and usually labelled as $R^2$, and may be defined as **the proportion of the changes in $Y$ explained by changes in $X$**.  
-
-This ratio is always on the scale $0$ to $1$, but by convention is usually expressed as a percentage, so is regarded as on the scale $0$ to $100\%$. The interpretation of this ratio is as follows:
-
-![](/module3/MvM/images/R_sq_interp.png?width=30pc)
-
-The definition and interpretation of **$R^2$** is a very **important tool** in the data analyst's tool kit **for tracking connections between a measured response variable and a measured explanatory variable**.
-
----
-
-**Using Sample Data to Track a connection**
-
-When working with sample data to investigate any relationships that may exist between a measured response variable and a measured explanatory variable, the information contained within the sample is imperfect, so has to be interpreted in the light of sampling error. This is particularly important when interpreting the value of $R^2$ calculated from sample data. The sample R2 value gives a measure of the strength of the connection, and this can sometimes be difficult to interpret particularly if the sample size is small. 
-
-The data analysis methodology as set out earlier, is a procedure that enables you to make judgements from sample data. The methodology requires you to know what specific procedures make up the Initial Data Analysis IDA and how to interpret the results of the IDA to obtain one of three outcomes:
-
-i.	 No evidence of a connection between the response and the explanatory variable
-ii.	 Clear evidence of a connection between the response and the explanatory variable
-iii. The IDA is inconclusive and further analysis is required
-
-If Further Data Analysis, FDA, is required then you need to know what constitutes this further analysis and how to interpret it.  
-
-Finally, if a connection between the response variable and the explanatory variable is detected then a description of the connection is required. In this case the connection needs to be described.
-
-To demonstrate the data analysis methodology we'll go back to Share Price Study Case Study.
-
-**Share Price Study Data**
-
-A business analyst is studying share prices of companies from three different business sectors. As part of the study a random sample (n=60) of companies was selected and the following data was collected:
-
-| **Variable**    | **Description** |
-|-------------|-----------------------------------------------|
-| **Share_Price**	|	The market value of a company share (£) |
-| **Profit**			| Company annual profit (£1.000.000) |
-| **RD**				  | Company annual spending on research and development (£1.000) |
-| **Turnover** 		|	Company annual total revenue (£1.000.000) | 
-| **Competition**	|	A variable coded: | 
-|					        |- **0** if the company operates in a very competitive market |
-|					        |- **1** if the company has a great deal of monopoly power |
-| **Sector**			|A variable coded: |
-|				  	      |- **1** if the company operates in the IT business sector |
-|					        |- **2** if the company operates in the Finance business sector |
-|				    	    |- **3** if the company operates in the Pharmaceutical business sector |
-| **Type**  	    |		A variable coded: |
-|					        |- **0** if the company does business mainly in Europe |
-|					        |- **1** if the company trades globally |
-
-Let's start off by investigating the relationship between the variables `Share_Price` and `Profit`.
-
-We will adopt the following notation
-
-- $Y: Share\_Price$
-- $X: Profit$
-
-$\text{Model to be estimated:  } Y = b_0 + b_1X + e$ 
-
-We start by accessing data:
-
-```{r, warnings=FALSE, message=FALSE}
 suppressPackageStartupMessages(library(dplyr))
-# read csv file
-companyd <- read.csv("https://tanjakec.github.io/mydata/SHARE_PRICE.csv", header=T)
-# look at the data
-glimpse(companyd)
-# convert into factore type variables
-companyd[, 5] <- as.factor(companyd[, 5])
-companyd[, 6] <- as.factor(companyd[, 6])
-companyd[, 7] <- as.factor(companyd[, 7])
-# glance at data
-summary(companyd)
-glimpse(companyd)
-```
-The Initial Data Analysis for investigating a connection between a measured response and a measured explanatory variable requires obtaining a graph of the response against the explanatory variable and to calculate the value of $R^2$ from the sample data.
 
-The IDA has three possible outcomes:
+bankrup <- read.csv("https://tanjakec.github.io/mydata/Bankruptcies.csv")
+summary(bankrup)
 
-i.	 No evidence of a connection between the response and the explanatory variable.
-ii.	 Clear evidence of a connection between the response and the explanatory variable.
-iii. 	The IDA is inconclusive and further analysis is required.
-
-The simplest form of connection is a straight-line relationship and the question arises could a 
-straight-line relationship be matched with the information contained in the *Graphs* *1* to *5* discussed earlier?
-
-![](/module3/MvM/images/DAM_MvM.png?width=40pc)
-
-As part of an informal investigation of the possible relationship between `Share_Price` and `Profit`, first we will use R to obtain a scatter plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest, we will attach our data and refer to the variables directly using only their names (see help for the `attach( )` function). 
-
-```{r}
-attach(companyd)
-names(companyd)	# shows the names of the variables in the 'companyd' data frame
-plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
-abline(lm(Share_Price ~ Profit), lty = 2, col = 2)
+glimpse(bankrup)
 ```
 
-> Let's go through the code and the functions we have used to produce this graph. 
->
-> - The `plot( )` function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, i.e. you 'feed' as the arguments first variable representing X and then variable representing Y: `plot( x, y)`.
-Considering that we are investigating a relationship between $X$ and $Y$ in the form of a regression line $Y = b_0 + b1_X + e$, we specify that in **R** as a formula `Y ~ X`, which can be read as "$Y$ is modelled as a function of $X$". This means that in the **R**’s `plot( )` function a formula interface can also be used, in which case the response variable $Y$ needs to come before the tilde ($\sim$) and $X$ variable that will be plotted on the horizontal axis.
->
-> - Next, we fit a **line of the best-fit** through our scatterplot using the `abline( )` function for the linear model $Y = b_0 + b_1X$ to see how close are the points to the fitted line. The basic R function for **fitting linear models by ordinary least squares** is the `lm( )`, which stands for **l**inear **m**odel. All we need to feed R with when using the `lm( )` function is the formula `Y~X`.
-
-The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we could do with some more information about it. Let us see what the `lm( )` function provide as a part of the output.
+Before we start the model fitting procedure we will make test-train split data in the proportion of 80:20.
 
 ```{r}
-lm(Share_Price ~ Profit)
+
+set.seed(123)
+split_idx = sample(nrow(bankrup), 53)
+bankrup_train = bankrup[split_idx, ]
+bankrup_test = bankrup[-split_idx, ]
 ```
 
-> First, R displays the fitted model, after which it shows the estimates of the two parameters 
-$b_0$ & $b_1$ to which it refers to as coefficients.
->
-> -	the intercept, $b_0 = 258.924$
-> -	the slope, $b_1= 4.057$
+We will have a quick glance at data to see what the training data is like
+```{r}
+glimpse(bankrup_train)
+summary(as.factor(bankrup_train$Y))
+summary(bankrup_train)
+```
 
-We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of your, as a modeller, viewpoint/theory.
+We have a nice split in terms of number of observations for each class of Y. Next, we estimate a logistic regression model using the `glm()` (generalised linear model) function which we save as an object. 
 
-Examining the scatterplot, we can see that not all of the points lie on the fitted line $Share\_Price = 258.924 + 4.057Profit$. To explain how strong the relationship is between the two variables we need to obtain the coefficient of determination known as the $R^2$ parameter.  
+```{r, warning = FALSE}
+model <- glm(Y ~ X1 + X2 + X3, data = bankrup_train, family = binomial(logit))
+model
+```
 
-The coefficient of determination, $R^2$, is a single number that measures the extent to which the explanatory variable can explain, or account for, the variability in $Y$ – that is, how well does the explanatory variable explain the variability in, or behaviour of, the phenomenon we are trying to understand.
-
-Earlier, we saw that $R^2$ is constrained to lie in the following range:
-
-$$0\%  \text{ <---------- }  R^2  \text{ ----------> }  100\%$$
-
-We realised that the closer $R^2$ is to $100\%$ then the better the model is, and conversely, a value of $R^2$ close to $0\%$ implies a weak/poor model. 
-
-To obtain all of the information about the fitted model we can use the `summary( )` function as in the following:
+In order to get all the results saved in the `glm_model` object we use the summary command.
 
 ```{r}
-summary(lm(Share_Price ~ Profit))
+summary(model)
+```
+
+>The key components of R’s summary( ) function for generalised linear models for binomial family with the logit link are:
+>
+>- **Call**: just like in the case of fitting the `lm()` model this is R reminding us what model we ran, what options we specified, etc
+>
+>- the **Deviance Residuals** are a measure of model fit. This part of the output shows the distribution of the deviance residuals for individual cases used in the model. Below we discuss how to use summaries of the deviance statistic to assess model fit
+>
+>- the **Coefficients**, their standard errors, the z-statistic (sometimes called a Wald z-statistic), and the associated p-values. The logistic regression coefficients give the change in the log odds of the outcome for a one unit increase in the predictor variable
+>
+> At the end there are **fit indices**, including the null and deviance residuals and the AIC, which are used to assess overall model fit.
+
+We realise that the output above has a resemblance to the standard regression output. Although they differ in the type of information, they serve similar functions. Let us make an interpretation of it.
+
+The fitted logarithm of the odds ratio, i.e. logit of the probability $p$ of the firm remaining solvent after two years is modelled as:
+
+$$\hat{g}(X_1, X_2, ...X_q) = -9.8846 +  0.3238X_1 + 0.1779X_2 + 4.9443X_3$$
+Remember that here instead of predicting $Y$ we obtain the model to predict $log{frac{p}{(1-p)}$. Using the transformation of the logit we get the predicted probabilities of the firm being solvent.
+
+The estimated parameters are expected changes in the logit for unit change in their corresponding variables when the other, remaining variables are held fixed. That is, the logistic regression coefficients give the change in the log odds of the response variable for a unit increase in the explanatory variable:
+
+- For a unit change in X1, the log odds of a firm remaining solvent increases by 0.33, while the other variables, X2 and X3, are held fixed
+- For a unit change in X2, the log odds of a firm remaining solvent increases by 0.18, while the other variables, X1 and X3, are held fixed
+- For a unit change in X3, the log odds of a firm remaining solvent increases by 5.09, while the other variables, X1 and X2, are held fixed
+
+This is very hard to make sense of. We have predicted log odds and in order to interpret them into a more sensible fashion we need to "anti logge" them as the changes in odds ratio for a unit change in variable $X_i$, while the other variables are held fixed $e^(\beta_i)$.
+
+```{r}
+round(exp(coef(model)), 4)
+```
+
+Now, we can interpret the coefficients of the rations as follows:
+
+- The odds of a firm being solvent (vs being bankrupt) increases by 1.38 for a unit change in ratio $X_1$, all else in the model being being fixed. That is, for an increase in $X_1$ the relative odds of
+$$\frac{P(Y=1)}{P(Y=0)}$$
+
+is multiplied by $e^{\beta_1} = e^{0.3238} = 1.38$, implying that there is an increase of $38\%$
+
+- The odd of a firm being solvent (vs being bankrupt) increases by 1.20 for a unit change in ratio $X_2$, all else in the model being being fixed... implying that there is an increase of $20\%$
+
+- The odd of a firm being solvent (vs being bankrupt) increases by 140.37 for a unit change in ratio $X_3$, all else in the model being being fixed... implying that there is an increase of $40.37\%$
+
+The column headed as `z value` is the ratio of the coefficients (`Estimate`) to their standard errors (`Std. Error`) known as **Wald statistics** for testing the hypothesis that the corresponding parameter are zeros. In standard regression this would be the **t-test**. Next to Wald test statistics we have their corresponding $p$-values (`Pr(>|z|)`) which are used to judge the significance of the coefficients. Values smaller than $0.5$ would lead to the conclusion that the coefficient is significantly different from $0$ at $5\%$ significant level. From the output obtained we see that none of the $p$-values is smaller than $0.5$ implying that none of the variables individually is significant for predicting the logit of the observations.
+
+We need to make a proper assessment to check if the variables collectively contribute in explaining the logit. That is, we need to examine whether the coefficients $/beta_1$,  $/beta_2$ and $/beta_3$ are all zeros. We do this using the $G$ statistic, which stands for **goodness of fit**
+
+$$G = \text{likelihood without the predictors}- \text{likelihood with the predictors}$$
+$G$ is distributed as a _chi-square_ statistic with 1 degree of freedom, so a _chi-square test_ is the test of the fit of the model (note, that $G$ is similar to an $R^{2}$ type test). The question we have now is where do we get this statistic from?
+
+In addition to the above, the summary of the model includes the deviance and degrees of freedom for a model with only an intercept (the null deviance) and the residual deviance and degrees of freedom for a fitted model. We calculate the $G$ statistic as difference in deviances between the null model and the fitted model
+
+Before we calculate the $G$ statistic we need to specify the hypotheses:
+
+- $H_0: \beta_i = 0$ 
+- $H_1: \text{at least one is different from }0$
+
+where $i = 1, 2, 3$. The decision rule is: 
+
+- If $G_{calc} < G_{crit} \Rightarrow H_0 \text{, o.w. } H_1$
+
+We can also consider: If its associated $p$-value is greater than $0.05$ we conclude that the variables do not collectively influence the logits, if however $p$-value is less that $0.05$ we conclude that they do collectively influence the logits. 
+
+Next we calculate the $G$ statistic and the degrees of freedom of the corresponding critical value. Knowing what it is, we can calculated manually or obtain it using the `pscl::pR2()` function
+
+```{r, warning = FALSE}
+G_calc <- model$null.deviance - model$deviance
+Gdf <- model$df.null - model$df.residual
+pscl::pR2(model)
+G_calc
+qchisq(.95, df = Gdf) 
+1 - pchisq(G_calc, Gdf)
+```
+
+As $G_{calc}$ = 67.52 > $G_{crit}$ = 7.81 $\Rightarrow H_1$, ie. $p\text{-value}$ = 0.00 < 0.05 we can conclude that this is a statistically valid model and that the variables collectively have explanatory power. The next question we need to ask is do we need all three variables?
+
+In linear regression we assessed the significance of individual regression coefficients, i.e. the contribution of the individual variables using the _t-test_. Here, we use the _z scores_ to conduct the equivalent Wald statistic (test). The ratio of the logistic regression has a normal distribution as opposed to the t-distribution we have seen in linear regression. Nonetheless, the set of hypotheses we wish to test is the same:
+
+- $H_0: \beta_i = 0$    (coefficient $i$ is not significant, thus $X_i$ is not important)
+- $H_1: \beta_i > 0$    (coefficient $i$ is significant, thus $X_i$ is important)
+
+We are going to use a simplistic approach in testing these hypotheses in terms of the adopted decision rule. Decision Rule: If the Wald's z statistic lies between -2 and +2, then the financial ratio, $X_i$, is not needed and can be dropped from the analysis. Otherwise, we will keep the financial ratio. However, there is some scope here for subjective judgement depending upon how near to +/-2 theWald's $z$ value is. Therefore we may have to do some "manual" searching upon an acceptable set of explanatory variables, as the z value of all three variables in the model lies between +/-2.
+
+In our example none of the variables appear to be important judging upon their Wald's z statstic, yet based on the chi-square statistic $G$, we know that the fitted model is valid and that the selected variables collectively contribute in explaining the logits.
+
+To evaluation individual contribution of the variables used in a logistic regression model we examine what happens to the change in the chi-square statistic $G$ when the $i^{th}$ variable is removed from the model. A large $p$-value means that the reduced model explains about the same amount of variation as the full model and, thus, we can probably leave out the variable.
+
+Decision Rule: if $p$-value > 0.05 $\Rightarrow$ the variable can be taken out, otherwise if $p$-value < 0.05 keep the variable in the model.
+
+Rather then fitting individual models and doing a manual comparison we can make use of  the anova function for comparing the nested model using the chi-square test.
+
+```{r, warning = FALSE}
+anova(model, test="Chisq")
+```
+
+We can remove $X_3$ variable from the model
+
+```{r, warning = FALSE}
+model_new <- update(model, ~. -X3, data = bankrup)
+summary(model_new)
+anova(model_new, test="Chisq")
+```
+
+To compare the fit of the alternative model we will use the **A**kaike **I**nformation **C**riterion (**AIC**), which is an index of fit that takes account of parsimony of the model by penalising for the number of parameters. It is defined as
+
+$$AIC = - 2 \times \text{maximum log-likelihood} + 2 \times \text{number of parameters}$$
+and thus smaller values are indicative of a better fit to the data. In the context of logit fit, the AIC is simply the residual deviance plus twice the number of regression coefficients.   
+
+The AIC of the initial model is 13.787 and of the new model 15.472. Checking the new model, we can see that it consists of the variables that all significantly contribute in explaining the logits. So, in the spirit of parsimony we can choose the second model to be a better fit.
+
+To obtain the overall accuracy rate we need to find the predicted probabilities of the observations kept aside in the `bankrup_test` subset. By default, `predict.glm()` uses `type = "link"` and if not specified otherwise R is returning:
+
+$$\hat{\beta_0} + \hat{\beta_1}X_1 + \hat{\beta_2}X_2$$
+for each observation, which are not predicted probabilities. To obtain the predicted probabilities:
+
+$$\frac{1}{1 + e^{\hat{\beta_0} + \hat{\beta}_1x_1 + \hat{\beta}_2x_2}}$$
+when using the `predict.glm()` function we need to use `type = "response"`.
+
+```{r}
+link_pr <- round(predict(model_new,  bankrup_test, type = "link"), 2)
+link_pr
+
+response_pr <- round(predict(model_new,  bankrup_test, type = "response"), 2)
+
+t(bankrup_test$Y)
+
+coefficients(model_new)
+```
+
+Here we illustrate how these predictions are made for the third and twelfth observations in the `bankrup_test` data subset.
+
+```{r}
+bankrup_test[c(3, 12),]
+
+round(1/(1+exp(-(-0.5503398 + 0.1573639*(-18.1) + 0.1947428*(-6.5)))), 4)
+round(1/(1+exp(-(-0.5503398 + 0.1573639*54.7 + 0.1947428*14.6))), 4)
+```
+
+Knowing how the probabilities are estimated for the test data we can now describe the performance of a classification model using the confusion matrix.
+
+```{r}
+how_well <- data.frame(response_pr, bankrup_test$Y) %>% 
+  mutate(result = round(response_pr) == bankrup_test$Y)
+
+how_well
+
+confusion_matrix <- table(bankrup_test$Y, round(response_pr))
+confusion_matrix
+
+accuracy(confusion_matrix) # accuracy() function we created for KNN classification earlier
+```
+
+The results above are showing that our chosen logistic regression model has correctly classified all firms from the `bankrup_test` data subset, giving an accuracy of 100%.
+
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Using the `caret` package**</font></p>
+
+```{r, warning = FALSE}
+# If you don't have AER installed yet, uncomment and run the lines below
+#install.packages("AER")
+suppressPackageStartupMessages(library(AER))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(caret))
+data("CreditCard")
+glimpse(CreditCard)
+summary(CreditCard)
+```
+
+The `CreditCard` data contains a response variable `card` that indicates whether a consumer was declined (`no`) or approved for a credit card (`yes`). The first step is to partition the data into training and testing sets.
+
+```{r}
+#CreditCard$Class <- CreditCard$card
+#CreditCard <- subset(CreditCard, select=-c(card, expenditure, share))
+summary(CreditCard) 
+
+set.seed(123)
+train_ind <- createDataPartition(CreditCard$card, p = 0.75, list = FALSE)
+
+train_data <- CreditCard[train_ind, ]
+test_data <- CreditCard[-train_ind, ]
+```
+Although it might appear that there is no difference in splitting data using the `caret`'s `createDataPartition()` function from the previously used `sample()`, `createDataPartition()` tries to ensure a split that has a similar distribution of the supplied variable in both datasets. Next we can begin training a model. To do this we have to supply four arguments to the `train()` function
+
+- `form = card ~ .` specifies the response variable. It also indicates that all available predictors should be used
+- `data = card_trn` specifies the training data
+- `trControl = trainControl(method = "cv", number = 5)` specifies that we will be using 5-fold cross-validation
+- `method = "glm"` specifies that we will fit a generalised linear model
+
+```{r, warning = FALSE}
+credit_glm_mod = train(
+  form = card ~ .,
+  data = train_data,
+  trControl = trainControl(method = "cv", number = 5),
+  method = "glm",
+  family = "binomial"
+)
+```
+The list that we have passed to the `trControl` argument is created using the `trainControl()` function from `caret`, specifying a number of training choices for the particular resampling scheme required for model training. 
+
+```{r}
+str(trainControl(method = "cv", number = 5))
+```
+
+The elements of this list which are of most interest to us when setting up a model like the one above are the first three that are directly related to how the resampling will be done:
+
+- `method` specifies how resampling will be done: `cv`, `boot`, `LOOCV`, `repeatedcv`, and `oob`
+- `number` specifies the number of times resampling should be done for methods that require resample: `cv` and `boot`
+- `repeats` specifies the number of times to repeat resampling for methods such as `repeatedcv`
+
+The additional argument `family` which is set to `"binomial"` is not actually an argument for `train()`, but an additional argument for the `method` which is chosen for `glm`. For a factor response variable, `caret` will recognise that we are trying to perform classification and will automatically use family = "binomial" by default. Nonetheless, for the purpose of easy readability of the code it is advisable for the `family` argument to be specified.
+
+For details on the full model training and tuning see chapter 5 of [Max's](https://twitter.com/topepos) book [The caret Package](https://topepo.github.io/caret/index.html). 
+
+Calling the stored `train()` object, `credit_glm_mod`, will provide the summary of the training that has been done.
+
+```{r}
+credit_glm_mod
+```
+
+It reports the statistical method used for the model estimation, which in our case is `glm`. We see that we used 990 observations that had a binary class response: "no" and "yes", and eleven predictors. We have not done any data pre-processing, and have utilized 5-fold cross-validation. The cross-validated accuracy is reported as a proportion of correct classifications, which in our case is `r round(credit_glm_mod[[4]][[2]][1]*100, 2)`%. The stored `train()` object returns a list packed with useful information about the model's training.
+
+```{r}
+names(credit_glm_mod)
+```
+Two elements that we will be most interested in are `finalModel` and `results`.
+
+```{r}
+credit_glm_mod$finalModel
+```
+
+The `finalModel` is the object returned from `glm()`. This final model, is **fit to all of the supplied training data**. This model object is often used when we call certain relevant functions on the object returned by `train()`, one of which is `summary()`.
+
+```{r}
+credit_glm_mod$results
+```
+The `result` element shows more detailed results, in addition to the model's overall accuracy. It provides the information of an estimate of the uncertainty in our accuracy estimate.
+
+Obtaining the predictions on the test data with the object returned by `train()` is easy.
+
+```{r}
+pred <- predict(credit_glm_mod, newdata = test_data)
+head(pred, n = 10)
+```
+By default, the `predict()` function is returning classifications and this will be the case regardless of the matter being used. If instead of the default returning classifications, we want predicted probabilities, we simply specify `type = "prob"`.
+
+```{r}
+pred_prob <- round(predict(credit_glm_mod, newdata = test_data, type = "prob"), 2)
+head(pred_prob, n=10)
+```
+the `predict()` function for a `train()` object will return the probabilities for all possible classes, in this case "no" and "yes". This will be true for all methods, which is especially useful for multi-class data.
+
+To summarise the performance of the trained model we will use the `confusionMatrix()` function to see how well the model does in predicting the target variable on out of sample observations.
+```{r}
+cm <- confusionMatrix(data = pred, test_data$card)
+cm
+```
+
+The accuracy of the model measured when using the unseen test data is `r round(cm$overall[[1]], 2)*100`%. That is, out of `r dim(test_data)[1]` observations in the test subset the model has correctly classified them `r sum(diag(cm$table))` times. There is a scope for improvement. We have eleven predictors in this model and it would be useful to find out how well they contribute to the model's performance. To assess the relative importance of individual predictors in the model using the `caret` package we can utilise the `varImp()` function.
+
+```{r}
+glm_Imp <- varImp(credit_glm_mod)
+plot(glm_Imp)
+```
+
+The function automatically scales the importance scores to be between 0 and 100. Using `scale = FALSE` this normalization step can be avoided.
+
+Unfortunately, since logistic regression has no tuning parameters we can not take advantage of the `caret`'s feature selection facility (see [Variable Selection Using The caret Package](https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/caret/inst/doc/caretSelection.pdf?revision=77&root=caret&pathrev=90)). 
+
+We will simple retrain the model removing `age` from the list of predictors. To ensure that each training gets the same data partitions and repeats we need to use the same seed number.
+
+```{r, warning = FALSE}
+set.seed(123)
+credit_glm_mod_1 = train(
+  form = card ~ . - age,
+  data = train_data,
+  trControl = trainControl(method = "cv", number = 5),
+  method = "glm",
+  family = "binomial"
+)
+
+credit_glm_mod_1
+summary(credit_glm_mod_1)
+```
+
+Examining the output we can see that the accuracy has increased. 
+
+```{r}
+glm_Imp_1 <- varImp(credit_glm_mod_1)
+plot(glm_Imp_1)
+```
+
+The plot above indicates that predictor `months` has the lowest impact on the overall model performance.
+
+To compare accuracy between the models we will resample the results of the trained model and compare their accuracy distributions using `caret`'s `resample` function and visualise them with the `dplot()` function.
+
+```{r}
+set.seed(123)
+credit_glm_mod$results
+credit_glm_mod_1$results
+results <- resamples(list(M0 = credit_glm_mod, M1 = credit_glm_mod_1))
+summary(results)
+dotplot(results)
+```
+
+However, if a strong claim needs to be made about which model is better, we could use statistical hypothesis tests to statistically check if the differences in the results are significant.
+
+```{r}
+modelDifferences <- diff(results)
+summary(modelDifferences)
 ```
  
-So, what have we got here? 🤔
+The $p$-values for the model comparisons are large (0.85 for accuracy and 0.34 for Kappa) indicating that the models fail to show any difference in performance. 
 
-We will discuss some of the key components of R's `summary( )` function for linear regression models.
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**YOUR TURN 👇**</font></p> 
 
-> - **Call**: shows what function and variables were used to create the model.
-> - **Residuals**: difference between what the model predicted and the actual value of Y. Try to see if you can calculate this 'residuals' section by yourself using: `summary(Y-model$fitted.values)`. 🤓
-> - **Coefficients**: 
->  + estimated parameters for intercept and slope: $b_0$ and $b_1$
->  + Std. Error is Residual Standard Error divided by the square root of the sum of the square of that particular explanatory variable.
->  + t value: Estimate divided by Std. Error
->  + Pr(>|t|): is the value in a t distribution table with the given degrees of freedom.
->  
->
-{{% notice note %}}
-Note that in the first section we can find statistics relevant to the estimation of the model's parameters. In the second part of the output we can find statistics related to the overall goodness of the fitted model.
-{{% /notice %}}
->
-> The `summary(lm( ))` produces the standard deviation of the error. We know that standard deviation is the square root of variance. Standard Error is very similar, the only difference is that instead of dividing by $n-1$, you subtract $n$ minus $1 + k$, where $k$ is the number of explanatory variables used in the model. See if you can use and adjust the code below to calculate this statistic. 🤓 
->
->
->
-> ```
-> # Residual Standard Error
-> k <- length(model$coefficients) - 1 #Subtract one to ignore intercept
-> SSE <- sum(model$residuals^2)
-> n <- length(model$residuals)
-> sqrt(SSE / (n-(1+k)) ) # Residual Standard Error
-> ```
->
-> Next is the *coefficient of determination*, which helps us determine how well the model fits to the data. We have already seen that $R^2$ subtracts the residual error from the variance in Y. The bigger the error, the worse the remaining variance will appear.
-> 
-> For the time being we will skip $R^2_{adj}$ and point out that it is used for models with multiple variables, to which you will be introduced in the next section.   
->
-Lastly, the *F-Statistic* is the second “test” that the summary function produces for `lm` models. The *F-Statistic* is a “global” test that checks if at least one of your coefficients are nonzero, i.e. when dealing with a simple regression model to check if the model is worthy of further investigation and interpretation.
+Practise by doing the following set of exercises:
 
-**Model Interpretation:**
+1) Try out data classification using the KNN algorithm using [Air Quality Data](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airquality.html)
 
-To go back to our model interpretation. Earlier, we said after examining the scatter plot that there is a a clear link between *Share_Price* and *Profit*. This is confirmed by the value of $R^2 = 74.67\%$. The interpretation of $R^2$ is suggesting that $74.67\%$ of the changes in *Share_Price* are explained by changes in *Profit*. Alternatively,  $25.33\%$ of the changes in *Share_Price* are due to other variables.
+AppliedPredictiveModeling::data(twoClassData)
 
-For this example the outcome of the IDA is that there is clear evidence of a link between *Share_Price* and *Profit* and the nature of the influence being that as *Profit* increases *Share_Price* also increases. It only remains to describe the connection, and discuss how effective the model is, and ask if it can be used to predict *Share_Price* value from the value of *Profit*? 🤔 
 
----
+Useful links: 
 
-** Further Data Analysis**
+Check [Logistic Regression | R Data Analysis Example](https://stats.idre.ucla.edu/r/dae/logit-regression/) which uses categorical predictors.
 
-The adequacy of $R^2$ can be judged both informally and formally using hypothesis testing.
-Like all hypothesis tests, this test is carried out in four stages:
+<https://github.com/chanmad/Machine-Learning-on-Bankruptcy>
 
-1.	Specify the hypotheses
-2.	Define the test parameters and decision rule
-3.	Examine the sample evidence 
-4.	Conclusions 
 
 
-**Stage 1:** Specify the hypotheses ($H_0$ & $H_1$).
+<http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf>
 
-*The Coefficient of Determination* $R^2$ is a useful quantity. By definition if $R^2 = 0$ then there is no connection between the response variable and the explanatory variable. Conversely if the value of $R^2$ is greater than zero there must be a connection.  This enables the formal hypotheses to be defined as:
-
-+ $H_0 : R^2  = 0$ (There is no relationship between the response and interest and the explanatory variable.)
-+ $H_1 : R^2  > 0$ (There is a relationship between the response and the explanatory variable.)
-
-**Stage 2:**	Defining the test parameters and the decision rule.
-
-The decision rule is based on the *F statistic*. The *F distribution* has a shape as shown below:
-
-![](/module3/MvM/images/F-dist.png?width=40pc)
-
-The value of $F_{crit}$ is the value that divides the distribution with $95\%$ of the area to the left of the $F_{crit}$ ordinate, and $5\%$ to the right.  The accepted terminology is $F_{crit}$ but this text will call this quantity $F_{calc}$ to signify it is a quantity obtained from statistical tables. 
-
-The **decision rule** is:
-
-- If the value of $F_{calc}$ from the sample data is larger than $F_{crit}$, then the sample evidence favours the decision that there is a connection between the response variable and the explanatory variable. (i.e. favours $H_1$.)
-
-- If the value of $F_{calc}$ is smaller than $F_{crit}$ then the sample evidence is consistent with no connection between the response variable and the explanatory variable. (i.e. favours $H_0$)
-
-The decision rule can be summarised as:
-
-If $F_{calc}  <  F_{crit}$ then favour $H_0$,  whilst if $F_{calc}  > F_{crit}$ then favour $H_1$. This decision rule can be represented graphically as below:
-
-![](/module3/MvM/images/F-test.png?width=40pc)
-
-The decision rule maybe written as:
-
- - If $F_{calc}  <  F_{crit}$ then accept $H_0$
- - If $F_{calc}  > F_{crit}$ then accept $H_1$
-
-The value of $F_{crit}$ depends on the amount of data in the sample.  The *Degrees of Freedom* (usually abbreviated to $df$) express this dependence on the sample size. For any given set of sample data, having obtained the $df$ the specific value of $F_{crit}$ can be obtained from Statistical Tables of the *F distribution*, or simply by using the `qf(p, df1, df2)` function in R.
-
-**Stage 3: Examining the sample evidence** 
-
-For the investigation of the *Share_Price* vs *Profit* we plot the scatterplot and obtain the summary of the fitted model: $Share\_Price = b_0 + b_1Profit$
-
-```{r}
-# create a scatterplot
-plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
-# fit the model
-model_1 <- lm(Share_Price ~ Profit)
-# add the line of the best fit on the scatterplot
-abline(model_1, lty = 2, col = 2)
-# obtain R_sq of the fitted model
-summary(model_1)$r.squared
-```
-
-This is a good model explaining almost $3/4$ of the overall variability in the explanatory variable $Y$. Hence, based on the sample evidence, variable *Profit*, can explain $74.67\%$ of overall variation in the variable *Share_Price*.
-
-{{% notice note %}}
-Note, that if we don't reject that there is a relationship between the two variables we will obtain full output of the `summary(lm(model_1))` function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need further to investigate the significance of the relationship we need relevant statistics for conducting the FDA. 
-{{% /notice %}}
-
-In the cases where $R^2 \approx 0$ we will carry out a hypothesis test for which we need $F_{calc}$ from the `summary( )` function. 
-
-Let us assume that the $R^2$ for the given example *Share_Price vs Profit* is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship, as $R^2$ is not zero, but neither can we with confidence accept it as a statistically valid relationship based on the sample evidence we use.
-
-This step requires the calculation of the $F_{calc}$ value from the sample data, and the determining of the degrees of freedom.  
-
-```{r}
-summary(model_1)
-```
-
-**Stage 4:** Conclusion
-
-The associated *F statistic* evaluating the significance of the full model $F_{calc} = 171$ with $df_1=1$ and $df_2=58$. Thus, 
-
-```{r}
-F_crit <- qf(0.95, 1, 58)
-F_crit
-```
-
-$F_{crit} = 4.01$ and using the decision rule given, we get that
-
-$$F_{calc}=171 > F_{crit}=4.01\text{ => accept }H_1$$
-, ie this model is statistically significant and we need to describe it.
-
-**Describe the Relationship**
-
-If the resulting outcome from either the Initial Data Analysis (IDA) or the Further Data Analysis (FDA) is that there is a connection between the response variable and the explanatory variable then the last step is to describe this connection.
-
-For the data analysis situation Measured v Measured this is simply stating the line of the best fit. This is a description of the connection between the two variables. Additionally the $R^2$ value should be quoted as this gives a measure of how well the data and the line of best fit match.
-
-The $R^2$ value can be interpreted as a measure of the quality of predictions made from the line of best fit according to the rule of thumb:
-
-![](/module3/MvM/images/Prediction_Rsq.png?width=40pc)
-
-In our example *Share_Price vs Profit* we had the following estimations:
-
-- $b_0 = 258.9243$
-- $b_1 = 4.0567$ 
-
-$$Share\_Price = 258.9243 + 4.0567 Profit$$
-
-with $R^2 = 74.67\%$.
-
-**Making predictions**
-
-Can the regression line be used to make predictions about the *Share_Price* for a company with a given value of the *Profit*?
-
-Suppose we have to make a prediction of the $Share\_{Price}$ for  company with the $Profit = 137.2$ 
-
-The predictions are calculated from the model as follows:
-
-$$Share\_Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035$$
-Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of good quality, but there may be some issues with some of these predictions of the *Profit* values out of the data range used in prediction. The *Profit* in the given data set range from about $3$ to $170$. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the $R^2$ value is nearly $75\%$.  
-
-```{r}
-summary(Profit)
-```
-
-The *Share_Price* for the company with the *Profit* that lies outside the range of experience is not likely to be very reliable, or of much value. These problems are caused by the fact that the information available about the link between *Share_Price* and *Profit* is only valid over the range of values that *Profit* takes in the data. There is no information about the nature of the connection outside this range and any predictions made must be treated with caution.  
-
-In general terms when interpreting a regression model the intercept is of little value, since it is generally out of the range of the data. The gradient term is the more important and the formal definition of the gradient provides the interpretation of this information. 
-
-The **gradient** is defined to be the **change in $Y$ for a unit increase in $X$**.  For the model developed the gradient is $4.06$. This is suggesting for every additional unit increase in *Profit*, *Share_Price* increases by $£4.06$.
-
----
-
-**YOUR TURN** 👇
-
-1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs RD` and `Share_Price vs Turnover`.
-
-2) Download The *Supermarket* data set available at <https://github.com/TanjaKec/mydata> using the following link <https://tanjakec.github.io/mydata/SUPERM.csv>.
-
-**Crate an Rmd report in which you will:**
-
-1) Give a brief explanation of the following statistical terms:
-
-i.    Response Variable		
-ii.   Explanatory variable
-iii.  Measured Variable		
-iv.   Attribute Variable
-
-2) Provide a brief answer for each of the following questions:
-
-i.    What is ‘Data Analysis Methodology’, and why is this needed when working with sample data?
-ii.   What are the statistical concepts used to investigate the relationship between a measured
-response variable and an attribute explanatory variable?
-iii.  What are the statistical concepts used to investigate the relationship between a measured
-response variable and a measured explanatory variable?
-
-3) Undertake the Data Analysis for the Supermarket Data Set to investigate the relationships between the response variable and from your point of view regarded as worth of attention set of explanatory variables. Present your points of views about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.
-
-**You are expected to bring your report to into the next class.**
-
----
-`Challenger USA Space Shuttle O-Ring Data Set ` available from a data set from [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Forest+Fires), to analyse the number of O-rings that experience thermal distress on a flight at 31 degrees F given data on the previous 23 shuttle flights. 
-
-1. Number of O-rings at risk on a given flight 
-2. Number experiencing thermal distress 
-3. Launch temperature (degrees F) 
-4. Leak-check pressure (psi) 
-5. Temporal order of flight
-
-```{r}
-shuttle = read.table(
-  "http://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data",
-  quote = "\"",
-  comment.char = "",
-  stringsAsFactors = FALSE)
-summary(shuttle)
-```
-
-```{r}
-shuttle <- shuttle %>% 
-  rename(orings = V1) %>% 
-  rename(distress = V2) %>% 
-  rename(temp = V3) %>% 
-  rename(pressure = V4) %>%
-  rename(temp_flight = V5)
-glimpse(shuttle)
-```
+datasets <https://www.kaggle.com/datasets>
 
 
 

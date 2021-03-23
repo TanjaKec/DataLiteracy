@@ -852,6 +852,24 @@ stepwb$bestTune</code></pre>
 ## -31.2967858  -0.1255654   0.9213725   0.4463824  -1.3917662</code></pre>
 <p><span class="math display">\[brozek = -31.2967858 - 0.1255654 \; weight  + 0.9213725 \; abdom + 0.4463824 \; forearm - 1.3917662 \; wrist\]</span>
 Applying different subset selection approaches we have pruned a list of plausible explanatory variables down to a parsimonious collection of the “most useful” variables. We need to realise that subset selection approaches for multiple regression modelling should be used as a tool that can help us avoid the tiresome process of trying all possible combinations of explanatory variables, by testing variables one by one. However, as statistical models can serve different purposes we need to incorporate prior knowledge when it is possible. Solely reliance on subset selection approaches is wrong and it could be misleading (Smith, 2018).</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>YOUR TURN 👇</strong></font>
+</p>
+<p>Practise by doing the following exercises:</p>
+<ul>
+<li>Use multiple regression on the <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airquality.html">Air Quality Data</a> data set.</li>
+</ul>
+<ol style="list-style-type: lower-roman">
+<li><p>Produce a correlogram which include all the variables in the data set.</p></li>
+<li><p>Use the <code>lm()</code> function to perform multiple regression with <code>Ozone</code> as the response and all other variables as the predictors. Use the <code>summary()</code> function to print the results and comment on the output, in particular:</p>
+<ol style="list-style-type: lower-alpha">
+<li>is there a relationship between the predictors and the response, i.e. is the model valid?</li>
+<li>which predictors appear to have a statistically significant relationship to the response?</li>
+<li>on the basis of your response to the previous question, fit a smaller model that only uses predictors for which there is evidence of association with the response variable.</li>
+</ol></li>
+<li><p>Try out some of the variable selection methods explained in this section. Present and discuss the results from the chosen approach(es).</p></li>
+<li><p>Propose with justification a model (or a set of models) that seem to perform well on this data set. Make sure you provide justified explanation on the selected set of predictors in the proposed model.</p></li>
+</ol>
 <hr />
 <p>M. Friendly. <a href="http://euclid.psych.yorku.ca/datavis/papers/corrgram.pdf">Corrgrams: Exploratory displays for correlation matrices</a>, The American Statistician 56(4): 316-324, 2002.</p>
 <p>M. Kuhn. <a href="https://topepo.github.io/caret/">The caret Package</a>, 2019.</p>
