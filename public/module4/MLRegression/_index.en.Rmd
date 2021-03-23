@@ -630,12 +630,6 @@ As [M.J. Crawley](https://royalsociety.org/people/michael-crawley-11279/) points
 
 For problems ranging from bioinformatics to marketing, many analysts prefer to develop “classifiers” instead of developing predictive models
 
-Data to practise:
-
-<https://www.kdnuggets.com/datasets/index.html>
-
-<http://archive.ics.uci.edu/ml/index.php>
-
 ---
 
 **Further Reading**
@@ -644,7 +638,6 @@ Claeskens, G. and Hjort, N.L. (2008) Model Selection and Model Averaging, Cambri
 Press, Cambridge.
 
 Fox, J. (2002) An R and S-Plus Companion to Applied Regression, Sage, Thousand Oaks, CA.
-
 
 
 ---
@@ -693,13 +686,7 @@ This will allow you to obtain all “three intercepts” without a reference lev
 
   - Select the best subset model to predict `lpsa` using all the available predictors. 
 
-Take a look at [vignette for the `lasso2` package](https://cran.r-project.org/web/packages/lasso2/vignettes/Manual-vignette.pdf
-
-<https://www.theguardian.com/data>
-
-<https://data.cdrc.ac.uk/search/field_tags/tutorial-1679/type/dataset?sort_by=changed>
-
-<https://data.cdrc.ac.uk/dataset/introduction-spatial-data-analysis-and-visualisation-r>
+Take a look at [vignette for the `lasso2` package](https://cran.r-project.org/web/packages/lasso2/vignettes/Manual-vignette.pdf)
 
 -----------------------------
 © 2021 Tatjana Kecojevic

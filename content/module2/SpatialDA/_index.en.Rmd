@@ -170,5 +170,9 @@ Practise by doing the following set of exercises:
 
 [Thematic Mapping with tmap](https://map-rfun.library.duke.edu/031_thematic_mapping.html)
 
+[CDRC Data: Advanced GIS Methods](https://data.cdrc.ac.uk/search/field_tags/tutorial-1679/type/dataset?sort_by=changed)
+
+[CDRC Data: An Introduction to Spatial Data Analysis and Visualisation in R](https://data.cdrc.ac.uk/dataset/introduction-spatial-data-analysis-and-visualisation-r)
+
 -----------------------------
 © 2020 Tatjana Kecojevic

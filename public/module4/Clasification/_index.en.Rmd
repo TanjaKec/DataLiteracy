@@ -860,10 +860,10 @@ plot(glm_Imp_1)
 
 The plot above indicates that predictor `months` has the lowest impact on the overall model performance.
 
-To compare accuracy between the models we will resample the results of the trained model and compare their accuracy distributions using `caret`'s `resample` function and visualise them with the `dplot()` function.
+To compare accuracy between the models we can resample the results of the trained models and compare their accuracy distributions using `caret`'s `resample` function and visualise them with the `dplot()` function. Although logistic regression has no tuning parameters, resampling can still be used to characterise the performance of the model.
 
 ```{r}
-set.seed(123)
+set.seed(123) # same resampling specification is used and, since the same random number seed is set
 credit_glm_mod$results
 credit_glm_mod_1$results
 results <- resamples(list(M0 = credit_glm_mod, M1 = credit_glm_mod_1))
@@ -888,19 +888,58 @@ Practise by doing the following set of exercises:
 
 AppliedPredictiveModeling::data(twoClassData)
 
+<p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**YOUR TURN 👇**</font></p>
+
+Practise by doing the following exercises:
+
+Access the `stroke` data set from <https://tanjakec.github.io/mydata/stroke.csv>. Data dictionary of this data set is given in <https://tanjakec.github.io/mydata/Stroke_DataDictionary.docx> word document.
+
+i. Split the data into a training and a test set, pre-process the data, and train a model a model of your choice from this section
+
+ii. Predict the response for the test set. What is the value of the performance metric?
+
+iii. Which predictors are most important in the model you have trained?
+
+iv. Train the model using a different method from the previous selection. Don't forget to initialise the same random number seed as the one used for the previous model training.
+
+v. Compare the accuracy between the trained models. Which one does it perform better?
+
+---
+
+Further reading:
+
+["Applied Predictive Modeling"](http://appliedpredictivemodeling.com) by [Max Kuhn](https://twitter.com/topepos)
+
+["Introduction to Statistical Learning with Applications in R" by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani](https://www.statlearning.com)
+
+[Max Kuhn](https://twitter.com/topepos) [The caret Package](https://topepo.github.io/caret/)
+
+---
 
 Useful links: 
 
 Check [Logistic Regression | R Data Analysis Example](https://stats.idre.ucla.edu/r/dae/logit-regression/) which uses categorical predictors.
 
-<https://github.com/chanmad/Machine-Learning-on-Bankruptcy>
+[Binary Response and Logistic Regression Analysis](http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf)
+
+[Predictive Modeling with R and the caret Package, useR! 2013, by Max Kuhn](https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf)
+
+[`caret` package webinar by Max Khun](https://www.youtube.com/watch?v=7Jbb2ItbTC4&t=279s)
+
+[Intro to Machine Learning with R & caret](https://www.youtube.com/watch?v=z8PRU46I3NY)
 
 
+Data to practise:
 
-<http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf>
+<http://archive.ics.uci.edu/ml/index.php>
 
-datasets <https://www.kaggle.com/datasets>
+[KDnuggets data sets](https://www.kdnuggets.com/datasets/index.html)
 
+[kaggle data sets](https://www.kaggle.com/datasets>)
+
+[Machine Learning on Bankruptcy](https://github.com/chanmad/Machine-Learning-on-Bankruptcy) 
+
+[The Guardian Data Journalism](https://www.theguardian.com/data)
 
 
 -----------------------------

@@ -1163,8 +1163,8 @@ credit_glm_mod_1</code></pre>
 plot(glm_Imp_1)</code></pre>
 <p><img src="/module4/Clasification/_index.en_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <p>The plot above indicates that predictor <code>months</code> has the lowest impact on the overall model performance.</p>
-<p>To compare accuracy between the models we will resample the results of the trained model and compare their accuracy distributions using <code>caret</code>’s <code>resample</code> function and visualise them with the <code>dplot()</code> function.</p>
-<pre class="r"><code>set.seed(123)
+<p>To compare accuracy between the models we can resample the results of the trained models and compare their accuracy distributions using <code>caret</code>’s <code>resample</code> function and visualise them with the <code>dplot()</code> function. Although logistic regression has no tuning parameters, resampling can still be used to characterise the performance of the model.</p>
+<pre class="r"><code>set.seed(123) # same resampling specification is used and, since the same random number seed is set
 credit_glm_mod$results</code></pre>
 <pre><code>##   parameter  Accuracy     Kappa AccuracySD   KappaSD
 ## 1      none 0.8767493 0.6583304 0.06647345 0.1677757</code></pre>
@@ -1220,10 +1220,35 @@ summary(modelDifferences)</code></pre>
 <li>Try out data classification using the KNN algorithm using <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airquality.html">Air Quality Data</a></li>
 </ol>
 <p>AppliedPredictiveModeling::data(twoClassData)</p>
+<p>
+<font color="black" face="Verdana, Geneva, sans-serif" size="+1.5"><strong>YOUR TURN 👇</strong></font>
+</p>
+<p>Practise by doing the following exercises:</p>
+<p>Access the <code>stroke</code> data set from <a href="https://tanjakec.github.io/mydata/stroke.csv" class="uri">https://tanjakec.github.io/mydata/stroke.csv</a>. Data dictionary of this data set is given in <a href="https://tanjakec.github.io/mydata/Stroke_DataDictionary.docx" class="uri">https://tanjakec.github.io/mydata/Stroke_DataDictionary.docx</a> word document.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Split the data into a training and a test set, pre-process the data, and train a model a model of your choice from this section</p></li>
+<li><p>Predict the response for the test set. What is the value of the performance metric?</p></li>
+<li><p>Which predictors are most important in the model you have trained?</p></li>
+<li><p>Train the model using a different method from the previous selection. Don’t forget to initialise the same random number seed as the one used for the previous model training.</p></li>
+<li><p>Compare the accuracy between the trained models. Which one does it perform better?</p></li>
+</ol>
+<hr />
+<p>Further reading:</p>
+<p><a href="http://appliedpredictivemodeling.com">“Applied Predictive Modeling”</a> by <a href="https://twitter.com/topepos">Max Kuhn</a></p>
+<p><a href="https://www.statlearning.com">“Introduction to Statistical Learning with Applications in R” by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani</a></p>
+<p><a href="https://twitter.com/topepos">Max Kuhn</a> <a href="https://topepo.github.io/caret/">The caret Package</a></p>
+<hr />
 <p>Useful links:</p>
 <p>Check <a href="https://stats.idre.ucla.edu/r/dae/logit-regression/">Logistic Regression | R Data Analysis Example</a> which uses categorical predictors.</p>
-<p><a href="https://github.com/chanmad/Machine-Learning-on-Bankruptcy" class="uri">https://github.com/chanmad/Machine-Learning-on-Bankruptcy</a></p>
-<p><a href="http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf" class="uri">http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf</a></p>
-<p>datasets <a href="https://www.kaggle.com/datasets" class="uri">https://www.kaggle.com/datasets</a></p>
+<p><a href="http://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/GLM.logistic.Rpackage.pdf">Binary Response and Logistic Regression Analysis</a></p>
+<p><a href="https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf">Predictive Modeling with R and the caret Package, useR! 2013, by Max Kuhn</a></p>
+<p><a href="https://www.youtube.com/watch?v=7Jbb2ItbTC4&amp;t=279s"><code>caret</code> package webinar by Max Khun</a></p>
+<p><a href="https://www.youtube.com/watch?v=z8PRU46I3NY">Intro to Machine Learning with R &amp; caret</a></p>
+<p>Data to practise:</p>
+<p><a href="http://archive.ics.uci.edu/ml/index.php" class="uri">http://archive.ics.uci.edu/ml/index.php</a></p>
+<p><a href="https://www.kdnuggets.com/datasets/index.html">KDnuggets data sets</a></p>
+<p><a href="https://www.kaggle.com/datasets%3E">kaggle data sets</a></p>
+<p><a href="https://github.com/chanmad/Machine-Learning-on-Bankruptcy">Machine Learning on Bankruptcy</a></p>
+<p><a href="https://www.theguardian.com/data">The Guardian Data Journalism</a></p>
 <hr />
 <p>© 2020 Tatjana Kecojevic</p>
