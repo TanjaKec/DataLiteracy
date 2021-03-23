@@ -3,7 +3,7 @@ date: "2016-04-09T16:50:16+02:00"
 title: Clasification
 output: 
   learnr::tutorial
-weight: 4
+weight: 5
 ---
 Earlier we looked at how to examine sample data to investigate the nature of any relationship that may exist between a measured response variable and an attribute explanatory variable. This section examines how to investigate the nature of any relationship that may exist between a measured response variable and a measured explanatory variable. 
 

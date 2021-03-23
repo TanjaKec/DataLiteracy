@@ -7,15 +7,15 @@ weight: 3
 ---
 
 
-In the previous section we have learnt about _simple linear regression_ as a very simple tool for predicting quantitative measured response variables. Its simple application, easy interpretation and predictive capabilities make it one of the most popular approaches for supervised learning. Developing good understanding of linear regression serves as a solid base for learning how to use and adopt other more sophisticated modelling procedures in the context of machine learning. 
+In the previous section we learnt about _simple linear regression_ as a very simple tool for predicting quantitative measured response variables. Its simple application, easy interpretation and predictive capabilities make it one of the most popular approaches for supervised learning. Developing good understanding of linear regression serves as a solid base for learning how to use and adopt other more sophisticated modelling procedures in the context of machine learning. 
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Additive Model**</font></p>
 
-The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; or Government officials may be interested in explaining the behaviour of unemployment statistics.
+The basic idea in regression modelling is that there is a phenomenon of interest whose behaviour we seek to account for or explain. For example a company may be interested in why its sales figures have followed a particular pattern; Government officials may be interested in explaining the behaviour of unemployment statistics.
 
 Let the phenomenon of interest be denoted by $Y$; as discussed in the previous sections, $Y$ is also known as the response variable, or the dependent variable. The fundamental nature of $Y$ is that it displays variability and it is this inherent variability that the data analyst seeks to explain by using  regression modelling. Intuitively, if we can account for a large amount of the movements in $Y$ then in some sense this is _good_. Conversely, if we put forward an argument which explains only a very small amount of the behaviour of the phenomenon of interest then in some sense this is _bad_. 
 
-In trying to explain, or account for the behaviour of $Y$ we often build a regression model. As a first step in building such a model we specify a set of variables, called the explanatory or predictor variables, that we believe to be important in explaining the behaviour of, or the variability in $Y$. Specifying this set of variables is in effect the first step in developing as the data analysts our viewpoint, our model, our theory. As such we are entitled to ask where such a viewpoint comes from - for example, it may be the logical outcome of some theoretical argument or it may be a replication of a previous study. 
+In trying to explain, or account for the behaviour of $Y$ we often build a regression model. As a first step in building such a model we specify a set of variables, called the explanatory or predictor variables, that we believe to be important in explaining the behaviour of, or the variability in $Y$. Specifying this set of variables is, in effect, the first step in developing as the data analysts our viewpoint, our model, our theory. As such we are entitled to ask where such a viewpoint comes from - for example, it may be the logical outcome of some theoretical argument or it may be a replication of a previous study. 
 
 {{% notice warning %}}
 💡 We do well to remember that this statement of a model is a viewpoint, a belief, a theory and need not be correct, i.e. true. 
@@ -115,7 +115,7 @@ The coefficient of determination, $R^2$, is a single number that measures the ex
 
 $$0\%  <---------- \;\; R^2 \;\; ---------->  100\%$$
 
-Intuitively the closer $R^2$ is to $100\%$ then the better is the model is in the sense that the set of explanatory variables can explain a lot of the variability in $Y$. Conversely, a value of $R^2$ close to $0$ implies a weak, i.e. poor model, in that the set of explanatory variables can only account for a limited amount of the behaviour of $Y$. But what about non-extreme values of $R^2$?
+Intuitively the closer $R^2$ is to $100\%$ then the better the model is in the sense that the set of explanatory variables can explain a lot of the variability in $Y$. Conversely, a value of $R^2$ close to $0$ implies a weak, i.e. poor model, in that the set of explanatory variables can only account for a limited amount of the behaviour of $Y$. But what about non-extreme values of $R^2$?
 
 The adequacy of $R^2$ can be judged both formally and informally.
 
@@ -198,7 +198,7 @@ As such, in the context of the inference about the regression parameters, the **
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Case Study**</font></p>
 
-**`carData::Salaries`**: The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data were collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members.
+**`carData::Salaries`**: The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data was collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members.
 
 **Format:** A data frame with 397 observations on the following 6 variables:
   
@@ -216,7 +216,7 @@ As such, in the context of the inference about the regression parameters, the **
     + Male
   - `salary`: nine-month salary, in dollars
 
-First set of questions is:
+The first set of questions is:
 
 - which of the measured variable is the response variable?
 - which are the explanatory variables?
@@ -224,7 +224,7 @@ First set of questions is:
 
 Considering that the data is collected for the purpose of the analysis of academic salary we are going to identify `salary` as the response variable. The rest of the variables we can use as possible factors that can influence the behaviour of the response variable. 
 
-"Standard" regression approach assumes modelling a relationship between measured response and measured explanatory variables. However, often when building multiple regression models we do not want to be limited to the choice of only measured explanatory variables. We also want to be able to include attribute explanatory variables in the multiple regression modelling. In consequence, it is important to learn about supplementary steps that are required to make such models interpretable.
+The "Standard" regression approach assumes modelling a relationship between measured response and measured explanatory variables. However, often when building multiple regression models we do not want to be limited to the choice of only measured explanatory variables. We also want to be able to include attribute explanatory variables in the multiple regression modelling. In consequence, it is important to learn about supplementary steps that are required to make such models interpretable.
 
 **Dummy Variables**
 
@@ -242,7 +242,7 @@ unclass(sex)
 
 Note, that the `unclass()` function removes the attributes of the `sex` variable above and prints it using default print method, allowing for easier examination of the internal structure of the object.
 
-However, when using attribute variable in a linear regression model it would make no sense to treat it as a measured explanatory variable because of its numeric levels. In the context of linear modelling we need to code them to represent the levels of the attribute. 
+However, when using an attribute variable in a linear regression model it would make no sense to treat it as a measured explanatory variable because of its numeric levels. In the context of linear modelling we need to code them to represent the levels of the attribute. 
 
 Two-level attribute variables are very easy to code. We simply create an **indicator** or **dummy** variable that takes on two possible _dummy_ numerical values. Consider the `sex` indicator variable. We can code this using a dummy variable $d$:
 $$\begin{equation}
@@ -273,7 +273,7 @@ $$\begin{equation}
 
 where $b_0$ can be interpreted as the average $\text{salary}$ for females, and $b_0 + b_1$ as the average $\text{salary}$ for males. The value of $b_1$ represents the average difference in $\text{salary}$ between females and males.  
 
-We can conclude that dealing with an attribute variable with two levels in a linear model is straight forward. In this case, a dummy variable indicates whether an observation has a particular characteristic: yes/no. We can observe it as a "switch" in a model, as this dummy variable can only assume the values 0 and 1, where 0 indicates the absence of the effect, and 1 indicates the presence. The values 0/1 can be seen as off/on.
+We can conclude that dealing with an attribute variable with two levels in a linear model is straightforward. In this case, a dummy variable indicates whether an observation has a particular characteristic: yes/no. We can observe it as a "switch" in a model, as this dummy variable can only assume the values 0 and 1, where 0 indicates the absence of the effect, and 1 indicates the presence. The values 0/1 can be seen as off/on.
 
 The way in which R codes dummy variables is controlled by the _**contrast**_ option:
 
@@ -281,7 +281,7 @@ The way in which R codes dummy variables is controlled by the _**contrast**_ opt
 options("contrasts")
 ```
 
-The output points out the conversion of the factor into an appropriate set of contrasts. In particular, the first one: for unordered factors, and the second one: the ordered factors. The former one is applicable in our context. 
+The output points out the conversion of the factor into an appropriate set of contrasts. In particular, the first one: for unordered factors, and the second one: the ordered factors. The former one is applicable in our context.
 
 To explicitly identify the coding of the factor, i.e. dummy variable used by R, we can use the `contrasts()` function.
 
@@ -348,10 +348,10 @@ For convenience we will adopt the following notation:
 Generally, in multiple regression we have a continuous response variable and two or more continuous explanatory variables, however in this dataset we have three attribute variables that we wish to include as the explanatory variables in the model. 
 
 Next, we need to specify the model that embodies our mechanistic understanding of the
-factors involved and the way that they are related to the response variable. It would make sense to expect that all of the available $x$ variables may impact the behaviour of $y$, thus the model we wish to built should reflect our view point, i.e. $y = f(x_1, x_2, x_3, x_4, x_5)$:
+factors involved and the way that they are related to the response variable. It would make sense to expect that all of the available $x$ variables may impact the behaviour of $y$, thus the model we wish to build should reflect our viewpoint, i.e. $y = f(x_1, x_2, x_3, x_4, x_5)$:
 
 $$y = b_0 + b_1x_1 + b_2x_2 + b_3x_3 + b_4x_4 + b_5x_5 + e$$
-Our view point states a belief that all explanatory variables have positive impact on the response. For example, more years in service will cause higher salary.
+Our viewpoint states a belief that all explanatory variables have positive impact on the response. For example, more years in service will cause higher salary.
 
 Our objective now is to determine the values of the parameters in the model that lead to **the best fit of the model to the data**. That is, we are not only trying to estimate the parameters of the model, but we are also seeking the minimal adequate model to describe the data.
 
@@ -496,9 +496,9 @@ Learning this we can make an interpretation of our final fitted model as follows
 
 - For every year since PhD (`yrs.since.phd`) on average salary (`salary`) will go up by $\$534.63$ assuming the rest of the variables are fixed in the model
 - For every year in service (`yrs.service`) on average salary (`salary`) will go down by $\$476.72$ assuming the rest of the variables are fixed in the model
-- Average salary of an Assistant Professor (`rank: AsstProf `) who works in a "theoretical" department is $\$69,869.01$ and who works in an "applied" department is $\$84,374.16$; This can vary for the number of years in service and since PhD
-- Average salary of an Associate Professor (`rank: AssocProf`) who works in a "theoretical" department is $\$82,700.55$ and who works in an "applied" department is $\$97,205.70$; This can vary for the number of years in service and since PhD
-- Average salary of a Professor (`rank: Prof`) who works in a "theoretical" department is $\$115,156.70$ and who works in an "applied" department is $\$129,661.90$; This can vary for the number of years in service and since PhD
+- Average salary of an Assistant Professor (`rank: AsstProf `) who works in a "theoretical" department is $\$69,869.01$ and who works in an "applied" department is $\$84,374.16$; this can vary for the number of years in service and since PhD
+- Average salary of an Associate Professor (`rank: AssocProf`) who works in a "theoretical" department is $\$82,700.55$ and who works in an "applied" department is $\$97,205.70$; this can vary for the number of years in service and since PhD
+- Average salary of a Professor (`rank: Prof`) who works in a "theoretical" department is $\$115,156.70$ and who works in an "applied" department is $\$129,661.90$; this can vary for the number of years in service and since PhD
 
 This model explains around $45\%$ of the variability in the response variable `salary`.
 
@@ -511,9 +511,9 @@ summary(model_2_1)
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Adding a Complexity**</font></p>
 
-So far we have seen that by fitting an additive regression model to the data, we aim to identify and understand how the value of a dependent response variable changes when any one of the independent explanatory variables is changed while the other independent variables stay the same. This is a restrictive form of a model as it only allows for linear relationships between the response and the explanatory variables and the way in which one explanatory variable affects the response is the same for any value of the other explanatory variables used in the model. 
+So far we have seen that by fitting an additive regression model to the data, we aim to identify and understand how the value of a dependent response variable changes when any one of the independent explanatory variables is changed while the other independent variables stay the same. This is a restrictive form of a model as it only allows for linear relationships between the response and the explanatory variables, and the way in which one explanatory variable affects the response is the same for any value of the other explanatory variables used in the model. 
 
-We need to add flexibility to accommodate those limitations. That will allow the use of linear models for **non-linear relationships** and in which the effect of one explanatory variable can be different for different values of the other explanatory variable by introducing the concept of **interaction**. This bring more complexity into the multivariate regression model. 
+We need to add flexibility to accommodate these limitations. This will allow the use of linear models for **non-linear relationships** and in which the effect of one explanatory variable can be different for different values of the other explanatory variable by introducing the concept of **interaction**. This brings more complexity into the multivariate regression model. 
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Case Study: The Quality of red Bordeaux Vintages**</font></p>
 
@@ -591,7 +591,7 @@ current model.
 
 The _best subset_ regression (*BREG*), also known as “all possible regressions”, as the name of the procedure indicates, fits a separate least squares regression for each possible combination of the $p$ predictors, i.e. explanatory variables. After fitting all of the models, BREG then displays the best fitted models with one explanatory variable, two explanatory variables, three explanatory variables, and so on. Usually, either adjusted R-squared or Mallows Cp is the criterion for picking the best fitting models for this process. The result is a display of the best fitted models of different sizes up to the full/maximal model and the final fitted model can be selected by comparing displayed models based on the criteria of parsimony. 
 
-"These methods frequently are abused by naive researchers who seek to interpret the order of
+"These methods are frequently are abused by naive researchers who seek to interpret the order of
 entry of variables into the regression equation as an index of their ‘‘importance.’’ This practice
 is potentially misleading." [J. Fox and S. Weisberg book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/)
 
@@ -630,7 +630,7 @@ As [M.J. Crawley](https://royalsociety.org/people/michael-crawley-11279/) points
 
 For problems ranging from bioinformatics to marketing, many analysts prefer to develop “classifiers” instead of developing predictive models
 
-Data to practice:
+Data to practise:
 
 <https://www.kdnuggets.com/datasets/index.html>
 

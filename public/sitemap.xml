@@ -113,17 +113,22 @@
   </url>
   
   <url>
-    <loc>/module4/clasification/</loc>
-    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/module3/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
   <url>
     <loc>/module1/rstudioide/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module4/subsets/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/module4/clasification/</loc>
     <lastmod>2016-04-09T16:50:16+02:00</lastmod>
   </url>
   
